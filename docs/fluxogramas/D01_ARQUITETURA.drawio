@@ -1,0 +1,150 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="page0" name="D01.1 Contexto">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D01.1 | Contexto&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="user" value="Pessoa usuária&#10;Analisa posições e decide propostas.&#10;Workspace + SKU + Local." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="150" width="400" height="200" />
+        </mxCell>
+        <mxCell id="system" value="Agro MRO Intelligence&#10;Cadastro, importação, motor V3,&#10;planejamento e rastreabilidade.&#10;main.py / App.tsx" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="150" width="400" height="200" />
+        </mxCell>
+        <mxCell id="smtp" value="SMTP externo&#10;Envio de notificação de suporte&#10;condicionado à configuração.&#10;notifications.py" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="150" width="400" height="200" />
+        </mxCell>
+        <mxCell id="files" value="Arquivos do cliente&#10;Upload, colagem e Excel/PDF.&#10;main.py / approved_exports_api.py" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="500" width="400" height="200" />
+        </mxCell>
+        <mxCell id="sio" value="SIO / Golden Master&#10;Referência matemática externa.&#10;AGENTS.md / contrato matemático" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="500" width="400" height="200" />
+        </mxCell>
+        <mxCell id="erp" value="Processo do cliente / ERP&#10;Aplicação declarada pelo usuário.&#10;Integração automática prevista em P13." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="500" width="400" height="200" />
+        </mxCell>
+        <mxCell id="edge2" value="interage" edge="1" parent="1" source="user" target="system" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="notifica" edge="1" parent="1" source="system" target="smtp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="importa" edge="1" parent="1" source="files" target="system" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="exporta" edge="1" parent="1" source="system" target="files" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="referência" edge="1" parent="1" source="sio" target="system" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="transferência humana" edge="1" parent="1" source="system" target="erp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="C4 contexto. Cheia = interação implementada; tracejada = referência ou ação externa indicada. SMTP configurado e integração ERP operacional NÃO CONFIRMADOS. Fontes main.py,&#10;notifications.py, AGENTS.md, Plano E64. Status do produto e aceite técnico dependem do escopo documentado." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="870" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page1" name="D01.2 Contêineres">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D01.2 | Contêineres&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="web" value="Navegador / React + TypeScript&#10;main.tsx → AnalysisNavigation → App&#10;api.ts; token em localStorage;&#10;VITE_API_URL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="150" width="400" height="210" />
+        </mxCell>
+        <mxCell id="api" value="Backend / Python + FastAPI&#10;main.py e routers&#10;Contratos, autorização, cálculo&#10;e comandos de negócio." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="150" width="400" height="210" />
+        </mxCell>
+        <mxCell id="db" value="Banco relacional / SQLAlchemy&#10;SQLite padrão local; PostgreSQL no Compose.&#10;Session por get_db, fechamento em finally." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="150" width="400" height="210" />
+        </mxCell>
+        <mxCell id="nginx" value="Nginx no Compose&#10;Arquivos estáticos; fallback index.html.&#10;/api/ → http://api:8000&#10;frontend/nginx.conf" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="500" width="400" height="210" />
+        </mxCell>
+        <mxCell id="storage" value="Armazenamento de imagens&#10;UPLOAD_DIR / volume material_images.&#10;Conteúdos de linhagem P2 no banco.&#10;main.py / lineage_models.py" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="500" width="400" height="210" />
+        </mxCell>
+        <mxCell id="config" value="Capacidade e inicialização&#10;startup exclui tabelas P2/P6 de create_all.&#10;PlanningPage consulta capabilities.&#10;Habilitação e esquema definem a navegação." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="500" width="400" height="210" />
+        </mxCell>
+        <mxCell id="edge2" value="/api/v1 + Bearer" edge="1" parent="1" source="web" target="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="SQL / Session" edge="1" parent="1" source="api" target="db" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="proxy HTTP" edge="1" parent="1" source="nginx" target="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="imagens privadas" edge="1" parent="1" source="api" target="storage" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="guardas" edge="1" parent="1" source="config" target="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="C4 contêineres. Banco é configurável; SQLite/PostgreSQL representam alternativas. Implantação ativa NÃO CONFIRMADA. Fontes database.py, main.py:startup, docker-compose.yml,&#10;nginx.conf, api.ts e PlanningWorkflow.tsx. Regras de preparação operacional serão documentadas no manual." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="870" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page2" name="D01.3 Componentes">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D01.3 | Componentes&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="routes" value="HTTP / adaptadores&#10;main.py / approved_math_api.py&#10;lineage_api / approved_exports_api&#10;planning_work_api" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="150" width="400" height="210" />
+        </mxCell>
+        <mxCell id="service" value="ApprovedAnalysisService&#10;calculate_many / calculate_sheet&#10;project_sheets / record_many&#10;approved_analysis_service.py" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="150" width="400" height="210" />
+        </mxCell>
+        <mxCell id="engine" value="Preparação e cálculo&#10;analysis_context.prepare_analysis&#10;approved_classifications / approved_service&#10;approved_inventory / approved_quantity" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="150" width="400" height="210" />
+        </mxCell>
+        <mxCell id="ui" value="Consumidores React&#10;ApprovedDashboard / ficha em App&#10;ApprovedPlanning / PlanningWork&#10;ExportDownload / TemporalPanel" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="500" width="400" height="210" />
+        </mxCell>
+        <mxCell id="trace" value="Persistência e evidências&#10;models / lineage_models&#10;lineage.capture_all / preserve_analysis&#10;planning_work_models" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="500" width="400" height="210" />
+        </mxCell>
+        <mxCell id="projection" value="Projeções e decisões&#10;approved_material_sheet / approved_dashboard&#10;approved_temporal / approved_planning&#10;planning_work / approved_exports" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="500" width="400" height="210" />
+        </mxCell>
+        <mxCell id="edge2" value="consulta / registro" edge="1" parent="1" source="routes" target="service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="calcula" edge="1" parent="1" source="service" target="engine" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="requisição" edge="1" parent="1" source="ui" target="routes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="preserva análises" edge="1" parent="1" source="service" target="trace" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="dados/contexto" edge="1" parent="1" source="service" target="projection" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="DTO via API" edge="1" parent="1" source="projection" target="ui" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="C4 componentes. record_many inicia transação, captura versões, preserva análises, faz commit ou rollback e remove p2_locked em finally. Rotas legadas de dashboard/analytics&#10;redirecionam explicitamente. Fontes approved_analysis_service.py, main.py e componentes nomeados. Sequências detalhadas ficam em D10." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="870" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

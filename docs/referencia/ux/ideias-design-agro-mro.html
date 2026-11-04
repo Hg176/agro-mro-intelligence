@@ -1,0 +1,402 @@
+<title>Caderno de design Agro MRO</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: caderno de direções. Texto em coluna estreita, esboços de tela em molduras largas logo abaixo de cada ideia. */
+:root {
+  --bg: #f6f7f5;
+  --surface: #ffffff;
+  --fg: #1b2230;
+  --muted: #5d6573;
+  --line: #dfe2e6;
+  --ink: #1f3a5f;          /* azul tinta: marca/ações */
+  --ink-soft: #e6edf6;
+  --tag: #c98a1b;          /* âmbar etiqueta: destaque pontual */
+  --tag-soft: #faf0dc;
+  --ok: #2f7a4f; --ok-soft: #e2f1e8;
+  --bad: #b53a2e; --bad-soft: #f8e3e0;
+  --idle: #6b7a90; --idle-soft: #e9edf2;
+  --cA: #1f3a5f; --cB: #5b7fa8; --cC: #a9bcd3;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161d; --surface: #1a1f28; --fg: #e5e9ef; --muted: #9ba4b2; --line: #2b323e;
+    --ink: #8fb3e0; --ink-soft: #1f2c40; --tag: #e6ad4a; --tag-soft: #3a2e17;
+    --ok: #6cc391; --ok-soft: #1b3326; --bad: #f08a7e; --bad-soft: #3d1f1c; --idle: #9fb0c6; --idle-soft: #252d39;
+    --cA: #8fb3e0; --cB: #5d7fa6; --cC: #3a5170;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161d; --surface: #1a1f28; --fg: #e5e9ef; --muted: #9ba4b2; --line: #2b323e;
+  --ink: #8fb3e0; --ink-soft: #1f2c40; --tag: #e6ad4a; --tag-soft: #3a2e17;
+  --ok: #6cc391; --ok-soft: #1b3326; --bad: #f08a7e; --bad-soft: #3d1f1c; --idle: #9fb0c6; --idle-soft: #252d39;
+  --cA: #8fb3e0; --cB: #5d7fa6; --cC: #3a5170;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15.5px; line-height: 1.6; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 40px 80px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--display); margin: 0; line-height: 1.15; text-wrap: balance; }
+h1 { font-size: clamp(1.9rem, 4.5vw, 2.7rem); font-weight: 800; }
+h2 { font-size: 1.5rem; font-weight: 700; }
+h3 { font-size: 1.12rem; font-weight: 700; }
+p { margin: 0; }
+.eyebrow { font-family: var(--mono); font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+.muted { color: var(--muted); }
+.prose { max-width: 66ch; display: grid; gap: 10px; }
+header { display: grid; gap: 10px; }
+.sec { display: grid; gap: 20px; }
+.tag-law { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.law { font-size: .78rem; padding: 1px 8px; border-radius: 999px; background: var(--ink-soft); color: var(--ink); white-space: nowrap; }
+ul { margin: 0; padding-left: 1.1em; } li + li { margin-top: 4px; }
+.reco { border-left: 3px solid var(--tag); background: var(--tag-soft); padding: 14px 16px; border-radius: 0 8px 8px 0; max-width: 72ch; }
+
+/* direções */
+.dirs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.dir { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.dir.pick { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+.dir .badge-pick { justify-self: start; font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; background: var(--ink); color: var(--surface); padding: 2px 8px; border-radius: 4px; }
+.sw { display: flex; height: 34px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); }
+.sw span { flex: 1; }
+.dir dl { margin: 0; display: grid; gap: 6px; font-size: .9rem; }
+.dir dt { font-family: var(--mono); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.dir dd { margin: 0; }
+
+/* telas */
+.screen-block { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 24px; align-items: start; }
+.screen-block .txt { display: grid; gap: 12px; min-width: 0; }
+.frame { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-width: 0; }
+.frame-bar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; background: var(--surface); border-bottom: 1px solid var(--line); font-size: .78rem; color: var(--muted); }
+.frame-bar b { color: var(--fg); font-family: var(--display); font-size: .85rem; }
+.frame-bar .ex { margin-left: auto; font-family: var(--mono); font-size: .68rem; letter-spacing: .05em; text-transform: uppercase; }
+.frame-body { padding: 14px; display: grid; gap: 12px; font-size: .84rem; }
+.insight { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; }
+.insight strong { font-family: var(--display); font-size: 1.05rem; display: block; line-height: 1.3; }
+.kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.kgroup { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 8px; }
+.kgroup .gl { font-family: var(--mono); font-size: .66rem; letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.krow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.kv { font-family: var(--display); font-weight: 700; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.kl { font-size: .74rem; color: var(--muted); }
+.delta-bad { color: var(--bad); font-size: .72rem; } .delta-ok { color: var(--ok); font-size: .72rem; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.matrix { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 6px; }
+.mgrid { display: grid; grid-template-columns: 18px repeat(3, 1fr); gap: 3px; font-variant-numeric: tabular-nums; }
+.mgrid .h { font-family: var(--mono); font-size: .66rem; color: var(--muted); text-align: center; align-self: center; }
+.cell { border-radius: 4px; padding: 5px 4px; text-align: center; font-size: .72rem; line-height: 1.2; color: var(--fg); }
+.cell b { display: block; font-size: .82rem; }
+.todo { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; display: grid; gap: 6px; }
+.todo-item { display: flex; gap: 8px; align-items: baseline; }
+.dot { width: 8px; height: 8px; border-radius: 50%; flex: none; transform: translateY(-1px); }
+.st { display: inline-block; font-size: .7rem; padding: 0 7px; border-radius: 4px; font-weight: 600; white-space: nowrap; }
+.st.bad { background: var(--bad-soft); color: var(--bad); }
+.st.warn { background: var(--tag-soft); color: var(--tag); }
+.st.idle { background: var(--idle-soft); color: var(--idle); }
+.st.ok { background: var(--ok-soft); color: var(--ok); }
+.cls { display: inline-grid; place-items: center; width: 22px; height: 18px; border-radius: 4px; font-family: var(--mono); font-size: .68rem; color: var(--surface); }
+.chiprow { display: flex; flex-wrap: wrap; gap: 6px; }
+.fchip { font-size: .74rem; padding: 2px 9px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+.fchip.on { background: var(--ink); border-color: var(--ink); color: var(--surface); }
+.tbl-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-variant-numeric: tabular-nums; }
+th, td { padding: 7px 10px; border-bottom: 1px solid var(--line); text-align: left; white-space: nowrap; }
+th { font-family: var(--mono); font-size: .66rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+td.num, th.num { text-align: right; }
+tr.crit td:first-child { box-shadow: inset 3px 0 0 var(--bad); }
+tr:last-child td { border-bottom: 0; }
+.steps { display: flex; align-items: center; gap: 0; font-size: .74rem; }
+.step { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.step i { font-style: normal; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-family: var(--mono); font-size: .68rem; border: 1.5px solid var(--line); background: var(--surface); }
+.step.done i { background: var(--ok); border-color: var(--ok); color: var(--surface); }
+.step.now i { border-color: var(--ink); color: var(--ink); }
+.step.now { font-weight: 600; }
+.link { flex: 1; height: 2px; background: var(--line); margin: 0 8px; min-width: 14px; }
+.link.done { background: var(--ok); }
+.map { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; display: grid; }
+.maprow { display: grid; grid-template-columns: 1.2fr 18px 1.2fr auto; gap: 8px; padding: 7px 12px; border-bottom: 1px solid var(--line); align-items: center; }
+.maprow:last-child { border-bottom: 0; }
+.maprow code { font-family: var(--mono); font-size: .74rem; background: var(--bg); padding: 1px 5px; border-radius: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btns { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+.btn { font-size: .78rem; padding: 6px 14px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); }
+.btn.primary { background: var(--ink); border-color: var(--ink); color: var(--surface); font-weight: 600; }
+.item { display: grid; grid-template-columns: 120px 1fr; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.photo { aspect-ratio: 1; max-width: 100%; border-radius: 6px; background: repeating-linear-gradient(135deg, var(--idle-soft) 0 8px, var(--bg) 8px 16px); display: grid; place-items: center; font-family: var(--mono); font-size: .64rem; color: var(--muted); text-align: center; padding: 6px; }
+svg text { font-family: var(--mono); font-size: 9px; fill: var(--muted); }
+
+/* componentes */
+.comps { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+.comp { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: grid; gap: 8px; align-content: start; }
+.comp .demo { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; min-height: 26px; }
+.comp p { font-size: .88rem; color: var(--muted); }
+.qs { display: grid; gap: 8px; max-width: 72ch; }
+.qs li { padding-left: 2px; }
+
+@media (max-width: 860px) {
+  .dirs { grid-template-columns: 1fr; }
+  .screen-block { grid-template-columns: 1fr; }
+}
+@media (max-width: 520px) {
+  .kpis, .two { grid-template-columns: 1fr; }
+  .item { grid-template-columns: 1fr; }
+  .steps .lbl-step { display: none; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Caderno de design · Agro MRO Intelligence</span>
+    <h1>Ideias de design para o Agro MRO Intelligence</h1>
+    <div class="prose">
+      <p class="muted">Três direções visuais, esboços das telas principais e os componentes que formam a base. Cada ideia aponta as leis do <a href="https://claude.ai/artifact/CMjH18AnbAeLvDsVvqj6wJ" style="color:var(--ink)">guia de UX</a> que a sustentam. Os números nos esboços são de exemplo.</p>
+    </div>
+  </header>
+
+  <section class="sec">
+    <div class="prose">
+      <span class="eyebrow">A ideia central</span>
+      <h2>Primeiro a resposta, depois a tabela</h2>
+      <p>O cliente que hoje usa Power BI ou Excel já tem os números. O que ele não tem é alguém dizendo <em>o que fazer com eles</em>. Então toda tela abre com uma frase de conclusão ("R$ 412 mil parados em 238 itens, 61% deles classe C") e só depois mostra o gráfico e a tabela que provam a frase.</p>
+      <p>Essas frases saem de regras fixas no código, não de IA generativa, como já combinamos para o MVP. Isso também deixa o produto com cara de "Intelligence" sem custo de LLM.</p>
+      <div class="tag-law"><span class="law">Pareto</span><span class="law">Hick</span><span class="law">Tesler</span><span class="law">Pico-fim</span></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="prose">
+      <span class="eyebrow">Identidade visual</span>
+      <h2>Três direções</h2>
+      <p>Todas usam fundo claro e limpo, já que você não curtiu o verde com gradiente preto no Mural. A diferença está no tom e no que cada uma destaca.</p>
+    </div>
+    <div class="dirs">
+      <article class="dir pick">
+        <span class="badge-pick">Recomendo</span>
+        <h3>Prancheta do almoxarifado</h3>
+        <div class="sw"><span style="background:#ffffff"></span><span style="background:#1f3a5f"></span><span style="background:#c98a1b"></span><span style="background:#dfe2e6"></span><span style="background:#b53a2e"></span></div>
+        <dl>
+          <div><dt>Tom</dt><dd>Branco, azul tinta e âmbar de etiqueta de estoque. Sério, preciso, parece ferramenta de trabalho.</dd></div>
+          <div><dt>Tipografia</dt><dd>Sans de corpo legível em tabela, números tabulares, mono para códigos de material.</dd></div>
+          <div><dt>Bom para</dt><dd>Comprador e almoxarife que passam horas em tabelas. Envelhece bem.</dd></div>
+        </dl>
+      </article>
+      <article class="dir">
+        <h3>Safra</h3>
+        <div class="sw"><span style="background:#fbfaf6"></span><span style="background:#2e5d3a"></span><span style="background:#d9a441"></span><span style="background:#e7e3d8"></span><span style="background:#8a5a2b"></span></div>
+        <dl>
+          <div><dt>Tom</dt><dd>Neutros quentes, verde campo só como acento, dourado de grão. Lembra o agro sem cair em clichê de trator.</dd></div>
+          <div><dt>Tipografia</dt><dd>Display mais encorpada nos títulos, corpo neutro.</dd></div>
+          <div><dt>Bom para</dt><dd>Marketing, landing page e apresentação a investidores. Reforça a marca agro.</dd></div>
+        </dl>
+      </article>
+      <article class="dir">
+        <h3>Relatório executivo</h3>
+        <div class="sw"><span style="background:#ffffff"></span><span style="background:#111418"></span><span style="background:#3d6df2"></span><span style="background:#eceef1"></span><span style="background:#e0533d"></span></div>
+        <dl>
+          <div><dt>Tom</dt><dd>Quase preto e branco, um azul vivo para interação. Muito espaço em branco, números grandes.</dd></div>
+          <div><dt>Tipografia</dt><dd>Títulos grandes estilo jornal de negócios.</dd></div>
+          <div><dt>Bom para</dt><dd>Gestor e diretor que olham 5 minutos por semana. Fraco para uso diário pesado.</dd></div>
+        </dl>
+      </article>
+    </div>
+    <p class="reco"><strong>Minha recomendação:</strong> use a <strong>Prancheta</strong> no produto e pegue da <strong>Safra</strong> o verde e o dourado para a landing page e o logo. Assim o sistema fica sóbrio para quem trabalha nele todo dia, e a marca mantém o pé no agro. Esta página já está desenhada na Prancheta, para você sentir como fica.</p>
+  </section>
+
+  <section class="sec">
+    <div class="prose">
+      <span class="eyebrow">Telas</span>
+      <h2>Esboços das telas principais</h2>
+    </div>
+
+    <div class="screen-block">
+      <div class="txt">
+        <h3>Painel: "como está meu estoque hoje"</h3>
+        <ul>
+          <li>Abre com a frase de conclusão do dia e um botão que leva direto aos itens dela.</li>
+          <li>KPIs em dois grupos com espaço entre eles: <strong>Dinheiro</strong> (valor total, valor parado) e <strong>Saúde</strong> (rupturas, cobertura média).</li>
+          <li>Matriz ABC/XYZ como grade 3×3 clicável. Clicar em "AX" abre a tabela já filtrada.</li>
+          <li>Lista "O que resolver" com no máximo 5 itens, ordenada por impacto em R$.</li>
+        </ul>
+        <div class="tag-law"><span class="law">Proximidade</span><span class="law">Prägnanz</span><span class="law">Von Restorff</span><span class="law">Zeigarnik</span><span class="law">Pareto</span></div>
+      </div>
+      <div class="frame" aria-label="Esboço do painel">
+        <div class="frame-bar"><b>Painel</b> · Almoxarifado Central <span class="ex">exemplo</span></div>
+        <div class="frame-body">
+          <div class="insight">
+            <span class="kl">Destaque de hoje</span>
+            <strong>R$ 412 mil parados em 238 itens. 61% são classe C e podem virar caixa.</strong>
+          </div>
+          <div class="kpis">
+            <div class="kgroup"><span class="gl">Dinheiro</span>
+              <div class="krow"><div><div class="kv">R$ 2,84 mi</div><div class="kl">em estoque</div></div><div><div class="kv">R$ 412 mil</div><div class="kl">parado +180 d <span class="delta-bad">▲ 6%</span></div></div></div>
+            </div>
+            <div class="kgroup"><span class="gl">Saúde</span>
+              <div class="krow"><div><div class="kv">17</div><div class="kl">rupturas <span class="delta-ok">▼ 4</span></div></div><div><div class="kv">94 d</div><div class="kl">cobertura média</div></div></div>
+            </div>
+          </div>
+          <div class="two">
+            <div class="matrix"><span class="kl">Matriz ABC × XYZ (itens)</span>
+              <div class="mgrid">
+                <span></span><span class="h">X</span><span class="h">Y</span><span class="h">Z</span>
+                <span class="h">A</span><span class="cell" style="background:var(--cA);color:var(--surface)"><b>42</b>R$1,1mi</span><span class="cell" style="background:var(--cA);color:var(--surface);opacity:.8"><b>31</b>R$540k</span><span class="cell" style="background:var(--cA);color:var(--surface);opacity:.62"><b>12</b>R$310k</span>
+                <span class="h">B</span><span class="cell" style="background:var(--cB);color:var(--surface)"><b>88</b>R$290k</span><span class="cell" style="background:var(--cB);color:var(--surface);opacity:.8"><b>104</b>R$210k</span><span class="cell" style="background:var(--cB);color:var(--surface);opacity:.62"><b>57</b>R$96k</span>
+                <span class="h">C</span><span class="cell" style="background:var(--cC)"><b>310</b>R$88k</span><span class="cell" style="background:var(--cC);opacity:.8"><b>622</b>R$121k</span><span class="cell" style="background:var(--cC);opacity:.62"><b>1.204</b>R$84k</span>
+              </div>
+            </div>
+            <div class="todo"><span class="kl">O que resolver</span>
+              <div class="todo-item"><span class="st bad">Ruptura</span><span>Rolamento 6205-2RS · 3 OS paradas</span></div>
+              <div class="todo-item"><span class="st warn">Mínimo</span><span>Filtro hidráulico HF6177 · 4 d</span></div>
+              <div class="todo-item"><span class="st idle">Parado</span><span>Correia B-68 · R$ 18,4 mil</span></div>
+              <div class="todo-item"><span class="st idle">Parado</span><span>Bomba dosadora · R$ 12,9 mil</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-block">
+      <div class="txt">
+        <h3>Tabela de estoque: "Excel que pensa"</h3>
+        <ul>
+          <li>Atalhos prontos em chips acima da tabela; filtros avançados num painel lateral.</li>
+          <li>Filtros ativos sempre visíveis, com um X para remover cada um.</li>
+          <li>Código e descrição fixos à esquerda; status e classe com o mesmo badge do painel.</li>
+          <li>Linha crítica ganha uma faixa vermelha na borda, além do badge.</li>
+          <li>Clicar numa linha abre a ficha do item numa gaveta lateral, sem perder a posição na tabela.</li>
+          <li>Ordenar no cabeçalho, redimensionar colunas e exportar para Excel, como o usuário já espera.</li>
+        </ul>
+        <div class="tag-law"><span class="law">Jakob</span><span class="law">Hick</span><span class="law">Miller</span><span class="law">Semelhança</span><span class="law">Doherty</span></div>
+      </div>
+      <div class="frame" aria-label="Esboço da tabela">
+        <div class="frame-bar"><b>Estoque</b> · 2.470 itens <span class="ex">exemplo</span></div>
+        <div class="frame-body">
+          <div class="chiprow"><span class="fchip on">Itens AX críticos</span><span class="fchip">Parados +180 d</span><span class="fchip">Abaixo do mínimo</span><span class="fchip">Sem foto</span><span class="fchip">+ Filtros</span></div>
+          <div class="chiprow"><span class="kl">Ativos:</span><span class="fchip">Classe A ✕</span><span class="fchip">XYZ = X ✕</span></div>
+          <div class="tbl-wrap"><table>
+            <thead><tr><th>Código</th><th>Descrição</th><th>Cl.</th><th class="num">Saldo</th><th class="num">Cobertura</th><th>Status</th></tr></thead>
+            <tbody>
+              <tr class="crit"><td>1000 4821</td><td>Rolamento 6205-2RS</td><td><span class="cls" style="background:var(--cA)">AX</span></td><td class="num">0 un</td><td class="num">0 d</td><td><span class="st bad">Ruptura</span></td></tr>
+              <tr><td>1000 3377</td><td>Filtro hidráulico HF6177</td><td><span class="cls" style="background:var(--cA)">AX</span></td><td class="num">6 un</td><td class="num">4 d</td><td><span class="st warn">Abaixo do mínimo</span></td></tr>
+              <tr><td>1000 2950</td><td>Óleo hidráulico 68 · 20 L</td><td><span class="cls" style="background:var(--cA)">AX</span></td><td class="num">48 bd</td><td class="num">37 d</td><td><span class="st ok">Ok</span></td></tr>
+              <tr><td>1000 6114</td><td>Correia V B-68</td><td><span class="cls" style="background:var(--cA)">AX</span></td><td class="num">22 un</td><td class="num">51 d</td><td><span class="st ok">Ok</span></td></tr>
+            </tbody>
+          </table></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-block">
+      <div class="txt">
+        <h3>Importação: o momento que vende o produto</h3>
+        <ul>
+          <li>Quatro passos ligados por uma linha: Arquivo, Colunas, Prévia, Pronto.</li>
+          <li>O sistema adivinha as colunas e mostra a confiança. O usuário só confirma o que ficou em dúvida.</li>
+          <li>A prévia mostra os problemas por linha ("linha 214: data em formato estranho") antes de gravar.</li>
+          <li>O fim é um resumo com os primeiros achados. É o primeiro "uau" do cliente, então capriche nele.</li>
+          <li>Na segunda importação, lembra o mapeamento anterior e pula direto para a prévia.</li>
+        </ul>
+        <div class="tag-law"><span class="law">Postel</span><span class="law">Tesler</span><span class="law">Conectividade uniforme</span><span class="law">Pico-fim</span><span class="law">Parkinson</span></div>
+      </div>
+      <div class="frame" aria-label="Esboço da importação">
+        <div class="frame-bar"><b>Importar planilha</b> · estoque_out26.xlsx <span class="ex">exemplo</span></div>
+        <div class="frame-body">
+          <div class="steps">
+            <span class="step done"><i>✓</i><span class="lbl-step">Arquivo</span></span><span class="link done"></span>
+            <span class="step now"><i>2</i><span class="lbl-step">Colunas</span></span><span class="link"></span>
+            <span class="step"><i>3</i><span class="lbl-step">Prévia</span></span><span class="link"></span>
+            <span class="step"><i>4</i><span class="lbl-step">Pronto</span></span>
+          </div>
+          <div class="map">
+            <div class="maprow"><code>COD_MAT</code><span>→</span><span>Código do material</span><span class="st ok">certeza</span></div>
+            <div class="maprow"><code>DESCR. ITEM</code><span>→</span><span>Descrição</span><span class="st ok">certeza</span></div>
+            <div class="maprow"><code>QTD ATUAL</code><span>→</span><span>Saldo</span><span class="st ok">certeza</span></div>
+            <div class="maprow"><code>VLR</code><span>→</span><span>Custo unitário?</span><span class="st warn">confirme</span></div>
+          </div>
+          <div class="btns"><span class="btn">Voltar</span><span class="btn primary">Ver prévia</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="screen-block">
+      <div class="txt">
+        <h3>Ficha do item com book fotográfico e forecast</h3>
+        <ul>
+          <li>Foto grande no topo: o almoxarife reconhece a peça pela imagem antes do código.</li>
+          <li>Consumo de 24 meses com a faixa da safra marcada. É o detalhe que só um sistema agro teria: o pico de consumo em plantio e colheita fica visível.</li>
+          <li>Forecast com faixa de incerteza, não uma linha única que finge precisão.</li>
+          <li>Termina numa ação: "Sugestão: comprar 40 un até 15/11".</li>
+          <li>No tablet, botões de 44 px e o book em grade de fotos grandes.</li>
+        </ul>
+        <div class="tag-law"><span class="law">Fitts</span><span class="law">Prägnanz</span><span class="law">Von Restorff</span><span class="law">Occam</span></div>
+      </div>
+      <div class="frame" aria-label="Esboço da ficha do item">
+        <div class="frame-bar"><b>Rolamento 6205-2RS</b> · 1000 4821 <span class="ex">exemplo</span></div>
+        <div class="frame-body">
+          <div class="item">
+            <div class="photo">foto do item<br>book</div>
+            <div style="display:grid;gap:6px;min-width:0">
+              <div class="chiprow"><span class="cls" style="background:var(--cA)">AX</span><span class="st bad">Ruptura</span></div>
+              <span class="kl">Consumo mensal (un) · faixa = safra</span>
+              <svg viewBox="0 0 300 110" width="100%" role="img" aria-label="Consumo de 24 meses com picos na safra e previsão">
+                <rect x="20" y="8" width="62" height="82" fill="var(--tag-soft)"/>
+                <rect x="140" y="8" width="62" height="82" fill="var(--tag-soft)"/>
+                <line x1="20" y1="90" x2="292" y2="90" stroke="var(--line)"/>
+                <line x1="20" y1="49" x2="292" y2="49" stroke="var(--line)" stroke-dasharray="2 3"/>
+                <text x="2" y="93">0</text><text x="2" y="52">20</text>
+                <polyline fill="none" stroke="var(--ink)" stroke-width="2" points="20,74 30,66 40,45 50,37 60,41 70,53 80,70 90,78 100,80 110,76 120,72 130,66 140,49 150,33 160,29 170,37 180,57 190,70 200,78 210,80 220,74 230,68"/>
+                <polygon fill="var(--ink-soft)" points="230,68 240,58 250,44 260,30 270,26 280,34 292,48 292,70 280,58 270,50 260,52 250,62 240,70 230,68"/>
+                <polyline fill="none" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3" points="230,68 240,64 250,53 260,41 270,38 280,46 292,59"/>
+                <circle cx="230" cy="68" r="3" fill="var(--ink)"/>
+                <text x="36" y="104">safra 24/25</text><text x="156" y="104">safra 25/26</text><text x="238" y="104">previsão</text>
+              </svg>
+              <p style="font-size:.82rem"><strong>Sugestão:</strong> comprar 40 un até 15/11, antes do pico do plantio.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="prose">
+      <span class="eyebrow">Base do sistema</span>
+      <h2>Componentes para fazer primeiro</h2>
+      <p>Com estes oito prontos, quase toda tela nova é montagem. Faça cada um como componente Blade/Livewire reutilizável desde o começo.</p>
+    </div>
+    <div class="comps">
+      <div class="comp"><h3>Badge de status</h3><div class="demo"><span class="st bad">Ruptura</span><span class="st warn">Abaixo do mínimo</span><span class="st idle">Parado</span><span class="st ok">Ok</span></div><p>Mesma cor e texto em todas as telas. Nunca só cor.</p><div class="tag-law"><span class="law">Semelhança</span></div></div>
+      <div class="comp"><h3>Selo de classe</h3><div class="demo"><span class="cls" style="background:var(--cA)">A</span><span class="cls" style="background:var(--cB)">B</span><span class="cls" style="background:var(--cC);color:var(--fg)">C</span></div><p>Tons da mesma cor, do forte ao fraco. A sempre se destaca.</p><div class="tag-law"><span class="law">Semelhança</span><span class="law">Prägnanz</span></div></div>
+      <div class="comp"><h3>Card de destaque</h3><div class="demo"><span class="kl">Frase de conclusão + botão "ver itens"</span></div><p>Topo de cada tela. Uma frase, um número, uma ação.</p><div class="tag-law"><span class="law">Pareto</span><span class="law">Hick</span></div></div>
+      <div class="comp"><h3>KPI com variação</h3><div class="demo"><span class="kv" style="font-size:1rem">R$ 412 mil</span><span class="delta-bad">▲ 6% vs mês ant.</span></div><p>Sempre com comparação. Número sozinho não diz se é bom ou ruim.</p><div class="tag-law"><span class="law">Von Restorff</span></div></div>
+      <div class="comp"><h3>Chip de filtro</h3><div class="demo"><span class="fchip on">Atalho ativo</span><span class="fchip">Classe A ✕</span></div><p>Atalhos prontos e filtros ativos com o mesmo formato.</p><div class="tag-law"><span class="law">Miller</span><span class="law">Hick</span></div></div>
+      <div class="comp"><h3>Gaveta lateral</h3><div class="demo"><span class="kl">Ficha do item sem sair da tabela</span></div><p>Evita ida e volta de página e mantém o contexto.</p><div class="tag-law"><span class="law">Doherty</span><span class="law">Miller</span></div></div>
+      <div class="comp"><h3>Stepper</h3><div class="demo"><span class="steps"><span class="step done"><i>✓</i></span><span class="link done" style="width:24px;flex:none"></span><span class="step now"><i>2</i></span><span class="link" style="width:24px;flex:none"></span><span class="step"><i>3</i></span></span></div><p>Importação e implantação. Mostra onde a pessoa está.</p><div class="tag-law"><span class="law">Conectividade uniforme</span><span class="law">Zeigarnik</span></div></div>
+      <div class="comp"><h3>Skeleton e estado vazio</h3><div class="demo"><span class="kl">Você já fez isso no Mural; reaproveite a ideia</span></div><p>Toda tabela e gráfico tem carregando, vazio e erro desenhados.</p><div class="tag-law"><span class="law">Doherty</span><span class="law">Pico-fim</span></div></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="prose">
+      <span class="eyebrow">Próximos passos</span>
+      <h2>Por onde eu começaria</h2>
+      <ol class="qs">
+        <li>Fechar a direção visual (minha aposta é a Prancheta) e virar as cores em variáveis do Tailwind, já com claro e escuro.</li>
+        <li>Construir os oito componentes acima numa página de "vitrine" interna, antes de qualquer tela.</li>
+        <li>Fazer a importação primeiro, porque sem dados nada mais funciona e é ela que causa a primeira impressão.</li>
+        <li>Depois o painel e a tabela. Ficha do item e forecast por último.</li>
+        <li>Mostrar os esboços para o Sander e o Zé no Mural e, se der, para um comprador de verdade.</li>
+      </ol>
+    </div>
+    <div class="prose">
+      <h3>Três perguntas que mudam o design</h3>
+      <ul class="qs">
+        <li><strong>Quem é o assinante de R$ 100/mês no CPF?</strong> Comprador de fazenda, consultor ou gerente de almoxarifado? Isso decide quão densa a tela pode ser.</li>
+        <li><strong>Vai ser usado mais no computador ou no celular?</strong> Se for celular, o painel vira uma lista de destaques em vez de grade.</li>
+        <li><strong>Já existe logo ou cor da marca Agro MRO?</strong> Se existir, ajusto as direções em cima dela.</li>
+      </ul>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="page0" name="D05.1">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D05.1 | Parâmetros efetivos e nível de serviço&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="a" value="D05-A01&#10;Stored + campos efetivamente enviados&#10;Omitido / null / zero preservados" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="g" value="LT/cenário e contexto estrito válidos?" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;shape=rhombus;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="500" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="bad" value="422 no caminho estrito&#10;Ficha pode usar physical_only em ausência&#10;elegível" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;fillColor=#DDF3E9;">
+          <mxGeometry as="geometry" x="970" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="ns" value="D05-A02&#10;Manual customer explícito; senão matriz&#10;Origem None → legacy_unconfirmed" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="305" width="400" height="140" />
+        </mxCell>
+        <mxCell id="matrix" value="Matriz privada existente ou padrão V3&#10;Chave PQR+ABC+XYZ&#10;Privada sem chave → NC" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="305" width="400" height="140" />
+        </mxCell>
+        <mxCell id="domain" value="NS0 ou 0,5≤NS&lt;1&#10;NS0 preservado; inversa bloqueada&#10;NS0,5 admite Z0" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="end" value="NS resolvido ou motivo&#10;Seguir guardas D05.2" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;fillColor=#DDF3E9;">
+          <mxGeometry as="geometry" x="500" y="645" width="400" height="140" />
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="a" target="g" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="não" edge="1" parent="1" source="g" target="bad" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="sim" edge="1" parent="1" source="g" target="ns" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="quando origem de matriz" edge="1" parent="1" source="ns" target="matrix" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="manual explícito" edge="1" parent="1" source="ns" target="domain" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="" edge="1" parent="1" source="matrix" target="domain" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge8" value="" edge="1" parent="1" source="domain" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Fluxo de atividades do algoritmo. Retângulo = processamento; losango = decisão; verde = resultado/subprocesso. Guardas detalhadas nas fichas e na memória matemática. Evidência&#10;estática; adequação por cliente não avaliada. Fontes approved_analysis_contract.py; ApprovedAnalysisService._prepare; approved_service.py." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="870" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page1" name="D05.2">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D05.2 | Guardas, quantis e TMEA&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="a" value="Série disponível, LT válido, cenário&#10;NS resolvido e modo estrito" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="g" value="n≥max(2,LT) e NS&gt;0?" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;shape=rhombus;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="500" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="bad" value="Política automática indisponível&#10;Conservar física e declarações manuais" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;fillColor=#DDF3E9;">
+          <mxGeometry as="geometry" x="970" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="q" value="D05-A03&#10;W=LT e, se informado, W=R&#10;Somar janelas sobrepostas" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="305" width="400" height="140" />
+        </mxCell>
+        <mxCell id="rank" value="m=n−W+1; ordenar somas&#10;Q(W)=ordem ceil(NS×m)&#10;n&lt;W → quantil ausente" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="305" width="400" height="140" />
+        </mxCell>
+        <mxCell id="tmea" value="TMEA ES=n/dias com OUT positivo&#10;Sem dias positivos → NC" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="end" value="Q(LT), Q(R), TMEA e Z&#10;Seguir ES/PP em D05.3" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;fillColor=#DDF3E9;">
+          <mxGeometry as="geometry" x="500" y="645" width="400" height="140" />
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="a" target="g" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="não" edge="1" parent="1" source="g" target="bad" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="sim" edge="1" parent="1" source="g" target="q" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="" edge="1" parent="1" source="q" target="rank" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="" edge="1" parent="1" source="rank" target="tmea" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="" edge="1" parent="1" source="tmea" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Fluxo de atividades do algoritmo. Retângulo = processamento; losango = decisão; verde = resultado/subprocesso. Guardas detalhadas nas fichas e na memória matemática. Evidência&#10;estática; adequação por cliente não avaliada. Fontes approved_inventory.py:calculate_approved/window_quantile." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="870" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page2" name="D05.3">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D05.3 | Estoque de segurança e ponto de pedido&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="a" value="D05-A04 | ES — cinco brutos&#10;Inversa μ+Zσ&#10;TMEA (μ+Zσ)×TMEA/(LT+ZσLT)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="b" value="ES — continuação&#10;Raiz Z√(σ²LT+σLT²μ²)&#10;Fator Zσ√LT&#10;Motor max(Q(LT)−μLT,0)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="guards" value="Cada método exige insumos próprios&#10;σLT ausente difere de zero&#10;TMEA exige denominador positivo" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="pick" value="Aplicar quantum e selecionar ES&#10;D05-A08/A09" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="305" width="400" height="140" />
+        </mxCell>
+        <mxCell id="pp" value="D05-A05 | PP&#10;Tradicional μLT+ES escolhido&#10;Motor Q(LT)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="picks" value="Aplicar quantum e selecionar PP&#10;Manuais exatos têm precedência" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="end" value="ES e PP escolhidos + origens&#10;Seguir EM em D05.4" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;fillColor=#DDF3E9;">
+          <mxGeometry as="geometry" x="500" y="645" width="400" height="140" />
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="a" target="b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="" edge="1" parent="1" source="b" target="guards" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="brutos disponíveis" edge="1" parent="1" source="guards" target="pick" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="" edge="1" parent="1" source="pick" target="pp" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="" edge="1" parent="1" source="pp" target="picks" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="" edge="1" parent="1" source="picks" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Fluxo de atividades do algoritmo. Retângulo = processamento; losango = decisão; verde = resultado/subprocesso. Guardas detalhadas nas fichas e na memória matemática. Evidência&#10;estática; adequação por cliente não avaliada. Fontes approved_inventory.py R10–R16; approved_quantity.py; contrato §§8–9." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="870" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page3" name="D05.4">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D05.4 | Máximos da política e comparativos&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="a" value="D05-A06 | Seleção&#10;EM01=ES+PP&#10;EM02=ES+μ(LT+R+B)&#10;EM03=Q(LT)+Q(R)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="b" value="B=max(Z,0)σLT em dias&#10;Aplicar guardas de R, σLT e quantis&#10;Somente EM01–03 entram em cenários" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="c" value="D05-A07 | Comparação H=LT+R&#10;EM04=μH+ES_H&#10;EM05=μH+Zσ√H" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="d" value="Comparação — continuação&#10;EM06=μH+Z√(Hσ²+μ²σLT²)&#10;EM07=quantil Poisson(μH)" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="guard" value="ES_H exige horizonte/ref.&#10;Poisson exige contagem inteira&#10;Busca até1000; sem alvo → NC" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="end" value="Selecionar somente EM01–03&#10;Comparativos expostos separadamente&#10;Seguir D05.5" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;fillColor=#DDF3E9;">
+          <mxGeometry as="geometry" x="500" y="645" width="400" height="140" />
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="a" target="b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="seleção" edge="1" parent="1" source="b" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="" edge="1" parent="1" source="c" target="d" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="" edge="1" parent="1" source="d" target="guard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="comparação apenas" edge="1" parent="1" source="guard" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Fluxo de atividades do algoritmo. Retângulo = processamento; losango = decisão; verde = resultado/subprocesso. Guardas detalhadas nas fichas e na memória matemática. Evidência&#10;estática; adequação por cliente não avaliada. Fontes approved_inventory.py R17–R23; contrato §10." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="870" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page4" name="D05.5">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1000" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D05.5 | Quantum, precedência e máximo efetivo&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="a" value="D05-A08&#10;q: múltiplo &gt; inteiro1 &gt; passo&#10;A(x)=q×ceil(max(x,0)/q)&#10;Sem q: bruto pode existir; aplicado NC" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="b" value="D05-A09&#10;Manual &gt; cenário &gt; Motor &gt; primeiro&#10;ES → PP → EM&#10;Cenários usam aplicados disponíveis" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="500" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="sc" value="Conservador A(média)&#10;Proteção A(maior)&#10;Risco A(menor positivo)&#10;Excluir manual/comparativos" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="135" width="400" height="140" />
+        </mxCell>
+        <mxCell id="g" value="EM selecionado &lt; PP?" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;shape=rhombus;align=center;verticalAlign=middle;">
+          <mxGeometry as="geometry" x="500" y="305" width="400" height="140" />
+        </mxCell>
+        <mxCell id="ok" value="Conservar máximo selecionado&#10;como efetivo" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="conf" value="Se automático, efetivo=A(PP)&#10;Se manual, efetivo NC + conflito&#10;Conservar maximum_selected" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="970" y="475" width="400" height="140" />
+        </mxCell>
+        <mxCell id="end" value="DTO com status/reason, métodos,&#10;brutos/aplicados/escolhidos e origens&#10;R27 preserva versões ao registrar" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;fillColor=#DDF3E9;">
+          <mxGeometry as="geometry" x="500" y="645" width="400" height="140" />
+        </mxCell>
+        <mxCell id="edge2" value="" edge="1" parent="1" source="a" target="b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge3" value="" edge="1" parent="1" source="sc" target="b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge4" value="PP disponível" edge="1" parent="1" source="b" target="g" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge5" value="não" edge="1" parent="1" source="g" target="ok" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge6" value="sim" edge="1" parent="1" source="g" target="conf" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge7" value="" edge="1" parent="1" source="ok" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="edge8" value="" edge="1" parent="1" source="conf" target="end" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="legend" value="Fluxo de atividades do algoritmo. Retângulo = processamento; losango = decisão; verde = resultado/subprocesso. Guardas detalhadas nas fichas e na memória matemática. Evidência&#10;estática; adequação por cliente não avaliada. Fontes approved_quantity.py; approved_inventory.py:choose/scenarios; contrato §11." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="870" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

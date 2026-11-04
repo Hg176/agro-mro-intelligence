@@ -1,0 +1,668 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device" compressed="false">
+  <diagram id="agromro-1" name="1. Reconstrução e arquitetura">
+    <mxGraphModel dx="1191" dy="842" grid="0" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1191" pageHeight="842" background="#F6F9F8" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="" style="rounded=0;arcSize=8;absoluteArcSize=1;fillColor=#176250;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1191" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="AGRO MRO INTELLIGENCE / GUIA DO DESENVOLVEDOR" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="24.0" width="975" height="14.76" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="01 / 02" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12;fontColor=#526467;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="23.0" width="130" height="14.76" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Reconstrução e arquitetura" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=34;fontColor=#18312F;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="49.0" width="1127" height="41.82" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="Como as entregas P0–P7 chegam ao caminho atual de análise." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="33" y="94.0" width="1125" height="17.22" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="01 MARCOS DA RECONSTRUÇÃO" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="127.0" width="1050" height="14.76" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#EDF1F1;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="151" width="272" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="P0 Referências" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#526467;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="161.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="Organizou fontes, decisões e lacunas da" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="184.45" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="reconstrução. Entrega documental no Plano" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="199.46" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="Único." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="214.47" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#DDF3E9;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="317" y="151" width="272" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="P1 Dados e períodos" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="161.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="Preparação compartilhada por SKU + Local." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="184.45" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="Aceite para continuidade em P2. [E24]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="199.46" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#DDF3E9;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="602" y="151" width="272" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="P2 Rastreabilidade" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="161.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="Originais, recibos e evidências de análise." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="184.45" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="Aceite técnico em desenvolvimento. [E28]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="199.46" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#DDF3E9;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="887" y="151" width="272" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="P3 Motor V3" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="161.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="R01–R28 integradas no caminho P3/V3." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="184.45" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="Aceite técnico no escopo E41/E42." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="199.46" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFF0DC;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="256" width="272" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="P7 Experiência de análise" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#8B4A12;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="266.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="Candidata E64 build01 com correção A5." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="289.45" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="Reteste humano e aceite integral pendentes." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="304.46" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#DDF3E9;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="317" y="256" width="272" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="P6 Gestão do trabalho" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="266.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="Ciclos, fila e emissão selecionada. Aceite" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="289.45" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="delimitado E58/E59/E60; T06-B adiada." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="304.46" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#DDF3E9;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="602" y="256" width="272" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="P5 Validação integrada" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="266.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="Instalação e regressão com massa sintética." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="289.45" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="Aceite E56 limitado ao escopo demonstrado." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="304.46" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#DDF3E9;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="887" y="256" width="272" height="89" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="P4 Conectar consumidores" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="266.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="I01–I08 encerrados no escopo registrado." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="289.45" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="Serviço comum, telas e relatórios." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="304.46" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="41" value="[E43–E55]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.2;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="319.47" width="248" height="15.01" as="geometry" />
+        </mxCell>
+        <mxCell id="42" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="8" target="13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="43" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="13" target="17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="44" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="17" target="21">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="45" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="21" target="37">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="46" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="37" target="33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="47" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="33" target="29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="48" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" edge="1" parent="1" source="29" target="25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="49" value="02 CHAMADA REAL / DA VISÃO GERAL À FONTE DOS DADOS" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="364.0" width="1125" height="14.76" as="geometry" />
+        </mxCell>
+        <mxCell id="50" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="391" width="272" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="51" value="React + TypeScript" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="401.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="52" value="App.tsx carrega a Visão geral por api.ts." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="424.45" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="53" value="ApprovedDashboard.tsx apresenta a" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="439.58" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="54" value="resposta; Materiais abre a ficha. [P4/P7]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="454.71" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="55" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="317" y="391" width="272" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="56" value="FastAPI" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="401.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="57" value="GET /api/v1/approved-math/dashboard →" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="424.45" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="58" value="dashboard_read. current_user delimita o" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="439.58" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="59" value="espaço; DashboardQuery valida filtros. [P4]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="454.71" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="60" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="602" y="391" width="272" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="61" value="Serviço de análise" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="401.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="62" value="ApprovedAnalysisService.project_sheets" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="424.45" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="63" value="projeta a população. Prepara contexto," style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="439.58" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="64" value="classes, NS e executa calculate_approved." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="454.71" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="65" value="[P1/P3/P4]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="469.84" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="66" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="887" y="391" width="272" height="121" as="geometry" />
+        </mxCell>
+        <mxCell id="67" value="Persistência" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="401.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="68" value="SQLAlchemy lê Material," style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="424.45" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="69" value="MaterialMasterData, Movement e" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="439.58" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="70" value="parâmetros do workspace. SQLite local;" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="454.71" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="71" value="PostgreSQL configurável. [P1/P2]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.3;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="469.84" width="248" height="15.13" as="geometry" />
+        </mxCell>
+        <mxCell id="72" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="50" target="55">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="73" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="55" target="60">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="74" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="60" target="66">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="75" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#E8F1FA;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="532" width="367" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="76" value="Retorno à tela" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#234D73;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="542.0" width="343" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="77" value="O serviço projeta resultados da população. dashboard_read" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="565.45" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="78" value="forma agregados, membros e página; o frontend exibe" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="580.7" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="79" value="contexto, período e estados. Filtros/paginação não" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="595.95" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="80" value="recalculam ABC para um subconjunto." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="611.2" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="81" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#E8F1FA;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="412" y="532" width="367" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="82" value="Consumidores e comandos" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#234D73;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="542.0" width="343" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="83" value="Ficha e relatórios consomem o caminho aprovado." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="565.45" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="84" value="Planejamento usa comandos próprios para simular, validar," style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="580.7" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="85" value="emitir e declarar aplicação. Recibos, versões e evidências" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="595.95" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="86" value="ficam ligados ao contexto. [P2/P4/P6]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="611.2" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="87" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#E8F1FA;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="792" y="532" width="367" height="123" as="geometry" />
+        </mxCell>
+        <mxCell id="88" value="SIO PANORAMA" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#234D73;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="542.0" width="343" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="89" value="R e Golden Master são referências externas/comparativas. A" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="565.45" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="90" value="aplicação executa o motor Python V3. A aceitação R01–R28" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="580.7" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="91" value="tem o escopo registrado em E41/E42." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="595.95" width="343" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="92" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#EDF1F1;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="670" width="1127" height="48" as="geometry" />
+        </mxCell>
+        <mxCell id="93" value="ESTADO Documento (cinza) • Aceite técnico no escopo (verde) • Candidata em revisão (âmbar)" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12;fontColor=#18312F;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="678.0" width="1102" height="14.76" as="geometry" />
+        </mxCell>
+        <mxCell id="94" value="Disponibilidade comercial ou produtiva depende de habilitação operacional. P8–P13 seguem no planejamento da E64." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.6;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="697.0" width="1102" height="14.27" as="geometry" />
+        </mxCell>
+        <mxCell id="95" value="Evidências: Plano Único 1.36/E64 e relatório P1/E24; aceites P2/E28, P3/E41–42, P4/I01–I08, P5/E56 e P6/E60; relatório e roteiro P7/E64." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="729.0" width="1125" height="13.53" as="geometry" />
+        </mxCell>
+        <mxCell id="96" value="Trilha: frontend/src/App.tsx, api.ts, ApprovedDashboard.tsx; backend/app/approved_math_api.py, approved_dashboard.py, approved_analysis_service.py e database.py." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="748.0" width="1125" height="13.53" as="geometry" />
+        </mxCell>
+        <mxCell id="97" value="Jornada: observações I06/E51, roteiro manual P6/E59 e resultados humanos P7/E64 (A1–A5); transições marcadas [C] são leitura de código." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=10.8;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="768.0" width="1125" height="13.28" as="geometry" />
+        </mxCell>
+        <mxCell id="98" value="" style="rounded=0;arcSize=8;absoluteArcSize=1;fillColor=#A2B4B3;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="795" width="1127" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="99" value="Referência local de desenvolvimento • Plano Único 1.36/E64 • 20/10/2026" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=10;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="805.0" width="912" height="12.3" as="geometry" />
+        </mxCell>
+        <mxCell id="100" value="INTERNO / ONBOARDING" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=10;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="944" y="805.0" width="215" height="12.3" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="agromro-2" name="2. Dados e fórmulas">
+    <mxGraphModel dx="1191" dy="842" grid="0" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1191" pageHeight="842" background="#F6F9F8" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" value="" style="rounded=0;arcSize=8;absoluteArcSize=1;fillColor=#176250;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="0" y="0" width="1191" height="6" as="geometry" />
+        </mxCell>
+        <mxCell id="3" value="AGRO MRO INTELLIGENCE / GUIA DO DESENVOLVEDOR" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="24.0" width="975" height="14.76" as="geometry" />
+        </mxCell>
+        <mxCell id="4" value="02 / 02" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12;fontColor=#526467;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="23.0" width="130" height="14.76" as="geometry" />
+        </mxCell>
+        <mxCell id="5" value="Dados, cálculo e saídas" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=34;fontColor=#18312F;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="49.0" width="1127" height="41.82" as="geometry" />
+        </mxCell>
+        <mxCell id="6" value="A unidade de cálculo e rastreabilidade é o SKU + Local dentro do workspace." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=14;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="33" y="94.0" width="1125" height="17.22" as="geometry" />
+        </mxCell>
+        <mxCell id="7" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="132" width="272" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="8" value="1 Entradas" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="142.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="9" value="Dados Mestres (MD): datas, saldo, custo e" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="165.45" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="10" value="parâmetros. Extrato: eventos IN/OUT." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="180.7" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="11" value="Preserve zeros à esquerda e a identidade" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="195.95" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="12" value="do Local." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="211.2" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="13" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="317" y="132" width="272" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="14" value="2 Validar e selecionar" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="142.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="15" value="Valide identidade, direção, data e" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="165.45" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="16" value="quantidade positiva finita. Use [t0, t1]" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="180.7" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="17" value="inclusivo dos MD. Guarde origem e recibo;" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="195.95" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="18" value="exclua movimentos fora da janela." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="329" y="211.2" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="19" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="602" y="132" width="272" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="20" value="3 Preparar e calcular" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="142.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="21" value="Série diária e saldos [01]; classes na coorte" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="165.45" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="22" value="de mesmas datas [02]; NS e quantis [03]." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="180.7" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="23" value="Calcule e selecione ES → PP → EM" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="195.95" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="24" value="[04–06]." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="614" y="211.2" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="25" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="887" y="132" width="272" height="105" as="geometry" />
+        </mxCell>
+        <mxCell id="26" value="4 Consumir resultados" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=15;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="142.0" width="248" height="18.45" as="geometry" />
+        </mxCell>
+        <mxCell id="27" value="Ficha, dashboard e relatórios apresentam" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="165.45" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="28" value="contexto e motivos. Planejamento compara" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="180.7" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="29" value="cenários e registra decisões. A exportação" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="195.95" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="30" value="preserva escopo e rastreabilidade." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=12.4;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="899" y="211.2" width="248" height="15.25" as="geometry" />
+        </mxCell>
+        <mxCell id="31" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="7" target="13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="32" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="13" target="19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="33" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#176250;strokeWidth=1.45;dashed=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="19" target="25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="34" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFF0DC;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="255" width="557" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="35" value="Carga com inconsistência → corrigir na origem" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#8B4A12;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="265.0" width="533" height="15.99" as="geometry" />
+        </mxCell>
+        <mxCell id="36" value="Revise registros e comprovantes, corrija a fonte e reenvie com nova conferência." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.8;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="285.99" width="533" height="14.51" as="geometry" />
+        </mxCell>
+        <mxCell id="37" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#E8F1FA;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="603" y="255" width="556" height="64" as="geometry" />
+        </mxCell>
+        <mxCell id="38" value="Base insuficiente → devolver parcial ou NC" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13;fontColor=#234D73;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="615" y="265.0" width="532" height="15.99" as="geometry" />
+        </mxCell>
+        <mxCell id="39" value="Exponha o motivo; preserve o que é calculável e bloqueie a validação dependente." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.8;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="615" y="285.99" width="532" height="14.51" as="geometry" />
+        </mxCell>
+        <mxCell id="40" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#8B4A12;strokeWidth=1.45;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="13" target="34">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="453" y="244" />
+              <mxPoint x="310.5" y="244" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="41" value="" style="edgeStyle=segmentEdgeStyle;rounded=0;html=0;endArrow=block;endFill=1;endSize=6;strokeColor=#234D73;strokeWidth=1.45;dashed=1;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="19" target="37">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="738" y="244" />
+              <mxPoint x="881" y="244" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="42" value="MEMÓRIA DO MOTOR V3 / 01–06 • NC = NÃO CALCULÁVEL • ES = ESTOQUE DE SEGURANÇA • PP = PONTO DE PEDIDO • EM = ESTOQUE MÁXIMO" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.2;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="330.0" width="1125" height="13.78" as="geometry" />
+        </mxCell>
+        <mxCell id="43" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="353" width="367" height="188" as="geometry" />
+        </mxCell>
+        <mxCell id="44" value="01 Série e saldos • §4 / R02–R05" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13.6;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="363.0" width="343" height="16.73" as="geometry" />
+        </mxCell>
+        <mxCell id="45" value="n = dias da janela; Dd = OUT no dia (un.); O = ΣDd; I = ΣIN." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="384.73" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="46" value="μ = O/n (un./dia); σ = √[Σ(Dd − μ)²/(n − 1)] (un. da série diária);" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="398.87" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="47" value="n=1 dá σ=0 se a série existe." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="413.01" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="48" value="S0 inferido = Sf oficial − I + O; senão, use S0 declarado se" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="427.15" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="49" value="disponível. Sd = S0 + Σ(IN − OUT) até d; delta = S0 declarado + I" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="441.29" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="50" value="− O − Sf oficial." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="455.43" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="51" value="Giro = 365μ/S̄ se S̄&gt;0; cobertura = Sf oficial/μ se μ&gt;0; valor = Sf" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="469.57" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="52" value="oficial × custo MD (BRL)." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="483.71" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="53" value="Dias sem OUT recebem zero em série qualificada. Sem fonte" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="497.85" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="54" value="válida, preserve indisponibilidade." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="511.99" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="55" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="412" y="353" width="367" height="188" as="geometry" />
+        </mxCell>
+        <mxCell id="56" value="02 ABC, PQR e novos • §5 / R06–R08" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13.6;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="363.0" width="343" height="16.73" as="geometry" />
+        </mxCell>
+        <mxCell id="57" value="ABC: wᵢ = μᵢ × custo MD; pᵢ = Σ(j≤i) wⱼ / Σ(coorte) wⱼ; ordenar w" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="384.73" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="58" value="decrescente. Cortes padrão: A ≤80%; B &gt;80% até 95%; C &gt;95%;" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="398.87" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="59" value="D se w=0. Coorte incompleta bloqueia ABC." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="413.01" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="60" value="PQR: f = 365 × eventos IN ou OUT / n (trans./ano). P ≥12; Q de 3" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="427.15" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="61" value="a &lt;12; R &gt;0 a &lt;3; S se zero calculável. Entradas em minúsculas." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="441.29" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="62" value="N/n precede as classes com idade conhecida de 0 a &lt;180 dias" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="455.43" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="63" value="(padrão) e sem OUT comprovado até t1. OUT anterior pode" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="469.57" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="64" value="liberar N/n sem compor a série." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="483.71" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="65" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="792" y="353" width="367" height="188" as="geometry" />
+        </mxCell>
+        <mxCell id="66" value="03 Serviço, quantil e TMEA • §§6–7" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13.6;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="363.0" width="343" height="16.73" as="geometry" />
+        </mxCell>
+        <mxCell id="67" value="NS manual explícito prevalece. Senão, matriz privada se houver," style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="384.73" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="68" value="ou V3 padrão; chave PQR OUT + ABC + XYZ efetivo. Chave" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="398.87" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="69" value="privada ausente dá NC." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="413.01" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="70" value="NS = 0 ou 0,50 ≤ NS &lt; 1; Z = inversa de Φ em NS, para NS" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="427.15" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="71" value="positivo. Política exige fonte diária, n ≥ max(2, LT), NS positivo e" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="441.29" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="72" value="cenário válido." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="455.43" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="73" value="Q(W): ordene somas das m = n − W + 1 janelas de W dias; use" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="469.57" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="74" value="ordem ceil(NS × m). n&lt;W dá NC." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="483.71" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="75" value="TMEA = n/k (dias); k = dias com OUT positivo. Intervalos PQR" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="497.85" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="76" value="usam n/contagem de eventos." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="511.99" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="77" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="553" width="367" height="188" as="geometry" />
+        </mxCell>
+        <mxCell id="78" value="04 Segurança e pedido • §§8–9 / R10–R16" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13.6;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="563.0" width="343" height="16.73" as="geometry" />
+        </mxCell>
+        <mxCell id="79" value="LT = prazo (dias); σLT = desvio do prazo (dias); R = revisão" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="584.73" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="80" value="(dias). Brutos em unidades de estoque." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="598.87" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="81" value="ES Inversa Normal = μ + Zσ." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="613.01" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="82" value="ES TMEA = (μ + Zσ) × TMEA / (LT + ZσLT); requer TMEA, σLT" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="627.15" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="83" value="declarado e denominador &gt;0." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="641.29" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="84" value="ES Raiz tradicional = Z√(σ²LT + σLT²μ²); requer σLT. ES Fator" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="655.43" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="85" value="tradicional = Zσ√LT." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="669.57" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="86" value="ES Motor = max(Q(LT) − μLT, 0)." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="683.71" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="87" value="PP Tradicional = μLT + ES escolhido; PP Motor = Q(LT). Use ES" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="697.85" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="88" value="selecionado/aplicado ou manual." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="44" y="711.99" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="89" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="412" y="553" width="367" height="188" as="geometry" />
+        </mxCell>
+        <mxCell id="90" value="05 Máximo • §10 / R17–R23" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13.6;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="563.0" width="343" height="16.73" as="geometry" />
+        </mxCell>
+        <mxCell id="91" value="Na seleção: 01 ES + PP; 02 ES + μ(LT + R + B), B =" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="584.73" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="92" value="max(Z,0)σLT; 03 Q(LT) + Q(R). Use ES/PP escolhidos e insumos" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="598.87" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="93" value="de cada método." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="613.01" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="94" value="Só comparação, com H = LT + R: 04 μH + ES_H (ES do horizonte" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="627.15" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="95" value="H com referência); 05 μH + Zσ√H; 06 μH + Z√(Hσ² + μ²σLT²) (σLT" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="641.29" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="96" value="declarado); 07 menor inteiro s com FPoisson(μH)(s) ≥ NS." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="655.43" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="97" value="Poisson exige natureza/saídas inteiras e busca s até 1000; sem" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="669.57" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="98" value="atingir o alvo, NC. Os métodos 04–07 ficam fora dos cenários e" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="683.71" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="99" value="da política." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="424" y="697.85" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="100" value="" style="rounded=1;arcSize=8;absoluteArcSize=1;fillColor=#FFFFFF;strokeColor=#A2B4B3;html=0;" vertex="1" parent="1">
+          <mxGeometry x="792" y="553" width="367" height="188" as="geometry" />
+        </mxCell>
+        <mxCell id="101" value="06 Aplicação e cenários • §11 / R24–R26" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=13.6;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="563.0" width="343" height="16.73" as="geometry" />
+        </mxCell>
+        <mxCell id="102" value="A(x) = q × ceil(max(x,0)/q). q: múltiplo positivo; senão 1 para" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="584.73" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="103" value="inteiro ou passo declarado fracionável. Sem q, bruto pode existir e" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="598.87" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="104" value="aplicado fica NC." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="613.01" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="105" value="Cenários entre aplicados disponíveis: A(média), A(maior)," style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="627.15" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="106" value="A(menor positivo) ou método Motor. Ordem: manual exato &gt;" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="641.29" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="107" value="cenário solicitado disponível &gt; Motor &gt; primeiro disponível." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="655.43" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="108" value="EM automático abaixo de PP: efetivo A(PP), preservando" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="669.57" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="109" value="selecionado. EM manual abaixo de PP: preservar manual e" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="683.71" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="110" value="marcar efetivo NC." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=11.5;fontColor=#18312F;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="804" y="697.85" width="343" height="14.14" as="geometry" />
+        </mxCell>
+        <mxCell id="111" value="Forecast 0.1.0: experimental. TMER estratégico e GR1–GR7: não ativados. • Referência: Contrato Matemático 0.4/E63, §§3–16." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=10.8;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="753.0" width="1125" height="13.28" as="geometry" />
+        </mxCell>
+        <mxCell id="112" value="Trilha: analysis_context.py → approved_classifications.py / approved_service.py → approved_inventory.py / approved_quantity.py → projeções em approved_analysis_service.py." style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=10.6;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="771.0" width="1125" height="13.04" as="geometry" />
+        </mxCell>
+        <mxCell id="113" value="" style="rounded=0;arcSize=8;absoluteArcSize=1;fillColor=#A2B4B3;strokeColor=none;html=0;" vertex="1" parent="1">
+          <mxGeometry x="32" y="795" width="1127" height="1" as="geometry" />
+        </mxCell>
+        <mxCell id="114" value="Escopo R01–R28 aceito em P3/E42 • Métodos comparativos em P4/I03 • Consulte o contrato para guardas completas" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=10;fontColor=#526467;fontStyle=0;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="32" y="805.0" width="912" height="12.3" as="geometry" />
+        </mxCell>
+        <mxCell id="115" value="INTERNO / MOTOR V3" style="text;html=0;whiteSpace=none;overflow=visible;align=left;verticalAlign=middle;spacing=0;fontFamily=Arial;fontSize=10;fontColor=#176250;fontStyle=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="944" y="805.0" width="215" height="12.3" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

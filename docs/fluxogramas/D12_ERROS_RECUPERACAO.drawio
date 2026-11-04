@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="D12.1" name="D12.1 Classificar falha sem perder evidência">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D12.1 | Classificar falha sem perder evidência&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;D12-A01/A02/A06 • usar status e contexto, não apenas texto genérico" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="lane0" value="Cliente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane1" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="465" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane2" value="Backend / serviço" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="905" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane3" value="Referências e limites" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1345" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="legend" value="BPMN simplificado de processo interno: círculo = evento; retângulo arredondado = tarefa; losango = gateway exclusivo; setas contínuas = sequência; associação pontilhada = nota. Banco é&#10;recurso passivo descrito nas tarefas, sem ator autônomo. Implementado com validação parcial nesta rodada (inspeção estática). P7 em revisão / reteste humano pendente; disponibilidade&#10;operacional não confirmada. Fontes e vinte campos por atividade nas fichas D02/D12. Layout nativo e roteamento ainda pendentes de revisão no Draw.io." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="1140" width="1750" height="135" />
+        </mxCell>
+        <mxCell id="s" value="Falha" style="ellipse;strokeWidth=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="635" y="215" width="90" height="90" />
+        </mxCell>
+        <mxCell id="class" value="Identificar operação, status/code, sessão,&#10;recibo e instante" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="auth" value="Sessão/autorização: autenticar; não repetir&#10;escrita automaticamente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="495" width="380" height="110" />
+        </mxCell>
+        <mxCell id="imp" value="Carga: blocked/failed/not_persisted; revisar&#10;histórico e origem D03" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="635" width="380" height="110" />
+        </mxCell>
+        <mxCell id="env" value="Capacidade503: flag/esquema/fuso/isolamento;&#10;diagnosticar sem migração implícita" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e" value="Retomar após causa resolvida e consulta&#10;atual" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="915" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e1" value="" source="s" target="class" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2" value="401/404" source="class" target="auth" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3" value="importação" source="class" target="imp" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e4" value="capacidade" source="class" target="env" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5" value="" source="auth" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e6" value="" source="imp" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e7" value="" source="env" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="note" value="Implementado com validação parcial&#10;nesta rodada: inspeção estática.&#10;&#10;P7: em revisão, reteste humano&#10;pendente na referência E64.&#10;&#10;Futuro/experimental não é caminho&#10;automático de recuperação.&#10;&#10;Detalhamento e evidências nas fichas e&#10;nos subprocessos D03–D11." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#FFF5E6;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1370" y="215" width="380" height="380" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D12.2" name="D12.2 Recuperar leitura ou decisão bloqueada">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D12.2 | Recuperar leitura ou decisão bloqueada&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;D12-A03/A04 • ausência, zero, conflito e desatualização são distintos" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="lane0" value="Cliente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane1" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="465" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane2" value="Backend / serviço" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="905" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane3" value="Referências e limites" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1345" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="legend" value="BPMN simplificado de processo interno: círculo = evento; retângulo arredondado = tarefa; losango = gateway exclusivo; setas contínuas = sequência; associação pontilhada = nota. Banco é&#10;recurso passivo descrito nas tarefas, sem ator autônomo. Implementado com validação parcial nesta rodada (inspeção estática). P7 em revisão / reteste humano pendente; disponibilidade&#10;operacional não confirmada. Fontes e vinte campos por atividade nas fichas D02/D12. Layout nativo e roteamento ainda pendentes de revisão no Draw.io." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="1140" width="1750" height="135" />
+        </mxCell>
+        <mxCell id="s" value="Bloqueio" style="ellipse;strokeWidth=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="635" y="215" width="90" height="90" />
+        </mxCell>
+        <mxCell id="why" value="Conferir P1, NC, contexto/revisão e&#10;integridade" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="nc" value="P1/NC: manter apenas campos qualificados;&#10;corrigir causa sem inventar valor" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="495" width="380" height="110" />
+        </mxCell>
+        <mxCell id="stale" value="Contexto mudou: conservar rascunho;&#10;reconsultar e revisar explicitamente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="635" width="380" height="110" />
+        </mxCell>
+        <mxCell id="integrity" value="Integridade/replay: preservar original;&#10;bloquear uso; diagnosticar versão/hash" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e" value="Novo clique após revisão; simular novamente&#10;quando stale" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="915" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e1" value="" source="s" target="why" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2" value="fonte/insumo" source="why" target="nc" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3" value="revisão/fonte" source="why" target="stale" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e4" value="hash/versão" source="why" target="integrity" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5" value="" source="nc" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e6" value="" source="stale" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e7" value="só após diagnóstico; sem fabricar replay" source="integrity" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="note" value="Implementado com validação parcial&#10;nesta rodada: inspeção estática.&#10;&#10;P7: em revisão, reteste humano&#10;pendente na referência E64.&#10;&#10;Futuro/experimental não é caminho&#10;automático de recuperação.&#10;&#10;Detalhamento e evidências nas fichas e&#10;nos subprocessos D03–D11." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#FFF5E6;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1370" y="215" width="380" height="380" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D12.3" name="D12.3 Tratar gravação ou emissão incerta">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D12.3 | Tratar gravação ou emissão incerta&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;D12-A05 • erro de rede não comprova rollback" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="lane0" value="Cliente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane1" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="465" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane2" value="Backend / serviço" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="905" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane3" value="Referências e limites" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1345" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="legend" value="BPMN simplificado de processo interno: círculo = evento; retângulo arredondado = tarefa; losango = gateway exclusivo; setas contínuas = sequência; associação pontilhada = nota. Banco é&#10;recurso passivo descrito nas tarefas, sem ator autônomo. Implementado com validação parcial nesta rodada (inspeção estática). P7 em revisão / reteste humano pendente; disponibilidade&#10;operacional não confirmada. Fontes e vinte campos por atividade nas fichas D02/D12. Layout nativo e roteamento ainda pendentes de revisão no Draw.io." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="1140" width="1750" height="135" />
+        </mxCell>
+        <mxCell id="s" value="Erro POST" style="ellipse;strokeWidth=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="635" y="215" width="90" height="90" />
+        </mxCell>
+        <mxCell id="g" value="Commit conhecido?" style="rhombus;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFF0DC;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="585" y="355" width="190" height="110" />
+        </mxCell>
+        <mxCell id="before" value="Falha transacional antes: rollback;&#10;consultar evidência do erro" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="495" width="380" height="110" />
+        </mxCell>
+        <mxCell id="unknown" value="Após commit ou desconhecido: pode existir&#10;lote/decisão; não repetir automaticamente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="635" width="380" height="110" />
+        </mxCell>
+        <mxCell id="lookup" value="Consultar caso, ciclo, lote/eventos e&#10;recibos conforme operação" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="end" value="Revisar resultado existente; binário antigo&#10;não tem recuperação garantida" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="915" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e1" value="" source="s" target="g" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2" value="não ocorreu; falha comprovada" source="g" target="before" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3" value="sim / incerto" source="g" target="unknown" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e4" value="" source="before" target="lookup" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5" value="" source="unknown" target="lookup" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e6" value="" source="lookup" target="end" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="note" value="Implementado com validação parcial&#10;nesta rodada: inspeção estática.&#10;&#10;P7: em revisão, reteste humano&#10;pendente na referência E64.&#10;&#10;Futuro/experimental não é caminho&#10;automático de recuperação.&#10;&#10;Detalhamento e evidências nas fichas e&#10;nos subprocessos D03–D11." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=16;fillColor=#FFF5E6;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1370" y="215" width="380" height="380" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,1181 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="page0" name="D09 users">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | users | User&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;email  VARCHAR(320)  NOT NULL&#10;name  VARCHAR(120)  NOT NULL&#10;cpf  VARCHAR(14)  NOT NULL&#10;password_hash  VARCHAR(255)  NOT NULL&#10;workspace_id  INTEGER  NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="227" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ cpf; email." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:16. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page1" name="D09 workspaces">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | workspaces | Workspace&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;name  VARCHAR(120)  NOT NULL&#10;plan  VARCHAR(20)  NOT NULL&#10;sku_limit  INTEGER  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="200" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:28. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page2" name="D09 classification_settings">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | classification_settings | ClassificationSettings&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;abc_a  NUMERIC(5, 4)  NOT NULL&#10;abc_b  NUMERIC(5, 4)  NOT NULL&#10;pqr_output_q  NUMERIC(10, 2)  NOT NULL&#10;pqr_output_p  NUMERIC(10, 2)  NOT NULL&#10;pqr_entry_q  NUMERIC(10, 2)  NOT NULL&#10;pqr_entry_p  NUMERIC(10, 2)  NOT NULL&#10;new_item_days  INTEGER  NOT NULL&#10;version  INTEGER  NOT NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="331" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..1 filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:37. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page3" name="D09 units_of_measure">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | units_of_measure | UnitOfMeasure&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NULL&#10;name  VARCHAR(180)  NOT NULL&#10;symbol  VARCHAR(60)  NOT NULL&#10;category  VARCHAR(80)  NOT NULL&#10;is_standard  BOOLEAN  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="201" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + symbol." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:52. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page4" name="D09 merchandise_groups">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | merchandise_groups | MerchandiseGroup&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NULL&#10;level  INTEGER  NOT NULL&#10;parent_id  INTEGER  NULL&#10;name  VARCHAR(120)  NOT NULL&#10;normalized_name  VARCHAR(120)  NOT NULL&#10;is_standard  BOOLEAN  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="227" />
+        </mxCell>
+        <mxCell id="fk0" value="merchandise_groups&#10;merchandise_groups.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="parent_id&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + level + parent_id + normalized_name." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:63. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page5" name="D09 materials">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | materials | Material&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;code  VARCHAR(80)  NOT NULL&#10;short_description  VARCHAR(180)  NOT NULL&#10;long_description  TEXT  NULL&#10;unit  VARCHAR(20)  NOT NULL&#10;application  TEXT  NULL&#10;group_1  VARCHAR(100)  NULL&#10;group_2  VARCHAR(100)  NULL&#10;location  VARCHAR(80)  NOT NULL&#10;notes  TEXT  NULL&#10;replacement_code  VARCHAR(80)  NULL&#10;criticality  VARCHAR(20)  NOT NULL&#10;obsolete  BOOLEAN  NOT NULL&#10;confirmed  BOOLEAN  NOT NULL&#10;is_demo  BOOLEAN  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="487" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + code + location." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:75. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page6" name="D09 movements">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | movements | Movement&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;material_id  INTEGER  NOT NULL&#10;occurred_on  DATE  NOT NULL&#10;direction  VARCHAR(3)  NOT NULL&#10;quantity  NUMERIC(18, 4)  NOT NULL&#10;unit_price  NUMERIC(18, 4)  NULL&#10;source  VARCHAR(40)  NOT NULL&#10;external_system  VARCHAR(30)  NULL&#10;external_type  VARCHAR(60)  NULL&#10;mapping_version  INTEGER  NULL&#10;fingerprint  VARCHAR(64)  NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="383" />
+        </mxCell>
+        <mxCell id="fk0" value="materials&#10;materials.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="material_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:97. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page7" name="D09 material_images">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | material_images | MaterialImage&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;material_id  INTEGER  NOT NULL&#10;storage_name  VARCHAR(255)  NOT NULL&#10;original_name  VARCHAR(255)  NOT NULL&#10;mime_type  VARCHAR(80)  NOT NULL&#10;size_bytes  INTEGER  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="253" />
+        </mxCell>
+        <mxCell id="fk0" value="materials&#10;materials.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="material_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ storage_name." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:114. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page8" name="D09 planning_parameters">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | planning_parameters | PlanningParameter&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;material_id  INTEGER  NOT NULL&#10;lead_time_days  INTEGER  NOT NULL&#10;service_level  NUMERIC(5, 4)  NOT NULL&#10;service_level_source  VARCHAR(30)  NULL&#10;review_period_days  INTEGER  NOT NULL&#10;package_multiple  NUMERIC(18, 4)  NULL&#10;lead_time_std_dev  NUMERIC(18, 4)  NULL&#10;manual_safety_stock  NUMERIC(18, 4)  NULL&#10;manual_reorder_point  NUMERIC(18, 4)  NULL&#10;manual_maximum_stock  NUMERIC(18, 4)  NULL&#10;selected_scenario  VARCHAR(30)  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="383" />
+        </mxCell>
+        <mxCell id="fk0" value="materials&#10;materials.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="material_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + material_id." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:126. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page9" name="D09 material_master_data">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | material_master_data | MaterialMasterData&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;material_id  INTEGER  NOT NULL&#10;registered_on  DATE  NULL&#10;initial_stock  NUMERIC(18, 4)  NULL&#10;initial_stock_date  DATE  NULL&#10;opening_balance_timing  VARCHAR(24)  NULL&#10;final_stock  NUMERIC(18, 4)  NULL&#10;final_stock_date  DATE  NULL&#10;maximum_stock  NUMERIC(18, 4)  NULL&#10;average_price  NUMERIC(18, 4)  NULL&#10;customer_abc  VARCHAR(10)  NULL&#10;xyz_criticality  VARCHAR(10)  NULL&#10;xyz_source  VARCHAR(30)  NULL&#10;purchasability  INTEGER  NULL&#10;purchasability_source  VARCHAR(30)  NULL&#10;lead_time_days  INTEGER  NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="513" />
+        </mxCell>
+        <mxCell id="fk0" value="materials&#10;materials.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="material_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + material_id." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:144. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page10" name="D09 service_level_rules">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | service_level_rules | ServiceLevelRule&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;case_code  VARCHAR(40)  NOT NULL&#10;pqr  VARCHAR(10)  NOT NULL&#10;abc  VARCHAR(10)  NOT NULL&#10;xyz  VARCHAR(10)  NOT NULL&#10;service_level  NUMERIC(5, 4)  NOT NULL&#10;source  VARCHAR(30)  NOT NULL&#10;version  INTEGER  NOT NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="305" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + case_code." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:167. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page11" name="D09 tmer_rules">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | tmer_rules | TmerRule&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;case_code  VARCHAR(40)  NOT NULL&#10;pqr  VARCHAR(1)  NOT NULL&#10;abc  VARCHAR(1)  NOT NULL&#10;purchasability  INTEGER  NOT NULL&#10;replenishment_days  NUMERIC(10, 2)  NOT NULL&#10;source  VARCHAR(30)  NOT NULL&#10;version  INTEGER  NOT NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="305" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + case_code." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:182. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page12" name="D09 control_case_preferences">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | control_case_preferences | ControlCasePreference&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;case_code  VARCHAR(10)  NOT NULL&#10;action  VARCHAR(500)  NOT NULL&#10;note  VARCHAR(500)  NULL&#10;version  INTEGER  NOT NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="227" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + case_code." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:197. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page13" name="D09 taxonomy_edges">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | taxonomy_edges | TaxonomyEdge&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;source_node  VARCHAR(250)  NOT NULL&#10;target_node  VARCHAR(250)  NOT NULL&#10;description  VARCHAR(180)  NOT NULL&#10;version  INTEGER  NOT NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="227" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + source_node + target_node." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:209. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page14" name="D09 movement_type_mappings">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | movement_type_mappings | MovementTypeMapping&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;system  VARCHAR(30)  NOT NULL&#10;external_code  VARCHAR(60)  NOT NULL&#10;direction  VARCHAR(3)  NOT NULL&#10;description  VARCHAR(180)  NOT NULL&#10;version  INTEGER  NOT NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="253" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + system + external_code." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:221. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page15" name="D09 pipeline_orders">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | pipeline_orders | PipelineOrder&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;material_id  INTEGER  NOT NULL&#10;expected_on  DATE  NOT NULL&#10;quantity  NUMERIC(18, 4)  NOT NULL&#10;reference  VARCHAR(80)  NULL&#10;supply_value  NUMERIC(18, 2)  NULL&#10;supplier  VARCHAR(160)  NULL&#10;fingerprint  VARCHAR(64)  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="305" />
+        </mxCell>
+        <mxCell id="fk0" value="materials&#10;materials.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="material_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + fingerprint." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:234. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page16" name="D09 lessons">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | lessons | Lesson&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;slug  VARCHAR(100)  NOT NULL&#10;title  VARCHAR(180)  NOT NULL&#10;summary  TEXT  NOT NULL&#10;indicator  VARCHAR(80)  NULL&#10;order  INTEGER  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="201" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ slug." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:249. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page17" name="D09 lesson_progress">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | lesson_progress | LessonProgress&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;user_id  INTEGER  NOT NULL&#10;lesson_id  INTEGER  NOT NULL&#10;completed  BOOLEAN  NOT NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="200" />
+        </mxCell>
+        <mxCell id="fk0" value="lessons&#10;lessons.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="lesson_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="user_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ user_id + lesson_id." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:259. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page18" name="D09 support_tickets">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | support_tickets | SupportTicket&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;subject  VARCHAR(180)  NOT NULL&#10;message  TEXT  NOT NULL&#10;status  VARCHAR(30)  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="201" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:269. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page19" name="D09 ticket_notifications">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | ticket_notifications | TicketNotification&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;ticket_id  INTEGER  NOT NULL&#10;channel  VARCHAR(30)  NOT NULL&#10;status  VARCHAR(30)  NOT NULL&#10;error  TEXT  NULL&#10;created_at  DATETIME  NOT NULL&#10;sent_at  DATETIME  NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="227" />
+        </mxCell>
+        <mxCell id="fk0" value="support_tickets&#10;support_tickets.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="ticket_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:279. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page20" name="D09 audit_logs">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | audit_logs | AuditLog&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;user_id  INTEGER  NOT NULL&#10;action  VARCHAR(80)  NOT NULL&#10;entity  VARCHAR(80)  NOT NULL&#10;entity_id  VARCHAR(80)  NULL&#10;details  TEXT  NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="253" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="user_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:290. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page21" name="D09 planning_cases">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | planning_cases | PlanningCase&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;material_id  INTEGER  NOT NULL&#10;created_by  INTEGER  NOT NULL&#10;status  VARCHAR(24)  NOT NULL&#10;reason  VARCHAR(500)  NOT NULL&#10;note  TEXT  NULL&#10;selected_simulation_id  INTEGER  NULL&#10;validated_evidence_hash  VARCHAR(64)  NULL&#10;validated_at  DATETIME  NULL&#10;export_batch_id  VARCHAR(36)  NULL&#10;exported_at  DATETIME  NULL&#10;applied_at  DATETIME  NULL&#10;external_reference  VARCHAR(120)  NULL&#10;created_at  DATETIME  NOT NULL&#10;updated_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="461" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="created_by&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="materials&#10;materials.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="material_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + material_id. Vínculos lógicos sem FK: selected_simulation_id → planning_simulations; export_batch_id → planning_export_batches." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:302. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page22" name="D09 planning_simulations">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | planning_simulations | PlanningSimulation&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;case_id  INTEGER  NOT NULL&#10;created_by  INTEGER  NOT NULL&#10;inputs_json  TEXT  NOT NULL&#10;baseline_json  TEXT  NOT NULL&#10;result_json  TEXT  NOT NULL&#10;evidence_hash  VARCHAR(64)  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="279" />
+        </mxCell>
+        <mxCell id="fk0" value="planning_cases&#10;planning_cases.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="case_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="created_by&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:324. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page23" name="D09 planning_events">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | planning_events | PlanningEvent&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;case_id  INTEGER  NOT NULL&#10;user_id  INTEGER  NOT NULL&#10;action  VARCHAR(40)  NOT NULL&#10;details_json  TEXT  NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="227" />
+        </mxCell>
+        <mxCell id="fk0" value="planning_cases&#10;planning_cases.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="case_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="user_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:337. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page24" name="D09 planning_export_batches">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | planning_export_batches | PlanningExportBatch&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;user_id  INTEGER  NOT NULL&#10;positions  INTEGER  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="200" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="user_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:348. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page25" name="D09 report_periods">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | report_periods | ReportPeriod&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;source_hash  VARCHAR(64)  NOT NULL&#10;name  VARCHAR(180)  NOT NULL&#10;source_kind  VARCHAR(30)  NOT NULL&#10;movement_count  INTEGER  NOT NULL&#10;inferred_start  DATE  NOT NULL&#10;inferred_end  DATE  NOT NULL&#10;confirmed_start  DATE  NULL&#10;confirmed_end  DATE  NULL&#10;confirmed_by  INTEGER  NULL&#10;confirmed_at  DATETIME  NULL&#10;version  INTEGER  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="409" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="confirmed_by&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + source_hash." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:357. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page26" name="D09 report_movements">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | report_movements | ReportMovement&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;report_id  INTEGER  NOT NULL&#10;movement_id  INTEGER  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="200" />
+        </mxCell>
+        <mxCell id="fk0" value="movements&#10;movements.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="movement_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="report_periods&#10;report_periods.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="report_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ report_id + movement_id." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/models.py:376. Destinos&#10;repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page27" name="D09 trace_contents">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | trace_contents | TraceContent&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;kind  VARCHAR(10)  NOT NULL&#10;sha256  VARCHAR(64)  NOT NULL&#10;content  BLOB  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="201" />
+        </mxCell>
+        <mxCell id="fk0" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + kind + sha256; id + workspace_id." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/lineage_models.py:11.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page28" name="D09 trace_import_sources">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | trace_import_sources | ImportSource&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;created_by  INTEGER  NULL&#10;dataset  VARCHAR(30)  NOT NULL&#10;filename  VARCHAR(255)  NOT NULL&#10;content_id  VARCHAR(36)  NOT NULL&#10;preview_json  TEXT  NOT NULL&#10;parser_version  VARCHAR(80)  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="279" />
+        </mxCell>
+        <mxCell id="fk0" value="trace_contents&#10;trace_contents.id, trace_contents.workspace_id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="content_id, workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="created_by&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/lineage_models.py:23.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page29" name="D09 trace_import_receipts">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | trace_import_receipts | ImportReceipt&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;created_by  INTEGER  NULL&#10;dataset  VARCHAR(30)  NOT NULL&#10;operation  VARCHAR(30)  NOT NULL&#10;origin  VARCHAR(80)  NOT NULL&#10;filename  VARCHAR(255)  NULL&#10;source_id  VARCHAR(36)  NULL&#10;preview_matches  BOOLEAN  NULL&#10;declared_source_hash  VARCHAR(64)  NULL&#10;payload_id  VARCHAR(36)  NOT NULL&#10;status  VARCHAR(20)  NOT NULL&#10;summary_json  TEXT  NOT NULL&#10;before_versions_json  TEXT  NOT NULL&#10;after_versions_json  TEXT  NOT NULL&#10;contract_version  VARCHAR(80)  NOT NULL&#10;retention_policy  VARCHAR(80)  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="513" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="created_by&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="trace_contents&#10;trace_contents.id, trace_contents.workspace_id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="payload_id, workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="trace_import_sources&#10;trace_import_sources.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="source_id&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk3" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="495" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge5" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ id + workspace_id." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/lineage_models.py:37.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page30" name="D09 trace_import_rows">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | trace_import_rows | ImportReceiptRow&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  INTEGER  NOT NULL&#10;receipt_id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;ordinal  INTEGER  NOT NULL&#10;status  VARCHAR(20)  NOT NULL&#10;reason  TEXT  NULL&#10;raw_json  TEXT  NOT NULL&#10;normalized_json  TEXT  NULL&#10;persisted_json  TEXT  NULL&#10;material_id  INTEGER  NULL&#10;record_id  INTEGER  NULL&#10;code  VARCHAR(80)  NULL&#10;location  VARCHAR(80)  NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="383" />
+        </mxCell>
+        <mxCell id="fk0" value="trace_import_receipts&#10;trace_import_receipts.id,&#10;trace_import_receipts.workspace_id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="receipt_id, workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ receipt_id + ordinal. Vínculos lógicos sem FK: material_id/record_id → identidade histórica dependente do dataset." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/lineage_models.py:61.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page31" name="D09 trace_dataset_versions">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | trace_dataset_versions | DatasetVersion&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;dataset  VARCHAR(30)  NOT NULL&#10;revision  INTEGER  NOT NULL&#10;previous_id  VARCHAR(36)  NULL&#10;content_id  VARCHAR(36)  NOT NULL&#10;receipt_id  VARCHAR(36)  NULL&#10;operation  VARCHAR(30)  NOT NULL&#10;origin  VARCHAR(80)  NOT NULL&#10;captured_by  INTEGER  NULL&#10;row_count  INTEGER  NOT NULL&#10;retention_policy  VARCHAR(80)  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="383" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="captured_by&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="trace_contents&#10;trace_contents.id, trace_contents.workspace_id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="content_id, workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="trace_dataset_versions&#10;trace_dataset_versions.id,&#10;trace_dataset_versions.workspace_id,&#10;trace_dataset_versions.dataset" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="previous_id, workspace_id, dataset&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk3" value="trace_import_receipts&#10;trace_import_receipts.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="495" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge5" value="receipt_id&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk4" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="615" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge6" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + dataset + revision; id + workspace_id + dataset." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/lineage_models.py:80.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page32" name="D09 trace_dataset_heads">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | trace_dataset_heads | DatasetHead&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] workspace_id  INTEGER  NOT NULL&#10;[PK] dataset  VARCHAR(30)  NOT NULL&#10;version_id  VARCHAR(36)  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="200" />
+        </mxCell>
+        <mxCell id="fk0" value="trace_dataset_versions&#10;trace_dataset_versions.id,&#10;trace_dataset_versions.workspace_id,&#10;trace_dataset_versions.dataset" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="version_id, workspace_id, dataset&#10;1 pai / 0..1 filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/lineage_models.py:101.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page33" name="D09 trace_analysis_runs">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | trace_analysis_runs | AnalysisRun&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;created_by  INTEGER  NULL&#10;material_id  INTEGER  NOT NULL&#10;code  VARCHAR(80)  NOT NULL&#10;location  VARCHAR(80)  NOT NULL&#10;kind  VARCHAR(40)  NOT NULL&#10;inputs_id  VARCHAR(36)  NOT NULL&#10;result_id  VARCHAR(36)  NOT NULL&#10;dependencies_id  VARCHAR(36)  NOT NULL&#10;fingerprint  VARCHAR(64)  NOT NULL&#10;retention_policy  VARCHAR(80)  NOT NULL&#10;contract_version  VARCHAR(80)  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="409" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="created_by&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="trace_contents&#10;trace_contents.id, trace_contents.workspace_id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="dependencies_id, workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="trace_contents&#10;trace_contents.id, trace_contents.workspace_id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="inputs_id, workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk3" value="trace_contents&#10;trace_contents.id, trace_contents.workspace_id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="495" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge5" value="result_id, workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk4" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="615" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge6" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK. Vínculos lógicos sem FK: material_id → identidade histórica de materials." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/lineage_models.py:109.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page34" name="D09 planning_work_heads">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | planning_work_heads | WorkHead&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] case_id  INTEGER  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;current_cycle_id  VARCHAR(36)  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="200" />
+        </mxCell>
+        <mxCell id="fk0" value="planning_cases&#10;planning_cases.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="case_id&#10;1 pai / 0..1 filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK. Vínculos lógicos sem FK: current_cycle_id → planning_work_cycles." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/planning_work_models.py:10.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page35" name="D09 planning_work_cycles">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | planning_work_cycles | WorkCycle&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;case_id  INTEGER  NOT NULL&#10;sequence  INTEGER  NOT NULL&#10;status  VARCHAR(24)  NOT NULL&#10;revision  INTEGER  NOT NULL&#10;assignee_id  INTEGER  NULL&#10;due_on  DATE  NULL&#10;next_action  VARCHAR(500)  NULL&#10;validated_at  DATETIME  NULL&#10;applied_at  DATETIME  NULL&#10;administrative_closed_at  DATETIME  NULL&#10;ended_at  DATETIME  NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="409" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="assignee_id&#10;0..1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="planning_cases&#10;planning_cases.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="case_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ workspace_id + case_id + sequence." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/planning_work_models.py:16.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="page36" name="D09 planning_work_events">
+    <mxGraphModel page="1" pageScale="1" pageWidth="1400" pageHeight="1100" background="#F5F8F7">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D09 | planning_work_events | WorkEvent&#10;V02 / 03-11-2026 / E64 | Inspeção estática" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=18;fontFamily=Arial;fillColor=#DDF3E9;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="20" width="1340" height="80" />
+        </mxCell>
+        <mxCell id="table" value="[PK] id  VARCHAR(36)  NOT NULL&#10;workspace_id  INTEGER  NOT NULL&#10;cycle_id  VARCHAR(36)  NOT NULL&#10;case_id  INTEGER  NOT NULL&#10;actor_id  INTEGER  NOT NULL&#10;actor_name  VARCHAR(120)  NOT NULL&#10;action  VARCHAR(40)  NOT NULL&#10;details_json  TEXT  NOT NULL&#10;created_at  DATETIME  NOT NULL" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=14;fontFamily=Arial;fillColor=#FFFFFF;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="135" width="650" height="279" />
+        </mxCell>
+        <mxCell id="fk0" value="users&#10;users.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="135" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge2" value="actor_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk1" value="planning_cases&#10;planning_cases.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="255" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge3" value="case_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk2" value="planning_work_cycles&#10;planning_work_cycles.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="375" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge4" value="cycle_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="fk3" value="workspaces&#10;workspaces.id" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#E8F1FA;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="980" y="495" width="390" height="105" />
+        </mxCell>
+        <mxCell id="edge5" value="workspace_id&#10;1 pai / 0..N filhos" edge="1" parent="1" source="table" target="fk3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;strokeColor=#285F55;fontSize=12;labelBackgroundColor=#F5F8F7;dashed=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="constraints" value="UQ nenhuma além da PK." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=12;fontFamily=Arial;fillColor=#FFF0DC;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="845" width="1340" height="110" />
+        </mxCell>
+        <mxCell id="legend" value="ERD declarado. [PK] chave primária; UQ unicidade; cheia = FK. Cardinalidades derivadas das constraints. FK composta é uma relação. Fonte backend/app/planning_work_models.py:34.&#10;Destinos repetem tabelas entre páginas. Defaults/índices no DICIONARIO_DADOS.md. Banco aplicado NÃO CONFIRMADO." vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=0;align=left;verticalAlign=top;spacing=12;fontSize=13;fontFamily=Arial;fillColor=#EDF1F1;strokeColor=#96AAA7;">
+          <mxGeometry as="geometry" x="30" y="970" width="1340" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

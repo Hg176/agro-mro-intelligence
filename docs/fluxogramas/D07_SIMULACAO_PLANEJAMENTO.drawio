@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="D07.1" name="D07.1 Entrar no laboratório e resolver capacidade">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D07.1 | Entrar no laboratório e resolver capacidade&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;Caminho legado e P6 explícitos; ciclo não herda validação histórica." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="lane0" value="Cliente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane1" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="465" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane2" value="Backend / serviço" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="905" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane3" value="Motor aprovado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1345" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="legend" value="BPMN simplificado de processo interno: círculo = evento; retângulo arredondado = tarefa; losango = gateway exclusivo; setas contínuas = sequência; associação pontilhada = nota. Banco é recurso passivo&#10;descrito nas tarefas, sem ator autônomo. Implementado com validação parcial nesta rodada (inspeção estática). P7 em revisão / reteste humano pendente; Forecast experimental; disponibilidade operacional&#10;não confirmada. Fontes e vinte campos por atividade nas fichas D06/D07. Layout nativo e roteamento ainda pendentes de revisão no Draw.io." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="1140" width="1750" height="135" />
+        </mxCell>
+        <mxCell id="s" value="Início" style="ellipse;strokeWidth=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="195" y="215" width="90" height="90" />
+        </mxCell>
+        <mxCell id="u" value="D07-A01&#10;Abrir plano deste SKU + Local" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="f" value="Consultar capacidade + plano + ficha;&#10;detalhe de ciclo quando aplicável" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="g" value="P6 habilitada?" style="rhombus;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFF0DC;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="585" y="495" width="190" height="110" />
+        </mxCell>
+        <mxCell id="l" value="Legado: iniciar/consultar caso&#10;WorkHead existente bloqueia comando legado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="635" width="380" height="110" />
+        </mxCell>
+        <mxCell id="p" value="P6: exigir esquema disponível; sem esquema&#10;mostrar indisponibilidade" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="495" width="380" height="110" />
+        </mxCell>
+        <mxCell id="u2" value="D07-A02&#10;Iniciar análise ou adotar caso legado&#10;explicitamente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="b" value="Transação: criar/adotar caso e ciclo;&#10;preservar histórico / evento" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e" value="D07.2" style="ellipse;strokeWidth=3;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="635" y="915" width="90" height="90" />
+        </mxCell>
+        <mxCell id="e1" value="" source="s" target="u" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2" value="" source="u" target="f" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3" value="" source="f" target="g" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e4" value="não" source="g" target="l" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5" value="sim" source="g" target="p" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e6" value="caso ausente" source="l" target="u2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e7" value="esquema disponível" source="p" target="u2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e8" value="" source="u2" target="b" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e9" value="" source="b" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="blocked" value="Indisponível: consultar ambiente; nenhum&#10;início de ciclo autorizado por falha" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1370" y="635" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e11" value="esquema ausente / erro" source="p" target="blocked" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e12" value="caso aberto" source="l" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e13" value="esquema e ciclo disponíveis" source="p" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D07.2" name="D07.2 Preparar e reconferir proposta">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D07.2 | Preparar e reconferir proposta&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;Rascunho não é parâmetro ativo; reconciliação requer novo comando explícito." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="lane0" value="Cliente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane1" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="465" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane2" value="Backend / serviço" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="905" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane3" value="Motor aprovado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1345" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="legend" value="BPMN simplificado de processo interno: círculo = evento; retângulo arredondado = tarefa; losango = gateway exclusivo; setas contínuas = sequência; associação pontilhada = nota. Banco é recurso passivo&#10;descrito nas tarefas, sem ator autônomo. Implementado com validação parcial nesta rodada (inspeção estática). P7 em revisão / reteste humano pendente; Forecast experimental; disponibilidade operacional&#10;não confirmada. Fontes e vinte campos por atividade nas fichas D06/D07. Layout nativo e roteamento ainda pendentes de revisão no Draw.io." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="1140" width="1750" height="135" />
+        </mxCell>
+        <mxCell id="s" value="Início" style="ellipse;strokeWidth=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="195" y="215" width="90" height="90" />
+        </mxCell>
+        <mxCell id="u" value="D07-A03&#10;Usar referência / Definir proposta / Ausente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="f" value="planningPayload: omitido / valor (inclui&#10;zero) / null" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="click" value="Calcular e guardar simulação" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="495" width="380" height="110" />
+        </mxCell>
+        <mxCell id="read" value="D07-A04&#10;Reconsultar contexto; validar ficha recebida&#10;e sessão" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="495" width="380" height="110" />
+        </mxCell>
+        <mxCell id="g" value="Contexto igual?" style="rhombus;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFF0DC;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="585" y="635" width="190" height="110" />
+        </mxCell>
+        <mxCell id="bad" value="Preservar rascunho; falha não envia;&#10;reconciliar quando divergente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="cmd" value="Enviar uma vez; revisões backend&#10;obrigatórias na P6" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e" value="D07.3" style="ellipse;strokeWidth=3;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="635" y="915" width="90" height="90" />
+        </mxCell>
+        <mxCell id="e1" value="" source="s" target="u" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2" value="" source="u" target="f" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3" value="" source="f" target="click" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e4" value="" source="click" target="read" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5" value="" source="read" target="g" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e6" value="não / ausente / falha" source="g" target="bad" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e7" value="revisão explícita" source="bad" target="u" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e8" value="sim e sessão atual" source="g" target="cmd" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e9" value="" source="cmd" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D07.3" name="D07.3 Simular e comparar evidências">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D07.3 | Simular e comparar evidências&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;Transação única: referência + proposta + simulação + seleção/evento; ativo preservado." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="lane0" value="Cliente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane1" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="465" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane2" value="Backend / serviço" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="905" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane3" value="Motor aprovado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1345" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="legend" value="BPMN simplificado de processo interno: círculo = evento; retângulo arredondado = tarefa; losango = gateway exclusivo; setas contínuas = sequência; associação pontilhada = nota. Banco é recurso passivo&#10;descrito nas tarefas, sem ator autônomo. Implementado com validação parcial nesta rodada (inspeção estática). P7 em revisão / reteste humano pendente; Forecast experimental; disponibilidade operacional&#10;não confirmada. Fontes e vinte campos por atividade nas fichas D06/D07. Layout nativo e roteamento ainda pendentes de revisão no Draw.io." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="1140" width="1750" height="135" />
+        </mxCell>
+        <mxCell id="s" value="Comando" style="ellipse;strokeWidth=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="635" y="215" width="90" height="90" />
+        </mxCell>
+        <mxCell id="b" value="D07-A05&#10;Lock; conferir caso/estado/revisões e ciclo" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="m" value="D04/D05&#10;Calcular referência e proposta nas mesmas&#10;dependências" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1370" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="p" value="Preservar dois AnalysisRun P2; simulação;&#10;selecionar/testing; eventos" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="495" width="380" height="110" />
+        </mxCell>
+        <mxCell id="g" value="Persistiu?" style="rhombus;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFF0DC;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1025" y="635" width="190" height="110" />
+        </mxCell>
+        <mxCell id="err" value="Rollback na falha; resposta perdida exige&#10;consulta, sem retry automático" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="635" width="380" height="110" />
+        </mxCell>
+        <mxCell id="v" value="D07-A06&#10;Reconsultar; mostrar referência/proposta&#10;preservadas e diferenças" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="u" value="Conferir origens, métodos, NC e&#10;integridade/stale" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e" value="D07.4" style="ellipse;strokeWidth=3;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="195" y="915" width="90" height="90" />
+        </mxCell>
+        <mxCell id="e1" value="" source="s" target="b" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2" value="guardas aceitas" source="b" target="m" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3" value="cálculo disponível ou parcial elegível à preservação" source="m" target="p" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e4" value="" source="p" target="g" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5" value="exceção" source="g" target="err" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e6" value="commit confirmado" source="g" target="v" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e7" value="" source="v" target="u" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e8" value="" source="u" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e9" value="409 / 422" source="b" target="err" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D07.4" name="D07.4 Validar decisão e encaminhar">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D07.4 | Validar decisão e encaminhar&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;Validação humana não é aplicação; emissão e ciclos completos serão detalhados em D08." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="lane0" value="Cliente" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane1" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="465" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane2" value="Backend / serviço" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="905" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="lane3" value="Motor aprovado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#EEF4F1;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1345" y="155" width="430" height="955" />
+        </mxCell>
+        <mxCell id="legend" value="BPMN simplificado de processo interno: círculo = evento; retângulo arredondado = tarefa; losango = gateway exclusivo; setas contínuas = sequência; associação pontilhada = nota. Banco é recurso passivo&#10;descrito nas tarefas, sem ator autônomo. Implementado com validação parcial nesta rodada (inspeção estática). P7 em revisão / reteste humano pendente; Forecast experimental; disponibilidade operacional&#10;não confirmada. Fontes e vinte campos por atividade nas fichas D06/D07. Layout nativo e roteamento ainda pendentes de revisão no Draw.io." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="1140" width="1750" height="135" />
+        </mxCell>
+        <mxCell id="s" value="Início" style="ellipse;strokeWidth=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="195" y="215" width="90" height="90" />
+        </mxCell>
+        <mxCell id="u" value="D07-A07&#10;Selecionada atual + justificativa ≥10;&#10;Validar proposta selecionada" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="f" value="D07-A04&#10;Reconferir contexto e enviar&#10;revisões/fingerprint" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="355" width="380" height="110" />
+        </mxCell>
+        <mxCell id="b" value="Conferir P1, seleção, integridade, stale,&#10;ES/PP/EM e calculated" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="495" width="380" height="110" />
+        </mxCell>
+        <mxCell id="g" value="Elegível?" style="rhombus;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFF0DC;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1025" y="635" width="190" height="110" />
+        </mxCell>
+        <mxCell id="bad" value="Bloquear: stale→nova simulação;&#10;NC/conflito→rever proposta; histórico&#10;preservado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="50" y="635" width="380" height="110" />
+        </mxCell>
+        <mxCell id="ok" value="Gravar validated, hash, data, justificativa&#10;e eventos; commit" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="930" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="v" value="D07-A08&#10;Decisão validada. Exportar/aplicar em D08;&#10;PUT ativo é separado." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="490" y="775" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e" value="Fim&#10;D08" style="ellipse;strokeWidth=3;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="195" y="915" width="90" height="90" />
+        </mxCell>
+        <mxCell id="e1" value="" source="s" target="u" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e2" value="" source="u" target="f" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e3" value="" source="f" target="b" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e4" value="" source="b" target="g" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e5" value="não" source="g" target="bad" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e6" value="após nova avaliação" source="bad" target="u" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e7" value="sim" source="g" target="ok" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e8" value="" source="ok" target="v" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="e9" value="" source="v" target="e" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="rollback" value="Falha ao gravar evento/decisão: rollback;&#10;consultar estado se resposta incerta" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=14;fillColor=#FFFFFF;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1370" y="915" width="380" height="110" />
+        </mxCell>
+        <mxCell id="e10" value="exceção / falha de resposta" source="ok" target="rollback" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=0;endArrow=block;fontSize=13;labelBackgroundColor=#F6F9F8;strokeColor=#275E4E;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

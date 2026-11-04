@@ -1,0 +1,660 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" compressed="false">
+  <diagram id="D10.1" name="D10.1 Confirmar importação">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D10.1 | Confirmar importação&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;UML Sequence simplificada • ordem estática das chamadas • retorno pontilhado quando identificado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="actor0" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line0" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="180" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor1" value="FastAPI/wrapper" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="510" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line1" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="650" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor2" value="Importador" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="980" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line2" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1120" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor3" value="P2 / banco" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1450" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line3" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1590" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="s0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m0" value="1. confirm=true + linhas e origem" source="s0" target="t0" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m1" value="2. begin_transaction; capture_all ANTES do try" source="s1" target="t1" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m2" value="3. execute(payload,user,db)" source="s2" target="t2" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m3" value="4. validar / preservar recibo e aplicar conforme D03" source="s3" target="t3" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="528" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="528" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m4" value="5. resultado e versões / commit do caminho" source="s4" target="t4" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m5" value="6. completed ou HTTPException bloqueante" source="s5" target="t5" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m6" value="7. resposta/recibo" source="s6" target="t6" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="alt" value="ALT / LIMITES&#10;ALT: exceção dentro do try e sem recibo committed → rollback; begin_receipt failed_attempt + finish_receipt + commit separados. Falha secundária → not_persisted. Exceção&#10;inicial de lock/capture não passa por esse wrapper." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#FFF5E6;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1010" width="1740" height="130" />
+        </mxCell>
+        <mxCell id="legend" value="Ler de cima para baixo. Participantes = componentes/persistência; linhas verticais = vida do participante; setas = chamadas/retornos. Chamadas internas de cálculo representadas no mesmo participante.&#10;Não é captura de tráfego ou certificação de concorrência. Autenticação precede os handlers; falhas podem interromper a sequência. Fonte detalhada em D10-A01–A05 e nos subprocessos. Roteamento nativo&#10;no Draw.io pendente." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1160" width="1740" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D10.2" name="D10.2 Ler dashboard e abrir ficha">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D10.2 | Ler dashboard e abrir ficha&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;UML Sequence simplificada • ordem estática das chamadas • retorno pontilhado quando identificado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="actor0" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line0" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="180" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor1" value="API / projeção" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="510" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line1" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="650" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor2" value="Serviço/motor" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="980" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line2" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1120" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor3" value="Banco/fontes" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1450" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line3" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1590" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="s0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m0" value="1. GET dashboard com filtros" source="s0" target="t0" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m1" value="2. abrir snapshot consistente" source="s1" target="t1" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m2" value="3. project_sheets(project_dashboard_input)" source="s2" target="t2" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m3" value="4. carregar população/dependências" source="s3" target="t3" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="528" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="528" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m4" value="5. resultados por posição / projeção compacta" source="s4" target="t4" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m5" value="6. ler preferências dos casos de controle" source="s5" target="t5" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m6" value="7. DTO agregado + fingerprints" source="s6" target="t6" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s7" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="729" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t7" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="729" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m7" value="8. GET sheet(id, expected_dependency)" source="s7" target="t7" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s8" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="796" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t8" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="796" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m8" value="9. read_material_analysis(stored=True)" source="s8" target="t8" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s9" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="863" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t9" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="863" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m9" value="10. leitura → project_sheet + fingerprint" source="s9" target="t9" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s10" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="930" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t10" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="930" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m10" value="11. 200 ficha ou409 contexto mudou" source="s10" target="t10" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="alt" value="ALT / LIMITES&#10;Consultas sem record/capture. Filtro visual ocorre após classificação integral. requireReviewedSheet no frontend recusa DTO incompleto;422 P1 pode impedir ficha; nenhuma&#10;escrita por consulta." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#FFF5E6;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1010" width="1740" height="130" />
+        </mxCell>
+        <mxCell id="legend" value="Ler de cima para baixo. Participantes = componentes/persistência; linhas verticais = vida do participante; setas = chamadas/retornos. Chamadas internas de cálculo representadas no mesmo participante.&#10;Não é captura de tráfego ou certificação de concorrência. Autenticação precede os handlers; falhas podem interromper a sequência. Fonte detalhada em D10-A01–A05 e nos subprocessos. Roteamento nativo&#10;no Draw.io pendente." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1160" width="1740" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D10.3" name="D10.3 Preservar simulação P6">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D10.3 | Preservar simulação P6&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;UML Sequence simplificada • ordem estática das chamadas • retorno pontilhado quando identificado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="actor0" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line0" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="180" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor1" value="P6 comando" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="510" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line1" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="650" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor2" value="I04/serviço" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="980" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line2" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1120" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor3" value="P2 / banco" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1450" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line3" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1590" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="s0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m0" value="1. POST após reconferência; ciclo +2revisões" source="s0" target="t0" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m1" value="2. lock; current/check revisão de trabalho" source="s1" target="t1" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m2" value="3. simulate(commit=False; revisão de decisão)" source="s2" target="t2" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m3" value="4. conferir caso/estado/revisão; ler fontes" source="s3" target="t3" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="528" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="550" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m4" value="5. calcular referência e proposta; dependências iguais" source="s4" target="t4" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1200" y="528" />
+              <mxPoint x="1200" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m5" value="6. capture_all; preservar2AnalysisRun + simulação" source="s5" target="t5" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m6" value="7. selecionar teste; testing; evento simulated; flush" source="s6" target="t6" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s7" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="729" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t7" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="729" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m7" value="8. simulação preservada, sem commit interno" source="s7" target="t7" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s8" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="796" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t8" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="796" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m8" value="9. sincronizar ciclo/revisão/evento; commit" source="s8" target="t8" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s9" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="863" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t9" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="863" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m9" value="10. 200; UI reconsulta detalhe" source="s9" target="t9" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="alt" value="ALT / LIMITES&#10;ALT erro → rollback externo; ValidationError do comando vira422 invalid_planning_proposal. Caminho legado usa simulate(commit=True) após legacy_guard e retorna201; não duplicar&#10;commits." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#FFF5E6;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1010" width="1740" height="130" />
+        </mxCell>
+        <mxCell id="legend" value="Ler de cima para baixo. Participantes = componentes/persistência; linhas verticais = vida do participante; setas = chamadas/retornos. Chamadas internas de cálculo representadas no mesmo participante.&#10;Não é captura de tráfego ou certificação de concorrência. Autenticação precede os handlers; falhas podem interromper a sequência. Fonte detalhada em D10-A01–A05 e nos subprocessos. Roteamento nativo&#10;no Draw.io pendente." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1160" width="1740" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D10.4" name="D10.4 Validar proposta P6">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D10.4 | Validar proposta P6&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;UML Sequence simplificada • ordem estática das chamadas • retorno pontilhado quando identificado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="actor0" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line0" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="180" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor1" value="P6 comando" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="510" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line1" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="650" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor2" value="I04 validação" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="980" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line2" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1120" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor3" value="P2 / banco" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1450" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line3" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1590" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="s0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m0" value="1. simulação/fingerprint/justificativa + revisões" source="s0" target="t0" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m1" value="2. lock; caso/ciclo/revisão de trabalho" source="s1" target="t1" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m2" value="3. validate(commit=False)" source="s2" target="t2" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m3" value="4. seleção vigente + revisão decisão; fontes P1" source="s3" target="t3" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="528" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="528" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m4" value="5. ler snapshots; integridade e dependências atuais" source="s4" target="t4" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="617" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m5" value="6. stale? elegível? justificativa trim≥10?" source="s5" target="t5" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1200" y="595" />
+              <mxPoint x="1200" y="617" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m6" value="7. validated/hash/data/nota; evento; flush" source="s6" target="t6" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s7" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="729" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t7" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="729" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m7" value="8. caso validado sem commit interno" source="s7" target="t7" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s8" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="796" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t8" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="796" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m8" value="9. ciclo.validated_at/revisão/evento; commit" source="s8" target="t8" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s9" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="863" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t9" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="863" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m9" value="10. 200; nova consulta" source="s9" target="t9" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="alt" value="ALT / LIMITES&#10;ALT409 seleção/fingerprint/stale/NC;422 P1/justificativa; falha de evento → rollback. Validação não modifica parâmetros ativos e não chama ERP." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#FFF5E6;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1010" width="1740" height="130" />
+        </mxCell>
+        <mxCell id="legend" value="Ler de cima para baixo. Participantes = componentes/persistência; linhas verticais = vida do participante; setas = chamadas/retornos. Chamadas internas de cálculo representadas no mesmo participante.&#10;Não é captura de tráfego ou certificação de concorrência. Autenticação precede os handlers; falhas podem interromper a sequência. Fonte detalhada em D10-A01–A05 e nos subprocessos. Roteamento nativo&#10;no Draw.io pendente." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1160" width="1740" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="D10.5" name="D10.5 Emitir lote e entregar arquivo">
+    <mxGraphModel page="1" pageWidth="1800" pageHeight="1300" pageScale="1" background="#F6F9F8">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="D10.5 | Emitir lote e entregar arquivo&#10;V02 • 03/11/2026 • Plano E64 / contrato E63&#10;UML Sequence simplificada • ordem estática das chamadas • retorno pontilhado quando identificado" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="25" y="20" width="1750" height="110" />
+        </mxCell>
+        <mxCell id="actor0" value="Frontend" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="40" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line0" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="180" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor1" value="P6 emissão" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="510" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line1" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="650" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor2" value="I07/renderizador" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="980" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line2" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1120" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="actor3" value="Banco" style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;fillColor=#DDF3E9;strokeColor=#819C92;spacing=10;align=center;verticalAlign=middle;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1450" y="155" width="280" height="65" />
+        </mxCell>
+        <mxCell id="line3" value="" style="rounded=0;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=10;fillColor=#AABBB4;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="1590" y="225" width="1" height="770" />
+        </mxCell>
+        <mxCell id="s0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t0" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="260" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m0" value="1. members explícitos com revisões" source="s0" target="t0" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t1" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="327" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m1" value="2. lock; conferir todos; freeze metadados" source="s1" target="t1" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t2" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="394" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m2" value="3. emit_export(selected_ids,commit=False)" source="s2" target="t2" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t3" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="461" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m3" value="4. ler casos workspace e evidências; conjunto exato" source="s3" target="t3" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="528" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t4" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="550" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m4" value="5. montar4abas; gerar bytes antes do commit" source="s4" target="t4" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1200" y="528" />
+              <mxPoint x="1200" y="550" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="s5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t5" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="595" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m5" value="6. lote/casos exported/eventos; flush" source="s5" target="t5" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1120" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t6" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="662" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m6" value="7. Response pronta, sem commit interno" source="s6" target="t6" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;dashed=1;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s7" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="729" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t7" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="1590" y="729" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m7" value="8. ciclos/revisões/emitted; commit" source="s7" target="t7" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s8" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="650" y="796" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t8" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="796" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m8" value="9. X-Planning-Batch + XLSX" source="s8" target="t8" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="s9" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="863" width="1" height="1" />
+        </mxCell>
+        <mxCell id="t9" vertex="1" parent="1" style="fillOpacity=0;strokeOpacity=0;">
+          <mxGeometry as="geometry" x="180" y="885" width="1" height="1" />
+        </mxCell>
+        <mxCell id="m9" value="10. blob/link; consultar estado; sem retry" source="s9" target="t9" edge="1" parent="1" style="html=0;endArrow=open;strokeColor=#295F50;fontSize=14;labelBackgroundColor=#F6F9F8;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="260" y="863" />
+              <mxPoint x="260" y="885" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="alt" value="ALT / LIMITES&#10;ALT erro anterior ao commit → rollback integral. Transporte pós-commit pode falhar: lote existente, recepção incerta. Pendências usa workspace; não há binário durável&#10;garantido." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;fillColor=#FFF5E6;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1010" width="1740" height="130" />
+        </mxCell>
+        <mxCell id="legend" value="Ler de cima para baixo. Participantes = componentes/persistência; linhas verticais = vida do participante; setas = chamadas/retornos. Chamadas internas de cálculo representadas no mesmo participante.&#10;Não é captura de tráfego ou certificação de concorrência. Autenticação precede os handlers; falhas podem interromper a sequência. Fonte detalhada em D10-A01–A05 e nos subprocessos. Roteamento nativo&#10;no Draw.io pendente." style="rounded=1;html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=15;fillColor=#E9EEEE;strokeColor=#819C92;spacing=10;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry as="geometry" x="30" y="1160" width="1740" height="115" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
