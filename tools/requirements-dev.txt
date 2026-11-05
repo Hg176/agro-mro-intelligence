@@ -1,0 +1,14 @@
+# Dependências de tools/ (Python 3.12), versões EXATAS, inclusive transitivas.
+# Atualizar: rodar num python:3.12 limpo, "pip install" das diretas e "pip freeze".
+# Diretas
+SQLAlchemy==2.0.57
+psycopg[binary]==3.3.8
+pytest==9.2.0
+# Transitivas
+greenlet==3.5.6
+iniconfig==2.3.1
+packaging==26.3
+pluggy==1.7.0
+psycopg-binary==3.3.8
+Pygments==2.21.0
+typing_extensions==4.16.0
