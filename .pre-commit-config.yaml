@@ -1,0 +1,14 @@
+# Ganchos locais. Instalação (uma vez por clone):
+#   pip install pre-commit==4.7.0
+#   pre-commit install
+# Rodar em tudo:  pre-commit run --all-files
+#
+# O hook "gitleaks" compila o binário com Go (o pre-commit baixa o Go sozinho).
+# Sem Go/rede, troque o id por "gitleaks-docker" (usa a imagem oficial no
+# Docker Desktop). Os dois leem o .gitleaks.toml da raiz.
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.30.1
+    hooks:
+      - id: gitleaks
+        args: ["--config", ".gitleaks.toml"]

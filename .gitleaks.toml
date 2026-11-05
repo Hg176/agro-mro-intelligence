@@ -1,0 +1,31 @@
+# Configuração do gitleaks do Agro MRO Intelligence.
+# Roda no pre-commit (.pre-commit-config.yaml) e no CI (.github/workflows/ci.yml).
+# Regras padrão do gitleaks + uma regra própria para URL de banco com senha.
+
+title = "agro-mro-intelligence"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "agro-db-url-com-senha"
+description = "URL de banco com senha embutida (postgres/mysql/mongodb)"
+regex = '''(?i)\b(?:postgres(?:ql)?|mysql|mongodb)(?:\+[a-z0-9]+)?://[^:@/\s'"]+:([^@/\s'"]+)@'''
+secretGroup = 1
+keywords = ["postgres", "mysql", "mongodb"]
+
+# Placeholders conhecidos e interpolação de variável não são segredo.
+[[rules.allowlists]]
+regexTarget = "secret"
+regexes = [
+  '''^troque-me$''',
+  '''^\$\{[A-Za-z_][A-Za-z0-9_]*\}$''',
+  '''^\$[A-Za-z_][A-Za-z0-9_]*$''',
+  '''^\{[a-z_]+\}$''',
+  '''^(?:senha|password|pass|pw|\*+|x+)$''',
+]
+
+[[allowlists]]
+description = "Placeholders documentados"
+regexTarget = "match"
+regexes = ['''troque-me''']
