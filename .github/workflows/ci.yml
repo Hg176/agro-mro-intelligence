@@ -39,9 +39,6 @@ jobs:
           --health-retries 20
 
     env:
-      # Os scripts falam com o banco por "docker exec" neste container
-      # (psql/pg_dump com a mesma versão do servidor).
-      PG_CONTAINER: ${{ job.services.postgres.id }}
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ci-efemero-${{ github.run_id }}-${{ github.run_attempt }}
 
@@ -62,8 +59,11 @@ jobs:
           docker run --rm -v "$PWD:/repo" --entrypoint sh zricethezav/gitleaks:v8.30.1 -c \
             'git config --global --add safe.directory /repo && gitleaks git /repo --config /repo/.gitleaks.toml --redact --verbose --exit-code 1'
 
-      - name: Senhas efêmeras dos papéis
+      # Os scripts falam com o banco por "docker exec" neste container (psql/pg_dump
+      # com a mesma versão do servidor). O contexto "job" só existe dentro de steps.
+      - name: Senhas efêmeras dos papéis e id do container
         run: |
+          echo "PG_CONTAINER=${{ job.services.postgres.id }}" >> "$GITHUB_ENV"
           owner="$(openssl rand -hex 24)"; app="$(openssl rand -hex 24)"
           echo "::add-mask::$owner"; echo "::add-mask::$app"
           echo "AGRO_OWNER_PASSWORD=$owner" >> "$GITHUB_ENV"
