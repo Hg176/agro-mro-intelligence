@@ -68,7 +68,7 @@ pg_tool() {
   local role="$1" prog="$2"; shift 2
   local pw; pw="$(password_for "$role")"
   if [ "$PG_MODE" = "local" ]; then
-    PGPASSWORD="$pw" "$prog" -h "${PGHOST:-127.0.0.1}" -p "${PGPORT:-${POSTGRES_PORT:-5432}}" -U "$role" "$@"
+    PGPASSWORD="$pw" "$prog" -h "${PGHOST:-127.0.0.1}" -p "${PGPORT:-${POSTGRES_PORT:-55432}}" -U "$role" "$@"
   else
     # -e PGPASSWORD sem valor: o docker copia do ambiente; a senha não vai na linha de comando.
     PGPASSWORD="$pw" docker exec -i -e PGPASSWORD "$(pg_container)" \

@@ -18,7 +18,7 @@ O que sobe:
 | Item | Valor |
 |---|---|
 | Imagem | `postgres:17.11` (tag exata; a mesma do CI) |
-| Porta | `127.0.0.1:5432` (só na máquina local, nunca em 0.0.0.0) |
+| Porta | `127.0.0.1:55432` no host -> `5432` no container (só na máquina local, nunca em 0.0.0.0) |
 | Volume | `agro-mro-dev_agro_pgdata` (nomeado) |
 | Encoding / collation | `UTF8` / `C.UTF-8` (ordem binária, igual ao SQLite) |
 | Fuso do servidor | `UTC` (`-c timezone=UTC -c log_timezone=UTC`) |
@@ -28,20 +28,24 @@ O que sobe:
 **Por que UTC:** o SQLite devolve `CURRENT_TIMESTAMP` em UTC e o D08 grava eventos em UTC.
 `America/Cuiaba` é só apresentação (frontend/relatório), nunca o fuso da gravação.
 
-### Porta 5432 ocupada
+### Porta 55432 (e não 5432)
 
-Se já houver um PostgreSQL instalado no Windows (é o caso na máquina do Hugo: um serviço
-`postgres` nativo escuta em 5432), o `up` falha com `ports are not available`. Não
-desinstale nada; publique em outra porta **pelo shell** (o Compose não lê o `.env` da
-raiz para interpolação, só para as variáveis do container):
+O padrão publicado no host é **55432**, não 5432: no Windows a 5432 é bloqueada ou já
+está ocupada (na máquina do Hugo um serviço `postgres` nativo escuta nela), e o `up`
+falharia com `ports are not available`. Dentro do container o Postgres continua em 5432.
+
+Conexão a partir do host: `host=127.0.0.1 port=55432 dbname=agro_mro` (usuário e senha do `.env`).
+
+Para usar outra porta, defina-a **pelo shell** (o Compose não lê o `.env` da raiz para
+interpolação, só para as variáveis do container):
 
 ```bash
-export POSTGRES_PORT=55432
+export POSTGRES_PORT=56432
 docker compose -f infra/docker-compose.dev.yml up -d
 ```
 
 Os scripts de `scripts/` não usam a porta publicada (falam com o banco por `docker exec`),
-então funcionam com qualquer porta.
+então funcionam com qualquer porta. Só `PG_MODE=local` usa `POSTGRES_PORT` (padrão 55432).
 
 ## 2. O init só roda com volume vazio
 
