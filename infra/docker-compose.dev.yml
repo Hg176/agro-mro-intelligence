@@ -1,0 +1,41 @@
+# PostgreSQL de desenvolvimento do Agro MRO Intelligence (Fase A).
+# Só o banco. Backend, motor e frontend chegam com o código do Sander.
+#
+#   docker compose -f infra/docker-compose.dev.yml up -d
+#   scripts/db_check_roles.sh
+#
+# Senhas vêm do .env da RAIZ do repositório (modelo: .env.example).
+# O init (infra/postgres/init) só roda com volume vazio: docs/operacao/postgres-local.md
+name: agro-mro-dev
+
+services:
+  postgres:
+    # Tag exata. A mesma tag está em .github/workflows/ci.yml: mude nos dois.
+    image: postgres:17.11
+    restart: unless-stopped
+    env_file:
+      - path: ../.env
+        required: true
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C.UTF-8"
+    # Fuso do servidor em UTC: o SQLite devolve CURRENT_TIMESTAMP em UTC e o
+    # D08 grava eventos em UTC. America/Cuiaba é só apresentação.
+    command: ["postgres", "-c", "timezone=UTC", "-c", "log_timezone=UTC"]
+    ports:
+      # Só na interface local da máquina. Nunca 0.0.0.0.
+      - "127.0.0.1:${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - agro_pgdata:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # -h 127.0.0.1: durante o init o servidor temporário só escuta no socket;
+      # por TCP o check só fica verde depois que o init terminou.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U \"$${POSTGRES_USER}\" -d agro_mro"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+volumes:
+  agro_pgdata:
