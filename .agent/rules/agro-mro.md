@@ -29,6 +29,7 @@ Consulte o arquivo indicado **antes** de escrever código naquele assunto. Não 
 | Cobrança, assinatura, Asaas, inadimplência, somente leitura | CONTEXTO §16 |
 | Estado de uma etapa (P0–P13), o que está aceito, o que falta | CONTEXTO §12–14 → `docs/referencia/plano/` (leia só o **topo**: o corpo é histórico preservado) |
 | O que o Sander quer mudar ou tirar das telas | CONTEXTO §18 → `docs/referencia/reunioes/2026-11-02-reuniao-sander.md` |
+| Detalhe de uma atividade de diagrama (ID Dxx-Ayy: arquivo, função, endpoint, tabelas, validações, falhas) | `docs/fluxogramas/especificacoes/Dxx_*.md` (mesmo ID da caixa no `.drawio`) |
 | Não sabe onde algo está documentado | `docs/fluxogramas/INDICE.md` |
 
 Os `.drawio` são XML. Para lê-los, extraia os atributos `value` das células `mxCell` (cada `<diagram name="...">` é uma página). Não edite os `.drawio` sem pedido.

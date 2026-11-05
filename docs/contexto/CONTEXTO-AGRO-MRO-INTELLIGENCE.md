@@ -943,7 +943,9 @@ Documentação visual gerada em 03/11/2026 sobre o código E64, por inspeção e
 | `D12_ERROS_RECUPERACAO` | 3 | Classificar falha, leitura/decisão bloqueada, escrita incerta | 10.8 |
 | `INDICE/01_INDICE_TECNICO*.md` | — | Versões do índice (lotes 1 a 6); a mais completa é `01_INDICE_TECNICO.COMPLETO.md` | esta seção |
 
-**Arquivos citados no índice que NÃO vieram na pasta** (pedir ao Sander, junto com o repositório): especificações de cada diagrama (`especificacoes/D01…D12.md`, 74 fichas de 20 campos por atividade), `DICIONARIO_DADOS.md` (345 campos), `CATALOGO_APIS.md` (102 rotas), `API_IMPORTACAO_E_LINHAGEM.md`, `CATALOGO_REGRAS_NEGOCIO.md`, `MEMORIA_MATEMATICA_V3.md` (com exemplo fictício), `MAPA_INDICADORES_E_CONTRATOS_LOTE_04.md`, `ESTADOS_E_CONTRATOS_D08.md`, `MANUAL_TRANSFERENCIA_TECNICA.md` (roteiro de estudo, ambiente novo, testes isolados, feito justamente para o novo desenvolvedor), `MATRIZ_RASTREABILIDADE.md` e `COBERTURA_E_PENDENCIAS.md`.
+**Especificações recebidas em 05/11/2026:** `docs/fluxogramas/especificacoes/D01…D12.md`, 74 fichas de 20 campos por atividade (ID, executor, entradas, validações, regras, algoritmo, arquivo/função, endpoint, tabelas, saídas, falhas etc.). São o detalhe de cada caixa dos diagramas. Ressalva: inspeção estática do código E64, sem execução de testes.
+
+**Arquivos citados no índice que AINDA NÃO vieram** (pedir ao Sander, junto com o repositório): `DICIONARIO_DADOS.md` (345 campos), `CATALOGO_APIS.md` (102 rotas), `API_IMPORTACAO_E_LINHAGEM.md`, `CATALOGO_REGRAS_NEGOCIO.md`, `MEMORIA_MATEMATICA_V3.md` (com exemplo fictício), `MAPA_INDICADORES_E_CONTRATOS_LOTE_04.md`, `ESTADOS_E_CONTRATOS_D08.md`, `MANUAL_TRANSFERENCIA_TECNICA.md` (roteiro de estudo, ambiente novo, testes isolados, feito justamente para o novo desenvolvedor), `MATRIZ_RASTREABILIDADE.md` e `COBERTURA_E_PENDENCIAS.md`.
 
 **Percurso de leitura sugerido pelo índice:** D01 → D09 → dicionário → APIs; depois D03/D11; D04 → memória matemática → D05; D06 → D07; D08; por fim D02, D10, D12 e o manual de transferência.
 
