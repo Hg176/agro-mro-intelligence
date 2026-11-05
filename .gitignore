@@ -1,0 +1,39 @@
+# --- Segredos -----------------------------------------------------------
+# Nenhum .env entra no git. Só o modelo sem valores reais.
+.env
+.env.*
+!.env.example
+
+# --- Bancos locais (SQLite e arquivos auxiliares) -----------------------
+*.db
+*.sqlite
+*.sqlite3
+*-journal
+*-wal
+*-shm
+
+# --- Dados gerados em execução (podem conter dado de cliente) -----------
+uploads/
+exports/
+backups/
+
+# --- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# --- Saídas de teste geradas (não versionar) ----------------------------
+tools/db_parity/tests/out/*
+!tools/db_parity/tests/out/.gitkeep
+reports/
+
+# --- Editores e sistema ---------------------------------------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
