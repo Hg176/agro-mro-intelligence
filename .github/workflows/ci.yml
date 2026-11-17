@@ -1,0 +1,127 @@
+# CI da base de produção (Fase A): segredos, papéis do Postgres, backup/restauração,
+# testes de paridade de tipos (SQLite + PostgreSQL) e manifesto dos oráculos.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  base:
+    name: base (postgres + tools)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        # Mesma tag de infra/docker-compose.dev.yml: mude nos dois.
+        image: postgres:17.11
+        env:
+          POSTGRES_USER: postgres
+          # Banco efêmero, vive só durante este job no runner. Não é segredo de nada.
+          POSTGRES_PASSWORD: ci-efemero-${{ github.run_id }}-${{ github.run_attempt }}
+          POSTGRES_DB: postgres
+          POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C.UTF-8"
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -h 127.0.0.1 -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+
+    env:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ci-efemero-${{ github.run_id }}-${{ github.run_attempt }}
+
+    steps:
+      - name: Checkout (histórico completo para o gitleaks)
+        uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+
+      - name: Higiene - nada de .env, .db ou .sqlite versionado
+        run: |
+          bad="$(git ls-files | grep -E '(^|/)\.env($|\.)|\.(db|sqlite|sqlite3)$|-(journal|wal)$' | grep -v '^\.env\.example$' || true)"
+          if [ -n "$bad" ]; then echo "arquivos proibidos no git:"; echo "$bad"; exit 1; fi
+          echo "ok"
+
+      - name: gitleaks (histórico inteiro)
+        run: |
+          docker run --rm -v "$PWD:/repo" --entrypoint sh zricethezav/gitleaks:v8.30.1 -c \
+            'git config --global --add safe.directory /repo && gitleaks git /repo --config /repo/.gitleaks.toml --redact --verbose --exit-code 1'
+
+      # Os scripts falam com o banco por "docker exec" neste container (psql/pg_dump
+      # com a mesma versão do servidor). O contexto "job" só existe dentro de steps.
+      - name: Senhas efêmeras dos papéis e id do container
+        run: |
+          echo "PG_CONTAINER=${{ job.services.postgres.id }}" >> "$GITHUB_ENV"
+          owner="$(openssl rand -hex 24)"; app="$(openssl rand -hex 24)"
+          echo "::add-mask::$owner"; echo "::add-mask::$app"
+          echo "AGRO_OWNER_PASSWORD=$owner" >> "$GITHUB_ENV"
+          echo "AGRO_APP_PASSWORD=$app" >> "$GITHUB_ENV"
+
+      # Service container não monta arquivo do repo nem aceita "command":
+      # aplica o MESMO 01-roles.sh do init local, por psql dentro do container.
+      - name: Papéis e bancos (infra/postgres/init/01-roles.sh)
+        run: |
+          docker exec -i -e AGRO_OWNER_PASSWORD -e AGRO_APP_PASSWORD "$PG_CONTAINER" \
+            bash -s < infra/postgres/init/01-roles.sh
+
+      # Local: command -c timezone=UTC -c log_timezone=UTC. Aqui: ALTER SYSTEM + reload.
+      # (ALTER DATABASE/ROLE ... SET timezone = 'UTC' já foram feitos pelo 01-roles.sh.)
+      - name: Fuso do servidor em UTC
+        run: |
+          docker exec -i "$PG_CONTAINER" psql -v ON_ERROR_STOP=1 -X -U postgres -d postgres <<'SQL'
+          ALTER SYSTEM SET timezone = 'UTC';
+          ALTER SYSTEM SET log_timezone = 'UTC';
+          SELECT pg_reload_conf();
+          SQL
+          tz="$(docker exec "$PG_CONTAINER" psql -X -At -U postgres -d postgres -c 'SHOW timezone')"
+          echo "timezone do servidor: $tz"; [ "$tz" = "UTC" ]
+
+      - name: Conferência de papéis (scripts/db_check_roles.sh)
+        run: scripts/db_check_roles.sh
+
+      - name: Ensaio de restauração (scripts/db_restore_drill.sh)
+        run: DRILL_SEED=1 scripts/db_restore_drill.sh
+
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Dependências de tools/
+        run: python -m pip install --disable-pip-version-check -r tools/requirements-dev.txt
+
+      - name: pytest tools/ (SQLite + PostgreSQL)
+        env:
+          TEST_POSTGRES_URL: postgresql+psycopg://agro_app:${{ env.AGRO_APP_PASSWORD }}@localhost:5432/agro_mro_test
+          TEST_POSTGRES_OWNER_URL: postgresql+psycopg://agro_owner:${{ env.AGRO_OWNER_PASSWORD }}@localhost:5432/agro_mro_test
+        run: |
+          mkdir -p reports
+          python -m pytest tools -v -rs -p no:cacheprovider --junitxml=reports/junit-tools.xml
+
+      - name: Nenhum teste de PostgreSQL pulado
+        if: always()
+        run: python scripts/check_no_pg_skips.py reports/junit-tools.xml
+
+      - name: Manifesto dos oráculos (sha256sum -c)
+        run: scripts/check_oracle_manifest.sh
+
+      - name: Relatórios
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: relatorios-tools
+          path: |
+            reports/junit-tools.xml
+            tools/db_parity/tests/out/numeric_report.md
+          if-no-files-found: warn

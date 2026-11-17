@@ -1,0 +1,10 @@
+# Manifesto dos oráculos (Golden Master, fixtures e oráculos dos 42 cenários).
+# VAZIO de propósito: será preenchido no B1, quando o código do Sander entrar.
+#
+# Formato: saída de "sha256sum", um arquivo por linha, caminho relativo à RAIZ
+# do repositório. Linhas começando com "#" e linhas vazias são ignoradas.
+#   <sha256>  backend/tests/fixtures/golden_master_sio_12.json
+#
+# Conferência (local e CI): scripts/check_oracle_manifest.sh
+# Falha se algum arquivo listado mudou ou sumiu. Mudar uma linha aqui exige
+# decisão do Sander registrada (regra 2: não se altera oráculo para teste passar).

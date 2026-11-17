@@ -1,0 +1,26 @@
+# Normaliza texto no repositório (LF no índice). No Windows o checkout pode
+# usar CRLF, exceto nos tipos abaixo, que precisam de LF para rodar em Linux
+# (container do Postgres, CI) e para o hash dos oráculos bater em qualquer SO.
+* text=auto
+
+*.sh        text eol=lf
+*.sql       text eol=lf
+*.py        text eol=lf
+*.toml      text eol=lf
+*.yml       text eol=lf
+*.yaml      text eol=lf
+Dockerfile  text eol=lf
+*.conf      text eol=lf
+
+# Oráculos e manifesto: o sha256 é calculado sobre os bytes do checkout.
+# Com CRLF no Windows o hash divergiria do CI Linux.
+*.json      text eol=lf
+*.jsonl     text eol=lf
+*.sha256    text eol=lf
+
+# Binários (nunca converter)
+*.xlsx      binary
+*.png       binary
+*.jpg       binary
+*.pdf       binary
+*.dump      binary
