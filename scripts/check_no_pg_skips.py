@@ -1,9 +1,12 @@
 """Falha se algum teste de PostgreSQL foi pulado (ou se nenhum rodou).
 
     python scripts/check_no_pg_skips.py reports/junit-tools.xml
+    python scripts/check_no_pg_skips.py --todos reports/junit-backend.xml
 
 Um teste é "de PostgreSQL" se o nome ou a classe contém "postgresql"
 (o fixture parametrizado gera ids como test_x[postgresql]).
+Com --todos, TODO teste do junit conta como de PostgreSQL (backend/tests só
+roda em PostgreSQL, então qualquer teste pulado é falha).
 Sai com 1 se: houver teste de PostgreSQL pulado; nenhum teste de PostgreSQL
 tiver rodado; ou houver falha/erro em qualquer teste.
 """
@@ -14,10 +17,13 @@ import sys
 import xml.etree.ElementTree as ET
 
 
-def main(path: str) -> int:
+def main(path: str, todos: bool = False) -> int:
     root = ET.parse(path).getroot()
     cases = list(root.iter("testcase"))
-    pg = [c for c in cases if "postgresql" in (c.get("name", "") + c.get("classname", "")).lower()]
+    if todos:
+        pg = cases
+    else:
+        pg = [c for c in cases if "postgresql" in (c.get("name", "") + c.get("classname", "")).lower()]
     skipped = [c for c in pg if c.find("skipped") is not None]
     broken = [c for c in cases if c.find("failure") is not None or c.find("error") is not None]
     ran = [c for c in pg if c not in skipped]
@@ -39,7 +45,10 @@ def main(path: str) -> int:
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
+    args = sys.argv[1:]
+    todos = "--todos" in args
+    args = [a for a in args if a != "--todos"]
+    if len(args) != 1:
         print(__doc__)
         raise SystemExit(2)
-    raise SystemExit(main(sys.argv[1]))
+    raise SystemExit(main(args[0], todos=todos))
