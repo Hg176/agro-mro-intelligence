@@ -1,0 +1,16 @@
+# Dependências de desenvolvimento e teste do backend (Python 3.12), versões EXATAS.
+# Mesmo processo de backend/requirements.txt (pip freeze num ambiente limpo).
+-r requirements.txt
+# Diretas
+pytest==9.2.0
+# httpx2: cliente do TestClient do Starlette 1.x (httpx 0.x está depreciado nele).
+httpx2==2.16.2
+# Transitivas
+httpcore2==2.16.2
+iniconfig==2.3.1
+packaging==26.3
+pluggy==1.7.0
+Pygments==2.21.0
+truststore==0.10.5
+# Só no Windows (dependência do pytest/click nessa plataforma).
+colorama==0.4.6 ; sys_platform == "win32"

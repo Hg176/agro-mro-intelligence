@@ -1,0 +1,32 @@
+# Dependências de produção do backend (Python 3.12), versões EXATAS, inclusive transitivas.
+# Gerado com "pip freeze" num python:3.12-slim limpo (e conferido num venv limpo no Windows).
+# SQLAlchemy e psycopg nas MESMAS versões de tools/requirements-dev.txt: mude nos dois.
+# Atualizar: venv limpo, "pip install" das diretas abaixo, "pip freeze", conferir o diff.
+#
+# Diretas
+fastapi==0.164.0
+uvicorn==0.54.0
+pydantic==2.14.3
+pydantic-settings==2.16.3
+alembic==1.20.1
+SQLAlchemy==2.0.57
+psycopg[binary]==3.3.8
+# tzdata: zoneinfo precisa da base de fusos em imagem slim/Windows (America/Cuiaba, D08).
+tzdata==2026.6
+# Transitivas
+annotated-doc==0.0.7
+annotated-types==0.8.0
+anyio==4.16.0
+click==8.5.1
+greenlet==3.5.6
+h11==0.16.0
+idna==3.20
+Mako==1.4.3
+MarkupSafe==3.0.4
+opentelemetry-api==1.45.2
+psycopg-binary==3.3.8
+pydantic_core==2.50.4
+python-dotenv==1.2.4
+starlette==1.10.0
+typing-inspection==0.4.5
+typing_extensions==4.16.0

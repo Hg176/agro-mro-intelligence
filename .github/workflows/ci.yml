@@ -125,3 +125,86 @@ jobs:
             reports/junit-tools.xml
             tools/db_parity/tests/out/numeric_report.md
           if-no-files-found: warn
+
+  # Backend FastAPI (B1): migrações Alembic e pytest backend/tests, só em PostgreSQL.
+  # Mesmo postgres, mesmo 01-roles.sh e mesmo passo de fuso do job "base".
+  backend:
+    name: backend (fastapi + alembic + postgres)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+
+    services:
+      postgres:
+        # Mesma tag de infra/docker-compose.dev.yml: mude nos três lugares.
+        image: postgres:17.11
+        env:
+          POSTGRES_USER: postgres
+          # Banco efêmero, vive só durante este job no runner. Não é segredo de nada.
+          POSTGRES_PASSWORD: ci-efemero-${{ github.run_id }}-${{ github.run_attempt }}
+          POSTGRES_DB: postgres
+          POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C.UTF-8"
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -h 127.0.0.1 -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+
+    env:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ci-efemero-${{ github.run_id }}-${{ github.run_attempt }}
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - name: Senhas efêmeras dos papéis e id do container
+        run: |
+          echo "PG_CONTAINER=${{ job.services.postgres.id }}" >> "$GITHUB_ENV"
+          owner="$(openssl rand -hex 24)"; app="$(openssl rand -hex 24)"
+          echo "::add-mask::$owner"; echo "::add-mask::$app"
+          echo "AGRO_OWNER_PASSWORD=$owner" >> "$GITHUB_ENV"
+          echo "AGRO_APP_PASSWORD=$app" >> "$GITHUB_ENV"
+
+      - name: Papéis e bancos (infra/postgres/init/01-roles.sh)
+        run: |
+          docker exec -i -e AGRO_OWNER_PASSWORD -e AGRO_APP_PASSWORD "$PG_CONTAINER" \
+            bash -s < infra/postgres/init/01-roles.sh
+
+      # Mesmo passo do job "base": ALTER SYSTEM + reload.
+      - name: Fuso do servidor em UTC
+        run: |
+          docker exec -i "$PG_CONTAINER" psql -v ON_ERROR_STOP=1 -X -U postgres -d postgres <<'SQL'
+          ALTER SYSTEM SET timezone = 'UTC';
+          ALTER SYSTEM SET log_timezone = 'UTC';
+          SELECT pg_reload_conf();
+          SQL
+          tz="$(docker exec "$PG_CONTAINER" psql -X -At -U postgres -d postgres -c 'SHOW timezone')"
+          echo "timezone do servidor: $tz"; [ "$tz" = "UTC" ]
+
+      - uses: actions/setup-python@v7.1.0
+        with:
+          python-version: "3.12"
+
+      - name: Dependências do backend
+        run: python -m pip install --disable-pip-version-check -r backend/requirements-dev.txt
+
+      - name: pytest backend/ (PostgreSQL agro_mro_test)
+        env:
+          TEST_DATABASE_URL: postgresql+psycopg://agro_app:${{ env.AGRO_APP_PASSWORD }}@localhost:5432/agro_mro_test
+          TEST_DATABASE_URL_MIGRATIONS: postgresql+psycopg://agro_owner:${{ env.AGRO_OWNER_PASSWORD }}@localhost:5432/agro_mro_test
+        run: |
+          mkdir -p reports
+          python -m pytest backend/tests -v -rs --junitxml=reports/junit-backend.xml
+
+      - name: Nenhum teste pulado (backend só roda em PostgreSQL)
+        if: always()
+        run: python scripts/check_no_pg_skips.py --todos reports/junit-backend.xml
+
+      - name: Relatórios
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: relatorios-backend
+          path: reports/junit-backend.xml
+          if-no-files-found: warn
