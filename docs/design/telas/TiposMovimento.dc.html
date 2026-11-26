@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Tipos de movimento</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+input::placeholder{color:#a3aca8}
+input:focus,select:focus{outline:none;border-color:#1c684c !important;box-shadow:0 0 0 3px #e2efe9}
+a:focus-visible,button:focus-visible,label:focus-within{outline-offset:2px}
+button:focus-visible{outline:2px solid #1c684c;box-shadow:0 0 0 5px #e2efe9}
+button:disabled{opacity:.45;cursor:not-allowed !important}
+/* ---- Animações (desligam com "reduzir movimento") ---- */
+@keyframes mro-subir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes mro-destaque{0%{background-color:#e2efe9}100%{background-color:transparent}}
+@keyframes mro-pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+@keyframes mro-tremer{0%,100%{transform:none}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+@keyframes mro-alerta{0%,100%{box-shadow:0 0 0 0 rgba(201,119,31,0)}50%{box-shadow:0 0 0 4px rgba(201,119,31,.18)}}
+.mro-linha{animation:mro-subir .35s cubic-bezier(.2,.7,.2,1) both}
+.mro-destaque{animation:mro-destaque 1.8s ease-out both}
+.mro-pop{animation:mro-pop .35s ease both}
+.mro-tremer{animation:mro-tremer .35s ease both}
+@keyframes mro-tremer-b{0%,100%{transform:none}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+.mro-tremer-b{animation:mro-tremer-b .35s ease both}
+.mro-surge{animation:mro-subir .28s ease both}
+.mro-novo{animation:mro-alerta 2.2s ease-in-out 3}
+.mro-aba,.mro-sentido{transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.mro-aba:hover,.mro-sentido:hover{border-color:#8eb3a4 !important}
+.mro-btn{transition:transform .1s ease}
+.mro-btn:active{transform:scale(.98)}
+tbody tr{transition:background-color .15s ease}
+tbody tr:hover{background-color:#f0f6f2}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1800px; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px; background: var(--creme-100)">
+
+<nav aria-label="Menu do sistema" style="flex: 0 1 248px; min-width: 248px; background: var(--verde-900); color: var(--verde-100); padding: 28px 16px 24px; display: flex; flex-direction: column">
+  <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); padding: 0 8px">
+    <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1">
+      <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+      <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+    </span>
+  </a>
+
+  <p style="margin: 36px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">ANÁLISE</p>
+  <a href="VisaoGeral.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Visão geral</a>
+  <a href="Materiais.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>Materiais</a>
+  <a href="Planejamento.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>Planejamento</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">DADOS</p>
+  <a href="ImportarDados.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Importar dados</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">REGRAS DO CÁLCULO</p>
+  <a href="#regras" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Regras e letras</a>
+  <a href="TiposMovimento.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; background: var(--verde-700); color: var(--branco); font-weight: 600; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>Tipos de movimento</a>
+  <a href="#nivel" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Nível de serviço</a>
+  <a href="#tmer" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V9"/><path d="M18 17v-6"/></svg>Matriz TMER</a>
+  <a href="#casos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Casos de controle</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">APRENDER E AJUDA</p>
+  <a href="#academia" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Academia</a>
+  <a href="#suporte" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte</a>
+
+  <div style="flex: 1; min-height: 40px"></div>
+  <div style="background: var(--verde-800); border: 1px solid rgba(142,179,164,0.3); border-radius: 14px; padding: 16px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">PLANO INTELLIGENCE</p>
+    <p style="margin: 8px 0 0; font-weight: 600; color: var(--branco); font-variant-numeric: tabular-nums">812 de 1.000 itens</p>
+    <div role="progressbar" aria-label="Itens usados do plano" aria-valuenow="812" aria-valuemin="0" aria-valuemax="1000" style="margin-top: 10px; height: 6px; border-radius: 3px; background: rgba(226,239,233,0.2)"><div style="width: 81.2%; height: 6px; border-radius: 3px; background: var(--ouro-500)"></div></div>
+    <p style="margin: 10px 0 0; font-size: 12px; line-height: 16px; color: var(--verde-100)">Renova em 03/12/2026</p>
+  </div>
+  <a href="Login.dc.html" style="margin-top: 12px; display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sair</a>
+</nav>
+
+<div style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+
+  <!-- Barra superior -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+    <div style="position: relative; z-index: 20; flex: 1 1 320px; max-width: 460px">
+      <dc-import name="BuscaGlobal" hint-size="100%,48px"></dc-import>
+    </div>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Todos os locais (3)</button>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer; font-variant-numeric: tabular-nums">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>01/07 a 11/11/2026</button>
+    <span style="flex: 1"></span>
+    <span style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 13px/18px var(--font-sans)"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--verde-700)"></span>Atualizado há 2 dias</span>
+    <button type="button" aria-label="Notificações" style="width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--borda); border-radius: 12px; background: var(--branco); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <a href="Conta.dc.html" aria-label="Minha conta (Hugo dos Santos)" style="width: 44px; height: 44px; border-radius: 50%; background: var(--ouro-100); color: var(--ouro-700); font: 600 14px/20px var(--font-sans); display: grid; place-items: center; text-decoration: none">HS</a>
+  </div>
+
+  <header>
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">REGRAS DO SEU ESPAÇO</p>
+    <h1 style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 44px; letter-spacing: -0.025em">Tipos de movimento</h1>
+    <p style="margin: 4px 0 0; max-width: 760px; font: var(--text-corpo-m); color: var(--tinta-500)">Diga o que cada código do seu extrato significa: entrada ou saída. A importação só aceita códigos mapeados e mostra os erros antes de gravar.</p>
+  </header>
+
+  <!-- Frase de conclusão -->
+  <section aria-label="Conclusão" style="background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 22px 28px; display: flex; align-items: center; gap: 20px">
+    <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+    <p style="margin: 0; font-size: 17px; line-height: 27px">{{fraseA}}<b style="color: var(--ouro-300); font-weight: 600">{{fraseB}}</b>{{fraseC}}</p>
+  </section>
+
+  <!-- Códigos sem mapeamento -->
+  <sc-if value="{{temPendentes}}" hint-placeholder-val="{{true}}">
+    <section aria-labelledby="t-pend" style="background: var(--branco); border: 1px solid var(--status-alerta); border-radius: var(--raio-xl); padding: 24px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+        <div>
+          <p style="margin: 0; display: flex; align-items: center; gap: 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--status-alerta-texto)"><span aria-hidden="true">▲</span>CÓDIGOS NOVOS SEM MAPEAMENTO</p>
+          <h2 id="t-pend" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">Apareceram na carga de 04/11/2026</h2>
+          <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Origem SAP · movimentos_sap_jul-out.xlsx. As linhas com esses códigos ficaram fora da carga até você dizer o que eles significam.</p>
+        </div>
+        <a href="ImportarDados.dc.html" style="min-height: 44px; display: inline-flex; align-items: center; font: 600 14px/20px var(--font-sans); text-decoration: none">Importar os movimentos de novo →</a>
+      </div>
+      <ul style="list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+        <sc-for list="{{pendentes}}" as="p" hint-placeholder-count="3">
+          <li class="mro-linha mro-novo" style="{{p.liStyle}}">
+            <div style="flex: 0 0 150px">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 28px; letter-spacing: 0.02em">{{p.code}}</p>
+              <p style="margin: 0; font: var(--text-corpo-s); color: var(--status-alerta-texto); font-variant-numeric: tabular-nums">{{p.linhas}} linhas fora da carga</p>
+            </div>
+            <fieldset style="flex: 0 0 auto; margin: 0; padding: 0; border: 0">
+              <legend style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">{{p.legenda}}</legend>
+              <div style="display: flex; gap: 6px">
+                <button type="button" class="mro-sentido" aria-pressed="{{p.ehEntrada}}" onClick="{{p.marcarEntrada}}" style="{{p.entradaStyle}}"><span aria-hidden="true">↓</span>Entrada</button>
+                <button type="button" class="mro-sentido" aria-pressed="{{p.ehSaida}}" onClick="{{p.marcarSaida}}" style="{{p.saidaStyle}}"><span aria-hidden="true">↑</span>Saída</button>
+              </div>
+            </fieldset>
+            <input aria-label="{{p.descAria}}" value="{{p.desc}}" onChange="{{p.digitar}}" maxLength="180" placeholder="O que esse código significa na sua operação?" style="flex: 1 1 260px; height: 44px; padding: 10px 14px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+            <button type="button" class="mro-btn" onClick="{{p.salvar}}" disabled="{{p.bloqueado}}" style="flex: none; min-height: 44px; padding: 0 18px; border: 1px solid var(--verde-700); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-700); font: var(--text-botao); font-size: 14px; cursor: pointer">Salvar</button>
+          </li>
+        </sc-for>
+      </ul>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{temAviso}}" hint-placeholder-val="{{false}}">
+    <p role="status" class="mro-surge" style="margin: 0; display: flex; gap: 10px; align-items: flex-start; padding: 12px 16px; border-radius: 12px; background: var(--verde-50); font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><span aria-hidden="true" style="color: var(--verde-700); font-weight: 600">✓</span>{{aviso}}</p>
+  </sc-if>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+
+    <!-- Formulário -->
+    <section aria-labelledby="t-form" style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+      <form action="#" onSubmit="{{salvarForm}}" class="{{formClasse}}" style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px; display: flex; flex-direction: column; gap: 16px">
+        <div>
+          <h2 id="t-form" style="margin: 0; font: var(--text-titulo-s)">Adicionar ou atualizar tipo</h2>
+          <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">SAP, Senior e Datasul só identificam a origem. O código e o sentido são informados por você; nenhum código desses sistemas é presumido.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-sis" style="font: 600 13px/18px var(--font-sans)">Sistema de origem</label>
+          <select id="f-sis" value="{{fSistema}}" onChange="{{mudarSistema}}" style="height: 52px; padding: 0 14px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: var(--text-corpo-m); color: var(--tinta-900)">
+            <option value="custom">Sistema próprio</option><option value="sap">SAP</option><option value="senior">Senior</option><option value="datasul">Datasul</option>
+          </select>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-cod" style="font: 600 13px/18px var(--font-sans)">Código do movimento</label>
+          <input id="f-cod" value="{{fCodigo}}" onChange="{{mudarCodigo}}" maxLength="60" placeholder="Código usado no seu extrato" aria-invalid="{{erroCodigo}}" style="{{codigoStyle}}">
+          <sc-if value="{{codigoExiste}}" hint-placeholder-val="{{false}}"><span class="mro-surge" style="font: var(--text-corpo-s); color: var(--ouro-700)">Esse código já existe nesta origem: salvar cria a versão {{proximaVersao}}.</span></sc-if>
+        </div>
+        <fieldset style="margin: 0; padding: 0; border: 0">
+          <legend style="padding: 0; font: 600 13px/18px var(--font-sans)">Sentido</legend>
+          <div style="margin-top: 8px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px">
+            <button type="button" class="mro-sentido" aria-pressed="{{fEntrada}}" onClick="{{formEntrada}}" style="{{fEntradaStyle}}"><span aria-hidden="true">↓</span>Entrada</button>
+            <button type="button" class="mro-sentido" aria-pressed="{{fSaida}}" onClick="{{formSaida}}" style="{{fSaidaStyle}}"><span aria-hidden="true">↑</span>Saída</button>
+          </div>
+        </fieldset>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-desc" style="font: 600 13px/18px var(--font-sans)">Descrição</label>
+          <input id="f-desc" value="{{fDesc}}" onChange="{{mudarDesc}}" maxLength="180" placeholder="Significado para a sua operação" aria-invalid="{{erroDesc}}" style="{{descStyle}}">
+        </div>
+        <sc-if value="{{temErroForm}}" hint-placeholder-val="{{false}}">
+          <p role="alert" class="mro-surge" style="margin: 0; font: var(--text-corpo-s); color: var(--status-ruptura-texto)">Informe o código e a descrição do tipo de movimento.</p>
+        </sc-if>
+        <button type="submit" class="mro-btn" style="min-height: 52px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">Salvar tipo</button>
+      </form>
+
+      <aside aria-labelledby="t-pad" style="background: var(--verde-50); border-radius: var(--raio-xl); padding: 20px 24px">
+        <h2 id="t-pad" style="margin: 0; font: var(--text-titulo-s); font-size: 16px">Sem cadastro: Entrada/Saída padrão</h2>
+        <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">Se o seu extrato já diz o sentido, escolha "Entrada/Saída padrão" na importação. Estes valores são aceitos sem mapeamento:</p>
+        <dl style="margin: 12px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 14px">
+          <dt style="font-weight: 600; color: var(--verde-700)">↓ Entrada</dt><dd style="margin: 0; font-family: ui-monospace, Menlo, monospace; font-size: 13px; color: var(--tinta-600)">IN · ENTRADA · E</dd>
+          <dt style="font-weight: 600; color: var(--ouro-700)">↑ Saída</dt><dd style="margin: 0; font-family: ui-monospace, Menlo, monospace; font-size: 13px; color: var(--tinta-600)">OUT · SAÍDA · SAIDA · S</dd>
+        </dl>
+      </aside>
+    </section>
+
+    <!-- Tabela -->
+    <section aria-labelledby="t-tab" style="flex: 2 1 600px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">TIPOS CADASTRADOS</p>
+      <h2 id="t-tab" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">{{totalTipos}} códigos mapeados</h2>
+      <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Alterações ganham uma nova versão e só valem para as próximas cargas. Revise antes de confirmar o extrato.</p>
+
+      <div role="group" aria-label="Filtrar por origem" style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px">
+        <sc-for list="{{abas}}" as="a" hint-placeholder-count="5">
+          <button type="button" class="mro-aba" aria-pressed="{{a.ativa}}" onClick="{{a.escolher}}" style="{{a.estilo}}">{{a.rotulo}}<span style="{{a.numStyle}}">{{a.num}}</span></button>
+        </sc-for>
+      </div>
+
+      <div style="margin-top: 12px; overflow-x: auto">
+        <table style="width: 100%; min-width: 620px; border-collapse: collapse">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--borda); text-align: left">
+              <th scope="col" style="padding: 10px 12px 10px 8px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">ORIGEM</th>
+              <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">CÓDIGO ↑</th>
+              <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">SENTIDO</th>
+              <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">DESCRIÇÃO</th>
+              <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">VERSÃO</th>
+              <th scope="col" style="width: 120px"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Ações</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{linhas}}" as="r" hint-placeholder-count="8">
+              <tr class="{{r.classe}}" style="{{r.trStyle}}">
+                <td style="padding: 12px 12px 12px 8px; color: var(--tinta-600); font-size: 14px">{{r.origem}}</td>
+                <td style="padding: 12px; font-family: var(--font-display); font-weight: 700; font-size: 16px; letter-spacing: 0.02em">{{r.code}}</td>
+                <td style="padding: 12px"><span class="{{r.seloClasse}}" style="{{r.seloStyle}}"><span aria-hidden="true">{{r.seta}}</span>{{r.sentido}}</span></td>
+                <td style="padding: 12px; font-size: 14px">{{r.desc}}</td>
+                <td style="padding: 12px; font-size: 14px; color: var(--tinta-600); font-variant-numeric: tabular-nums">v{{r.versao}}</td>
+                <td style="padding: 4px 0; text-align: right">
+                  <sc-if value="{{r.normal}}" hint-placeholder-val="{{true}}">
+                    <button type="button" onClick="{{r.pedirRemocao}}" aria-label="{{r.removerAria}}" style="min-height: 44px; padding: 0 12px; border: 0; background: none; color: var(--status-ruptura-texto); font: 600 14px/20px var(--font-sans); cursor: pointer">Remover</button>
+                  </sc-if>
+                </td>
+              </tr>
+              <sc-if value="{{r.confirmando}}" hint-placeholder-val="{{false}}">
+                <tr class="mro-surge" style="background: var(--status-ruptura-bg)">
+                  <td colspan="6" style="padding: 12px 16px">
+                    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px">
+                      <p style="margin: 0; flex: 1 1 320px; font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><b style="font-weight: 600">Remover {{r.code}} ({{r.origem}})?</b> Movimentos já registrados mantêm o sentido e a origem. Próximas cargas com esse código vão parar na prévia.</p>
+                      <button type="button" onClick="{{r.cancelar}}" style="min-height: 44px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); font-size: 14px; cursor: pointer">Manter</button>
+                      <button type="button" onClick="{{r.remover}}" style="min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--raio-lg); background: var(--status-ruptura-texto); color: var(--branco); font: var(--text-botao); font-size: 14px; cursor: pointer">Remover tipo</button>
+                    </div>
+                  </td>
+                </tr>
+              </sc-if>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      <sc-if value="{{tabelaVazia}}" hint-placeholder-val="{{false}}">
+        <p class="mro-surge" style="margin: 12px 0 0; padding: 28px; border: 1px dashed var(--borda); border-radius: 14px; text-align: center; font: var(--text-corpo-m); color: var(--tinta-500)">{{vazioTexto}}</p>
+      </sc-if>
+    </section>
+  </div>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.seq = 100;
+    this.state = {
+      origem: 'all', aviso: '', destaque: null, confirmar: null, tremer: 0,
+      f: { sistema: 'sap', codigo: '', sentido: 'IN', desc: '', erro: false },
+      tipos: [
+        { id: 1, sis: 'sap', code: '101', dir: 'IN', desc: 'Entrada de mercadoria do pedido', v: 1 },
+        { id: 2, sis: 'sap', code: '102', dir: 'OUT', desc: 'Estorno da entrada de mercadoria', v: 1 },
+        { id: 3, sis: 'sap', code: '201', dir: 'OUT', desc: 'Consumo por centro de custo', v: 2 },
+        { id: 4, sis: 'sap', code: '202', dir: 'IN', desc: 'Estorno do consumo por centro de custo', v: 1 },
+        { id: 5, sis: 'sap', code: '261', dir: 'OUT', desc: 'Consumo em ordem de manutenção', v: 1 },
+        { id: 6, sis: 'sap', code: '262', dir: 'IN', desc: 'Estorno do consumo em ordem', v: 1 },
+        { id: 7, sis: 'sap', code: '501', dir: 'IN', desc: 'Entrada sem pedido', v: 1 },
+        { id: 8, sis: 'custom', code: 'ENT-AJ', dir: 'IN', desc: 'Ajuste de inventário a maior', v: 1 },
+        { id: 9, sis: 'custom', code: 'SAI-AJ', dir: 'OUT', desc: 'Ajuste de inventário a menor', v: 1 }
+      ],
+      pendentes: [
+        { code: 'Z61', linhas: 18, dir: null, desc: '' },
+        { code: '311', linhas: 9, dir: null, desc: '' },
+        { code: '551', linhas: 6, dir: null, desc: '' }
+      ]
+    };
+  }
+  renderVals() {
+    var self = this, s = this.state;
+    var nomes = { custom: 'Sistema próprio', sap: 'SAP', senior: 'Senior', datasul: 'Datasul' };
+    var tipos = s.tipos;
+    var sentidoStyle = function (on, dir, alto) {
+      var cor = dir === 'IN' ? 'background: #e2efe9; color: #1c684c; border: 2px solid #1c684c;' : 'background: #f8edda; color: #8a6420; border: 2px solid #8a6420;';
+      return 'min-height: ' + (alto ? 52 : 44) + 'px; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 0 14px; border-radius: 10px; cursor: pointer; font: 600 14px/20px var(--font-sans); ' + (on ? cor : 'background: #ffffff; color: #4b6257; border: 1px solid #e3e2dc;');
+    };
+    var upsert = function (sis, code, dir, desc, extra) {
+      var achado = tipos.filter(function (t) { return t.sis === sis && t.code === code; })[0];
+      var lista, id;
+      if (achado) { id = achado.id; lista = tipos.map(function (t) { return t.id === id ? Object.assign({}, t, { dir: dir, desc: desc, v: t.v + 1 }) : t; }); }
+      else { id = ++self.seq; lista = tipos.concat([{ id: id, sis: sis, code: code, dir: dir, desc: desc, v: 1 }]); }
+      self.setState(Object.assign({ tipos: lista, destaque: id, confirmar: null, aviso: 'Tipo salvo. A regra será aplicada nas próximas importações desta origem.', origem: (s.origem === 'all' || s.origem === sis) ? s.origem : 'all' }, extra || {}));
+    };
+
+    var pendentes = s.pendentes.map(function (p, i) {
+      var set = function (patch) { self.setState({ pendentes: s.pendentes.map(function (x, k) { return k === i ? Object.assign({}, x, patch) : x; }) }); };
+      return {
+        code: p.code, linhas: p.linhas, desc: p.desc,
+        legenda: 'Sentido do código ' + p.code, descAria: 'Descrição do código ' + p.code,
+        ehEntrada: p.dir === 'IN', ehSaida: p.dir === 'OUT',
+        entradaStyle: sentidoStyle(p.dir === 'IN', 'IN'), saidaStyle: sentidoStyle(p.dir === 'OUT', 'OUT'),
+        marcarEntrada: function () { set({ dir: 'IN' }); }, marcarSaida: function () { set({ dir: 'OUT' }); },
+        digitar: function (e) { set({ desc: e.target.value }); },
+        bloqueado: !p.dir || !p.desc.trim(),
+        liStyle: 'animation-delay: ' + (i * 70) + 'ms; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 16px; border-radius: 14px; background: #fbeedc',
+        salvar: function () {
+          upsert('sap', p.code, p.dir, p.desc.trim(), { pendentes: s.pendentes.filter(function (x, k) { return k !== i; }) });
+        }
+      };
+    });
+
+    var contar = function (sis) { return tipos.filter(function (t) { return sis === 'all' || t.sis === sis; }).length; };
+    var abas = [['all', 'Todas'], ['sap', 'SAP'], ['custom', 'Sistema próprio'], ['senior', 'Senior'], ['datasul', 'Datasul']].map(function (d) {
+      var on = s.origem === d[0];
+      return {
+        rotulo: d[1], num: contar(d[0]), ativa: on,
+        escolher: function () { self.setState({ origem: d[0], confirmar: null }); },
+        estilo: 'min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border-radius: 999px; cursor: pointer; font: 600 14px/20px var(--font-sans); ' + (on ? 'background: #113d2f; color: #ffffff; border: 1px solid #113d2f;' : 'background: #ffffff; color: #20322c; border: 1px solid #e3e2dc;'),
+        numStyle: 'font: 600 12px/16px var(--font-sans); padding: 1px 8px; border-radius: 999px; ' + (on ? 'background: rgba(255,255,255,0.18); color: #f0c56e;' : 'background: #f5f4ee; color: #4b6257;')
+      };
+    });
+
+    var visiveis = tipos.filter(function (t) { return s.origem === 'all' || t.sis === s.origem; })
+      .slice().sort(function (a, b) { return a.sis === b.sis ? a.code.localeCompare(b.code, 'pt-BR', { numeric: true }) : nomes[a.sis].localeCompare(nomes[b.sis]); });
+    var linhas = visiveis.map(function (t, i) {
+      var dest = s.destaque === t.id, conf = s.confirmar === t.id;
+      return {
+        origem: nomes[t.sis], code: t.code, desc: t.desc, versao: t.v,
+        sentido: t.dir === 'IN' ? 'Entrada' : 'Saída', seta: t.dir === 'IN' ? '↓' : '↑',
+        seloClasse: dest ? 'mro-pop' : '',
+        seloStyle: 'display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 10px; border-radius: 999px; font: 600 12px/16px var(--font-sans); ' + (t.dir === 'IN' ? 'background: #e2efe9; color: #1c684c;' : 'background: #f8edda; color: #8a6420;'),
+        classe: dest ? 'mro-linha mro-destaque' : 'mro-linha',
+        trStyle: 'animation-delay: ' + (dest ? 0 : i * 30) + 'ms; border-bottom: 1px solid #e3e2dc',
+        normal: !conf, confirmando: conf,
+        removerAria: 'Remover o código ' + t.code + ' de ' + nomes[t.sis],
+        pedirRemocao: function () { self.setState({ confirmar: t.id, aviso: '' }); },
+        cancelar: function () { self.setState({ confirmar: null }); },
+        remover: function () { self.setState({ tipos: tipos.filter(function (x) { return x.id !== t.id; }), confirmar: null, destaque: null, aviso: 'Tipo removido. Movimentações já registradas mantêm sua direção e origem.' }); }
+      };
+    });
+
+    var f = s.f;
+    var setF = function (patch) { self.setState({ f: Object.assign({}, f, patch) }); };
+    var codN = f.codigo.trim().toUpperCase();
+    var existente = codN ? tipos.filter(function (t) { return t.sis === f.sistema && t.code === codN; })[0] : null;
+    var campo = function (erro) { return 'height: 52px; padding: 14px 16px; border-radius: 10px; font: 400 15px/24px var(--font-sans); border: ' + (erro ? '2px solid #bd4646' : '1px solid #e3e2dc'); };
+    var errCod = f.erro && !codN, errDesc = f.erro && !f.desc.trim();
+
+    var nPend = s.pendentes.length, linhasFora = s.pendentes.reduce(function (a, p) { return a + p.linhas; }, 0);
+    return {
+      fraseA: tipos.length + ' códigos mapeados. ',
+      fraseB: nPend ? nPend + (nPend === 1 ? ' código novo do SAP' : ' códigos novos do SAP') + ' deixaram ' + linhasFora + ' linhas fora' : 'Todos os códigos da última carga estão mapeados',
+      fraseC: nPend ? ' da carga de 04/11/2026. Diga o que cada um significa e importe os movimentos de novo.' : '. Importe os movimentos de novo para trazer as linhas que ficaram de fora.',
+      temPendentes: nPend > 0, pendentes: pendentes,
+      temAviso: !!s.aviso, aviso: s.aviso,
+      totalTipos: tipos.length, abas: abas, linhas: linhas,
+      tabelaVazia: linhas.length === 0,
+      vazioTexto: 'Nenhum tipo cadastrado para ' + (nomes[s.origem] || 'esta origem') + '. Use o formulário ao lado.',
+      fSistema: f.sistema, fCodigo: f.codigo, fDesc: f.desc,
+      mudarSistema: function (e) { setF({ sistema: e.target.value }); },
+      mudarCodigo: function (e) { setF({ codigo: e.target.value }); },
+      mudarDesc: function (e) { setF({ desc: e.target.value }); },
+      fEntrada: f.sentido === 'IN', fSaida: f.sentido === 'OUT',
+      fEntradaStyle: sentidoStyle(f.sentido === 'IN', 'IN', true), fSaidaStyle: sentidoStyle(f.sentido === 'OUT', 'OUT', true),
+      formEntrada: function () { setF({ sentido: 'IN' }); }, formSaida: function () { setF({ sentido: 'OUT' }); },
+      codigoExiste: !!existente, proximaVersao: existente ? existente.v + 1 : 1,
+      erroCodigo: errCod, erroDesc: errDesc, temErroForm: errCod || errDesc,
+      codigoStyle: campo(errCod), descStyle: campo(errDesc),
+      formClasse: s.tremer === 0 ? '' : (s.tremer % 2 ? 'mro-tremer' : 'mro-tremer-b'),
+      salvarForm: function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+        if (!codN || !f.desc.trim()) { self.setState({ f: Object.assign({}, f, { erro: true }), tremer: s.tremer + 1 }); return; }
+        upsert(f.sistema, codN, f.sentido, f.desc.trim(), { f: { sistema: f.sistema, codigo: '', sentido: f.sentido, desc: '', erro: false } });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Busca global</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>body{margin:0}</style>
+</helmet>
+<div style="position: relative; width: 100%; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px">
+  <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 16px; top: 15px; pointer-events: none"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+  <input type="search" role="combobox" aria-label="Buscar material ou tela" aria-expanded="{{aberto}}" aria-controls="busca-lista" aria-autocomplete="list" aria-activedescendant="{{ativoId}}" autocomplete="off"
+    value="{{q}}" onChange="{{digitar}}" onFocus="{{abrir}}" onBlur="{{fecharDepois}}" onKeyDown="{{tecla}}"
+    placeholder="Buscar material por código ou descrição" style="{{inputStyle}}">
+  <sc-if value="{{temTexto}}" hint-placeholder-val="{{false}}">
+    <button type="button" aria-label="Limpar busca" onMouseDown="{{limpar}}" style="position: absolute; right: 6px; top: 6px; width: 36px; height: 36px; display: grid; place-items: center; border: 0; border-radius: 8px; background: transparent; color: #66746e; cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </sc-if>
+
+  <sc-if value="{{aberto}}" hint-placeholder-val="{{false}}">
+    <div id="busca-lista" role="listbox" aria-label="Resultados da busca" onMouseDown="{{segurarFoco}}" style="{{painelStyle}}">
+
+      <!-- Sem texto: recentes e atalhos -->
+      <sc-if value="{{semTexto}}" hint-placeholder-val="{{true}}">
+        <sc-if value="{{temRecentes}}" hint-placeholder-val="{{true}}">
+          <p style="margin: 0; padding: 12px 16px 6px; font: 600 11px/14px var(--font-sans); letter-spacing: 0.1em; color: #66746e">BUSCAS RECENTES</p>
+          <sc-for list="{{recentes}}" as="r" hint-placeholder-count="2">
+            <button type="button" id="{{r.id}}" role="option" aria-selected="{{r.ativo}}" onClick="{{r.usar}}" onMouseEnter="{{r.focar}}" style="{{r.estilo}}">
+              <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              <span style="flex: 1">{{r.texto}}</span>
+            </button>
+          </sc-for>
+        </sc-if>
+        <p style="margin: 0; padding: 12px 16px 6px; font: 600 11px/14px var(--font-sans); letter-spacing: 0.1em; color: #66746e">ATALHOS</p>
+        <sc-for list="{{atalhos}}" as="a" hint-placeholder-count="3">
+          <a id="{{a.id}}" role="option" aria-selected="{{a.ativo}}" href="{{a.href}}" onMouseEnter="{{a.focar}}" style="{{a.estilo}}">
+            <span aria-hidden="true" style="{{a.iconeStyle}}">{{a.icone}}</span>
+            <span style="flex: 1">{{a.texto}}</span>
+            <span style="font: 600 12px/16px var(--font-sans); color: #4b6257; font-variant-numeric: tabular-nums">{{a.num}}</span>
+          </a>
+        </sc-for>
+      </sc-if>
+
+      <!-- Com texto: materiais + telas -->
+      <sc-if value="{{temMateriais}}" hint-placeholder-val="{{false}}">
+        <p style="margin: 0; padding: 12px 16px 6px; font: 600 11px/14px var(--font-sans); letter-spacing: 0.1em; color: #66746e">POSIÇÕES · {{nMateriais}}</p>
+        <sc-for list="{{materiais}}" as="m" hint-placeholder-count="4">
+          <a id="{{m.id}}" role="option" aria-selected="{{m.ativo}}" href="Materiais.dc.html" onClick="{{m.registrar}}" onMouseEnter="{{m.focar}}" style="{{m.estilo}}">
+            <span style="{{m.classeStyle}}">{{m.abc}}</span>
+            <span style="flex: 1; min-width: 0">
+              <span style="display: block; font: 600 14px/20px var(--font-sans); white-space: nowrap; overflow: hidden; text-overflow: ellipsis"><sc-for list="{{m.desc}}" as="p" hint-placeholder-count="1"><span style="{{p.estilo}}">{{p.t}}</span></sc-for></span>
+              <span style="display: block; font: 500 12px/16px var(--font-sans); color: #66746e; font-variant-numeric: tabular-nums"><sc-for list="{{m.code}}" as="p" hint-placeholder-count="1"><span style="{{p.estilo}}">{{p.t}}</span></sc-for> · {{m.local}}</span>
+            </span>
+            <span style="{{m.seloStyle}}"><span aria-hidden="true">{{m.seloIcone}}</span>{{m.selo}}</span>
+          </a>
+        </sc-for>
+      </sc-if>
+      <sc-if value="{{temTelas}}" hint-placeholder-val="{{false}}">
+        <p style="margin: 0; padding: 12px 16px 6px; font: 600 11px/14px var(--font-sans); letter-spacing: 0.1em; color: #66746e">IR PARA</p>
+        <sc-for list="{{telas}}" as="t" hint-placeholder-count="2">
+          <a id="{{t.id}}" role="option" aria-selected="{{t.ativo}}" href="{{t.href}}" onClick="{{t.registrar}}" onMouseEnter="{{t.focar}}" style="{{t.estilo}}">
+            <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            <span style="flex: 1"><sc-for list="{{t.nome}}" as="p" hint-placeholder-count="1"><span style="{{p.estilo}}">{{p.t}}</span></sc-for></span>
+            <span style="font-size: 12px; line-height: 16px; color: #66746e">{{t.grupo}}</span>
+          </a>
+        </sc-for>
+      </sc-if>
+
+      <sc-if value="{{nada}}" hint-placeholder-val="{{false}}">
+        <div style="padding: 20px 16px; text-align: center">
+          <p style="margin: 0; font-weight: 600">Nada encontrado para “{{q}}”</p>
+          <p style="margin: 4px 0 0; font: 400 13px/20px var(--font-sans); color: #66746e">Confira o código (com ou sem espaços, tanto faz) ou busque por parte da descrição.</p>
+          <a href="Materiais.dc.html" style="margin-top: 10px; min-height: 44px; display: inline-flex; align-items: center; font: 600 14px/20px var(--font-sans); color: #1c684c; text-decoration: none">Cadastrar um material novo →</a>
+        </div>
+      </sc-if>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 16px; border-top: 1px solid #e3e2dc; background: #f5f4ee; font: 500 12px/16px var(--font-sans); color: #4b6257">
+        <span><b style="font-weight: 600">↑ ↓</b> navegar · <b style="font-weight: 600">Enter</b> abrir · <b style="font-weight: 600">Esc</b> fechar</span>
+        <sc-if value="{{temTexto}}" hint-placeholder-val="{{false}}"><a href="Materiais.dc.html" onClick="{{registrarBusca}}" style="min-height: 32px; display: inline-flex; align-items: center; font: 600 13px/18px var(--font-sans); color: #1c684c; text-decoration: none">Ver tudo em Materiais →</a></sc-if>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":460,"height":60}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { q: '', aberto: false, visivel: false, ativo: 0, recentes: ['Rolamento', '0000 0045 1180'] };
+    this.base = [
+      ['0000 0012 3456', 'Rolamento 6205 2RS', 'Almox. central', 'ruptura', 'A'],
+      ['0000 0045 1180', 'Correia B-52', 'Oficina campo', 'abaixo', 'A'],
+      ['0000 0031 7720', 'Bico pulverizador 110-02', 'Almox. central', 'abaixo', 'A'],
+      ['0000 0009 4412', 'Óleo hidráulico 68 (20 L)', 'Posto combustível', 'abaixo', 'B'],
+      ['0000 0066 0301', 'Filtro de ar primário', 'Oficina campo', 'ruptura', 'A'],
+      ['0000 0078 2093', 'Mangueira 1/2" alta pressão', 'Almox. central', 'parado', 'C'],
+      ['0000 0021 0045', 'Graxa de lítio EP2 (1 kg)', 'Posto combustível', 'saudavel', 'B'],
+      ['0000 0102 5521', 'Parafuso sextavado M12 × 40', 'Almox. central', 'saudavel', 'C'],
+      ['0000 0055 7802', 'Faca da plataforma de corte', 'Oficina campo', 'saudavel', 'B'],
+      ['0000 0066 0410', 'Filtro separador de combustível', 'Posto combustível', 'saudavel', 'A'],
+      ['0000 0088 1290', 'Junta homocinética', 'Almox. central', 'nc', 'NC'],
+      ['0000 0012 3810', 'Rolamento 6305 ZZ', 'Almox. central', 'saudavel', 'B'],
+      ['0000 0071 4402', 'Corrente de transmissão 60-1', 'Oficina campo', 'abaixo', 'B'],
+      ['0000 0093 0117', 'Lâmpada de farol LED 24 V', 'Oficina campo', 'saudavel', 'C'],
+      ['0000 0047 2210', 'Bucha do braço oscilante', 'Oficina campo', 'abaixo', 'B'],
+      ['0000 0120 0083', 'Sensor de rotação', 'Almox. central', 'ruptura', 'A'],
+      ['0000 0064 3391', 'Mola do assento do operador', 'Oficina campo', 'abaixo', 'C'],
+      ['0000 0015 9920', 'Retentor 45 × 62 × 8', 'Almox. central', 'abaixo', 'B']
+    ];
+    this.telas = [
+      ['Visão geral', 'VisaoGeral.dc.html', 'Análise', 'painel inicio dashboard'],
+      ['Materiais', 'Materiais.dc.html', 'Análise', 'catalogo itens posicoes'],
+      ['Planejamento', 'Planejamento.dc.html', 'Análise', 'meu plano casos validar exportar'],
+      ['Importar dados', 'ImportarDados.dc.html', 'Dados', 'planilha carga upload excel mestres movimentos'],
+      ['Regras e letras', 'RegrasLetras.dc.html', 'Regras do cálculo', 'abc pqr xyz comprabilidade cortes classes'],
+      ['Tipos de movimento', 'TiposMovimento.dc.html', 'Regras do cálculo', 'codigos entrada saida sap'],
+      ['Nível de serviço', 'NivelServico.dc.html', 'Regras do cálculo', 'matriz v3 meta'],
+      ['Matriz TMER', 'MatrizTmer.dc.html', 'Regras do cálculo', 'dias reposicao'],
+      ['Seu plano', 'PlanosAtivo.dc.html', 'Conta', 'assinatura fatura pagamento pix boleto'],
+      ['Minha conta', 'Conta.dc.html', 'Conta', 'perfil senha email usuario dados lgpd']
+    ];
+  }
+  componentWillUnmount() { clearTimeout(this.t1); clearTimeout(this.t2); }
+  renderVals() {
+    var self = this, s = this.state;
+    var semAcento = function (t) { return String(t).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); };
+    var q = s.q.trim(), nq = semAcento(q), digitos = q.replace(/\D/g, '');
+    var soNumero = digitos.length >= 2 && /^[\d\s.\-]+$/.test(q);
+
+    // Divide o texto em pedaços para destacar o trecho encontrado
+    var partes = function (texto, termo) {
+      if (!termo) return [{ t: texto, estilo: '' }];
+      var i = semAcento(texto).indexOf(termo);
+      if (i < 0) return [{ t: texto, estilo: '' }];
+      var dest = 'background: #f8edda; color: #0b2a20; border-radius: 3px; box-shadow: 0 0 0 1px #f0c56e';
+      return [{ t: texto.slice(0, i), estilo: '' }, { t: texto.slice(i, i + termo.length), estilo: dest }, { t: texto.slice(i + termo.length), estilo: '' }];
+    };
+    var partesCodigo = function (code) {
+      if (!soNumero) return partes(code, nq);
+      // casa os dígitos ignorando os espaços do código
+      var semEsp = code.replace(/\s/g, ''), i = semEsp.indexOf(digitos);
+      if (i < 0) return [{ t: code, estilo: '' }];
+      var ini = -1, fim = -1, n = 0;
+      for (var k = 0; k < code.length; k++) { if (code[k] === ' ') continue; if (n === i) ini = k; if (n === i + digitos.length - 1) { fim = k + 1; break; } n++; }
+      var dest = 'background: #f8edda; color: #0b2a20; border-radius: 3px; box-shadow: 0 0 0 1px #f0c56e';
+      return [{ t: code.slice(0, ini), estilo: '' }, { t: code.slice(ini, fim), estilo: dest }, { t: code.slice(fim), estilo: '' }];
+    };
+
+    var achados = [];
+    if (q) {
+      this.base.forEach(function (m) {
+        var code = m[0], desc = m[1], local = m[2], pts = 0;
+        var nd = semAcento(desc);
+        if (soNumero && code.replace(/\s/g, '').indexOf(digitos) >= 0) pts = code.replace(/\s/g, '').indexOf(digitos) === 0 ? 100 : 80;
+        else if (nd.indexOf(nq) === 0) pts = 70;
+        else if ((' ' + nd).indexOf(' ' + nq) >= 0) pts = 60;
+        else if (nd.indexOf(nq) >= 0) pts = 40;
+        else if (semAcento(code).indexOf(nq) >= 0) pts = 30;
+        else if (semAcento(local).indexOf(nq) >= 0) pts = 20;
+        if (pts) achados.push({ m: m, pts: pts });
+      });
+      achados.sort(function (a, b) { return b.pts - a.pts; });
+    }
+    var telasAchadas = q && !soNumero ? this.telas.filter(function (t) { return semAcento(t[0] + ' ' + t[3]).indexOf(nq) >= 0; }).slice(0, 3) : [];
+    var mats = achados.slice(0, 6);
+
+    var selos = {
+      ruptura: ['●', 'Ruptura', 'background: #f9e6e4; color: #a83a3a;'], abaixo: ['▲', 'Abaixo do PP', 'background: #fbeedc; color: #94560f;'],
+      parado: ['■', 'Parado', 'background: #eee8e5; color: #76584c;'], saudavel: ['✓', 'Saudável', 'background: #e2efe9; color: #1c684c;'],
+      nc: ['○', 'Sem cálculo', 'background: #f5f4ee; color: #4b6257;']
+    };
+    var classes = { A: 'background: #e2efe9; color: #1c684c;', B: 'background: #f8edda; color: #8a6420;', C: 'background: #eee8e5; color: #76584c;', NC: 'background: #ffffff; color: #4b6257; border: 1px solid #e3e2dc;' };
+
+    var idx = 0, ativo = s.ativo;
+    var linha = function (i) {
+      return 'min-height: 48px; width: 100%; display: flex; align-items: center; gap: 12px; padding: 8px 16px; border: 0; text-align: left; cursor: pointer; text-decoration: none; color: #20322c; font: 500 14px/20px var(--font-sans); transition: background-color .12s ease; background: ' + (i === ativo ? '#f0f6f2' : 'transparent') + '; box-shadow: ' + (i === ativo ? 'inset 3px 0 0 #1c684c' : 'none');
+    };
+    var focar = function (i) { return function () { if (self.state.ativo !== i) self.setState({ ativo: i }); }; };
+    var registrar = function (texto) { return function () { var r = [texto].concat(self.state.recentes.filter(function (x) { return x !== texto; })).slice(0, 4); self.setState({ recentes: r, aberto: false, visivel: false }); }; };
+
+    var recentes = [], atalhos = [];
+    if (!q) {
+      recentes = s.recentes.map(function (t) { var i = idx++; return { id: 'bo-' + i, texto: t, ativo: i === ativo, estilo: linha(i), focar: focar(i), usar: function () { self.setState({ q: t, ativo: 0 }); } }; });
+      atalhos = [['▲', '#c9771f', 'Posições abaixo do ponto de pedido', '23'], ['●', '#bd4646', 'Saldo negativo', '8'], ['■', '#76584c', 'Parados há mais de 180 dias', '214']].map(function (a) {
+        var i = idx++;
+        return { id: 'bo-' + i, href: 'Materiais.dc.html', texto: a[2], num: a[3], icone: a[0], iconeStyle: 'width: 16px; text-align: center; font-size: 11px; color: ' + a[1], ativo: i === ativo, estilo: linha(i), focar: focar(i) };
+      });
+    }
+    var materiais = mats.map(function (x) {
+      var m = x.m, i = idx++, sl = selos[m[3]];
+      return {
+        id: 'bo-' + i, ativo: i === ativo, estilo: linha(i), focar: focar(i), registrar: registrar(m[1]),
+        desc: partes(m[1], soNumero ? '' : nq), code: partesCodigo(m[0]), local: m[2], abc: m[4],
+        classeStyle: 'flex: none; width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; font: 600 12px/1 var(--font-sans); ' + classes[m[4]],
+        selo: sl[1], seloIcone: sl[0],
+        seloStyle: 'flex: none; display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px 3px 8px; border-radius: 999px; font: 600 11px/14px var(--font-sans); white-space: nowrap; ' + sl[2]
+      };
+    });
+    var telas = telasAchadas.map(function (t) {
+      var i = idx++;
+      return { id: 'bo-' + i, href: t[1], grupo: t[2], nome: partes(t[0], nq), ativo: i === ativo, estilo: linha(i), focar: focar(i), registrar: registrar(t[0]) };
+    });
+    var total = idx;
+
+    return {
+      q: s.q, temTexto: !!q, semTexto: !q,
+      aberto: s.aberto,
+      ativoId: s.aberto && total ? 'bo-' + Math.min(ativo, total - 1) : '',
+      inputStyle: 'width: 100%; height: 48px; padding: 12px 44px 12px 44px; border-radius: 10px; background: #ffffff; font: 400 15px/24px var(--font-sans); color: #20322c; transition: border-color .15s ease, box-shadow .15s ease; border: 1px solid ' + (s.aberto ? '#1c684c' : '#e3e2dc') + '; box-shadow: ' + (s.aberto ? '0 0 0 3px #e2efe9' : 'none') + '; outline: none',
+      painelStyle: 'position: absolute; left: 0; top: 56px; z-index: 40; width: max(100%, 520px); max-height: 480px; overflow: auto; background: #ffffff; border: 1px solid #e3e2dc; border-radius: 14px; box-shadow: 0 18px 40px -16px rgba(11,42,32,0.35); transform-origin: top left; transition: opacity .16s ease, transform .18s cubic-bezier(.2,.7,.2,1); opacity: ' + (s.visivel ? 1 : 0) + '; transform: ' + (s.visivel ? 'none' : 'translateY(-6px) scale(.98)'),
+      temRecentes: recentes.length > 0, recentes: recentes, atalhos: atalhos,
+      temMateriais: materiais.length > 0, materiais: materiais, nMateriais: achados.length > 6 ? '6 de ' + achados.length : String(achados.length),
+      temTelas: telas.length > 0, telas: telas,
+      nada: !!q && total === 0,
+      registrarBusca: registrar(q),
+      digitar: function (e) { self.setState({ q: e.target.value, ativo: 0, aberto: true, visivel: true }); },
+      abrir: function () {
+        clearTimeout(self.t2);
+        self.setState({ aberto: true, visivel: false, ativo: 0 });
+        self.t1 = setTimeout(function () { self.setState({ visivel: true }); }, 16);
+      },
+      fecharDepois: function () { self.t2 = setTimeout(function () { self.setState({ aberto: false, visivel: false }); }, 140); },
+      segurarFoco: function (e) { if (e && e.target && e.target.tagName !== 'INPUT' && e.preventDefault) e.preventDefault(); },
+      limpar: function (e) { if (e && e.preventDefault) e.preventDefault(); self.setState({ q: '', ativo: 0 }); },
+      tecla: function (e) {
+        if (e.key === 'ArrowDown') { e.preventDefault(); self.setState({ aberto: true, visivel: true, ativo: total ? (ativo + 1) % total : 0 }); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); self.setState({ ativo: total ? (ativo - 1 + total) % total : 0 }); }
+        else if (e.key === 'Escape') { if (s.q && s.aberto) self.setState({ aberto: false, visivel: false }); else self.setState({ q: '', aberto: false, visivel: false }); }
+        else if (e.key === 'Enter') {
+          e.preventDefault();
+          var alvo = total ? document.getElementById('bo-' + Math.min(ativo, total - 1)) : null;
+          if (alvo) alvo.click();
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

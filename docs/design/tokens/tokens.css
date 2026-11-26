@@ -1,0 +1,130 @@
+/* Agro MRO Intelligence — generated from tokens.json */
+:root, [data-theme="light"] {
+  --verde-950: #0b2a20; /* Texto sobre dourado (botão de assinar); rodapé. */
+  --verde-900: #113d2f; /* Menu lateral, faixa de conclusão, painéis de destaque escuros. */
+  --verde-800: #174e3e; /* Hover no menu; texto do botão secundário. */
+  --verde-700: #1c684c; /* Ação principal DENTRO do produto (Entrar, Salvar, Abrir meu plano); classe A; status saudável. */
+  --verde-500: #3f8c6e; /* Anel de foco; classe B em gráficos; linhas de conexão. Não usar como texto sobre verde-900 (3:1). */
+  --verde-300: #8eb3a4; /* Rótulos de grupo no menu lateral, sobre verde-900 (5,3:1). */
+  --verde-100: #e2efe9; /* Texto sobre verde-900; fundo do selo Saudável e da classe A. */
+  --verde-50: #f0f6f2; /* Hover de linha; caixas de dica. */
+  --ouro-600: #b3842c; /* Classe B (selo e barras); detalhes decorativos. Como texto pequeno sobre claro não passa (3,1:1): use ouro-700. */
+  --ouro-700: #8a6420; /* Rótulos/eyebrows em CAIXA ALTA sobre creme-100, branco ou ouro-100 (4,6–5,4:1). Substitui ouro-600 como texto pequeno. */
+  --ouro-500: #d9a441; /* CTA de comprar/assinar/testar. Um por tela. Também a marca. */
+  --ouro-300: #f0c56e; /* Destaques (números, palavra-chave) sobre verde-900. */
+  --ouro-100: #f8edda; /* Faixa de implantação; fundo da classe B. */
+  --creme-100: #f5f4ee; /* Fundo das telas. */
+  --branco: #ffffff; /* Cartões, campos, tabelas. */
+  --tinta-900: #20322c; /* Texto principal. */
+  --tinta-600: #4b6257; /* Texto secundário forte. */
+  --tinta-500: #66746e; /* Texto de apoio, notas, cabeçalho de tabela (4,9:1 no branco; 4,4:1 no creme: em creme use ≥14px ou peso 600). */
+  --tinta-300: #a3aca8; /* Placeholder e desabilitado apenas (2,3:1, decorativo). Nunca para texto que precise ser lido. */
+  --borda: #e3e2dc; /* Bordas de cartões, campos e divisórias. */
+  --status-ruptura: #bd4646; /* Ruptura, saldo negativo, erro: barras, ícones, bordas de campo com erro. Texto pequeno: status-ruptura-texto. */
+  --status-ruptura-bg: #f9e6e4; /* Fundo do selo Ruptura. */
+  --status-ruptura-texto: #a83a3a; /* Texto do selo Ruptura e mensagens de erro (5,2:1 sobre status-ruptura-bg). */
+  --status-alerta: #c9771f; /* Abaixo do PP / acima do máximo: barras, ícones ▲, valor grande de KPI (≥24px). Texto pequeno: status-alerta-texto. */
+  --status-alerta-bg: #fbeedc; /* Fundo do selo de alerta. */
+  --status-alerta-texto: #94560f; /* Texto do selo de alerta (5,1:1 sobre status-alerta-bg). */
+  --status-parado: #76584c; /* Sem giro / parado +180 dias; classe C. Ícone ■. */
+  --status-parado-bg: #eee8e5; /* Fundo do selo Parado e da classe C. */
+  --sombra-foco: 0 0 0 3px #e2efe9; /* Halo do campo em foco, junto com a borda verde-700. */
+  --sombra-previa: 0 30px 60px -10px rgba(0,13,8,0.45); /* Somente a prévia do produto na landing. O app não usa sombra em cartões. */
+}
+:root {
+  --esp-4: 4px; /* Ícone e texto. */
+  --esp-8: 8px; /* Dentro de chips e selos. */
+  --esp-12: 12px; /* Entre campos próximos. */
+  --esp-16: 16px; /* Gap padrão entre itens. */
+  --esp-24: 24px; /* Padding de cartão; gap entre cartões. */
+  --esp-32: 32px; /* Entre grupos. */
+  --esp-48: 48px; /* Entre blocos de tela. */
+  --esp-80: 80px; /* Margem lateral da landing. */
+  --raio-sm: 8px; /* Chips, células da matriz, selo de classe (7px). */
+  --raio-md: 10px; /* Campos de texto. */
+  --raio-lg: 12px; /* Botões. */
+  --raio-xl: 16px; /* Cartões e painéis. */
+  --raio-pill: 999px; /* Selos de status, etiquetas. */
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --text-display-xl: 800 64px/70px var(--font-display);
+  --text-display-l: 700 44px/52px var(--font-display);
+  --text-titulo-m: 700 26px/32px var(--font-display);
+  --text-numero-l: 700 36px/40px var(--font-display);
+  --text-titulo-s: 600 18px/26px var(--font-sans);
+  --text-corpo-l: 400 19px/30px var(--font-sans);
+  --text-corpo-m: 400 15px/24px var(--font-sans);
+  --text-corpo-s: 400 13px/20px var(--font-sans);
+  --text-rotulo: 600 11px/14px var(--font-sans);
+  --text-botao: 600 15px/20px var(--font-sans);
+}
+.display-xl {
+  font-family: var(--font-display);
+  font-size: 64px;
+  line-height: 70px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+.display-l {
+  font-family: var(--font-display);
+  font-size: 44px;
+  line-height: 52px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.titulo-m {
+  font-family: var(--font-display);
+  font-size: 26px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+.numero-l {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 40px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.titulo-s {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+.corpo-l {
+  font-family: var(--font-sans);
+  font-size: 19px;
+  line-height: 30px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.corpo-m {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.corpo-s {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.rotulo {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+.botao {
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 600;
+  letter-spacing: 0;
+}

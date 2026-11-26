@@ -1,0 +1,300 @@
+<title>Leis de UX no Agro MRO</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: ficha de consulta. Cabeçalho curto, guia rápido no topo, fichas das leis em lista filtrável. */
+:root {
+  --bg: #f5f6f3;
+  --surface: #ffffff;
+  --fg: #1d2420;
+  --muted: #5b655f;
+  --line: #dde2dc;
+  --accent: #2c6a4c;
+  --accent-soft: #e3efe7;
+  --warn: #9a5a12;
+  --warn-soft: #f8ecdc;
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121714; --surface: #1a211d; --fg: #e6ebe7; --muted: #9aa69f; --line: #2c3530;
+    --accent: #7cc49d; --accent-soft: #1f3529; --warn: #e3a95e; --warn-soft: #3a2c1a;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121714; --surface: #1a211d; --fg: #e6ebe7; --muted: #9aa69f; --line: #2c3530;
+  --accent: #7cc49d; --accent-soft: #1f3529; --warn: #e3a95e; --warn-soft: #3a2c1a;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 15.5px; line-height: 1.6; }
+.wrap { max-width: 980px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; line-height: 1.15; }
+h1 { font-size: clamp(1.9rem, 4.5vw, 2.7rem); font-weight: 800; letter-spacing: -0.01em; }
+h2 { font-size: 1.4rem; font-weight: 700; }
+h3 { font-size: 1.2rem; font-weight: 700; }
+.eyebrow { font-family: var(--mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.lede { max-width: 64ch; color: var(--muted); margin: 12px 0 0; }
+header { display: grid; gap: 6px; margin-bottom: 36px; }
+.note { margin-top: 16px; max-width: 64ch; font-size: .92rem; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 6px 6px 0; }
+
+section.guide { margin-bottom: 48px; }
+.guide h2 { margin-bottom: 6px; }
+.guide p.sub { color: var(--muted); margin: 0 0 16px; }
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; }
+th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+th { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+td:first-child { font-weight: 600; width: 38%; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font-size: .82rem; padding: 2px 9px; border-radius: 999px; border: 1px solid var(--line); color: var(--fg); text-decoration: none; background: var(--bg); white-space: nowrap; }
+a.chip:hover, a.chip:focus-visible { border-color: var(--accent); color: var(--accent); outline: none; }
+
+.toolbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); padding-block: 12px; display: grid; gap: 10px; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.toolbar-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+#busca { flex: 1 1 240px; min-width: 0; font: inherit; padding: 9px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--fg); }
+#busca:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.filter { font: inherit; font-size: .85rem; padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; }
+.filter[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--bg); }
+.filter:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.count { font-family: var(--mono); font-size: .78rem; color: var(--muted); }
+
+#leis { display: grid; gap: 16px; }
+article { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; display: grid; gap: 14px; scroll-margin-top: 130px; }
+article:target { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 12px; align-items: baseline; }
+.cat { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.diz { font-size: 1.05rem; margin: 0; max-width: 70ch; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; }
+.cols > div { min-width: 0; }
+.lbl { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+.lbl.warn { color: var(--warn); }
+ul { margin: 0; padding-left: 1.1em; }
+li + li { margin-top: 3px; }
+.mro { background: var(--accent-soft); border-radius: 6px; padding: 12px 14px; }
+.erro { background: var(--warn-soft); border-radius: 6px; padding: 12px 14px; }
+.mro p, .erro p { margin: 0; }
+code { font-family: var(--mono); font-size: .86em; background: var(--bg); padding: 1px 5px; border-radius: 4px; }
+.empty { color: var(--muted); padding: 24px 0; }
+@media (max-width: 680px) { .cols { grid-template-columns: 1fr; } article { padding: 16px; } }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Referência de design · Agro MRO</span>
+    <h1>Leis de UX: quando usar cada uma</h1>
+    <p class="lede">As 18 leis que você listou, cada uma com o que diz, os sinais de que é a hora de aplicar, um exemplo no Agro MRO e o erro mais comum. Comece pelo guia rápido quando estiver diante de uma tela; vá às fichas quando quiser entender a lei.</p>
+    <p class="note">Essas leis são heurísticas, não regras matemáticas. Elas dizem onde olhar e ajudam a justificar uma escolha. Quem dá a palavra final é ver um comprador ou almoxarife real usando a tela.</p>
+  </header>
+
+  <section class="guide" id="guia">
+    <h2>Guia rápido: situação → leis a consultar</h2>
+    <p class="sub">Achou sua situação? Clique na lei para abrir a ficha.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Estou desenhando…</th><th>Consulte</th></tr></thead>
+        <tbody id="guia-corpo"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="toolbar">
+      <div class="toolbar-row">
+        <label for="busca" class="eyebrow" style="flex-basis:100%">Fichas das leis</label>
+        <input id="busca" type="search" placeholder="Buscar: tabela, importação, botão, forecast…" autocomplete="off">
+        <span class="count" id="contador"></span>
+      </div>
+      <div class="toolbar-row" id="filtros" role="group" aria-label="Filtrar por tipo"></div>
+    </div>
+    <div id="leis"></div>
+    <p class="empty" id="vazio" hidden>Nenhuma lei bate com essa busca. Tente outra palavra ou limpe o filtro.</p>
+  </section>
+</div>
+
+<script>
+const CATS = {
+  escolha: "Decisão e escolha",
+  interacao: "Interação e velocidade",
+  percepcao: "Percepção visual",
+  memoria: "Memória e experiência",
+  projeto: "Produto e projeto"
+};
+
+const LEIS = [
+  { id: "hick", nome: "Lei de Hick", cat: "escolha",
+    diz: "O tempo para decidir cresce com a quantidade e a complexidade das opções.",
+    quando: ["Menus, listas de filtros ou barras de ação com muitas opções.", "O usuário trava ou pergunta “o que eu clico aqui?”.", "Primeiro uso, quando a pessoa ainda não conhece o sistema."],
+    mro: "Na tabela de estoque, em vez de abrir 12 filtros de cara, mostre atalhos prontos como “Itens AX críticos”, “Parados há +180 dias” e “Abaixo do mínimo”, e deixe o resto em “Filtros avançados”.",
+    erro: "Cortar opções que o usuário experiente precisa, sem deixar um caminho para elas. Reduzir não é remover, é organizar em etapas." },
+  { id: "fitts", nome: "Lei de Fitts", cat: "interacao",
+    diz: "O tempo para acertar um alvo depende da distância até ele e do tamanho dele.",
+    quando: ["Definindo onde ficam o botão principal e as ações frequentes.", "A tela vai ser usada em tablet ou celular.", "Existe uma ação destrutiva perto de uma ação comum."],
+    mro: "No book fotográfico, usado com tablet no almoxarifado, faça alvos de pelo menos 44 px. “Aplicar filtros” fica colado aos filtros, e “Excluir importação” fica longe de “Confirmar importação”.",
+    erro: "Deixar a ação da linha só como um ícone de 16 px, ou colocar “Excluir” ao lado de “Salvar”, onde um clique errado custa caro." },
+  { id: "jakob", nome: "Lei de Jakob", cat: "escolha",
+    diz: "As pessoas passam a maior parte do tempo em outros sistemas e esperam que o seu funcione igual.",
+    quando: ["Desenhando algo que existe em todo lugar: tabela, upload, login, busca.", "Você está tentado a inventar uma interação “diferente”.", "Seu público vem de uma ferramenta dominante."],
+    mro: "Seu usuário vive no Excel e no ERP (SAP, TOTVS). A tabela deve ordenar ao clicar no cabeçalho, aceitar colunas redimensionáveis e ter busca no topo. A importação aceita arrastar o arquivo.",
+    erro: "Inventar um gesto novo para uma tarefa comum. O outro erro é copiar um padrão ruim só porque é popular." },
+  { id: "proximidade", nome: "Lei da Proximidade", cat: "percepcao",
+    diz: "Elementos próximos entre si são percebidos como um grupo.",
+    quando: ["Montando formulários, cards de KPI ou barras de filtros.", "A tela parece “bagunçada” mesmo sem ter muita coisa.", "Rótulos e campos ficam ambíguos."],
+    mro: "No painel, junte os KPIs de valor (valor em estoque, valor parado) e separe com mais espaço os de giro (cobertura em dias, giro anual). Cada rótulo fica colado ao seu campo e longe do campo anterior.",
+    erro: "Usar o mesmo espaçamento em tudo, o que apaga os grupos. Ou deixar o rótulo no meio do caminho entre dois campos." },
+  { id: "semelhanca", nome: "Lei da Semelhança", cat: "percepcao",
+    diz: "Elementos parecidos (na cor, forma, tamanho ou estilo) são percebidos como do mesmo tipo ou com a mesma função.",
+    quando: ["Definindo o estilo de botões, links, badges e status.", "Itens com funções diferentes estão com a mesma cara.", "O usuário clica em algo que não é clicável, ou ignora algo que é."],
+    mro: "Todo status de estoque usa o mesmo formato de badge: “Ruptura”, “Abaixo do mínimo”, “Parado +180 dias”, cada um com sua cor fixa em todas as telas. Classe A tem sempre a mesma cor no painel, na tabela e na matriz ABC/XYZ. Tudo que é clicável na tabela tem o mesmo estilo de link.",
+    erro: "Dar o mesmo visual a coisas diferentes (um rótulo que parece botão) ou mudar o estilo da mesma coisa entre telas. Isso quebra a confiança no padrão e o usuário passa a duvidar de tudo." },
+  { id: "miller", nome: "Lei de Miller", cat: "memoria",
+    diz: "A memória de trabalho guarda poucos itens por vez (o número clássico é 7±2, estudos recentes falam em cerca de 4 blocos).",
+    quando: ["O usuário precisa lembrar algo de uma tela para usar em outra.", "Códigos ou números longos aparecem na tela.", "Há muitos dados soltos que podem ser agrupados."],
+    mro: "Mostre os filtros ativos como chips no topo da tabela, para ninguém ter que lembrar o que filtrou. Exiba códigos de material longos em blocos (<code>0000 0012 3456</code>) para facilitar a conferência.",
+    erro: "Usar a lei como regra de “no máximo 7 itens no menu”. Ela fala de memória, não do que está visível; itens à vista podem ser escaneados." },
+  { id: "doherty", nome: "Limiar de Doherty", cat: "interacao",
+    diz: "A produtividade sobe quando o sistema responde em menos de 400 ms.",
+    quando: ["Interações repetidas o tempo todo: filtrar, buscar, ordenar.", "Processos que demoram segundos ou minutos.", "Usuários reclamando que o sistema “é lento”."],
+    mro: "Com Livewire, cada filtro faz uma ida ao servidor. Use <code>wire:model.live.debounce</code>, <code>wire:loading</code> e skeleton nas tabelas. Rode a importação em fila (job) com barra de progresso, e pré-calcule o forecast em vez de calcular ao abrir a tela.",
+    erro: "Mostrar um spinner genérico num processo de dois minutos. Quando não dá para ser rápido, mostre progresso real e o que está acontecendo." },
+  { id: "restorff", nome: "Efeito Von Restorff", cat: "percepcao",
+    diz: "Entre itens parecidos, o que é diferente é o mais notado e lembrado.",
+    quando: ["Precisa que o usuário veja uma ação principal ou um alerta.", "Uma tabela tem itens que exigem atenção.", "Há botões demais competindo."],
+    mro: "Itens em ruptura ou abaixo do estoque mínimo ganham destaque na tabela com cor e ícone. Cada tela tem um único botão primário, como “Importar planilha”.",
+    erro: "Destacar tudo: se tudo é vermelho, nada é. E depender só de cor, o que falha para daltônicos; junte cor com ícone ou texto." },
+  { id: "serial", nome: "Efeito de Posição Serial", cat: "memoria",
+    diz: "Lembramos melhor do primeiro e do último item de uma sequência.",
+    quando: ["Definindo a ordem do menu, de abas ou de colunas.", "Listas longas onde algo importante pode se perder.", "Sequências de passos ou de informações."],
+    mro: "No menu lateral, “Painel” vem primeiro e “Importar dados” ou “Configurações” no fim. Na tabela, código e descrição abrem a linha, e status e ações a fecham.",
+    erro: "Enterrar o item mais importante no meio de uma lista longa." },
+  { id: "picofim", nome: "Regra do Pico-Fim", cat: "memoria",
+    diz: "As pessoas julgam uma experiência pelo momento mais intenso e pelo final, não pela média.",
+    quando: ["Fluxos longos: importação, onboarding, configuração.", "Momentos de erro, que viram o “pico” negativo.", "O fim de qualquer tarefa importante."],
+    mro: "Ao terminar a importação, mostre um resumo que impressione: “4.312 itens, R$ 1,2 mi em estoque, 18% parado há mais de 180 dias”, com botão para o painel. Se der erro, diga a linha e a coluna do problema.",
+    erro: "Encerrar um fluxo longo com um toast “Sucesso!” que some em 2 segundos, e ignorar o pico negativo dos erros." },
+  { id: "zeigarnik", nome: "Efeito Zeigarnik", cat: "memoria",
+    diz: "Tarefas incompletas ficam na cabeça mais do que as concluídas.",
+    quando: ["Implantação ou configuração em várias etapas.", "Você precisa que o cliente volte e termine algo.", "Perfis ou cadastros que ficam pela metade."],
+    mro: "Um checklist de implantação no painel: “Estoque importado ✓”, “Importar consumo dos últimos 12 meses”, “Revisar classificação ABC”, “Cadastrar fotos no book”. Isso puxa o cliente a completar o setup.",
+    erro: "Usar de forma manipuladora, com pendências falsas, ou deixar o checklist para sempre na tela depois de concluído." },
+  { id: "pragnanz", nome: "Lei de Prägnanz", cat: "percepcao",
+    diz: "Interpretamos formas complexas da maneira mais simples possível.",
+    quando: ["Escolhendo o tipo de gráfico.", "Desenhando ícones ou o layout do painel.", "Uma visualização exige explicação para ser entendida."],
+    mro: "Mostre a matriz ABC/XYZ como uma grade 3×3 com contagem e valor em cada célula, em vez de um gráfico de dispersão ou de pizza com nove fatias.",
+    erro: "Gráficos 3D, pizzas com doze fatias, ícones detalhados demais. O olho simplifica e lê errado." },
+  { id: "conectividade", nome: "Conectividade Uniforme", cat: "percepcao",
+    diz: "Elementos ligados visualmente (por linha, borda ou fundo) parecem mais relacionados do que elementos só próximos.",
+    quando: ["A proximidade sozinha não deixa o grupo claro.", "Etapas, timelines e fluxos.", "Itens selecionados ou relacionados numa lista."],
+    mro: "O stepper da importação (Arquivo → Colunas → Prévia → Concluído) tem os passos ligados por uma linha. Os filtros ativos ficam dentro de uma mesma barra com fundo próprio.",
+    erro: "Colocar borda em tudo, caixas dentro de caixas. Vira ruído e o agrupamento some." },
+  { id: "tesler", nome: "Lei de Tesler", cat: "projeto",
+    diz: "Toda tarefa tem uma complexidade que não some; você só decide se o sistema ou o usuário cuida dela.",
+    quando: ["Decidindo o que automatizar e quais defaults usar.", "Pensando em exigir que o usuário siga um formato rígido.", "Uma tela simples demais está gerando suporte."],
+    mro: "As planilhas dos clientes chegam bagunçadas. O sistema absorve isso: detecta as colunas, normaliza unidades e datas, lembra o mapeamento da última importação. No forecast, escolha o método sozinho e deixe o ajuste fino como opção avançada.",
+    erro: "Simplificar a tela empurrando a complexidade para o usuário (“a planilha tem que estar no nosso modelo exato”). Ou esconder tanto que o usuário avançado não consegue ajustar nada." },
+  { id: "postel", nome: "Lei de Postel", cat: "projeto",
+    diz: "Seja liberal no que aceita e conservador no que entrega.",
+    quando: ["Campos de entrada, formulários e importações.", "Dados vindos de fontes diferentes.", "Exportações e integrações."],
+    mro: "A importação aceita .xlsx, .xls e .csv com ponto e vírgula ou vírgula, datas dd/mm/aaaa ou aaaa-mm-dd, e números “1.234,56” ou “1234.56”. A exportação sai sempre no mesmo formato, previsível.",
+    erro: "Aceitar tudo sem validar e sujar o banco, ou adivinhar errado em silêncio. Seja liberal, mas mostre uma prévia antes de gravar." },
+  { id: "parkinson", nome: "Lei de Parkinson", cat: "projeto",
+    diz: "Uma tarefa se expande até ocupar todo o tempo disponível para ela.",
+    quando: ["Formulários e fluxos que poderiam ser mais curtos.", "Planejando prazos de desenvolvimento.", "Tarefas sem limite de tempo ou fim claro."],
+    mro: "Na UX: preencha o que dá para preencher (dados da empresa, último mapeamento de colunas) para a tarefa acabar antes. No seu trabalho: dê um prazo curto e fechado a cada módulo, senão o painel vira três meses de ajuste fino.",
+    erro: "Confundir com pressionar o usuário com cronômetros e urgência falsa. A ideia é encurtar a tarefa, não apressar a pessoa." },
+  { id: "occam", nome: "Navalha de Occam", cat: "escolha",
+    diz: "Entre soluções que resolvem igualmente bem, prefira a mais simples.",
+    quando: ["Antes de criar uma tela ou feature nova.", "Duas propostas de layout resolvem o mesmo problema.", "Uma tela acumulou elementos ao longo do tempo."],
+    mro: "Antes de construir um “gerador de relatórios customizável”, veja se filtros salvos mais o botão Exportar já resolvem o que o cliente pediu.",
+    erro: "Simplificar até perder algo necessário. A regra é a solução mais simples que resolve, não a mais simples possível." },
+  { id: "pareto", nome: "Princípio de Pareto", cat: "projeto",
+    diz: "Cerca de 80% dos efeitos vêm de cerca de 20% das causas.",
+    quando: ["Priorizando backlog, bugs ou polimento.", "Decidindo onde investir tempo de design.", "Tem coisa demais para fazer e pouco tempo."],
+    mro: "A própria curva ABC é Pareto aplicado ao estoque. Na UX, vale o mesmo: painel, tabela de estoque e importação devem concentrar a maior parte do uso. Capriche nelas antes de polir o book fotográfico ou telas raras.",
+    erro: "Usar como desculpa para ignorar acessibilidade ou grupos menores de usuários. E tratar 80/20 como número exato; é uma tendência." }
+];
+
+const GUIA = [
+  ["Menu e navegação", ["hick", "serial", "jakob", "miller"]],
+  ["Tabela de estoque com filtros", ["hick", "jakob", "miller", "doherty", "restorff", "semelhanca"]],
+  ["Painel de KPIs", ["proximidade", "semelhanca", "pragnanz", "restorff", "pareto"]],
+  ["Status, badges e cores de categoria (ABC/XYZ)", ["semelhanca", "restorff", "jakob"]],
+  ["Gráficos (curva ABC, forecast)", ["pragnanz", "restorff"]],
+  ["Formulários e cadastros", ["proximidade", "fitts", "postel", "parkinson", "tesler"]],
+  ["Importação de planilhas", ["postel", "tesler", "doherty", "picofim", "conectividade"]],
+  ["Fluxo em etapas ou onboarding", ["zeigarnik", "picofim", "conectividade", "hick"]],
+  ["Botões e ações (principais e destrutivas)", ["fitts", "restorff", "semelhanca", "serial"]],
+  ["Mensagens de erro e alertas", ["restorff", "picofim", "postel"]],
+  ["Telas para tablet no almoxarifado (book fotográfico)", ["fitts", "doherty", "proximidade"]],
+  ["Telas lentas e processos pesados", ["doherty", "picofim"]],
+  ["Decidir se crio uma feature nova", ["occam", "pareto", "tesler"]],
+  ["Priorizar backlog e prazos", ["pareto", "parkinson", "occam"]]
+];
+
+const byId = Object.fromEntries(LEIS.map(l => [l.id, l]));
+const lista = document.getElementById("leis");
+const busca = document.getElementById("busca");
+const filtros = document.getElementById("filtros");
+const contador = document.getElementById("contador");
+const vazio = document.getElementById("vazio");
+let catAtual = "todas";
+
+document.getElementById("guia-corpo").innerHTML = GUIA.map(([sit, ids]) =>
+  `<tr><td>${sit}</td><td><div class="chips">${ids.map(id => `<a class="chip" href="#${id}">${byId[id].nome.replace(/^(Lei d[aeo] |Efeito (de )?|Regra d[oa] |Limiar de |Princípio de |Navalha de )/, "")}</a>`).join("")}</div></td></tr>`
+).join("");
+
+lista.innerHTML = LEIS.map(l => `
+  <article id="${l.id}" data-cat="${l.cat}">
+    <div class="head"><h3>${l.nome}</h3><span class="cat">${CATS[l.cat]}</span></div>
+    <p class="diz">${l.diz}</p>
+    <div class="cols">
+      <div><div class="lbl">Use quando</div><ul>${l.quando.map(q => `<li>${q}</li>`).join("")}</ul></div>
+      <div class="mro"><div class="lbl">No Agro MRO</div><p>${l.mro}</p></div>
+    </div>
+    <div class="erro"><div class="lbl warn">Erro comum</div><p>${l.erro}</p></div>
+  </article>`).join("");
+
+const cards = [...lista.querySelectorAll("article")];
+const textos = cards.map(c => c.textContent.toLowerCase());
+
+filtros.innerHTML = [["todas", "Todas"], ...Object.entries(CATS)].map(([k, v]) =>
+  `<button type="button" class="filter" data-cat="${k}" aria-pressed="${k === "todas"}">${v}</button>`).join("");
+
+function aplicar() {
+  const q = busca.value.trim().toLowerCase();
+  let n = 0;
+  cards.forEach((c, i) => {
+    const ok = (catAtual === "todas" || c.dataset.cat === catAtual) && (!q || textos[i].includes(q));
+    c.hidden = !ok; if (ok) n++;
+  });
+  contador.textContent = `${n} de ${cards.length}`;
+  vazio.hidden = n > 0;
+}
+
+filtros.addEventListener("click", e => {
+  const b = e.target.closest(".filter"); if (!b) return;
+  catAtual = b.dataset.cat;
+  filtros.querySelectorAll(".filter").forEach(x => x.setAttribute("aria-pressed", x === b));
+  aplicar();
+});
+busca.addEventListener("input", aplicar);
+
+document.querySelectorAll('a.chip').forEach(a => a.addEventListener("click", () => {
+  const id = a.getAttribute("href").slice(1);
+  if (byId[id] && document.getElementById(id).hidden) {
+    busca.value = ""; catAtual = "todas";
+    filtros.querySelectorAll(".filter").forEach(x => x.setAttribute("aria-pressed", x.dataset.cat === "todas"));
+    aplicar();
+  }
+}));
+
+aplicar();
+</script>

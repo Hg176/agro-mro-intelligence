@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Landing</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+a:focus-visible,button:focus-visible{outline:2px solid #1c684c;outline-offset:2px;box-shadow:0 0 0 5px #e2efe9}
+</style>
+</helmet>
+<div style="font-family: var(--font-sans); color: var(--tinta-900); background: var(--branco); font-size: 15px; line-height: 24px">
+
+<!-- ============ HERO (verde-900 + curvas de nível) ============ -->
+<header style="position: relative; overflow: hidden; background: var(--verde-900); color: var(--branco)">
+  <svg aria-hidden="true" viewBox="0 0 1440 820" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none" fill="none" stroke="#d9a441" stroke-opacity="0.09" stroke-width="1.5">
+    <path d="M0 70 C240 30 420 120 700 80 S1180 20 1440 60"/>
+    <path d="M0 160 C260 120 460 210 760 170 S1200 110 1440 150"/>
+    <path d="M0 260 C200 230 480 300 780 260 S1160 200 1440 250"/>
+    <path d="M0 370 C300 330 520 410 820 360 S1220 310 1440 360"/>
+    <path d="M0 480 C240 450 500 520 800 470 S1180 420 1440 470"/>
+    <path d="M0 590 C280 560 520 640 840 590 S1220 540 1440 590"/>
+    <path d="M0 700 C220 670 520 740 820 700 S1200 650 1440 700"/>
+    <path d="M0 800 C300 770 560 840 860 800 S1240 760 1440 800"/>
+  </svg>
+  <nav aria-label="Principal" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 20px var(--esp-80); display: flex; flex-wrap: wrap; align-items: center; gap: 24px">
+    <a href="#topo" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco)">
+      <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+      </span>
+      <span style="display: flex; flex-direction: column; line-height: 1">
+        <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+        <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+      </span>
+    </a>
+    <div style="flex: 1 1 360px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px">
+      <a href="#como-funciona" style="color: var(--verde-100); text-decoration: none; font-size: 14px; padding: 10px 12px">Como funciona</a>
+      <a href="#recursos" style="color: var(--verde-100); text-decoration: none; font-size: 14px; padding: 10px 12px">O que você recebe</a>
+      <a href="#preco" style="color: var(--verde-100); text-decoration: none; font-size: 14px; padding: 10px 12px">Preço</a>
+      <a href="#duvidas" style="color: var(--verde-100); text-decoration: none; font-size: 14px; padding: 10px 12px">Dúvidas</a>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px">
+      <a href="Login.dc.html" style="color: var(--branco); text-decoration: none; font-weight: 600; font-size: 14px; padding: 12px 16px; min-height: 44px; display: inline-flex; align-items: center">Entrar</a>
+      <a href="#preco" style="background: var(--ouro-500); color: var(--verde-950); text-decoration: none; font: var(--text-botao); border-radius: var(--raio-lg); padding: 12px 20px; min-height: 44px; display: inline-flex; align-items: center">Testar grátis</a>
+    </div>
+  </nav>
+
+  <div id="topo" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 56px var(--esp-80) 96px; display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+    <div style="flex: 1 1 520px; min-width: 0">
+      <span style="display: inline-flex; align-items: center; gap: 8px; background: rgba(240,197,110,0.12); border: 1px solid rgba(240,197,110,0.25); color: var(--ouro-300); border-radius: var(--raio-pill); padding: 6px 12px; font: var(--text-rotulo); letter-spacing: 0.1em">
+        <span aria-hidden="true" style="width: 6px; height: 6px; border-radius: 50%; background: var(--ouro-300)"></span>INTELIGÊNCIA PARA ESTOQUE MRO
+      </span>
+      <h1 style="margin: 24px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 60px; line-height: 66px; letter-spacing: -0.03em">Seu almoxarifado já sabe onde está o dinheiro parado. <span style="color: var(--ouro-300)">A gente traduz.</span></h1>
+      <p style="margin: 24px 0 0; font: var(--text-corpo-l); color: var(--verde-100); max-width: 560px">Envie as planilhas que seu ERP já exporta. Em minutos você vê o que comprar, o que parar de comprar e quanto manter de cada item, com a conta explicada linha por linha.</p>
+      <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px">
+        <a href="#preco" style="background: var(--ouro-500); color: var(--verde-950); text-decoration: none; font: var(--text-botao); border-radius: var(--raio-lg); padding: 16px 24px; min-height: 56px; display: inline-flex; align-items: center">Testar grátis com 10 itens</a>
+        <a href="#como-funciona" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(226,239,233,0.3); color: var(--branco); text-decoration: none; font: var(--text-botao); border-radius: var(--raio-lg); padding: 16px 24px; min-height: 56px; display: inline-flex; align-items: center">Ver como funciona</a>
+      </div>
+      <ul style="list-style: none; margin: 28px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 13px; color: var(--verde-100)">
+        <li style="display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sem cartão de crédito</li>
+        <li style="display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Pronto em 5 minutos</li>
+        <li style="display: flex; align-items: center; gap: 6px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Seus dados ficam só com você</li>
+      </ul>
+    </div>
+
+    <!-- Prévia do produto (único elemento com sombra) -->
+    <figure aria-label="Prévia da Visão geral, exemplo ilustrativo" style="flex: 1 1 520px; min-width: 0; margin: 0; background: var(--branco); color: var(--tinta-900); border-radius: var(--raio-xl); box-shadow: var(--sombra-previa); overflow: hidden">
+      <div style="display: flex; align-items: center; gap: 6px; padding: 12px 16px; border-bottom: 1px solid var(--borda)">
+        <span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: var(--status-ruptura)"></span>
+        <span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: var(--ouro-500)"></span>
+        <span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: var(--verde-500)"></span>
+        <span style="flex: 1; text-align: center; font-size: 12px; color: var(--tinta-500)">Visão geral · exemplo ilustrativo</span>
+      </div>
+      <div style="padding: 16px; display: flex; flex-direction: column; gap: 12px">
+        <div style="background: var(--verde-900); color: var(--branco); border-radius: 12px; padding: 12px 14px; display: flex; gap: 10px; font-size: 13px; line-height: 19px">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 1px"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+          <span><b style="color: var(--ouro-300); font-weight: 600">R$ 412 mil</b> estão parados em 214 itens sem saída há mais de 180 dias. <b style="color: var(--ouro-300); font-weight: 600">23 posições</b> já estão abaixo do ponto de pedido.</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px">
+          <div style="border: 1px solid var(--borda); border-radius: 10px; padding: 10px 12px">
+            <div style="font-size: 9px; letter-spacing: 0.1em; font-weight: 600; color: var(--tinta-500)">VALOR EM ESTOQUE</div>
+            <div style="font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 26px; font-variant-numeric: tabular-nums">R$ 2,4 mi</div>
+            <div style="font-size: 11px; color: var(--tinta-500)">812 posições · 3 locais</div>
+          </div>
+          <div style="border: 1px solid var(--borda); border-radius: 10px; padding: 10px 12px">
+            <div style="font-size: 9px; letter-spacing: 0.1em; font-weight: 600; color: var(--tinta-500)">PARADO +180 DIAS</div>
+            <div style="font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 26px; color: var(--status-alerta); font-variant-numeric: tabular-nums">R$ 412 mil</div>
+            <div style="font-size: 11px; color: var(--tinta-500)">17% do valor</div>
+          </div>
+          <div style="border: 1px solid var(--borda); border-radius: 10px; padding: 10px 12px">
+            <div style="font-size: 9px; letter-spacing: 0.1em; font-weight: 600; color: var(--tinta-500)">ABAIXO DO PP</div>
+            <div style="font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 26px; color: var(--status-alerta); font-variant-numeric: tabular-nums">23 posições</div>
+            <div style="font-size: 11px; color: var(--tinta-500)">5 são classe A</div>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 8px">
+          <div style="border: 1px solid var(--borda); border-radius: 10px; padding: 10px 12px">
+            <div style="font-size: 9px; letter-spacing: 0.1em; font-weight: 600; color: var(--ouro-700)">IMPORTÂNCIA × CRITICIDADE</div>
+            <div style="margin-top: 8px; display: grid; grid-template-columns: 20px repeat(3, minmax(0, 1fr)); gap: 4px; font-size: 11px; text-align: center; font-variant-numeric: tabular-nums">
+              <span></span><span style="color: var(--tinta-500)">X</span><span style="color: var(--tinta-500)">Y</span><span style="color: var(--tinta-500)">Z</span>
+              <span style="background: var(--verde-100); color: var(--verde-700); border-radius: 5px; font-weight: 600">A</span>
+              <span style="background: rgba(28,104,76,0.22); border: 2px solid var(--ouro-500); border-radius: 5px; font-weight: 600">14</span>
+              <span style="background: rgba(28,104,76,0.28); border-radius: 5px">22</span>
+              <span style="background: rgba(28,104,76,0.12); border-radius: 5px">9</span>
+              <span style="background: var(--ouro-100); color: var(--ouro-700); border-radius: 5px; font-weight: 600">B</span>
+              <span style="background: rgba(28,104,76,0.32); border-radius: 5px">31</span>
+              <span style="background: rgba(28,104,76,0.42); border-radius: 5px">48</span>
+              <span style="background: rgba(28,104,76,0.3); border-radius: 5px">27</span>
+              <span style="background: var(--status-parado-bg); color: var(--status-parado); border-radius: 5px; font-weight: 600">C</span>
+              <span style="background: rgba(28,104,76,0.5); border-radius: 5px">66</span>
+              <span style="background: rgba(28,104,76,0.75); color: var(--branco); border-radius: 5px">140</span>
+              <span style="background: var(--verde-700); color: var(--branco); border-radius: 5px">211</span>
+            </div>
+          </div>
+          <div style="border: 1px solid var(--borda); border-radius: 10px; padding: 10px 12px">
+            <div style="font-size: 9px; letter-spacing: 0.1em; font-weight: 600; color: var(--ouro-700)">O QUE RESOLVER PRIMEIRO</div>
+            <div style="margin-top: 6px; display: flex; flex-direction: column">
+              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--borda)">
+                <span style="width: 20px; height: 20px; border-radius: 5px; background: var(--verde-100); color: var(--verde-700); font-size: 10px; font-weight: 600; display: grid; place-items: center">A</span>
+                <span style="flex: 1; min-width: 0; font-size: 11px; line-height: 14px"><b style="font-weight: 600">Rolamento 6205 2RS</b><br><span style="color: var(--tinta-500)">0000 0012 3456</span></span>
+                <span style="background: var(--status-ruptura-bg); color: var(--status-ruptura-texto); border-radius: var(--raio-pill); padding: 2px 8px; font-size: 10px; font-weight: 600">● Ruptura</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0; border-bottom: 1px solid var(--borda)">
+                <span style="width: 20px; height: 20px; border-radius: 5px; background: var(--verde-100); color: var(--verde-700); font-size: 10px; font-weight: 600; display: grid; place-items: center">A</span>
+                <span style="flex: 1; min-width: 0; font-size: 11px; line-height: 14px"><b style="font-weight: 600">Correia B-52</b><br><span style="color: var(--tinta-500)">0000 0045 1180</span></span>
+                <span style="background: var(--status-alerta-bg); color: var(--status-alerta-texto); border-radius: var(--raio-pill); padding: 2px 8px; font-size: 10px; font-weight: 600">▲ Abaixo do PP</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 8px; padding: 6px 0">
+                <span style="width: 20px; height: 20px; border-radius: 5px; background: var(--status-parado-bg); color: var(--status-parado); font-size: 10px; font-weight: 600; display: grid; place-items: center">C</span>
+                <span style="flex: 1; min-width: 0; font-size: 11px; line-height: 14px"><b style="font-weight: 600">Mangueira 1/2" alta pressão</b><br><span style="color: var(--tinta-500)">0000 0078 2093</span></span>
+                <span style="background: var(--status-parado-bg); color: var(--status-parado); border-radius: var(--raio-pill); padding: 2px 8px; font-size: 10px; font-weight: 600">■ Parado +180d</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </figure>
+  </div>
+</header>
+
+<main>
+<!-- ============ COMPATÍVEL COM O SEU ERP ============ -->
+<section aria-labelledby="erp-t" style="max-width: 1280px; margin: 0 auto; padding: 96px var(--esp-80); text-align: center">
+  <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">COMPATÍVEL COM O SEU ERP</p>
+  <h2 id="erp-t" style="margin: 12px 0 0; font: var(--text-display-l); letter-spacing: -0.025em">Funciona com o sistema que você já usa.</h2>
+  <p style="margin: 12px auto 0; max-width: 560px; font: var(--text-corpo-m); color: var(--tinta-500)">Exporte a planilha do jeito de sempre. A gente reconhece as colunas de cada sistema e lembra o mapeamento para a próxima vez.</p>
+  <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: left">
+    <div style="background: var(--creme-100); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 16px">
+      <div style="height: 88px; background: var(--branco); border: 1px solid var(--borda); border-radius: 12px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 28px; color: var(--tinta-600)">SAP</div>
+      <div style="margin-top: 16px; font-weight: 600">SAP</div>
+      <div style="font: var(--text-corpo-s); color: var(--tinta-500)">SAP ECC e S/4HANA</div>
+      <div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--verde-700)"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Materiais, movimentos e pedidos</div>
+    </div>
+    <div style="background: var(--creme-100); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 16px">
+      <div style="height: 88px; background: var(--branco); border: 1px solid var(--borda); border-radius: 12px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 28px; color: var(--tinta-600)">TOTVS</div>
+      <div style="margin-top: 16px; font-weight: 600">TOTVS</div>
+      <div style="font: var(--text-corpo-s); color: var(--tinta-500)">Protheus, Datasul e RM</div>
+      <div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--verde-700)"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Materiais, movimentos e pedidos</div>
+    </div>
+    <div style="background: var(--creme-100); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 16px">
+      <div style="height: 88px; background: var(--branco); border: 1px solid var(--borda); border-radius: 12px; display: grid; place-items: center; font-family: var(--font-display); font-weight: 800; font-size: 28px; color: var(--tinta-600)">Senior</div>
+      <div style="margin-top: 16px; font-weight: 600">Senior</div>
+      <div style="font: var(--text-corpo-s); color: var(--tinta-500)">Gestão Empresarial (ERP Senior)</div>
+      <div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--verde-700)"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Materiais, movimentos e pedidos</div>
+    </div>
+    <div style="background: var(--creme-100); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 16px">
+      <div style="height: 88px; background: var(--branco); border: 1px solid var(--borda); border-radius: 12px; display: grid; place-items: center">
+        <svg role="img" aria-label="Planilha" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+      </div>
+      <div style="margin-top: 16px; font-weight: 600">Excel / CSV</div>
+      <div style="font: var(--text-corpo-s); color: var(--tinta-500)">Qualquer outro sistema</div>
+      <div style="margin-top: 12px; display: flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 600; color: var(--verde-700)"><svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Materiais, movimentos e pedidos</div>
+    </div>
+  </div>
+  <p style="margin: 28px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)"><b style="color: var(--tinta-900); font-weight: 600">Usa outro ERP?</b> Se ele exporta Excel (.xlsx, .xls) ou CSV, funciona.</p>
+</section>
+
+<!-- ============ O PROBLEMA ============ -->
+<section aria-labelledby="prob-t" style="background: var(--creme-100)">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 96px var(--esp-80)">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">O PROBLEMA</p>
+    <h2 id="prob-t" style="margin: 12px 0 0; font: var(--text-display-l); letter-spacing: -0.025em; max-width: 720px">Estoque MRO é dinheiro que não aparece no balanço do jeito certo.</h2>
+    <p style="margin: 16px 0 0; max-width: 640px; font: var(--text-corpo-m); color: var(--tinta-500)">Peça de manutenção não vende, não gira e ninguém lembra que existe. Até o dia em que falta e a máquina para no meio da safra.</p>
+    <div style="margin-top: 48px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px">
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <span style="width: 40px; height: 40px; border-radius: 10px; background: var(--status-parado-bg); display: grid; place-items: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#76584c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+        <h3 style="margin: 20px 0 0; font: var(--text-titulo-s)">Dinheiro parado na prateleira</h3>
+        <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Itens comprados "por garantia" que não saem há meses e ocupam capital que faria falta em outro lugar.</p>
+      </div>
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <span style="width: 40px; height: 40px; border-radius: 10px; background: var(--status-ruptura-bg); display: grid; place-items: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#bd4646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span>
+        <h3 style="margin: 20px 0 0; font: var(--text-titulo-s)">Falta na hora errada</h3>
+        <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">A peça crítica acaba, a colhedora para e a compra emergencial sai bem mais cara do que manter o item certo.</p>
+      </div>
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <span style="width: 40px; height: 40px; border-radius: 10px; background: var(--ouro-100); display: grid; place-items: center"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#8a6420" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg></span>
+        <h3 style="margin: 20px 0 0; font: var(--text-titulo-s)">Mínimo e máximo no chute</h3>
+        <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Parâmetros herdados de anos atrás, sem ninguém saber de onde vieram nem se ainda fazem sentido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO FUNCIONA ============ -->
+<section id="como-funciona" aria-labelledby="como-t" style="max-width: 1280px; margin: 0 auto; padding: 96px var(--esp-80)">
+  <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">COMO FUNCIONA</p>
+  <h2 id="como-t" style="margin: 12px 0 0; font: var(--text-display-l); letter-spacing: -0.025em; max-width: 640px">Três passos. O trabalho pesado fica com a gente.</h2>
+  <p style="margin: 16px 0 0; max-width: 600px; font: var(--text-corpo-m); color: var(--tinta-500)">Você não precisa arrumar planilha nem aprender estatística. O sistema reconhece as colunas, entende os formatos e lembra como você fez da última vez.</p>
+  <ol style="list-style: none; margin: 56px 0 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 32px">
+    <li aria-hidden="true" style="position: absolute; left: 24px; right: 33%; top: 23px; height: 2px; background: var(--borda)"></li>
+    <li style="position: relative">
+      <span style="width: 48px; height: 48px; border-radius: 50%; background: var(--verde-900); color: var(--branco); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 20px">1</span>
+      <h3 style="margin: 20px 0 0; font: var(--text-titulo-s)">Envie 3 planilhas</h3>
+      <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Cadastro de materiais, movimentações e pedidos em aberto. Do jeito que o ERP exporta: .xlsx, .xls ou .csv.</p>
+      <span style="margin-top: 12px; display: inline-block; background: var(--verde-50); color: var(--verde-700); border-radius: var(--raio-pill); padding: 4px 10px; font-size: 12px; font-weight: 600">Arraste o arquivo aqui</span>
+    </li>
+    <li style="position: relative">
+      <span style="width: 48px; height: 48px; border-radius: 50%; background: var(--verde-900); color: var(--branco); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 20px">2</span>
+      <h3 style="margin: 20px 0 0; font: var(--text-titulo-s)">O motor analisa tudo</h3>
+      <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Classifica cada item (ABC, PQR, XYZ), calcula estoque de segurança, ponto de pedido e máximo por vários métodos.</p>
+      <span style="margin-top: 12px; display: inline-block; background: var(--verde-50); color: var(--verde-700); border-radius: var(--raio-pill); padding: 4px 10px; font-size: 12px; font-weight: 600">~ 2 min para 1.000 itens</span>
+    </li>
+    <li style="position: relative">
+      <span style="width: 48px; height: 48px; border-radius: 50%; background: var(--ouro-500); color: var(--verde-950); display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 20px">3</span>
+      <h3 style="margin: 20px 0 0; font: var(--text-titulo-s)">Você decide e aplica</h3>
+      <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Compare os cenários, valide com uma justificativa e baixe a planilha pronta para subir no seu ERP.</p>
+      <span style="margin-top: 12px; display: inline-block; background: var(--verde-50); color: var(--verde-700); border-radius: var(--raio-pill); padding: 4px 10px; font-size: 12px; font-weight: 600">Excel pronto para o ERP</span>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ NADA DE CAIXA-PRETA + RECURSOS ============ -->
+<section id="recursos" aria-labelledby="cx-t" style="background: var(--creme-100)">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 96px var(--esp-80)">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 56px">
+      <div style="flex: 1 1 420px; min-width: 0">
+        <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">NADA DE CAIXA-PRETA</p>
+        <h2 id="cx-t" style="margin: 12px 0 0; font: var(--text-display-l); letter-spacing: -0.025em">Cada número vem com a conta que gerou ele.</h2>
+        <p style="margin: 16px 0 0; font: var(--text-corpo-m); color: var(--tinta-500)">Você vê o histórico, a fórmula e os métodos lado a lado. Dá para defender a decisão na reunião com o gerente sem depender de ninguém.</p>
+      </div>
+      <div style="flex: 1 1 480px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <div style="display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px">
+          <span style="width: 28px; height: 28px; border-radius: 7px; background: var(--verde-100); color: var(--verde-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">A</span>
+          <div style="flex: 1; min-width: 200px">
+            <div style="font-weight: 600">Rolamento 6205 2RS · Almoxarifado central</div>
+            <div style="font: var(--text-corpo-s); color: var(--tinta-500)">0000 0012 3456 · consumo regular · item crítico</div>
+          </div>
+          <span style="background: var(--status-alerta-bg); color: var(--status-alerta-texto); border-radius: var(--raio-pill); padding: 5px 12px 5px 10px; font: 600 12px/14px var(--font-sans)">▲ Abaixo do PP</span>
+        </div>
+        <div style="margin-top: 20px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px">
+          <div style="background: var(--creme-100); border-radius: 12px; padding: 14px 16px">
+            <div style="font-size: 10px; letter-spacing: 0.1em; font-weight: 600; color: var(--tinta-500)">ESTOQUE DE SEGURANÇA</div>
+            <div style="margin-top: 4px; font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 36px; font-variant-numeric: tabular-nums">14 <span style="font: var(--text-corpo-s); color: var(--tinta-500)">un</span></div>
+          </div>
+          <div style="background: var(--verde-900); color: var(--branco); border-radius: 12px; padding: 14px 16px">
+            <div style="font-size: 10px; letter-spacing: 0.1em; font-weight: 600; color: var(--verde-300)">PONTO DE PEDIDO</div>
+            <div style="margin-top: 4px; font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 36px; font-variant-numeric: tabular-nums">22 <span style="font: var(--text-corpo-s); color: var(--verde-100)">un</span></div>
+          </div>
+          <div style="background: var(--creme-100); border-radius: 12px; padding: 14px 16px">
+            <div style="font-size: 10px; letter-spacing: 0.1em; font-weight: 600; color: var(--tinta-500)">ESTOQUE MÁXIMO</div>
+            <div style="margin-top: 4px; font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 36px; font-variant-numeric: tabular-nums">40 <span style="font: var(--text-corpo-s); color: var(--tinta-500)">un</span></div>
+          </div>
+        </div>
+        <div style="margin-top: 12px; background: var(--ouro-100); border-radius: 12px; padding: 12px 16px">
+          <div style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">POR QUE 22?</div>
+          <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">Consumo médio de 0,40 un/dia × prazo de entrega de 20 dias = 8 un, mais 14 un de segurança para atender 95% das vezes (nível de serviço de um item A crítico).</p>
+        </div>
+        <div role="group" aria-label="Cenários" style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px">
+          <span style="background: var(--verde-700); color: var(--branco); border-radius: var(--raio-pill); padding: 6px 14px; font-size: 12px; font-weight: 600">Motor Agro MRO</span>
+          <span style="border: 1px solid var(--borda); color: var(--tinta-600); border-radius: var(--raio-pill); padding: 6px 14px; font-size: 12px; font-weight: 500">Conservador</span>
+          <span style="border: 1px solid var(--borda); color: var(--tinta-600); border-radius: var(--raio-pill); padding: 6px 14px; font-size: 12px; font-weight: 500">Maior proteção</span>
+          <span style="border: 1px solid var(--borda); color: var(--tinta-600); border-radius: var(--raio-pill); padding: 6px 14px; font-size: 12px; font-weight: 500">Com risco</span>
+        </div>
+        <p style="margin: 12px 0 0; font-size: 12px; color: var(--tinta-500)">Exemplo ilustrativo</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px">
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-3"/><path d="M13 17V8"/><path d="M18 17V5"/></svg>
+        <h3 style="margin: 16px 0 0; font: var(--text-titulo-s); font-size: 16px">Classificação automática</h3>
+        <p style="margin: 6px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">ABC por consumo, PQR por frequência e XYZ por criticidade. Você sabe o que é importante sem montar tabela dinâmica.</p>
+      </div>
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M10 18h4"/></svg>
+        <h3 style="margin: 16px 0 0; font: var(--text-titulo-s); font-size: 16px">Fila do que resolver primeiro</h3>
+        <p style="margin: 6px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Os itens que pedem ação hoje aparecem no topo, com o motivo escrito em português.</p>
+      </div>
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <h3 style="margin: 16px 0 0; font: var(--text-titulo-s); font-size: 16px">Simule antes de mudar</h3>
+        <p style="margin: 6px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Teste outro nível de serviço ou outro prazo e veja o impacto em unidades e em reais antes de aplicar.</p>
+      </div>
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+        <h3 style="margin: 16px 0 0; font: var(--text-titulo-s); font-size: 16px">Excel pronto para o ERP</h3>
+        <p style="margin: 6px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">A decisão validada sai numa planilha no formato de sempre, para subir no SAP, TOTVS ou Senior.</p>
+      </div>
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+        <h3 style="margin: 16px 0 0; font: var(--text-titulo-s); font-size: 16px">Histórico de cada decisão</h3>
+        <p style="margin: 6px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Quem mudou, quando, com qual base e por quê. Auditoria sem caça a e-mail antigo.</p>
+      </div>
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <h3 style="margin: 16px 0 0; font: var(--text-titulo-s); font-size: 16px">Academia incluída</h3>
+        <p style="margin: 6px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Aulas curtas sobre os conceitos que a ferramenta usa. Você aprende enquanto usa e cresce na carreira.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PREÇO ============ -->
+<section id="preco" aria-labelledby="preco-t" style="max-width: 1280px; margin: 0 auto; padding: 96px var(--esp-80); text-align: center">
+  <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">PREÇO</p>
+  <h2 id="preco-t" style="margin: 12px 0 0; font: var(--text-display-l); letter-spacing: -0.025em">Um plano. Sem letra miúda.</h2>
+  <p style="margin: 12px auto 0; max-width: 520px; font: var(--text-corpo-m); color: var(--tinta-500)">Comece de graça com 10 itens. Quando vir valor, assine e libere o estoque inteiro.</p>
+  <div style="margin: 56px auto 0; max-width: 920px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 24px; text-align: left">
+    <div style="flex: 1 1 340px; max-width: 400px; background: var(--creme-100); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 32px">
+      <div style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">DEMONSTRAÇÃO</div>
+      <div style="margin-top: 12px; display: flex; align-items: baseline; gap: 8px"><span style="font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 40px">Grátis</span><span style="font: var(--text-corpo-s); color: var(--tinta-500)">para sempre</span></div>
+      <p style="margin: 12px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">Para conhecer a ferramenta com seus próprios itens.</p>
+      <ul style="list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+        <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Até 10 itens (material + local)</li>
+        <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Classificação e parâmetros completos</li>
+        <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Academia: primeiras aulas</li>
+        <li style="display: flex; gap: 10px; align-items: center; color: var(--tinta-500)"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a3aca8" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg><span><span style="text-decoration: line-through">Exportar planilha para o ERP</span> <span style="font-size: 12px">(só no plano)</span></span></li>
+      </ul>
+      <a href="#topo" style="margin-top: 28px; display: flex; justify-content: center; align-items: center; min-height: 52px; background: var(--branco); border: 1px solid var(--borda); color: var(--verde-800); border-radius: var(--raio-lg); font: var(--text-botao); text-decoration: none">Testar grátis</a>
+    </div>
+    <div style="flex: 1 1 380px; max-width: 460px; background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 36px">
+      <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+        <span style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">INTELLIGENCE</span>
+        <span style="background: var(--ouro-500); color: var(--verde-950); border-radius: var(--raio-pill); padding: 4px 10px; font: var(--text-rotulo); letter-spacing: 0.1em">RECOMENDADO</span>
+      </div>
+      <div style="margin-top: 16px; display: flex; align-items: baseline; gap: 6px"><span style="font-family: var(--font-display); font-weight: 800; font-size: 52px; line-height: 56px; letter-spacing: -0.02em">R$ 100</span><span style="color: var(--verde-100)">/mês</span></div>
+      <p style="margin: 12px 0 0; font: var(--text-corpo-s); color: var(--verde-100)">Menos do que um rolamento parado na prateleira. Paga no Pix, boleto ou cartão.</p>
+      <ul style="list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+        <li style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; background: var(--ouro-500); display: grid; place-items: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Até 1.000 itens (material + local)</li>
+        <li style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; background: var(--ouro-500); display: grid; place-items: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Tudo da demonstração, sem limite de recursos</li>
+        <li style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; background: var(--ouro-500); display: grid; place-items: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Simulação, validação e histórico de decisões</li>
+        <li style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; background: var(--ouro-500); display: grid; place-items: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Excel pronto para SAP, TOTVS e Senior</li>
+        <li style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; background: var(--ouro-500); display: grid; place-items: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Academia completa</li>
+        <li style="display: flex; gap: 10px; align-items: center"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; background: var(--ouro-500); display: grid; place-items: center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Suporte por e-mail em até 1 dia útil</li>
+      </ul>
+      <a href="#topo" style="margin-top: 28px; display: flex; justify-content: center; align-items: center; min-height: 56px; background: var(--ouro-500); color: var(--verde-950); border-radius: var(--raio-lg); font: var(--text-botao); text-decoration: none">Assinar por R$ 100/mês</a>
+      <p style="margin: 12px 0 0; text-align: center; font-size: 12px; line-height: 18px; color: var(--verde-100)">Cancele quando quiser, direto no sistema. Seus dados continuam disponíveis para leitura.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DÚVIDAS ============ -->
+<section id="duvidas" aria-labelledby="faq-t" style="background: var(--creme-100)">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 96px var(--esp-80); display: flex; flex-wrap: wrap; gap: 56px">
+    <div style="flex: 1 1 280px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">DÚVIDAS</p>
+      <h2 id="faq-t" style="margin: 12px 0 0; font: var(--text-display-l); letter-spacing: -0.025em">Perguntas que todo comprador faz.</h2>
+      <p style="margin: 16px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Não achou a sua? Fale com a gente pelo e-mail de suporte.</p>
+    </div>
+    <div style="flex: 2 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 12px">
+      <sc-for list="{{faq}}" as="item" hint-placeholder-count="5">
+        <div style="{{item.boxStyle}}">
+          <h3 style="margin: 0; font-size: 15px">
+            <button type="button" aria-expanded="{{item.open}}" onClick="{{item.toggle}}" style="width: 100%; min-height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; background: none; border: 0; font: 600 15px/22px var(--font-sans); color: var(--tinta-900); text-align: left; cursor: pointer">
+              <span>{{item.q}}</span>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4b6257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="{{item.chevStyle}}"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+          </h3>
+          <sc-if value="{{item.open}}" hint-placeholder-val="{{false}}">
+            <p style="margin: 0; padding: 0 20px 18px; font: var(--text-corpo-s); color: var(--tinta-600)">{{item.a}}</p>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section aria-labelledby="cta-t" style="position: relative; overflow: hidden; background: var(--verde-900); color: var(--branco); text-align: center">
+  <svg aria-hidden="true" viewBox="0 0 1440 400" preserveAspectRatio="none" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none" fill="none" stroke="#d9a441" stroke-opacity="0.09" stroke-width="1.5">
+    <path d="M0 60 C260 20 480 110 760 70 S1200 20 1440 60"/>
+    <path d="M0 170 C220 140 500 210 800 170 S1180 120 1440 170"/>
+    <path d="M0 280 C300 240 540 320 840 280 S1220 230 1440 280"/>
+    <path d="M0 380 C240 350 520 410 820 380 S1200 340 1440 380"/>
+  </svg>
+  <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 96px var(--esp-80)">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">COMECE HOJE</p>
+    <h2 id="cta-t" style="margin: 16px auto 0; max-width: 760px; font: var(--text-display-l); letter-spacing: -0.025em">Descubra em 5 minutos quanto do seu estoque está parado.</h2>
+    <a href="#preco" style="margin-top: 32px; display: inline-flex; align-items: center; min-height: 56px; background: var(--ouro-500); color: var(--verde-950); border-radius: var(--raio-lg); padding: 16px 28px; font: var(--text-botao); text-decoration: none">Testar grátis com 10 itens</a>
+    <p style="margin: 16px 0 0; font-size: 13px; color: var(--verde-100)">Sem cartão de crédito · Seus dados ficam só com você</p>
+  </div>
+</section>
+</main>
+
+<footer style="background: var(--verde-950); color: var(--verde-100)">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 28px var(--esp-80); display: flex; flex-wrap: wrap; align-items: center; gap: 16px 32px; font-size: 13px">
+    <span style="display: flex; align-items: center; gap: 10px; color: var(--branco); font-weight: 600">
+      <span style="width: 28px; height: 28px; border-radius: 8px; background: var(--ouro-500); display: grid; place-items: center"><svg aria-hidden="true" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+      Agro MRO Intelligence
+    </span>
+    <span style="flex: 1"></span>
+    <a href="#termos" style="color: var(--verde-100); text-decoration: none; padding: 10px 0">Termos de uso</a>
+    <a href="#lgpd" style="color: var(--verde-100); text-decoration: none; padding: 10px 0">Privacidade (LGPD)</a>
+    <a href="#suporte" style="color: var(--verde-100); text-decoration: none; padding: 10px 0">Suporte</a>
+    <span style="color: var(--verde-300)">© 2026 Agro MRO · Primavera do Leste – MT</span>
+  </div>
+</footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6400}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { aberta: 0 };
+  }
+  renderVals() {
+    var perguntas = [
+      { q: 'Preciso mudar a planilha do meu ERP?', a: 'Não. Você envia do jeito que o sistema exporta. A ferramenta reconhece as colunas, aceita vírgula ou ponto, datas em qualquer formato comum, e mostra uma prévia antes de gravar qualquer coisa.' },
+      { q: 'Preciso entender de estatística?', a: 'Não. Cada número vem com a conta explicada em português, e a Academia ensina os conceitos em aulas curtas, no seu ritmo.' },
+      { q: 'Meus dados ficam seguros?', a: 'Seus dados ficam só no seu espaço, com conexão segura. Ninguém de fora vê o seu estoque.' },
+      { q: 'E se o meu estoque tiver mais de 1.000 itens?', a: '[RESPOSTA A DEFINIR: plano para mais de 1.000 itens]' },
+      { q: 'Posso cancelar quando quiser?', a: 'Sim. Cancele direto no sistema. Seus dados continuam disponíveis para leitura.' }
+    ];
+    var self = this;
+    var faq = perguntas.map(function (p, i) {
+      var open = self.state.aberta === i;
+      return {
+        q: p.q, a: p.a, open: open,
+        boxStyle: 'background: #ffffff; border-radius: 14px; border: 1px solid ' + (open ? '#1c684c' : '#e3e2dc'),
+        chevStyle: 'flex: none; transition: transform .2s; transform: rotate(' + (open ? '180' : '0') + 'deg)',
+        toggle: function () { self.setState({ aberta: open ? -1 : i }); }
+      };
+    });
+    return { faq: faq };
+  }
+}
+</script>
+</body>
+</html>
