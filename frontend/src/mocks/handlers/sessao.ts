@@ -13,4 +13,9 @@ export const handlersSessao = [
     }
     return HttpResponse.json<Sessao>(sessaoPorEstado(estadoPlano()));
   }),
+
+  http.delete("/api/v1/sessao", async () => {
+    await latencia();
+    return new HttpResponse(null, { status: 204 });
+  }),
 ];

@@ -1,6 +1,6 @@
 import type { EstadoPlano, Permissoes, Sessao } from "@/api/tipos";
 
-import { iso } from "./util";
+import { d, dia, iso } from "./util";
 
 /**
  * O que o backend devolveria em GET /me para cada estado do plano.
@@ -39,11 +39,22 @@ const RENOVA_EM = iso("2026-12-03T15:00:00Z");
 export function sessaoPorEstado(estado: EstadoPlano): Sessao {
   return {
     usuario: { nome: "Hugo dos Santos", email: "hugo@empresa.com", iniciais: "HS" },
-    espaco: { nome: "Espaço de Hugo" },
+    espaco: {
+      nome: "Espaço de Hugo",
+      locais: 3,
+      periodo: { inicio: dia("2026-07-01"), fim: dia("2026-11-11") },
+      atualizacao: { em: iso("2026-11-11T14:00:00Z"), ha_dias: 2 },
+    },
     plano:
       estado === "demonstracao"
-        ? { estado, itens_usados: 812, itens_limite: 10, renova_em: null }
-        : { estado, itens_usados: 812, itens_limite: 1000, renova_em: RENOVA_EM },
+        ? { estado, itens_usados: 10, itens_limite: 10, fracao_uso: d("1"), renova_em: null }
+        : {
+            estado,
+            itens_usados: 812,
+            itens_limite: 1000,
+            fracao_uso: d("0.812"),
+            renova_em: RENOVA_EM,
+          },
     permissoes: PERMISSOES[estado],
   };
 }

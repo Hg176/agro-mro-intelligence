@@ -217,6 +217,8 @@ export type Plano = {
   itens_usados: number;
   /** Limite de posições do plano; null = sem limite declarado. Protótipo: sku_limit. */
   itens_limite: number | null;
+  /** Fração de uso pronta para a barra do cartão do plano ("0" a "1"). null = sem barra. */
+  fracao_uso: Decimal | null;
   renova_em: DataHoraIso | null;
 };
 
@@ -234,6 +236,12 @@ export type Sessao = {
   };
   espaco: {
     nome: string;
+    /** Locais do espaço (chip "Todos os locais (3)"). */
+    locais: number;
+    /** Período da leitura atual (chip "01/07 a 11/11/2026"). null = sem dados. */
+    periodo: Periodo | null;
+    /** Última atualização dos dados (pílula "Atualizado há 2 dias"). null = nunca. */
+    atualizacao: { em: DataHoraIso; ha_dias: number } | null;
   };
   plano: Plano;
   permissoes: Permissoes;

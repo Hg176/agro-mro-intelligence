@@ -77,6 +77,13 @@ A guarda pega o que dá para ver com segurança: converter um Decimal (que chega
 - `src/api/<dominio>.ts`: uma função por chamada (`obterSessao`, `buscarPosicoes`, `obterVisaoGeral`, `listarMateriais`, `criarMaterial`...).
 - `src/api/hooks/`: hooks do TanStack Query. Leitura tenta de novo só em falha de rede ou tempo esgotado. Escrita nunca repete sozinha.
 
+## Sessão, plano e permissões
+
+- `RotaProtegida` envolve `/app/*` e busca `GET /api/v1/me`. Enquanto carrega, mostra o skeleton da casca. Se o `/me` responder 401, leva para `/entrar?volta=<rota atual>`. Um 401 em qualquer outra rota limpa o cache e também redireciona.
+- `useSessao()` devolve `{ usuario, espaco, plano, permissoes }`. Tudo fica na memória: nada vai para `localStorage` nem `sessionStorage`.
+- Toda ação de escrita usa `<AcaoProtegida permissao="importar | simular | validar | exportar_excel | editar_regras">`. Quem decide o bloqueio é só `permissoes[x]`, que vem do backend. **Nenhuma tela lê `plano.estado` para decidir botão.** Bloqueada, a ação fica com `aria-disabled`, continua focável, mostra o motivo em texto e num tooltip acessível, e o clique não faz nada.
+- A frase de conclusão sai de `fraseDaConclusao(conclusao, modelos)`. A API manda `conclusao.tipo`, e a tela tem um modelo de frase por código. Se chegar um código desconhecido, a faixa aparece sem frase e o aviso vai para o console, só em dev.
+
 ## Mock (MSW)
 
 O mock fica em `src/mocks/`: handlers por domínio em `handlers/`, dados ilustrativos em `dados/` (fonte única, coerente com o design) e latência simulada de 300 a 800 ms (zero nos testes). Os testes usam os mesmos handlers, em Node (`src/mocks/servidor.ts`).
