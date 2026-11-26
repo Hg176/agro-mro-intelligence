@@ -38,12 +38,23 @@ Rode `npm run check` antes de cada commit. Commit só com ele verde.
 
 ## Ligar e desligar o mock
 
-O mock (MSW) entra no passo F1-3. Funcionamento:
-
-- **Ligado** (padrão no `npm run dev`): as chamadas a `/api/v1/...` são respondidas no navegador pelo MSW, com os dados ilustrativos do design.
-- **Desligado**: rode `VITE_API_MOCK=false npm run dev` (no PowerShell: `$env:VITE_API_MOCK="false"; npm run dev`). As chamadas vão para `/api/v1` de verdade.
+- **Ligado** (padrão no `npm run dev`): as chamadas a `/api/v1/...` são respondidas no navegador pelo MSW, com os dados ilustrativos do design. No console do navegador aparece `[MSW] Mocking enabled`.
+- **Desligado**: `VITE_API_MOCK=false npm run dev`. No PowerShell: `$env:VITE_API_MOCK="false"; npm run dev`. As chamadas vão para `/api/v1`, e o Vite as encaminha para o backend em `http://127.0.0.1:8000`. Para usar outro endereço, defina `VITE_API_ALVO`. Suba o backend antes, como em [`backend-local.md`](backend-local.md).
+- **Só algumas rotas no backend real**: `VITE_API_REAL="/me,/busca" npm run dev`. No PowerShell: `$env:VITE_API_REAL="/me,/busca"; npm run dev`. Essas rotas vão para o backend e o resto fica no mock.
 - No **build de produção** o mock nunca entra, nem o código nem o `mockServiceWorker.js`. O `npm run verificar-build` confere isso.
 
-Não crie arquivo `.env` no repositório: o CI reprova qualquer `.env*` versionado, exceto `.env.example`. O padrão do mock está no código, e a variável é só para desligá-lo.
+Não crie arquivo `.env` no repositório: o CI reprova qualquer `.env*` versionado, exceto `.env.example`. As variáveis acima vão na linha de comando ou num `.env.local` seu, que o `.gitignore` já ignora.
 
-Os parâmetros de URL para forçar estados (`?mock=carregando|erro|vazio`, `?plano=demonstracao|ativo|somente_leitura`, `?sessao=expirada`) serão descritos aqui no F1-3.
+## Forçar estados das telas (só com o mock)
+
+Acrescente na URL. Os parâmetros podem ser combinados:
+
+| Parâmetro                                          | Efeito                                                       |
+| -------------------------------------------------- | ------------------------------------------------------------ |
+| `?mock=carregando`                                 | A tela fica carregando (skeleton).                           |
+| `?mock=erro`                                       | A rota da tela responde 500.                                 |
+| `?mock=vazio`                                      | A rota da tela responde lista vazia.                         |
+| `?plano=demonstracao` · `ativo` · `somente_leitura` | O plano que o `GET /api/v1/me` devolve. Padrão: `ativo`.     |
+| `?sessao=expirada`                                 | O `GET /api/v1/me` responde 401 (a casca leva para /entrar). |
+
+Exemplo: http://localhost:5173/app/materiais?plano=somente_leitura&mock=vazio

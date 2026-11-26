@@ -70,6 +70,42 @@ A guarda pega o que dá para ver com segurança: converter um Decimal (que chega
 - o front só formata (`Intl` pt-BR em `src/lib/formato.ts`) e monta frases com campos recebidos;
 - se a tela precisa de um número que a API não tem, ele entra no tipo da resposta e no mock, nunca numa conta no componente.
 
+## Camada de API
+
+- `src/api/cliente.ts`: `request<T>()` sobre `fetch`, com base `/api/v1`, `credentials: "include"` (sessão por cookie HttpOnly), JSON, timeout e erro tipado `ApiErro { status, codigo, mensagem }`. A mensagem é sempre curta e humana. Em 5xx, nada do servidor aparece na tela. 401 e 403 são distintos: `sessao_expirada` derruba a sessão, e `sem_permissao` é o plano que não permite a ação.
+- `src/api/tipos.ts`: tipos de todas as respostas. Cada Decimal é `Decimal` (string), cada ausência é `T | null`, e cada tipo diz de onde vem (rota do protótipo ou "a criar no backend"). A frase de conclusão é `ConclusaoTela { tipo, valores }`, com uma união fechada de códigos por tela.
+- `src/api/<dominio>.ts`: uma função por chamada (`obterSessao`, `buscarPosicoes`, `obterVisaoGeral`, `listarMateriais`, `criarMaterial`...).
+- `src/api/hooks/`: hooks do TanStack Query. Leitura tenta de novo só em falha de rede ou tempo esgotado. Escrita nunca repete sozinha.
+
 ## Mock (MSW)
 
-O mock entra no F1-3. Liga com `VITE_API_MOCK=true` (padrão no `npm run dev`) e nunca vai para o build de produção: `npm run verificar-build` falha se `dist/` tiver `mockServiceWorker.js` ou qualquer arquivo com "msw" ou "mockServiceWorker". Os parâmetros de URL para forçar estados (`?mock=`, `?plano=`, `?sessao=`) e a troca do mock pela API real rota a rota serão documentados aqui no F1-3.
+O mock fica em `src/mocks/`: handlers por domínio em `handlers/`, dados ilustrativos em `dados/` (fonte única, coerente com o design) e latência simulada de 300 a 800 ms (zero nos testes). Os testes usam os mesmos handlers, em Node (`src/mocks/servidor.ts`).
+
+### Parâmetros de URL para forçar estados
+
+Dois assuntos separados, que podem ser combinados:
+
+| Parâmetro                                           | Efeito                                                                                 |
+| --------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `?mock=carregando`                                  | A rota da tela nunca responde (skeleton).                                              |
+| `?mock=erro`                                        | A rota da tela responde 500.                                                           |
+| `?mock=vazio`                                       | A rota da tela responde lista vazia.                                                   |
+| `?plano=demonstracao` · `ativo` · `somente_leitura` | Muda o que `GET /api/v1/me` devolve em `plano.estado` e `permissoes`. Padrão: `ativo`. |
+| `?sessao=expirada`                                  | `GET /api/v1/me` responde 401.                                                         |
+
+Exemplo: `/app/materiais?plano=somente_leitura&mock=vazio`. O `?mock=` só afeta a rota da tela, não o `/me` nem a busca.
+
+### Ligar, desligar e trocar pela API real
+
+- `npm run dev` liga o mock (padrão).
+- `VITE_API_MOCK=false npm run dev` desliga tudo: as chamadas vão para `/api/v1` e o proxy do Vite as encaminha para o backend (`VITE_API_ALVO`, padrão `http://127.0.0.1:8000`).
+- **Rota a rota:** `VITE_API_REAL="/me,/busca" npm run dev` manda só essas rotas (e as filhas) para o backend real. O resto continua no mock. Para trocar uma rota de vez:
+  1. o backend implementa a rota com o formato de `src/api/tipos.ts`;
+  2. o desenvolvedor testa com `VITE_API_REAL`;
+  3. o handler sai de `src/mocks/handlers/`, que é o mock usado nos testes. Os testes da tela passam a montar a resposta com `servidorMock.use(...)`.
+
+### O mock nunca vai para produção
+
+- O mock só é importado por `import()` dinâmico dentro de `if (import.meta.env.DEV && ...)` em `src/main.tsx`. No build, `DEV` é `false` e o código some.
+- O worker (`mockServiceWorker.js`) fica em `mock-worker/`, **fora de `public/`**, então o Vite nunca o copia para `dist/`. Um plugin do `vite.config.ts` com `apply: "serve"` o serve em `/mockServiceWorker.js`, e só no `npm run dev`. Para atualizar o worker depois de subir a versão do MSW: `npx msw init mock-worker --no-save`.
+- `npm run verificar-build` (no `check` e no CI) falha se `dist/` tiver `mockServiceWorker.js` ou qualquer arquivo com "msw" ou "mockServiceWorker" no nome ou no conteúdo. Ele é testado em `tests/verificar-build.test.ts`.
