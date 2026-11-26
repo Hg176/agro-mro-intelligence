@@ -263,6 +263,78 @@
   --text-botao--letter-spacing: 0;
 }
 
+/*
+ * Animações permitidas (ESPECIFICACAO-TELAS.md, "Leis de UX e animações"). Nenhuma outra.
+ * Use SEMPRE com motion-safe: (ex.: motion-safe:animate-pulso-lento). A regra de
+ * prefers-reduced-motion no fim do arquivo é só rede de segurança.
+ */
+@theme {
+  --animate-entrada: entrada 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) both; /* cascata */
+  --animate-brilho-linha: brilho-linha 1.6s ease-out 1; /* linha que mudou de estado */
+  --animate-pop: pop 0.32s cubic-bezier(0.2, 0.7, 0.2, 1) 1; /* selo que mudou */
+  --animate-pulso-lento: pulso-lento 2.4s ease-in-out infinite; /* só no selo Ruptura */
+  --animate-tremida: tremida 0.36s ease-in-out 1; /* formulário incompleto */
+  --animate-subir: subir 0.28s cubic-bezier(0.2, 0.7, 0.2, 1) both; /* barra de salvar */
+
+  @keyframes entrada {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+  }
+  @keyframes brilho-linha {
+    from {
+      background-color: var(--verde-100);
+    }
+  }
+  @keyframes pop {
+    50% {
+      transform: scale(1.12);
+    }
+  }
+  @keyframes pulso-lento {
+    50% {
+      opacity: 0.55;
+    }
+  }
+  @keyframes tremida {
+    20%,
+    60% {
+      transform: translateX(-4px);
+    }
+    40%,
+    80% {
+      transform: translateX(4px);
+    }
+  }
+  @keyframes subir {
+    from {
+      transform: translateY(100%);
+    }
+  }
+  @keyframes brilho-skeleton {
+    from {
+      background-position: 150% 0;
+    }
+    to {
+      background-position: -50% 0;
+    }
+  }
+}
+
+/* Skeleton com brilho (faixa clara que atravessa o bloco). */
+@utility brilho-skeleton {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgb(255 255 255 / 0.65) 50%,
+    transparent 100%
+  );
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+  animation: brilho-skeleton 1.4s linear infinite;
+}
+
 /* Números grandes: sempre família display + algarismos de largura fixa. */
 @utility numero {
   font-family: var(--fonte-display);

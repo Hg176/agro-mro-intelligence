@@ -48,6 +48,7 @@ export const handlersMateriais = [
         itens: [],
         total: 0,
         pagina: 1,
+        paginas: 0,
         limite: LIMITE,
         metricas: { estado: "disponivel", motivo: null },
       });
@@ -73,6 +74,7 @@ export const handlersMateriais = [
       itens: lista.slice((pagina - 1) * LIMITE, pagina * LIMITE),
       total: lista.length,
       pagina,
+      paginas: Math.ceil(lista.length / LIMITE),
       limite: LIMITE,
       metricas: { estado: "disponivel", motivo: null },
     });

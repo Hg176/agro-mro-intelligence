@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Navigate, Route, Routes } from "react-router";
 
 import { LayoutApp } from "@/layout/LayoutApp";
@@ -18,10 +19,27 @@ const PASSO: Record<string, string> = {
   "/app/tmer": "F1-14",
 };
 
+/** /_fundamentos só existe no dev: o import some do build de produção. */
+const TelaFundamentos = import.meta.env.DEV
+  ? lazy(() => import("@/telas/fundamentos/TelaFundamentos"))
+  : null;
+
 /** Todas as rotas do app. Usado pelo App (BrowserRouter) e pelos testes (MemoryRouter). */
 export function AppRotas() {
   return (
     <Routes>
+      {TelaFundamentos && (
+        <Route
+          path="/_fundamentos"
+          element={
+            <ComTitulo titulo="Fundamentos">
+              <Suspense fallback={<p role="status">Carregando os fundamentos…</p>}>
+                <TelaFundamentos />
+              </Suspense>
+            </ComTitulo>
+          }
+        />
+      )}
       <Route
         path="/"
         element={

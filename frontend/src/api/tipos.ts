@@ -369,6 +369,8 @@ export type PaginaMateriais = {
   itens: Posicao[];
   total: number;
   pagina: number;
+  /** Total de páginas (o front não divide total por limite). */
+  paginas: number;
   limite: number;
   /** Métricas aprovadas indisponíveis: o catálogo continua consultável (estado "erro de métricas"). */
   metricas: Disponibilidade;

@@ -36,6 +36,8 @@ export default defineConfig(({ mode }) => ({
   server: {
     port: 5173,
     strictPort: true,
+    // /_fundamentos lê docs/design/tokens/tokens.json (fora de frontend/).
+    fs: { allow: [".", "../docs/design"] },
     // Rotas que não estão no mock (VITE_API_MOCK=false ou VITE_API_REAL) vão para o backend.
     proxy: {
       "/api": {

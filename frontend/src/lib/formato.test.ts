@@ -1,11 +1,18 @@
 import type { DataHoraIso, DataIso, Decimal } from "@/api/tipos";
 import {
+  codigoEmBlocos,
+  codigoSemEspacos,
   data,
   dataDoInstante,
   dataHora,
+  decimal,
   haDias,
   inteiro,
   larguraDaFracao,
+  moeda,
+  moedaCompacta,
+  percentual,
+  percentualDeFracao,
   periodo,
   TRACO,
 } from "@/lib/formato";
@@ -42,6 +49,51 @@ describe("formato", () => {
     expect(dataDoInstante(iso("2026-12-03T15:00:00Z"))).toBe("03/12/2026");
     expect(dataHora(iso("2026-11-24T13:05:00Z"))).toBe("24/11/2026, 09:05");
     expect(dataHora(null)).toBe(TRACO);
+  });
+
+  it("moeda BRL e moeda compacta como no design", () => {
+    const f = (v: string) => v as Decimal;
+    expect(moeda(f("100"))).toBe("R$ 100,00");
+    expect(moeda(f("1234.5")).replace(/\u00a0/g, " ")).toBe("R$ 1.234,50");
+    expect(moedaCompacta(f("2412530.40"))).toBe("R$ 2,4 mi");
+    expect(moedaCompacta(f("412380.00"))).toBe("R$ 412 mil");
+    expect(moedaCompacta(null)).toBe(TRACO);
+  });
+
+  it("não perde precisão: a string Decimal vai direto para o Intl", () => {
+    const f = (v: string) => v as Decimal;
+    // 0.1 + 0.2 em number daria 0.30000000000000004; aqui nada é somado nem convertido.
+    expect(decimal(f("0.3000"))).toBe("0,3");
+    expect(decimal(f("123456789012345.1234"))).toBe("123.456.789.012.345,1234");
+  });
+
+  it("quantidade, percentual e fração", () => {
+    const f = (v: string) => v as Decimal;
+    expect(decimal(f("-2"))).toBe("-2");
+    expect(decimal(f("1000"))).toBe("1.000");
+    expect(decimal(f("12.5"))).toBe("12,5");
+    expect(percentual(f("17"))).toBe("17%");
+    expect(percentual(f("17.1"))).toBe("17,1%");
+    expect(percentualDeFracao(f("0.975"))).toBe("97,5%");
+    expect(percentualDeFracao(f("0.596"))).toBe("59,6%");
+    expect(percentualDeFracao(f("0"))).toBe("0%");
+  });
+
+  it("ausente ou malformado nunca vira zero", () => {
+    const f = (v: string) => v as Decimal;
+    expect(decimal(null)).toBe(TRACO);
+    expect(percentual(null)).toBe(TRACO);
+    expect(decimal(f(""))).toBe(TRACO);
+    expect(decimal(f("NaN"))).toBe(TRACO);
+    expect(moeda(f("abc"))).toBe(TRACO);
+  });
+
+  it("código em blocos de 4 é só visual", () => {
+    expect(codigoEmBlocos("000000123456")).toBe("0000 0012 3456");
+    expect(codigoEmBlocos("00150")).toBe("0015 0");
+    expect(codigoEmBlocos("150")).toBe("150");
+    expect(codigoEmBlocos("ABC-12")).toBe("ABC-12");
+    expect(codigoSemEspacos("0000 0012 3456")).toBe("000000123456");
   });
 
   it("largura da barra usa a fração pronta e recusa valor fora do formato", () => {
