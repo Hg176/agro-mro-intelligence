@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Outlet } from "react-router";
 
+import { BuscaGlobal } from "@/componentes/busca/BuscaGlobal";
 import { AvisoSomenteLeitura } from "@/layout/AvisoSomenteLeitura";
 import { BarraSuperior } from "@/layout/BarraSuperior";
 import { MenuLateral } from "@/layout/MenuLateral";
@@ -23,7 +24,7 @@ export function PularParaConteudo() {
  * Casca do app (VisaoGeral.dc.html): menu lateral de 248px + conteúdo com padding
  * 32/40/56 e coluna de até 1200px, gap de 28px entre blocos.
  */
-export function LayoutApp({ busca }: { busca?: ReactNode }) {
+export function LayoutApp({ busca = <BuscaGlobal /> }: { busca?: ReactNode }) {
   return (
     <div className="flex min-h-screen bg-background">
       <PularParaConteudo />

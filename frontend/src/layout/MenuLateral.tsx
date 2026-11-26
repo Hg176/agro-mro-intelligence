@@ -3,6 +3,7 @@ import { Leaf, LogOut } from "lucide-react";
 import { Link, NavLink, useNavigate } from "react-router";
 
 import { encerrarSessao } from "@/api/sessao";
+import { limparBuscasRecentes } from "@/componentes/busca/recentes";
 import { CartaoPlano } from "@/layout/CartaoPlano";
 import { cn } from "@/lib/utils";
 import { GRUPOS_MENU, telasDoMenu } from "@/rotas/mapa";
@@ -21,6 +22,7 @@ export function MenuLateral() {
       await encerrarSessao();
     } finally {
       cliente.clear();
+      limparBuscasRecentes();
       void navegar("/entrar", { replace: true });
     }
   };
