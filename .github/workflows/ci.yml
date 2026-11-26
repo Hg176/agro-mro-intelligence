@@ -208,3 +208,28 @@ jobs:
           name: relatorios-backend
           path: reports/junit-backend.xml
           if-no-files-found: warn
+
+  # Front-end (F1): typecheck + lint + testes (inclui as guardas) + build + verificação
+  # de que o mock (MSW) não entrou no build. Tudo em "npm run check".
+  frontend:
+    name: frontend (vite + vitest)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Dependências (npm ci)
+        run: npm ci
+
+      - name: npm run check
+        run: npm run check
