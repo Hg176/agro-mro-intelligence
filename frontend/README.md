@@ -37,6 +37,19 @@ frontend/
 
 Testes de componente ficam ao lado do arquivo (`*.test.tsx`). Os testes de guarda ficam em `tests/`.
 
+## Tema (tokens do design)
+
+`src/index.css` é o tema. Os valores vêm de `docs/design/tokens/tokens.css`, a fonte da verdade.
+
+- **Cores:** só as dos tokens, com o nome do token: `bg-verde-900`, `text-ouro-700`, `text-status-ruptura-texto`, `bg-branco`, `border-borda`. As variáveis semânticas do shadcn (`bg-primary`, `text-muted-foreground`, `bg-sidebar`...) apontam para os tokens. A paleta padrão do Tailwind está desligada (`--color-*: initial`), então `bg-red-500`, `text-gray-600`, `bg-black` e `text-white` não geram CSS nenhum. `bg-transparent` e `text-current` continuam funcionando.
+- **Texto:** `text-display-xl`, `text-display-l`, `text-titulo-m`, `text-numero-l`, `text-titulo-s`, `text-corpo-l`, `text-corpo-m`, `text-corpo-s`, `text-rotulo`, `text-botao`. Cada um já traz tamanho, entrelinha, peso e letter-spacing. A família vem à parte: `font-display` (Plus Jakarta Sans) em títulos e números grandes, `font-sans` (Inter, padrão do corpo) no resto. O utilitário `numero` aplica a família display e algarismos tabulares de uma vez.
+- **Raios:** `rounded-sm` (8), `rounded-md` (10), `rounded-lg` (12, botões), `rounded-xl` (16, cartões), `rounded-pill`.
+- **Sombras:** `shadow-foco` (halo do foco) e `shadow-previa` (só a prévia da landing). Cartões não têm sombra.
+- **Espaçamentos:** `p-esp-24`, `gap-esp-16`, `mt-esp-48`... A escala numérica do Tailwind (`p-4` etc.) também continua disponível.
+- **Fontes:** vêm de `@fontsource-variable` e entram no build. Nada de Google Fonts por CDN.
+- **Testes:** `tests/tokens.test.ts` confere cada token do `tokens.json` no `index.css`, com o mesmo valor e o hex comparado sem diferenciar maiúscula. `tests/tema-sem-cores-padrao.test.ts` confere o reset e compila o tema com o Tailwind para provar que as cores padrão não existem.
+- **`cn()`:** o `src/lib/utils.ts` ensina ao tailwind-merge a escala do tema. Sem isso, `cn("text-titulo-m", "text-tinta-900")` perderia uma das duas classes.
+
 ## Regras que os testes de guarda cobrem
 
 `tests/guarda-cores.test.ts` varre `src/` inteiro, inclusive `src/components/ui/`. Ficam de fora só `src/index.css`, onde os tokens são definidos, e `src/mocks/`. A varredura reprova:

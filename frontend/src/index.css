@@ -1,1 +1,318 @@
+/*
+ * Tema do Agro MRO Intelligence (F1-2).
+ *
+ * Fonte da verdade dos valores: docs/design/tokens/tokens.css (e tokens.json).
+ * tests/tokens.test.ts confere que cada cor do tokens.json está aqui com o mesmo hex.
+ * Este é o ÚNICO arquivo de src/ onde hex de cor é permitido.
+ *
+ * Estrutura:
+ *   1. imports (Tailwind, animações do shadcn, fontes locais via @fontsource-variable)
+ *   2. :root com TODOS os tokens (cores, sombras, espaçamentos, raios, tipografia)
+ *   3. :root com as variáveis do shadcn/ui apontando para os tokens
+ *   4. @theme inline: desliga a paleta padrão do Tailwind (--color-*: initial) e expõe
+ *      só os tokens como utilitários (bg-verde-900, text-ouro-700, shadow-foco...)
+ *   5. base: corpo, foco visível, números tabulares, reduzir movimento
+ */
+
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/plus-jakarta-sans";
+
+/* 2. Tokens (valores copiados de docs/design/tokens/tokens.css) ------------------ */
+:root {
+  /* Verdes */
+  --verde-950: #0b2a20; /* Texto sobre dourado (botão de assinar); rodapé. */
+  --verde-900: #113d2f; /* Menu lateral, faixa de conclusão, painéis de destaque escuros. */
+  --verde-800: #174e3e; /* Hover no menu; texto do botão secundário. */
+  --verde-700: #1c684c; /* Ação principal dentro do produto; classe A; status saudável. */
+  --verde-500: #3f8c6e; /* Anel de foco; classe B em gráficos; linhas. Não usar como texto sobre verde-900. */
+  --verde-300: #8eb3a4; /* Rótulos de grupo no menu lateral, sobre verde-900. */
+  --verde-100: #e2efe9; /* Texto sobre verde-900; fundo do selo Saudável e da classe A. */
+  --verde-50: #f0f6f2; /* Hover de linha; caixas de dica. */
+
+  /* Ouros */
+  --ouro-600: #b3842c; /* Classe B; decorativo. Nunca como texto pequeno: use ouro-700. */
+  --ouro-700: #8a6420; /* Rótulos em CAIXA ALTA sobre creme-100, branco ou ouro-100. */
+  --ouro-500: #d9a441; /* CTA de comprar/assinar/testar. Um por tela. Também a marca. */
+  --ouro-300: #f0c56e; /* Destaques (números, palavra-chave) sobre verde-900. */
+  --ouro-100: #f8edda; /* Faixa de implantação; fundo da classe B. */
+
+  /* Neutros */
+  --creme-100: #f5f4ee; /* Fundo das telas. */
+  --branco: #ffffff; /* Cartões, campos, tabelas. */
+  --tinta-900: #20322c; /* Texto principal. */
+  --tinta-600: #4b6257; /* Texto secundário forte. */
+  --tinta-500: #66746e; /* Texto de apoio, notas, cabeçalho de tabela (em creme: >=14px ou peso 600). */
+  --tinta-300: #a3aca8; /* Placeholder e desabilitado APENAS. */
+  --borda: #e3e2dc; /* Bordas de cartões, campos e divisórias. */
+
+  /* Status */
+  --status-ruptura: #bd4646; /* Ruptura, saldo negativo, erro: barras, ícones, bordas. */
+  --status-ruptura-bg: #f9e6e4; /* Fundo do selo Ruptura. */
+  --status-ruptura-texto: #a83a3a; /* Texto do selo Ruptura e mensagens de erro. */
+  --status-alerta: #c9771f; /* Abaixo do PP / acima do máximo: barras, ícones, KPI >=24px. */
+  --status-alerta-bg: #fbeedc; /* Fundo do selo de alerta. */
+  --status-alerta-texto: #94560f; /* Texto do selo de alerta. */
+  --status-parado: #76584c; /* Sem giro / parado +180 dias; classe C. */
+  --status-parado-bg: #eee8e5; /* Fundo do selo Parado e da classe C. */
+
+  /* Sombras */
+  --sombra-foco: 0 0 0 3px #e2efe9; /* Halo do campo em foco, junto com a borda verde-700. */
+  --sombra-previa: 0 30px 60px -10px rgba(0, 13, 8, 0.45); /* Só a prévia do produto na landing. */
+
+  /* Espaçamentos */
+  --esp-4: 4px;
+  --esp-8: 8px;
+  --esp-12: 12px;
+  --esp-16: 16px;
+  --esp-24: 24px;
+  --esp-32: 32px;
+  --esp-48: 48px;
+  --esp-80: 80px;
+
+  /* Raios */
+  --raio-sm: 8px; /* Chips, células da matriz (selo de classe usa 7px). */
+  --raio-md: 10px; /* Campos de texto. */
+  --raio-lg: 12px; /* Botões. */
+  --raio-xl: 16px; /* Cartões e painéis. */
+  --raio-pill: 999px; /* Selos de status, etiquetas. */
+
+  /* Famílias (os nomes "... Variable" vêm do @fontsource-variable) */
+  --fonte-sans: "Inter Variable", "Inter", system-ui, sans-serif;
+  --fonte-display: "Plus Jakarta Sans Variable", "Plus Jakarta Sans", "Inter Variable", sans-serif;
+}
+
+/* 3. Variáveis do shadcn/ui apontando para os tokens ------------------------------ */
+:root {
+  --radius: var(--raio-lg);
+
+  --background: var(--creme-100);
+  --foreground: var(--tinta-900);
+  --card: var(--branco);
+  --card-foreground: var(--tinta-900);
+  --popover: var(--branco);
+  --popover-foreground: var(--tinta-900);
+  --primary: var(--verde-700);
+  --primary-foreground: var(--branco);
+  --secondary: var(--branco);
+  --secondary-foreground: var(--verde-800);
+  --muted: var(--creme-100);
+  --muted-foreground: var(--tinta-500);
+  --accent: var(--verde-50);
+  --accent-foreground: var(--verde-800);
+  --destructive: var(--status-ruptura);
+  --destructive-foreground: var(--branco);
+  --border: var(--borda);
+  --input: var(--borda);
+  --ring: var(--verde-500);
+
+  /* Gráficos: A, B, C e apoio (Recharts usa var(--chart-n)). */
+  --chart-1: var(--verde-700);
+  --chart-2: var(--ouro-600);
+  --chart-3: var(--status-parado);
+  --chart-4: var(--verde-500);
+  --chart-5: var(--ouro-300);
+
+  /* Menu lateral */
+  --sidebar: var(--verde-900);
+  --sidebar-foreground: var(--verde-100);
+  --sidebar-primary: var(--ouro-500);
+  --sidebar-primary-foreground: var(--verde-950);
+  --sidebar-accent: var(--verde-800);
+  --sidebar-accent-foreground: var(--verde-100);
+  --sidebar-border: var(--verde-800);
+  --sidebar-ring: var(--verde-500);
+}
+
+/* 4. Tema do Tailwind ------------------------------------------------------------- */
+@theme inline {
+  /* Desliga a paleta padrão: bg-red-500, text-gray-600, bg-black, text-white deixam de existir. */
+  --color-*: initial;
+
+  /* Tokens de cor */
+  --color-verde-950: var(--verde-950);
+  --color-verde-900: var(--verde-900);
+  --color-verde-800: var(--verde-800);
+  --color-verde-700: var(--verde-700);
+  --color-verde-500: var(--verde-500);
+  --color-verde-300: var(--verde-300);
+  --color-verde-100: var(--verde-100);
+  --color-verde-50: var(--verde-50);
+  --color-ouro-700: var(--ouro-700);
+  --color-ouro-600: var(--ouro-600);
+  --color-ouro-500: var(--ouro-500);
+  --color-ouro-300: var(--ouro-300);
+  --color-ouro-100: var(--ouro-100);
+  --color-creme-100: var(--creme-100);
+  --color-branco: var(--branco);
+  --color-tinta-900: var(--tinta-900);
+  --color-tinta-600: var(--tinta-600);
+  --color-tinta-500: var(--tinta-500);
+  --color-tinta-300: var(--tinta-300);
+  --color-borda: var(--borda);
+  --color-status-ruptura: var(--status-ruptura);
+  --color-status-ruptura-bg: var(--status-ruptura-bg);
+  --color-status-ruptura-texto: var(--status-ruptura-texto);
+  --color-status-alerta: var(--status-alerta);
+  --color-status-alerta-bg: var(--status-alerta-bg);
+  --color-status-alerta-texto: var(--status-alerta-texto);
+  --color-status-parado: var(--status-parado);
+  --color-status-parado-bg: var(--status-parado-bg);
+
+  /* Cores semânticas do shadcn */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Famílias: font-sans (Inter) e font-display (Plus Jakarta Sans) */
+  --font-sans: var(--fonte-sans);
+  --font-display: var(--fonte-display);
+
+  /* Raios: rounded-sm=8, rounded-md=10, rounded-lg=12, rounded-xl=16, rounded-pill=999 */
+  --radius-sm: var(--raio-sm);
+  --radius-md: var(--raio-md);
+  --radius-lg: var(--raio-lg);
+  --radius-xl: var(--raio-xl);
+  --radius-pill: var(--raio-pill);
+
+  /* Sombras: shadow-foco e shadow-previa (o app não usa sombra em cartões) */
+  --shadow-foco: var(--sombra-foco);
+  --shadow-previa: var(--sombra-previa);
+
+  /* Espaçamentos: p-esp-24, gap-esp-16, mt-esp-48... */
+  --spacing-esp-4: var(--esp-4);
+  --spacing-esp-8: var(--esp-8);
+  --spacing-esp-12: var(--esp-12);
+  --spacing-esp-16: var(--esp-16);
+  --spacing-esp-24: var(--esp-24);
+  --spacing-esp-32: var(--esp-32);
+  --spacing-esp-48: var(--esp-48);
+  --spacing-esp-80: var(--esp-80);
+
+  /* Escala de texto (tamanho, entrelinha, peso, letter-spacing do tokens.css).
+     A família vem à parte: font-display nos títulos e números grandes, font-sans no resto. */
+  --text-display-xl: 64px;
+  --text-display-xl--line-height: 70px;
+  --text-display-xl--font-weight: 800;
+  --text-display-xl--letter-spacing: -0.03em;
+  --text-display-l: 44px;
+  --text-display-l--line-height: 52px;
+  --text-display-l--font-weight: 700;
+  --text-display-l--letter-spacing: -0.025em;
+  --text-titulo-m: 26px;
+  --text-titulo-m--line-height: 32px;
+  --text-titulo-m--font-weight: 700;
+  --text-titulo-m--letter-spacing: -0.015em;
+  --text-numero-l: 36px;
+  --text-numero-l--line-height: 40px;
+  --text-numero-l--font-weight: 700;
+  --text-numero-l--letter-spacing: -0.02em;
+  --text-titulo-s: 18px;
+  --text-titulo-s--line-height: 26px;
+  --text-titulo-s--font-weight: 600;
+  --text-titulo-s--letter-spacing: 0;
+  --text-corpo-l: 19px;
+  --text-corpo-l--line-height: 30px;
+  --text-corpo-l--font-weight: 400;
+  --text-corpo-l--letter-spacing: 0;
+  --text-corpo-m: 15px;
+  --text-corpo-m--line-height: 24px;
+  --text-corpo-m--font-weight: 400;
+  --text-corpo-m--letter-spacing: 0;
+  --text-corpo-s: 13px;
+  --text-corpo-s--line-height: 20px;
+  --text-corpo-s--font-weight: 400;
+  --text-corpo-s--letter-spacing: 0;
+  --text-rotulo: 11px;
+  --text-rotulo--line-height: 14px;
+  --text-rotulo--font-weight: 600;
+  --text-rotulo--letter-spacing: 0.1em;
+  --text-botao: 15px;
+  --text-botao--line-height: 20px;
+  --text-botao--font-weight: 600;
+  --text-botao--letter-spacing: 0;
+}
+
+/* Números grandes: sempre família display + algarismos de largura fixa. */
+@utility numero {
+  font-family: var(--fonte-display);
+  font-variant-numeric: tabular-nums;
+}
+
+/* 5. Base -------------------------------------------------------------------------- */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans text-corpo-m;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Tabelas e números sempre tabulares (colunas alinhadas). */
+  table,
+  td,
+  th,
+  input[inputmode="decimal"],
+  input[inputmode="numeric"] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Foco visível padrão (links e qualquer elemento sem foco próprio): verde-700 + halo. */
+  :focus-visible {
+    outline: 2px solid var(--verde-700);
+    outline-offset: 2px;
+    box-shadow: var(--sombra-foco);
+  }
+
+  ::placeholder {
+    color: var(--tinta-300);
+  }
+}
+
+/* Reduzir movimento: rede de segurança para qualquer animação que escape do motion-safe:. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
