@@ -23,7 +23,7 @@ import { AcaoProtegida } from "@/sessao/AcaoProtegida";
 import { SINAIS } from "@/telas/visao-geral/textos";
 
 import { CartaoPosicao } from "./CartaoPosicao";
-import { GavetaNovoMaterial } from "./GavetaNovoMaterial";
+import { JanelaNovoMaterial } from "./JanelaNovoMaterial";
 import { useParametrosMateriais } from "./parametros";
 import { CHIPS, FRASES_MATERIAIS } from "./textos";
 
@@ -166,7 +166,7 @@ function BuscaMateriais({ valor, aoBuscar }: { valor: string; aoBuscar: (q: stri
 export default function TelaMateriais() {
   const { parametros, mudar, limpar } = useParametrosMateriais();
   const consulta = useMateriais(parametros);
-  const [gavetaAberta, setGavetaAberta] = useState(false);
+  const [janelaAberta, setJanelaAberta] = useState(false);
   const [aviso, setAviso] = useState<string | null>(null);
   const dados = consulta.data;
 
@@ -181,14 +181,14 @@ export default function TelaMateriais() {
     <Cabecalho
       dados={dados}
       novoPrincipal={!vazio}
-      aoNovo={() => setGavetaAberta(true)}
+      aoNovo={() => setJanelaAberta(true)}
       baixar={baixar}
     />
   );
   const gaveta = (
-    <GavetaNovoMaterial
-      aberta={gavetaAberta}
-      aoMudar={setGavetaAberta}
+    <JanelaNovoMaterial
+      aberta={janelaAberta}
+      aoMudar={setJanelaAberta}
       aoSalvar={(m) => setAviso(`Material ${m.code} salvo.`)}
     />
   );

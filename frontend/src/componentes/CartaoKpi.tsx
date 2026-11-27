@@ -25,6 +25,11 @@ type Props = {
   motivo?: string | null;
   apoio?: ReactNode;
   link?: { texto: string; para: string };
+  /**
+   * Destino que ainda não existe (ex.: "Ver movimentos"): mostra o texto com "Em breve",
+   * sem link e sem cursor de clique. Ignorado se `link` vier junto.
+   */
+  emBreve?: string;
   /** Cor do número (≥ 24px: status-* passa contraste como texto grande). */
   tom?: TomKpi;
 };
@@ -32,7 +37,7 @@ type Props = {
 const CLASSE_LINK =
   "mt-1 inline-flex min-h-11 items-center self-start text-sm leading-5 font-semibold text-verde-700 no-underline hover:text-verde-800";
 
-export function CartaoKpi({ rotulo, valor, motivo, apoio, link, tom = "neutro" }: Props) {
+export function CartaoKpi({ rotulo, valor, motivo, apoio, link, emBreve, tom = "neutro" }: Props) {
   return (
     <div className="flex flex-col rounded-xl border border-borda bg-branco px-[22px] py-5">
       <p className="text-rotulo uppercase text-tinta-500">{rotulo}</p>
@@ -56,6 +61,14 @@ export function CartaoKpi({ rotulo, valor, motivo, apoio, link, tom = "neutro" }
             {link.texto}
           </Link>
         ))}
+      {!link && emBreve && (
+        <p className="mt-1 inline-flex min-h-11 items-center gap-2 self-start text-sm leading-5 font-semibold text-tinta-600">
+          {emBreve}
+          <span className="rounded-full bg-creme-100 px-2 py-0.5 text-rotulo uppercase text-tinta-600">
+            Em breve
+          </span>
+        </p>
+      )}
     </div>
   );
 }

@@ -168,6 +168,17 @@ describe("Visão geral: com o mock", () => {
   });
 });
 
+describe("Visão geral: destino que ainda não existe", () => {
+  it('"Ver movimentos" mostra Em breve, sem link e sem cursor de clique', async () => {
+    await abrirComDados();
+    const movimento = screen.getByRole("region", { name: "Movimento no período" });
+    expect(within(movimento).getByText("Ver movimentos")).toBeInTheDocument();
+    expect(within(movimento).getByText("Em breve")).toBeInTheDocument();
+    expect(within(movimento).queryByRole("link")).not.toBeInTheDocument();
+    expect(movimento.querySelector(".cursor-pointer")).toBeNull();
+  });
+});
+
 describe("Visão geral: estados forçados por ?mock=", () => {
   it("carregando mostra skeleton com status", async () => {
     await abrir("?mock=carregando");

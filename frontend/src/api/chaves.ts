@@ -8,4 +8,6 @@ export const chaves = {
   materiais: (p: ParametrosMateriais) =>
     ["materiais", p.q, p.filtro, p.abc, p.pqr, p.sinal, p.pagina] as const,
   todosMateriais: ["materiais"] as const,
+  unidades: ["unidades"] as const,
+  gruposPadrao: ["grupos-padrao"] as const,
 };

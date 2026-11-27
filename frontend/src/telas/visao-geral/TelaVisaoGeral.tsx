@@ -95,6 +95,7 @@ function Kpis({ kpis }: { kpis: VisaoGeral["kpis"] }) {
               ? periodo(v.movimento.valores.periodo)
               : null
           }
+          emBreve="Ver movimentos"
         />
       </GrupoKpi>
     </div>

@@ -319,6 +319,25 @@ export type NovoMaterial = {
 };
 
 /**
+ * Unidade de medida do cadastro ("Adicionar material"). Rota a criar no backend:
+ * GET /api/v1/unidades. Hoje a lista existe só no mock (as 8 do design).
+ */
+export type UnidadeMedida = {
+  /** Valor gravado em NovoMaterial.unit (ex.: "UN"). */
+  sigla: string;
+  nome: string;
+  categoria: string;
+};
+
+/**
+ * Grupo de mercadoria do padrão Agro MRO, sugerido no "Grupo de mercadoria 1". Rota a criar
+ * no backend: GET /api/v1/grupos-padrao. Hoje a lista existe só no mock (os 4 do design).
+ */
+export type GrupoPadrao = {
+  nome: string;
+};
+
+/**
  * Posição com as métricas que as listas mostram (cartão de Materiais, tabela da Visão geral,
  * resultado da busca). Base no protótipo DashboardPosition (dashboardTypes.ts):
  * stock_quantity e reorder_point lá são number; aqui são Decimal (string).
@@ -365,8 +384,18 @@ export type ContagemFiltro<Id extends string> = {
 };
 
 /**
- * Resposta de GET /api/v1/materiais?q=&filtro=&pagina=. Rota nova, a criar no backend
- * (junta GET /materials com GET /approved-math/dashboard?search=&page=&limit=100 do protótipo).
+ * Resposta de GET /api/v1/materiais. Rota nova, a criar no backend (junta GET /materials com
+ * GET /approved-math/dashboard?search=&page=&limit=100 do protótipo).
+ *
+ * Parâmetros (todos opcionais, combináveis; os mesmos de GET /api/v1/materiais/excel, sem
+ * `pagina`):
+ * - `q`: busca por código (com ou sem espaços), local ou descrição;
+ * - `filtro`: FiltroMateriais (os 5 chips);
+ * - `abc`: ClasseAbc · `pqr`: ClassePqr (célula da matriz ABC × PQR);
+ * - `sinal`: CodigoSinal — os 7 de "Sinais para agir" da Visão geral. Os sinais sem filtro
+ *   pronto (`acima_maximo`, `preco_ausente`, `parametro_cliente`) só chegam a Materiais por
+ *   aqui, então o backend precisa aceitar todos os 7;
+ * - `pagina`: 1, 2… (100 por página).
  */
 export type PaginaMateriais = {
   conclusao: ConclusaoMateriais;

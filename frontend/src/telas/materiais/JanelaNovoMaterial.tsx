@@ -1,33 +1,23 @@
 /**
- * "Adicionar material" na gaveta, com os campos do código (schemas.py MaterialIn).
- * Validação aqui é só de preenchimento; regra e duplicidade são do backend (403/409/422
- * aparecem como mensagem). Código fica como texto (zeros à esquerda preservados).
+ * "Adicionar material" na janela central do design (Materiais.dc.html), com os campos do
+ * código (schemas.py MaterialIn). Validação aqui é só de preenchimento; regra e duplicidade
+ * são do backend (403/409/422 aparecem como mensagem). Código fica como texto (zeros à
+ * esquerda preservados).
+ * Unidades e grupos do padrão vêm da API (GET /api/v1/unidades e /api/v1/grupos-padrao,
+ * rotas a criar no backend; hoje só o mock responde).
  */
 import { useId, useState, type FormEvent, type ReactNode } from "react";
 
 import { ApiErro } from "@/api/cliente";
-import { useCriarMaterial } from "@/api/hooks";
+import { useCriarMaterial, useGruposPadrao, useUnidades } from "@/api/hooks";
 import type { Comprabilidade, Criticidade, NovoMaterial } from "@/api/tipos";
 import { Botao } from "@/componentes/Botao";
 import { Campo } from "@/componentes/Campo";
-import { Gaveta } from "@/componentes/Gaveta";
+import { Janela } from "@/componentes/Janela";
 import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 
-/** Unidades do design (Materiais.dc.html). */
-const UNIDADES = [
-  { sigla: "UN", nome: "Unidade", cat: "Contagem" },
-  { sigla: "PR", nome: "Par", cat: "Contagem" },
-  { sigla: "JG", nome: "Jogo", cat: "Conjunto" },
-  { sigla: "M", nome: "Metro", cat: "Comprimento" },
-  { sigla: "KG", nome: "Quilograma", cat: "Massa" },
-  { sigla: "L", nome: "Litro", cat: "Volume" },
-  { sigla: "BD", nome: "Balde", cat: "Embalagem" },
-  { sigla: "CX", nome: "Caixa", cat: "Embalagem" },
-];
-
-/** Grupos do padrão Agro MRO sugeridos no design. */
-const GRUPOS_PADRAO = ["Rolamentos", "Filtros", "Lubrificantes", "Transmissão"];
+import { CampoUnidade } from "./CampoUnidade";
 
 type Formulario = {
   code: string;
@@ -88,7 +78,7 @@ function CampoSelecao({
 
 const textoOuNull = (t: string) => (t.trim() === "" ? null : t.trim());
 
-export function GavetaNovoMaterial({
+export function JanelaNovoMaterial({
   aberta,
   aoMudar,
   aoSalvar,
@@ -100,6 +90,8 @@ export function GavetaNovoMaterial({
   const [form, setForm] = useState<Formulario>(VAZIO);
   const [erros, setErros] = useState<Erros>({});
   const criar = useCriarMaterial();
+  const unidades = useUnidades(aberta);
+  const grupos = useGruposPadrao(aberta);
   const idGrupos = useId();
 
   const campo = <K extends keyof Formulario>(chave: K) => ({
@@ -159,14 +151,14 @@ export function GavetaNovoMaterial({
         : null;
 
   return (
-    <Gaveta
+    <Janela
       aberta={aberta}
       aoMudar={fechar}
+      rotulo="Novo cadastro"
       titulo="Adicionar material"
-      className="sm:max-w-[640px]"
-      descricao="Novo cadastro no seu catálogo particular."
+      className="sm:max-w-[720px]"
       rodape={
-        <div className="flex justify-end gap-3">
+        <>
           <Botao variant="secundario" size="grande" type="button" onClick={() => fechar(false)}>
             Cancelar
           </Botao>
@@ -178,7 +170,7 @@ export function GavetaNovoMaterial({
           >
             {criar.isPending ? "Salvando…" : "Salvar material"}
           </Botao>
-        </div>
+        </>
       }
     >
       <form
@@ -195,17 +187,13 @@ export function GavetaNovoMaterial({
           erro={erros.code}
           {...campo("code")}
         />
-        <CampoSelecao
-          rotulo="Unidade de medida"
+        <CampoUnidade
           valor={form.unit}
           aoMudar={(v) => setForm((f) => ({ ...f, unit: v }))}
-        >
-          {UNIDADES.map((u) => (
-            <option key={u.sigla} value={u.sigla}>
-              {`${u.nome} (${u.sigla}) · ${u.cat}`}
-            </option>
-          ))}
-        </CampoSelecao>
+          unidades={unidades.data}
+          carregando={unidades.isPending}
+          erro={unidades.isError}
+        />
         <Campo
           rotulo="Descrição"
           placeholder="Descrição clara do material"
@@ -221,8 +209,8 @@ export function GavetaNovoMaterial({
           {...campo("group_1")}
         />
         <datalist id={idGrupos}>
-          {GRUPOS_PADRAO.map((g) => (
-            <option key={g} value={g}>
+          {(grupos.data ?? []).map((g) => (
+            <option key={g.nome} value={g.nome}>
               Padrão Agro MRO
             </option>
           ))}
@@ -278,6 +266,6 @@ export function GavetaNovoMaterial({
           </p>
         )}
       </form>
-    </Gaveta>
+    </Janela>
   );
 }

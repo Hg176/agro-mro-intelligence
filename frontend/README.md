@@ -76,6 +76,9 @@ A guarda pega o que dá para ver com segurança: converter um Decimal (que chega
 - `src/api/tipos.ts`: tipos de todas as respostas. Cada Decimal é `Decimal` (string), cada ausência é `T | null`, e cada tipo diz de onde vem (rota do protótipo ou "a criar no backend"). A frase de conclusão é `ConclusaoTela { tipo, valores }`, com uma união fechada de códigos por tela.
 - `src/api/<dominio>.ts`: uma função por chamada (`obterSessao`, `buscarPosicoes`, `obterVisaoGeral`, `listarMateriais`, `criarMaterial`...).
 - `src/api/hooks/`: hooks do TanStack Query. Leitura tenta de novo só em falha de rede ou tempo esgotado. Escrita nunca repete sozinha.
+- **Rotas a criar que só o mock responde:** além das telas, `GET /api/v1/unidades` e `GET /api/v1/grupos-padrao` (listas do "Adicionar material", em `src/mocks/handlers/cadastros.ts`). O contrato de cada uma está no tipo em `tipos.ts`.
+
+As telas são carregadas por rota (`lazy()` em `src/rotas/AppRotas.tsx`): cada uma vira um pedaço separado do build, e a casca aparece antes.
 
 ## Sessão, plano e permissões
 

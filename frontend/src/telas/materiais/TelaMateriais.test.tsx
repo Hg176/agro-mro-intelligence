@@ -229,3 +229,113 @@ describe("Materiais: ações protegidas pelo plano", () => {
     );
   });
 });
+
+describe("Materiais: janela Adicionar material", () => {
+  async function abrirJanela() {
+    await abrirComCartoes();
+    const usuario = userEvent.setup();
+    await usuario.click(screen.getByRole("button", { name: /Novo material/ }));
+    const janela = await screen.findByRole("dialog", { name: "Adicionar material" });
+    return { usuario, janela };
+  }
+
+  it("é a janela central do design, com o rótulo Novo cadastro", async () => {
+    const { janela } = await abrirJanela();
+    expect(within(janela).getByText("Novo cadastro")).toBeInTheDocument();
+    expect(janela).toHaveAttribute("data-slot", "dialog-content");
+  });
+
+  it("unidade com busca: filtra por nome, sigla ou categoria e escolhe pelo teclado", async () => {
+    const { usuario, janela } = await abrirJanela();
+    const unidade = within(janela).getByRole("combobox", { name: "Unidade de medida" });
+    await usuario.click(unidade);
+    const lista = await within(janela).findByRole("listbox", { name: "Unidades de medida" });
+    expect(within(lista).getAllByRole("option")).toHaveLength(8);
+    expect(within(lista).getByRole("option", { name: /Unidade/ })).toHaveAttribute(
+      "aria-selected",
+      "true",
+    );
+
+    await usuario.clear(unidade);
+    await usuario.type(unidade, "embalagem");
+    expect(
+      within(lista)
+        .getAllByRole("option")
+        .map((o) => o.textContent),
+    ).toEqual(["BaldeBDEmbalagem", "CaixaCXEmbalagem"]);
+
+    await usuario.keyboard("{ArrowDown}{Enter}");
+    expect(unidade).toHaveValue("Caixa (CX)");
+    expect(unidade).toHaveAttribute("aria-expanded", "false");
+
+    await usuario.clear(unidade);
+    await usuario.type(unidade, "xyz");
+    expect(within(janela).getByText("Nenhuma unidade encontrada.")).toBeInTheDocument();
+  });
+
+  it("Esc fecha só a lista de unidades; o segundo Esc fecha a janela", async () => {
+    const { usuario, janela } = await abrirJanela();
+    const unidade = within(janela).getByRole("combobox", { name: "Unidade de medida" });
+    await usuario.click(unidade);
+    await within(janela).findByRole("listbox");
+    await usuario.keyboard("{Escape}");
+    expect(unidade).toHaveAttribute("aria-expanded", "false");
+    expect(screen.getByRole("dialog", { name: "Adicionar material" })).toBeInTheDocument();
+    await usuario.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+  });
+
+  it("unidades e grupos vêm da API (rotas a criar), e a sigla escolhida vai no POST", async () => {
+    servidorMock.use(
+      http.get("/api/v1/unidades", () =>
+        HttpResponse.json([
+          { sigla: "UN", nome: "Unidade", categoria: "Contagem" },
+          { sigla: "GL", nome: "Galão", categoria: "Volume" },
+        ]),
+      ),
+      http.get("/api/v1/grupos-padrao", () => HttpResponse.json([{ nome: "Correias" }])),
+    );
+    let corpo: unknown = null;
+    servidorMock.events.on("request:start", ({ request }) => {
+      if (request.method === "POST")
+        void request
+          .clone()
+          .json()
+          .then((j) => (corpo = j));
+    });
+    const { usuario, janela } = await abrirJanela();
+    const unidade = within(janela).getByRole("combobox", { name: "Unidade de medida" });
+    await usuario.click(unidade);
+    const lista = await within(janela).findByRole("listbox");
+    await usuario.click(within(lista).getByRole("option", { name: /Galão/ }));
+    expect(unidade).toHaveValue("Galão (GL)");
+    expect(janela.querySelector("datalist option")).toHaveValue("Correias");
+
+    await usuario.type(within(janela).getByLabelText("Código"), "000888");
+    await usuario.type(within(janela).getByLabelText("Descrição"), "Óleo hidráulico");
+    await usuario.click(within(janela).getByRole("button", { name: "Salvar material" }));
+    expect(await screen.findByText("Material 000888 salvo.")).toBeInTheDocument();
+    expect(corpo).toMatchObject({ code: "000888", unit: "GL" });
+    servidorMock.events.removeAllListeners();
+  });
+
+  it("falha ao carregar as unidades: avisa ao lado do campo", async () => {
+    servidorMock.use(
+      http.get("/api/v1/unidades", () => HttpResponse.json({ detail: "x" }, { status: 500 })),
+    );
+    const { janela } = await abrirJanela();
+    expect(await within(janela).findByRole("alert")).toHaveTextContent(
+      "Não foi possível carregar as unidades.",
+    );
+  });
+});
+
+describe("Materiais: cartão não é clicável (a ficha ainda não existe)", () => {
+  it("sem link e sem cursor de clique", async () => {
+    await abrirComCartoes();
+    const cartao = screen.getAllByRole("article")[0]!;
+    expect(within(cartao).queryByRole("link")).not.toBeInTheDocument();
+    expect(cartao.className).not.toMatch(/cursor-pointer/);
+    expect(cartao.querySelector(".cursor-pointer")).toBeNull();
+  });
+});

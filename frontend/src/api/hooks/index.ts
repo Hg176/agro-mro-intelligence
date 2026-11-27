@@ -1,6 +1,7 @@
 import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { buscarPosicoes } from "@/api/busca";
+import { listarGruposPadrao, listarUnidades } from "@/api/cadastros";
 import { chaves } from "@/api/chaves";
 import { criarMaterial, listarMateriais, type ParametrosMateriais } from "@/api/materiais";
 import { obterSessao } from "@/api/sessao";
@@ -37,6 +38,28 @@ export function useMateriais(parametros: ParametrosMateriais) {
     queryKey: chaves.materiais(parametros),
     queryFn: ({ signal }) => listarMateriais(parametros, signal),
     placeholderData: keepPreviousData,
+  });
+}
+
+/**
+ * Listas do cadastro: só buscam quando o formulário abre (`ligado`) e, como mudam pouco,
+ * ficam 30 min sem buscar de novo.
+ */
+export function useUnidades(ligado = true) {
+  return useQuery({
+    queryKey: chaves.unidades,
+    queryFn: ({ signal }) => listarUnidades(signal),
+    staleTime: 30 * 60_000,
+    enabled: ligado,
+  });
+}
+
+export function useGruposPadrao(ligado = true) {
+  return useQuery({
+    queryKey: chaves.gruposPadrao,
+    queryFn: ({ signal }) => listarGruposPadrao(signal),
+    staleTime: 30 * 60_000,
+    enabled: ligado,
   });
 }
 
