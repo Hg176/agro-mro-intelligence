@@ -6,6 +6,7 @@ import { obterColunas, obterPainelImportacao, obterProgresso } from "@/api/impor
 import { chaves } from "@/api/chaves";
 import { criarMaterial, listarMateriais, type ParametrosMateriais } from "@/api/materiais";
 import { obterPlanejamento } from "@/api/planejamento";
+import { obterRegras } from "@/api/regras";
 import { obterSessao } from "@/api/sessao";
 import type { FiltroPlanejamento, NovoMaterial } from "@/api/tipos";
 import { obterVisaoGeral } from "@/api/visaoGeral";
@@ -117,4 +118,9 @@ export function usePlanejamento(filtro: FiltroPlanejamento) {
     queryFn: ({ signal }) => obterPlanejamento(filtro, signal),
     placeholderData: keepPreviousData,
   });
+}
+
+/** Regras e letras: cortes do espaço, padrão e o que a API calcula com eles. */
+export function useRegras() {
+  return useQuery({ queryKey: chaves.regras, queryFn: ({ signal }) => obterRegras(signal) });
 }

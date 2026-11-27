@@ -814,6 +814,62 @@ export type RegraCorte = {
   versao: number;
 };
 
+/** As 6 abas de Regras e letras. */
+export type AbaRegras =
+  "abc" | "pqr_saidas" | "pqr_entradas" | "xyz" | "comprabilidade" | "item_novo";
+
+/**
+ * Cortes do espaço como a tela mostra e edita: ABC em % do valor acumulado, PQR em
+ * transações por ano, item novo em dias. O backend converte para o formato de
+ * PUT /classification-settings do protótipo (abc_a/abc_b em fração). Decimal sempre string.
+ */
+export type CortesDoEspaco = {
+  abc_a_percentual: Decimal;
+  abc_b_percentual: Decimal;
+  pqr_saidas_q: Decimal;
+  pqr_saidas_p: Decimal;
+  pqr_entradas_q: Decimal;
+  pqr_entradas_p: Decimal;
+  item_novo_dias: number;
+};
+
+/** Faixa de uma letra na barra dos cortes: início e fim em fração da barra ("0" a "1"). */
+export type SegmentoBarra = { letra: string; inicio: Decimal; fim: Decimal };
+
+/** O que a API calcula para cada aba com os cortes SALVOS (o rascunho não muda isso). */
+export type PainelRegra = {
+  /** Exemplo do design com a classe já decidida pelo backend. */
+  exemplo: string;
+  /** Posições em cada letra hoje. null = a aba não mostra contagem. */
+  contagens: Record<string, number> | null;
+  /** Barra dos cortes. null = aba sem barra (XYZ, Comprabilidade, N). */
+  barra: SegmentoBarra[] | null;
+};
+
+/**
+ * Resposta de GET /api/v1/regras. Rota nova, a criar no backend (base no protótipo
+ * GET /api/v1/classification-settings + contagens e exemplos). Escritas:
+ * - PUT /api/v1/regras/cortes { cortes: CortesDoEspaco, versao } → RegrasLetras. Recalcula o
+ *   estoque todo. 422 com a mensagem da regra (ex.: "O corte de A precisa ser menor que o
+ *   de B…"); 409 se a versão mudou.
+ * - POST /api/v1/regras/cortes/restaurar { versao } → RegrasLetras (volta ao padrão).
+ */
+export type RegrasLetras = {
+  conclusao: ConclusaoRegras;
+  origem: OrigemRegra;
+  /** Versão dos cortes do espaço (0 = padrão Agro MRO). */
+  versao: number;
+  cortes: CortesDoEspaco;
+  padrao: CortesDoEspaco;
+  /** Posições que mudam de classe ao salvar (texto da confirmação). */
+  posicoes: number;
+  paineis: Record<AbaRegras, PainelRegra>;
+  versao_classificacoes: string;
+  versao_alertas: string;
+  /** Alertas ativos ("8 alertas ativos" em Para aprofundar). */
+  alertas_ativos: number;
+};
+
 /** Caso da matriz de nível de serviço (75 casos). Protótipo: service_level_rules / approved_service_levels_v3.json. */
 export type CasoNivelServico = {
   /** Código do caso (ex.: "PAX"). */

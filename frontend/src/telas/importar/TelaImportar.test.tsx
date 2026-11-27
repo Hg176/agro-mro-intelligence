@@ -14,6 +14,8 @@ import { violacoesSerias } from "../../../tests/utils/acessibilidade";
 import { FRASES_IMPORTACAO } from "./textos";
 
 const ESPERA = { timeout: 4000 };
+/** Fluxos longos (vários passos, axe e progresso lido da API) sob a carga do check. */
+const FLUXO_LONGO = 20_000;
 
 /*
  * Upload nos testes: o FormData e o File do jsdom perdem o nome do arquivo ao passar pelo
@@ -117,138 +119,154 @@ describe("Importar dados: painel", () => {
 });
 
 describe("Importar dados: fluxo Arquivo → Colunas → Prévia → Concluído", () => {
-  it("envia, confere as colunas lembradas, corrige uma linha, grava com progresso e mostra o resumo", async () => {
-    const { container } = await abrirComPainel();
-    const usuario = userEvent.setup();
+  it(
+    "envia, confere as colunas lembradas, corrige uma linha, grava com progresso e mostra o resumo",
+    async () => {
+      const { container } = await abrirComPainel();
+      const usuario = userEvent.setup();
 
-    // Passo 1: ERP e arquivo. Sem arquivo, não continua.
-    expect(screen.getByRole("button", { name: "Continuar para as colunas" })).toBeDisabled();
-    await usuario.click(screen.getByRole("button", { name: /TOTVS/ }));
-    expect(screen.getByRole("button", { name: /TOTVS/ })).toHaveAttribute("aria-pressed", "true");
-    await enviar(container, usuario);
-    expect(screen.getByText("materiais_sap_nov.xlsx")).toBeInTheDocument();
-    expect(screen.getByText("2,1 MB · 818 linhas · 1 aba (MARA_MARD)")).toBeInTheDocument();
-    expect(await violacoesSerias(document.body)).toEqual([]);
+      // Passo 1: ERP e arquivo. Sem arquivo, não continua.
+      expect(screen.getByRole("button", { name: "Continuar para as colunas" })).toBeDisabled();
+      await usuario.click(screen.getByRole("button", { name: /TOTVS/ }));
+      expect(screen.getByRole("button", { name: /TOTVS/ })).toHaveAttribute("aria-pressed", "true");
+      await enviar(container, usuario);
+      expect(screen.getByText("materiais_sap_nov.xlsx")).toBeInTheDocument();
+      expect(screen.getByText("2,1 MB · 818 linhas · 1 aba (MARA_MARD)")).toBeInTheDocument();
+      expect(await violacoesSerias(document.body)).toEqual([]);
 
-    // Passo 2: colunas reconhecidas e lembradas pela API.
-    await usuario.click(screen.getByRole("button", { name: "Continuar para as colunas" }));
-    expect(
-      (await screen.findByText(/Lembramos do seu último mapeamento/)).parentElement,
-    ).toHaveTextContent(
-      "Lembramos do seu último mapeamento (SAP, carga de 04/11/2026). 5 de 6 campos já estão ligados; confira os que pedem atenção.",
-    );
-    expect(screen.getByRole("combobox", { name: "Coluna para Código do material" })).toHaveValue(
-      "MATNR",
-    );
-    expect(screen.getByRole("combobox", { name: "Coluna para Criticidade" })).toHaveDisplayValue(
-      "Nenhuma coluna encontrada",
-    );
-    expect(screen.getByText("▲ Confira")).toBeInTheDocument();
-    expect(screen.getByText("— Sem coluna")).toBeInTheDocument();
-    expect(
-      screen
-        .getByRole("list", { name: "Etapas da importação" })
-        .querySelector('[aria-current="step"]'),
-    ).toHaveTextContent("Colunas");
-    expect(await violacoesSerias(document.body)).toEqual([]);
+      // Passo 2: colunas reconhecidas e lembradas pela API.
+      await usuario.click(screen.getByRole("button", { name: "Continuar para as colunas" }));
+      expect(
+        (await screen.findByText(/Lembramos do seu último mapeamento/)).parentElement,
+      ).toHaveTextContent(
+        "Lembramos do seu último mapeamento (SAP, carga de 04/11/2026). 5 de 6 campos já estão ligados; confira os que pedem atenção.",
+      );
+      expect(screen.getByRole("combobox", { name: "Coluna para Código do material" })).toHaveValue(
+        "MATNR",
+      );
+      expect(screen.getByRole("combobox", { name: "Coluna para Criticidade" })).toHaveDisplayValue(
+        "Nenhuma coluna encontrada",
+      );
+      expect(screen.getByText("▲ Confira")).toBeInTheDocument();
+      expect(screen.getByText("— Sem coluna")).toBeInTheDocument();
+      expect(
+        screen
+          .getByRole("list", { name: "Etapas da importação" })
+          .querySelector('[aria-current="step"]'),
+      ).toHaveTextContent("Colunas");
+      expect(await violacoesSerias(document.body)).toEqual([]);
 
-    // Passo 3: prévia, 6 erros do design, correção conferida pela API.
-    await usuario.click(screen.getByRole("button", { name: "Ver prévia" }));
-    expect(
-      await screen.findByRole("heading", { name: "6 linhas pedem correção" }),
-    ).toBeInTheDocument();
-    expect(screen.getByText("Número com duas vírgulas. Use 12,50 ou 1250,00.")).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }),
-    ).toBeInTheDocument();
-    expect(
-      screen.getByText(/As 806 posições atuais saem e ficam só as do arquivo/),
-    ).toBeInTheDocument();
-    expect(await violacoesSerias(document.body)).toEqual([]);
+      // Passo 3: prévia, 6 erros do design, correção conferida pela API.
+      await usuario.click(screen.getByRole("button", { name: "Ver prévia" }));
+      expect(
+        await screen.findByRole("heading", { name: "6 linhas pedem correção" }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText("Número com duas vírgulas. Use 12,50 ou 1250,00."),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByText(/As 806 posições atuais saem e ficam só as do arquivo/),
+      ).toBeInTheDocument();
+      expect(await violacoesSerias(document.body)).toEqual([]);
 
-    const preco = screen.getByRole("textbox", { name: "Linha 37, Preço unitário" });
-    await usuario.clear(preco);
-    await usuario.type(preco, "12,50{Enter}");
-    expect(
-      await screen.findByRole("heading", { name: "5 linhas pedem correção" }),
-    ).toBeInTheDocument();
-    expect(screen.getByText("Corrigida")).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: "Confirmar importação de 813 linhas" }),
-    ).toBeInTheDocument();
+      const preco = screen.getByRole("textbox", { name: "Linha 37, Preço unitário" });
+      await usuario.clear(preco);
+      await usuario.type(preco, "12,50{Enter}");
+      expect(
+        await screen.findByRole("heading", { name: "5 linhas pedem correção" }),
+      ).toBeInTheDocument();
+      expect(screen.getByText("Corrigida")).toBeInTheDocument();
+      expect(
+        screen.getByRole("button", { name: "Confirmar importação de 813 linhas" }),
+      ).toBeInTheDocument();
 
-    // Correção que o backend não aceita continua com o motivo.
-    const local = screen.getByRole("textbox", { name: "Linha 215, Local" });
-    await usuario.clear(local);
-    await usuario.type(local, "ALM-98{Enter}");
-    await waitFor(() =>
-      expect(screen.queryByText("Conferindo a correção…")).not.toBeInTheDocument(),
-    );
-    expect(
-      screen.getByText("Local que não existe. Use um dos 3 locais ou cadastre o novo."),
-    ).toBeInTheDocument();
+      // Correção que o backend não aceita continua com o motivo.
+      const local = screen.getByRole("textbox", { name: "Linha 215, Local" });
+      await usuario.clear(local);
+      await usuario.type(local, "ALM-98{Enter}");
+      await waitFor(() =>
+        expect(screen.queryByText("Conferindo a correção…")).not.toBeInTheDocument(),
+      );
+      expect(
+        screen.getByText("Local que não existe. Use um dos 3 locais ou cadastre o novo."),
+      ).toBeInTheDocument();
 
-    // Confirmar: progresso real e resumo grande.
-    await usuario.click(screen.getByRole("radio", { name: /Substituir tudo/ }));
-    await usuario.click(screen.getByRole("button", { name: "Confirmar importação de 813 linhas" }));
-    expect(await screen.findByText(/Gravando .* de 813 posições…/, {}, ESPERA)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Voltar" })).toBeDisabled();
-    expect(
-      await screen.findByRole("heading", { name: "813 posições em 3 locais" }, ESPERA),
-    ).toBeInTheDocument();
-    expect(screen.getByText("R$ 2,4 mi")).toBeInTheDocument();
-    expect(
-      screen.getByText("Almox. central, Oficina campo, Posto combustível"),
-    ).toBeInTheDocument();
-    expect(screen.getByText("12 sem preço")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Ver minha Visão geral" })).toHaveAttribute(
-      "href",
-      "/app/visao-geral",
-    );
-    expect(
-      screen
-        .getByRole("list", { name: "Etapas da importação" })
-        .querySelector('[aria-current="step"]'),
-    ).toBeNull();
-    expect(await violacoesSerias(document.body)).toEqual([]);
+      // Confirmar: progresso real e resumo grande.
+      await usuario.click(screen.getByRole("radio", { name: /Substituir tudo/ }));
+      await usuario.click(
+        screen.getByRole("button", { name: "Confirmar importação de 813 linhas" }),
+      );
+      expect(
+        await screen.findByText(/Gravando .* de 813 posições…/, {}, ESPERA),
+      ).toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Voltar" })).toBeDisabled();
+      expect(
+        await screen.findByRole("heading", { name: "813 posições em 3 locais" }, ESPERA),
+      ).toBeInTheDocument();
+      expect(screen.getByText("R$ 2,4 mi")).toBeInTheDocument();
+      expect(
+        screen.getByText("Almox. central, Oficina campo, Posto combustível"),
+      ).toBeInTheDocument();
+      expect(screen.getByText("12 sem preço")).toBeInTheDocument();
+      expect(screen.getByRole("link", { name: "Ver minha Visão geral" })).toHaveAttribute(
+        "href",
+        "/app/visao-geral",
+      );
+      expect(
+        screen
+          .getByRole("list", { name: "Etapas da importação" })
+          .querySelector('[aria-current="step"]'),
+      ).toBeNull();
+      expect(await violacoesSerias(document.body)).toEqual([]);
 
-    await usuario.click(screen.getByRole("button", { name: "Importar movimentos" }));
-    expect(screen.getByRole("tab", { name: /Movimentos/ })).toHaveAttribute(
-      "aria-selected",
-      "true",
-    );
-  });
+      await usuario.click(screen.getByRole("button", { name: "Importar movimentos" }));
+      expect(screen.getByRole("tab", { name: /Movimentos/ })).toHaveAttribute(
+        "aria-selected",
+        "true",
+      );
+    },
+    FLUXO_LONGO,
+  );
 
-  it("o modo e o mapeamento trocado vão para a API", async () => {
-    const corpos: Record<string, unknown> = {};
-    servidorMock.events.on("request:start", ({ request }) => {
-      const caminho = new URL(request.url).pathname;
-      if (request.method === "POST" && /previa|confirmar/.test(caminho)) {
-        void request
-          .clone()
-          .json()
-          .then((j) => (corpos[caminho.split("/").pop()!] = j));
-      }
-    });
-    const { container } = await abrirComPainel();
-    const usuario = userEvent.setup();
-    await enviar(container, usuario);
-    await usuario.click(screen.getByRole("button", { name: "Continuar para as colunas" }));
-    const grupo = await screen.findByRole("combobox", { name: "Coluna para Grupo de material" });
-    await usuario.selectOptions(grupo, "");
-    expect(screen.getAllByText("— Sem coluna")).toHaveLength(2);
-    await usuario.click(screen.getByRole("checkbox", { name: "Lembrar este mapeamento" }));
-    await usuario.click(screen.getByRole("button", { name: "Ver prévia" }));
-    await screen.findByRole("heading", { name: "6 linhas pedem correção" });
-    await usuario.click(screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }));
-    await screen.findByRole("heading", { name: "812 posições em 3 locais" }, ESPERA);
-    expect(corpos.previa).toMatchObject({
-      lembrar: false,
-      mapeamento: { code: "MATNR", group_1: null, criticality: null },
-    });
-    expect(corpos.confirmar).toEqual({ modo: "append" });
-    servidorMock.events.removeAllListeners();
-  });
+  it(
+    "o modo e o mapeamento trocado vão para a API",
+    async () => {
+      const corpos: Record<string, unknown> = {};
+      servidorMock.events.on("request:start", ({ request }) => {
+        const caminho = new URL(request.url).pathname;
+        if (request.method === "POST" && /previa|confirmar/.test(caminho)) {
+          void request
+            .clone()
+            .json()
+            .then((j) => (corpos[caminho.split("/").pop()!] = j));
+        }
+      });
+      const { container } = await abrirComPainel();
+      const usuario = userEvent.setup();
+      await enviar(container, usuario);
+      await usuario.click(screen.getByRole("button", { name: "Continuar para as colunas" }));
+      const grupo = await screen.findByRole("combobox", { name: "Coluna para Grupo de material" });
+      await usuario.selectOptions(grupo, "");
+      expect(screen.getAllByText("— Sem coluna")).toHaveLength(2);
+      await usuario.click(screen.getByRole("checkbox", { name: "Lembrar este mapeamento" }));
+      await usuario.click(screen.getByRole("button", { name: "Ver prévia" }));
+      await screen.findByRole("heading", { name: "6 linhas pedem correção" });
+      await usuario.click(
+        screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }),
+      );
+      await screen.findByRole("heading", { name: "812 posições em 3 locais" }, ESPERA);
+      expect(corpos.previa).toMatchObject({
+        lembrar: false,
+        mapeamento: { code: "MATNR", group_1: null, criticality: null },
+      });
+      expect(corpos.confirmar).toEqual({ modo: "append" });
+      servidorMock.events.removeAllListeners();
+    },
+    FLUXO_LONGO,
+  );
 
   it("formato e tamanho errados avisam antes de enviar", async () => {
     const { container } = await abrirComPainel();
@@ -277,32 +295,44 @@ describe("Importar dados: fluxo Arquivo → Colunas → Prévia → Concluído",
     );
   });
 
-  it("?carga=falha: tudo ou nada, o motivo aparece e dá para confirmar de novo", async () => {
-    const { container } = await abrirComPainel("?carga=falha");
-    const usuario = userEvent.setup();
-    await ateAPrevia(container, usuario);
-    await usuario.click(screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }));
-    const alerta = await screen.findByText("A importação não foi concluída", {}, ESPERA);
-    expect(alerta.closest("[role=alert]")).toHaveTextContent(
-      "A gravação parou no meio. Nada foi gravado; o estoque continua como antes.",
-    );
-    expect(
-      screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }),
-    ).toBeEnabled();
-  });
+  it(
+    "?carga=falha: tudo ou nada, o motivo aparece e dá para confirmar de novo",
+    async () => {
+      const { container } = await abrirComPainel("?carga=falha");
+      const usuario = userEvent.setup();
+      await ateAPrevia(container, usuario);
+      await usuario.click(
+        screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }),
+      );
+      const alerta = await screen.findByText("A importação não foi concluída", {}, ESPERA);
+      expect(alerta.closest("[role=alert]")).toHaveTextContent(
+        "A gravação parou no meio. Nada foi gravado; o estoque continua como antes.",
+      );
+      expect(
+        screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }),
+      ).toBeEnabled();
+    },
+    FLUXO_LONGO,
+  );
 
-  it("falha de rede ao confirmar não promete nada (gravação incerta)", async () => {
-    servidorMock.use(
-      http.post("/api/v1/importacao/arquivos/:id/confirmar", () => HttpResponse.error()),
-    );
-    const { container } = await abrirComPainel();
-    const usuario = userEvent.setup();
-    await ateAPrevia(container, usuario);
-    await usuario.click(screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }));
-    expect(await screen.findByRole("alert")).toHaveTextContent(
-      "Não sabemos se a importação foi gravada. Confira em Cargas anteriores antes de enviar de novo.",
-    );
-  });
+  it(
+    "falha de rede ao confirmar não promete nada (gravação incerta)",
+    async () => {
+      servidorMock.use(
+        http.post("/api/v1/importacao/arquivos/:id/confirmar", () => HttpResponse.error()),
+      );
+      const { container } = await abrirComPainel();
+      const usuario = userEvent.setup();
+      await ateAPrevia(container, usuario);
+      await usuario.click(
+        screen.getByRole("button", { name: "Confirmar importação de 812 linhas" }),
+      );
+      expect(await screen.findByRole("alert")).toHaveTextContent(
+        "Não sabemos se a importação foi gravada. Confira em Cargas anteriores antes de enviar de novo.",
+      );
+    },
+    FLUXO_LONGO,
+  );
 });
 
 describe("Importar dados: estados e plano", () => {

@@ -14,6 +14,7 @@ export const chaves = {
   importacao: ["importacao"] as const,
   planejamento: (filtro: FiltroPlanejamento) => ["planejamento", filtro] as const,
   todoPlanejamento: ["planejamento"] as const,
+  regras: ["regras"] as const,
   colunasDoArquivo: (arquivoId: string) => ["importacao", "colunas", arquivoId] as const,
   progressoCarga: (cargaId: string) => ["importacao", "carga", cargaId] as const,
 };
