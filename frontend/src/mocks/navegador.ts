@@ -6,7 +6,9 @@
  */
 import { setupWorker } from "msw/browser";
 
+import { aoChamarSemHandler } from "./guardaDoDev";
 import { handlers } from "./handlers";
+import { canalDoNavegador, fetchComReativacao } from "./reativacao";
 import { handlerRotasReais, lerRotasReais } from "./rotasReais";
 
 export async function iniciarMock(): Promise<void> {
@@ -14,8 +16,10 @@ export async function iniciarMock(): Promise<void> {
   const worker = setupWorker(...(reais.length ? [handlerRotasReais(reais)] : []), ...handlers);
   await worker.start({
     serviceWorker: { url: "/mockServiceWorker.js" },
-    onUnhandledRequest: "bypass",
+    onUnhandledRequest: aoChamarSemHandler,
   });
+  // O navegador pode encerrar o worker a qualquer momento (ver reativacao.ts).
+  globalThis.fetch = fetchComReativacao(globalThis.fetch.bind(globalThis), canalDoNavegador());
   if (reais.length) {
     console.info(`[mock] rotas indo para a API real: ${reais.join(", ")}`);
   }

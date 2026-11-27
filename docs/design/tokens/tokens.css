@@ -17,7 +17,7 @@
   --branco: #ffffff; /* Cartões, campos, tabelas. */
   --tinta-900: #20322c; /* Texto principal. */
   --tinta-600: #4b6257; /* Texto secundário forte. */
-  --tinta-500: #66746e; /* Texto de apoio, notas, cabeçalho de tabela (4,9:1 no branco; 4,4:1 no creme: em creme use ≥14px ou peso 600). */
+  --tinta-500: #66746e; /* Texto de apoio, notas, cabeçalho de tabela (4,9:1 no branco; 4,4:1 no creme, abaixo dos 4,5:1 do WCAG AA: em creme, só em texto grande (≥24px, ou ≥18,66px com peso 700); texto menor sobre creme usa tinta-600, 5,99:1). */
   --tinta-300: #a3aca8; /* Placeholder e desabilitado apenas (2,3:1, decorativo). Nunca para texto que precise ser lido. */
   --borda: #e3e2dc; /* Bordas de cartões, campos e divisórias. */
   --status-ruptura: #bd4646; /* Ruptura, saldo negativo, erro: barras, ícones, bordas de campo com erro. Texto pequeno: status-ruptura-texto. */

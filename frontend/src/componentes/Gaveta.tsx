@@ -17,12 +17,14 @@ type Props = {
   descricao?: ReactNode;
   children: ReactNode;
   rodape?: ReactNode;
+  /** Ex.: "sm:max-w-[640px]" para formulário em duas colunas. */
+  className?: string;
 };
 
-export function Gaveta({ aberta, aoMudar, titulo, descricao, children, rodape }: Props) {
+export function Gaveta({ aberta, aoMudar, titulo, descricao, children, rodape, className }: Props) {
   return (
     <Sheet open={aberta} onOpenChange={aoMudar}>
-      <SheetContent>
+      <SheetContent className={className}>
         <SheetHeader>
           <SheetTitle>{titulo}</SheetTitle>
           {descricao ? (

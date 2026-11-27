@@ -3,17 +3,20 @@ import {
   codigoEmBlocos,
   codigoSemEspacos,
   data,
+  dataComHora,
   dataDoInstante,
   dataHora,
   decimal,
   haDias,
   inteiro,
   larguraDaFracao,
+  larguraDoPercentual,
   moeda,
   moedaCompacta,
   percentual,
   percentualDeFracao,
   periodo,
+  tamanhoDeArquivo,
   TRACO,
 } from "@/lib/formato";
 
@@ -111,5 +114,25 @@ describe("formato", () => {
     expect(haDias(2)).toBe("há 2 dias");
     expect(haDias(1)).toBe("há 1 dia");
     expect(haDias(0)).toBe("hoje");
+  });
+});
+
+describe("formatadores do Importar dados", () => {
+  it("dataComHora: Cuiabá, com ponto entre data e hora", () => {
+    expect(dataComHora("2026-11-04T18:12:00Z" as DataHoraIso)).toBe("04/11/2026 · 14:12");
+    expect(dataComHora(null)).toBe(TRACO);
+  });
+
+  it("larguraDoPercentual: o navegador faz a conta; fora do formato não tem barra", () => {
+    expect(larguraDoPercentual("43" as Decimal)).toBe("calc(43 * 1%)");
+    expect(larguraDoPercentual("100" as Decimal)).toBe("calc(100 * 1%)");
+    expect(larguraDoPercentual("101" as Decimal)).toBeNull();
+    expect(larguraDoPercentual("-1" as Decimal)).toBeNull();
+    expect(larguraDoPercentual(null)).toBeNull();
+  });
+
+  it("tamanhoDeArquivo: MB com uma casa, kB abaixo de 1 MB", () => {
+    expect(tamanhoDeArquivo(2_202_009)).toBe("2,1 MB");
+    expect(tamanhoDeArquivo(48_000)).toBe("47 kB");
   });
 });

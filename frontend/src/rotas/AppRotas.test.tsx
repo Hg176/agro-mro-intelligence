@@ -51,10 +51,9 @@ describe("casca do app", () => {
     expect(await screen.findByText("Todos os locais (3)")).toBeInTheDocument();
     expect(screen.getByText("01/07 a 11/11/2026")).toBeInTheDocument();
     expect(screen.getByText("Atualizado há 2 dias")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Minha conta (Hugo dos Santos)" })).toHaveAttribute(
-      "href",
-      "/app/conta",
-    );
+    expect(
+      screen.getByRole("link", { name: "HS · Minha conta (Hugo dos Santos)" }),
+    ).toHaveAttribute("href", "/app/conta");
   });
 
   it("tem o link de pular para o conteúdo apontando para o main", async () => {

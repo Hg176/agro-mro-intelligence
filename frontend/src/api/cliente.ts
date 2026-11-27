@@ -143,7 +143,8 @@ function montarUrl(caminho: string, parametros: OpcoesRequest["parametros"]): st
   return `${origem}${BASE_API}${caminho}${consulta ? `?${consulta}` : ""}`;
 }
 
-export async function request<T>(caminho: string, opcoes: OpcoesRequest = {}): Promise<T> {
+/** Faz a chamada e trata erro, 401 e timeout. Devolve a resposta OK para quem lê o corpo. */
+async function enviar(caminho: string, opcoes: OpcoesRequest, aceita: string): Promise<Response> {
   const { metodo = "GET", corpo, parametros, sinal, timeoutMs = TIMEOUT_PADRAO_MS } = opcoes;
 
   const controle = new AbortController();
@@ -158,7 +159,7 @@ export async function request<T>(caminho: string, opcoes: OpcoesRequest = {}): P
     else sinal.addEventListener("abort", repassarCancelamento, { once: true });
   }
 
-  const cabecalhos = new Headers({ Accept: "application/json" });
+  const cabecalhos = new Headers({ Accept: aceita });
   let corpoEnviado: BodyInit | undefined;
   if (corpo instanceof FormData) {
     corpoEnviado = corpo;
@@ -195,11 +196,52 @@ export async function request<T>(caminho: string, opcoes: OpcoesRequest = {}): P
     }
     throw erro;
   }
+  return resposta;
+}
 
+export async function request<T>(caminho: string, opcoes: OpcoesRequest = {}): Promise<T> {
+  const resposta = await enviar(caminho, opcoes, "application/json");
   if (resposta.status === 204) return undefined as T;
   try {
     return (await resposta.json()) as T;
   } catch {
     throw new ApiErro(resposta.status, "resposta_invalida");
   }
+}
+
+/* ------------------------------------------------------------------------------------------
+ * Arquivos (Baixar Excel)
+ * ---------------------------------------------------------------------------------------- */
+
+export type ArquivoBaixado = { conteudo: Blob; nome: string };
+
+/** Nome do arquivo no Content-Disposition (filename*=UTF-8'' ou filename="..."). */
+export function nomeDoArquivo(cabecalho: string | null, padrao: string): string {
+  if (!cabecalho) return padrao;
+  const codificado = /filename*=UTF-8''([^;]+)/i.exec(cabecalho)?.[1];
+  if (codificado) {
+    try {
+      return decodeURIComponent(codificado.trim());
+    } catch {
+      /* cai no filename simples */
+    }
+  }
+  const simples = /filename="?([^";]+)"?/i.exec(cabecalho)?.[1];
+  return simples?.trim() || padrao;
+}
+
+/** GET de um arquivo pronto do backend (o front não monta planilha). */
+export async function baixarArquivo(
+  caminho: string,
+  opcoes: OpcoesRequest & { nomePadrao: string },
+): Promise<ArquivoBaixado> {
+  const resposta = await enviar(
+    caminho,
+    { ...opcoes, timeoutMs: opcoes.timeoutMs ?? 60_000 },
+    "*/*",
+  );
+  return {
+    conteudo: await resposta.blob(),
+    nome: nomeDoArquivo(resposta.headers.get("Content-Disposition"), opcoes.nomePadrao),
+  };
 }

@@ -42,13 +42,13 @@ type Props = {
 
 /**
  * Frase de conclusão (VisaoGeral.dc.html): faixa verde-900, o único bloco escuro da tela
- * (Von Restorff), texto verde-100, destaques ouro-300, um botão opcional.
+ * (Von Restorff), texto branco (design), destaques ouro-300, um botão opcional.
  */
 export function FaixaConclusao({ frase, acao }: Props) {
   return (
     <section
       aria-label="Conclusão"
-      className="flex flex-wrap items-center gap-x-6 gap-y-4 rounded-xl bg-verde-900 px-7 py-6 text-verde-100"
+      className="flex flex-wrap items-center gap-x-6 gap-y-4 rounded-xl bg-verde-900 px-7 py-6 text-branco"
     >
       <Lightbulb aria-hidden="true" className="size-6 shrink-0 text-ouro-300" />
       <p className="m-0 min-w-0 flex-[1_1_480px] text-[17px] leading-[27px]">{frase}</p>

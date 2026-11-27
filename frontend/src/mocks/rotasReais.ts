@@ -6,25 +6,14 @@
  */
 import { http, passthrough } from "msw";
 
-const PREFIXO = "/api/v1";
+import { ehRotaReal, PREFIXO_API } from "./guardaDoDev";
 
-export function lerRotasReais(valor: string | undefined): string[] {
-  return (valor ?? "")
-    .split(",")
-    .map((r) => r.trim())
-    .filter((r) => r.startsWith("/"))
-    .map((r) => r.replace(/\/+$/, ""));
-}
-
-/** caminho = parte depois de /api/v1 (ex.: "/me", "/materiais"). */
-export function ehRotaReal(caminho: string, reais: readonly string[]): boolean {
-  return reais.some((r) => caminho === r || caminho.startsWith(`${r}/`));
-}
+export { ehRotaReal, lerRotasReais } from "./guardaDoDev";
 
 /** Handler que vem ANTES dos mocks: deixa passar as rotas reais, ignora as outras. */
 export function handlerRotasReais(reais: readonly string[]) {
-  return http.all(`${PREFIXO}/*`, ({ request }) => {
-    const caminho = new URL(request.url).pathname.slice(PREFIXO.length);
+  return http.all(`${PREFIXO_API}/*`, ({ request }) => {
+    const caminho = new URL(request.url).pathname.slice(PREFIXO_API.length);
     if (ehRotaReal(caminho, reais)) return passthrough();
     return undefined;
   });

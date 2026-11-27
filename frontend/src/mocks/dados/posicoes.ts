@@ -298,6 +298,7 @@ export const POSICOES: Posicao[] = LINHAS.map(
     situacao,
     motivo_situacao: motivo,
     abc,
+    abc_estoque: null,
   }),
 );
 

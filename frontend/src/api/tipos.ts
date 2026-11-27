@@ -319,6 +319,25 @@ export type NovoMaterial = {
 };
 
 /**
+ * Unidade de medida do cadastro ("Adicionar material"). Rota a criar no backend:
+ * GET /api/v1/unidades. Hoje a lista existe só no mock (as 8 do design).
+ */
+export type UnidadeMedida = {
+  /** Valor gravado em NovoMaterial.unit (ex.: "UN"). */
+  sigla: string;
+  nome: string;
+  categoria: string;
+};
+
+/**
+ * Grupo de mercadoria do padrão Agro MRO, sugerido no "Grupo de mercadoria 1". Rota a criar
+ * no backend: GET /api/v1/grupos-padrao. Hoje a lista existe só no mock (os 4 do design).
+ */
+export type GrupoPadrao = {
+  nome: string;
+};
+
+/**
  * Posição com as métricas que as listas mostram (cartão de Materiais, tabela da Visão geral,
  * resultado da busca). Base no protótipo DashboardPosition (dashboardTypes.ts):
  * stock_quantity e reorder_point lá são number; aqui são Decimal (string).
@@ -348,6 +367,11 @@ export type Posicao = {
   motivo_situacao: string | null;
   /** ABC de consumo efetiva; null = NC (sem classe calculável). */
   abc: ClasseAbc | null;
+  /**
+   * ABC de estoque (cartão de Materiais). Não ativada (CONTEXTO, D-P4-04): o backend manda
+   * null até o Sander decidir, e a tela mostra "—". Rota nova, a criar no backend.
+   */
+  abc_estoque: ClasseAbc | null;
 };
 
 /** Filtros prontos de Materiais (chips com contagem). Contagem vem da API. */
@@ -360,14 +384,27 @@ export type ContagemFiltro<Id extends string> = {
 };
 
 /**
- * Resposta de GET /api/v1/materiais?q=&filtro=&pagina=. Rota nova, a criar no backend
- * (junta GET /materials com GET /approved-math/dashboard?search=&page=&limit=100 do protótipo).
+ * Resposta de GET /api/v1/materiais. Rota nova, a criar no backend (junta GET /materials com
+ * GET /approved-math/dashboard?search=&page=&limit=100 do protótipo).
+ *
+ * Parâmetros (todos opcionais, combináveis; os mesmos de GET /api/v1/materiais/excel, sem
+ * `pagina`):
+ * - `q`: busca por código (com ou sem espaços), local ou descrição;
+ * - `filtro`: FiltroMateriais (os 5 chips);
+ * - `abc`: ClasseAbc · `pqr`: ClassePqr (célula da matriz ABC × PQR);
+ * - `sinal`: CodigoSinal — os 7 de "Sinais para agir" da Visão geral. Os sinais sem filtro
+ *   pronto (`acima_maximo`, `preco_ausente`, `parametro_cliente`) só chegam a Materiais por
+ *   aqui, então o backend precisa aceitar todos os 7;
+ * - `pagina`: 1, 2… (100 por página).
  */
 export type PaginaMateriais = {
   conclusao: ConclusaoMateriais;
   filtros: ContagemFiltro<FiltroMateriais>[];
   itens: Posicao[];
+  /** Posições que batem com a busca e os filtros. */
   total: number;
+  /** Posições do catálogo inteiro, sem filtro ("23 de 812 posições"). */
+  total_catalogo: number;
   pagina: number;
   /** Total de páginas (o front não divide total por limite). */
   paginas: number;
@@ -426,12 +463,30 @@ export type AbaComposicao = "abc" | "pqr" | "xyz" | "comprabilidade";
 
 /** Linha de composição de uma classificação. Protótipo: distributions (dashboardTypes.ts). */
 export type ComposicaoClasse = {
+  /** Letra da classe ("A", "P", "X", "1"...). */
   classe: string;
-  /** % do valor consumido (ex.: "71"). null = não se aplica a esta aba. */
-  percentual_valor: Decimal | null;
-  itens: number;
+  /** O que a barra mostra, já em porcentagem (ex.: "71"). null = sem valor (N, por exemplo). */
+  percentual: Decimal | null;
+  /** Largura da barra, fração de "0" a "1" pronta (o front não divide por 100). */
+  fracao_barra: Decimal | null;
+  itens: number | null;
   /** % dos itens (ex.: "12"). */
   percentual_itens: Decimal | null;
+};
+
+/**
+ * Uma aba da composição. medida diz o que a barra mede (o cabeçalho da coluna muda).
+ * destaque: a frase "12% dos itens (classe A) concentram 71% do valor consumido", com os
+ * números prontos; null = sem frase nesta aba.
+ */
+export type ComposicaoAba = {
+  medida: "valor_consumido" | "posicoes";
+  classes: ComposicaoClasse[];
+  destaque: {
+    classe: string;
+    percentual_itens: Decimal | null;
+    percentual_valor: Decimal | null;
+  } | null;
 };
 
 export type EtapaImplantacao = {
@@ -450,7 +505,8 @@ export type VisaoGeral = {
     leitura_em: DataHoraIso;
     periodo: Periodo | null;
   };
-  conclusao: ConclusaoVisaoGeral;
+  /** null = a API não tem conclusão para mostrar (ex.: sem dados importados). */
+  conclusao: ConclusaoVisaoGeral | null;
   implantacao: {
     concluidas: number;
     total: number;
@@ -474,7 +530,16 @@ export type VisaoGeral = {
   };
   sinais: Sinal[];
   matriz_abc_pqr: MatrizAbcPqr;
-  composicao: Record<AbaComposicao, ComposicaoClasse[]>;
+  composicao: Record<AbaComposicao, ComposicaoAba>;
+  /** "Memória desta leitura" (Para aprofundar): de onde vêm os números desta tela. */
+  memoria: {
+    periodo: Periodo | null;
+    leitura_em: DataHoraIso | null;
+    /** Ex.: "Motor V3". null = não informado. */
+    versao_calculo: string | null;
+    /** Ex.: "Padrão Agro MRO". null = não informado. */
+    regras: string | null;
+  };
 };
 
 /* ------------------------------------------------------------------------------------------
@@ -489,7 +554,7 @@ export type VisaoGeral = {
 export type EstadoCaso =
   "todo" | "analysis" | "testing" | "ready" | "validated" | "exported" | "applied" | "discarded";
 
-/** Filtros da fila (7). */
+/** Filtros da fila (7). A API aplica o filtro (GET /api/v1/planejamento?filtro=). */
 export type FiltroPlanejamento =
   "active" | "todo" | "testing" | "ready" | "validated" | "exported" | "all";
 
@@ -526,6 +591,11 @@ export type CasoPlanejamento = {
   export_batch_id: string | null;
   applied_at: DataHoraIso | null;
   external_reference: string | null;
+  /**
+   * Validado, atual e ainda não exportado: entra no próximo Excel de mudanças. Decidido pelo
+   * backend (o front não cruza status com stale).
+   */
+  entra_no_proximo_excel: boolean;
 };
 
 /** Posição sugerida para iniciar análise ("Itens para iniciar análise"). */
@@ -540,11 +610,20 @@ export type ItemParaIniciar = {
 };
 
 /**
- * Resposta de GET /api/v1/planejamento. Base no protótipo GET /api/v1/planning
+ * Resposta de GET /api/v1/planejamento?filtro=. Base no protótipo GET /api/v1/planning
  * ({ items, summary }); conclusao, filtros, percentuais como Decimal e sugestões são novos.
+ *
+ * Escritas da tela (rotas novas, a criar no backend):
+ * - POST /api/v1/planejamento/casos { material_id } → CasoPlanejamento ("Iniciar análise");
+ * - POST /api/v1/planejamento/casos/{id}/aplicacao { referencia_externa: string | null } →
+ *   CasoPlanejamento ("Confirmar aplicação no ERP": declaração do cliente; não muda o ERP);
+ * - POST /api/v1/planejamento/excel-de-mudancas → arquivo .xlsx (Content-Disposition) e emite
+ *   o lote: os casos exportáveis passam a "Exportado". Exportar NÃO confirma aplicação.
  */
 export type Planejamento = {
   conclusao: ConclusaoPlanejamento;
+  /** Filtro aplicado em `casos`. */
+  filtro: FiltroPlanejamento;
   resumo: {
     iniciados: number;
     validados: number;
@@ -556,6 +635,7 @@ export type Planejamento = {
     percentual_aplicacao: Decimal | null;
   };
   filtros: ContagemFiltro<FiltroPlanejamento>[];
+  /** Casos do filtro, na ordem da fila (decidida pelo backend). */
   casos: CasoPlanejamento[];
   /** Quantos casos validados e atuais entram no próximo Excel de mudanças. */
   exportaveis: number;
@@ -569,13 +649,16 @@ export type Planejamento = {
 /** Dataset da carga. Protótipo: TableImportIn.import_type. */
 export type DatasetImportacao = "master_data" | "movements" | "pipeline";
 
-/** Acrescentar ou substituir. Protótipo: movement_import_mode. */
+/** ERP de onde vem a planilha (escolha do passo Arquivo). Protótipo: movement_system. */
+export type ErpOrigem = "sap" | "totvs" | "senior" | "outro";
+
+/** Acrescentar e atualizar × substituir tudo. Protótipo: movement_import_mode. */
 export type ModoImportacao = "append" | "replace";
 
 /** Situação do recibo. Protótipo: trace_import_receipts.status. */
 export type StatusCarga = "completed" | "blocked" | "failed";
 
-/** Carga do histórico. Protótipo: GET /api/v1/lineage/receipts. */
+/** Carga do histórico ("Cargas anteriores"). Protótipo: GET /api/v1/lineage/receipts. */
 export type CargaImportacao = {
   id: string;
   dataset: DatasetImportacao;
@@ -583,36 +666,129 @@ export type CargaImportacao = {
   modo: ModoImportacao;
   status: StatusCarga;
   linhas: number;
-  posicoes: number | null;
-  locais: number | null;
   recebida_em: DataHoraIso;
+  /** Nome curto de quem enviou (ex.: "Hugo S."). */
+  por: string;
 };
 
-/** Coluna da planilha ligada a um campo do sistema (mapeamento lembrado vem da API). */
-export type MapeamentoColuna = {
+/** Uma aba de carga ("Dados mestres", "Movimentos", "Pedidos em aberto"). */
+export type AbaImportacao = {
+  dataset: DatasetImportacao;
+  /** false = "Em breve" (o backend ainda não recebe esta carga pela tela nova). */
+  disponivel: boolean;
+};
+
+/**
+ * Resposta de GET /api/v1/importacao. Rota nova, a criar no backend (junta o histórico de
+ * GET /api/v1/lineage/receipts com o que a tela precisa para começar).
+ */
+export type PainelImportacao = {
+  conclusao: ConclusaoImportacao | null;
+  abas: AbaImportacao[];
+  /** Posições que já estão no sistema (texto do "Substituir tudo"). null = nenhuma. */
+  posicoes_atuais: number | null;
+  historico: CargaImportacao[];
+};
+
+/**
+ * Resposta de POST /api/v1/importacao/arquivos (multipart: arquivo, dataset, erp). Rota nova,
+ * a criar no backend; base no protótipo POST /api/v1/imports/file. O backend lê a planilha
+ * e guarda o arquivo (source_file_id); o front não lê o conteúdo.
+ */
+export type ArquivoRecebido = {
+  arquivo_id: string;
+  nome: string;
+  tamanho_bytes: number;
+  linhas: number;
+  /** Abas da planilha que entram (ex.: ["MARA_MARD"]). Vazio em .csv. */
+  abas: string[];
+};
+
+/** Confiança do reconhecimento automático de uma coluna. */
+export type ConfiancaColuna = "alta" | "media" | "nenhuma";
+
+/** Um campo do sistema e a coluna do arquivo ligada a ele (passo Colunas). */
+export type CampoMapeado = {
+  /** Identificador do campo (ex.: "code", "location", "unit_price"). */
   campo: string;
-  coluna_planilha: string | null;
+  nome: string;
   obrigatorio: boolean;
-  lembrado: boolean;
+  /** Complemento do "Obrigatório" (ex.: "centro + depósito"). */
+  detalhe: string | null;
+  /** Coluna escolhida. null = "Não usar" / nenhuma coluna encontrada. */
+  coluna: string | null;
+  /** Exemplo da 1ª linha, já como o sistema vai entender (texto pronto da API). */
+  exemplo: string | null;
+  confianca: ConfiancaColuna;
 };
 
-/** Erro de uma linha na prévia (editável linha a linha). */
+/**
+ * Resposta de GET /api/v1/importacao/arquivos/{arquivo_id}/colunas. Rota nova, a criar no
+ * backend. O mapeamento lembrado vem daqui (o front não guarda nada).
+ */
+export type ColunasDoArquivo = {
+  /** Último mapeamento lembrado; null = primeira carga desse ERP. */
+  lembrado: { erp: ErpOrigem; carga_em: DataHoraIso } | null;
+  campos_ligados: number;
+  total_campos: number;
+  campos: CampoMapeado[];
+  /** Colunas encontradas no arquivo, para as listas de escolha. */
+  colunas_do_arquivo: string[];
+};
+
+/** Linha com erro na prévia. Corrigir um valor manda PUT …/correcoes e volta a prévia nova. */
 export type ErroLinhaImportacao = {
   linha: number;
   campo: string;
+  /** Nome da coluna como aparece na tela (ex.: "Preço unitário"). */
+  coluna: string;
+  /** Valor como está no arquivo (ou como foi corrigido). null = vazio. */
   valor: string | null;
+  /** O que fazer (texto pronto da API). */
   motivo: string;
+  /** true = a correção enviada foi aceita pelo backend. */
+  corrigido: boolean;
 };
 
-/** Prévia (confirm=false). Protótipo: POST /api/v1/imports/file e /imports/table. */
+/**
+ * Prévia (nada gravado). Resposta de POST /api/v1/importacao/arquivos/{arquivo_id}/previa
+ * ({ mapeamento: {campo: coluna | null}, lembrar }) e de PUT …/correcoes
+ * ({ linha, campo, valor }). Rotas novas, a criar no backend; base no protótipo
+ * imports/table com confirm=false.
+ */
 export type PreviaImportacao = {
-  arquivo_id: string;
-  linhas: number;
-  linhas_validas: number;
+  linhas_lidas: number;
+  prontas: number;
+  com_erro: number;
   erros: ErroLinhaImportacao[];
-  mapeamento: MapeamentoColuna[];
-  posicoes: number | null;
-  locais: number | null;
+};
+
+/** Resumo grande do fim ("812 posições em 3 locais"). Valores prontos da API. */
+export type ResumoCarga = {
+  posicoes: number;
+  locais: number;
+  nomes_locais: string[];
+  /** Valor em estoque das posições com preço. null = sem preço nenhum. */
+  valor_estoque: Decimal | null;
+  /** Posições sem preço (ficam NC até o cliente informar). */
+  sem_preco: number;
+};
+
+/**
+ * Progresso real da gravação. POST /api/v1/importacao/arquivos/{arquivo_id}/confirmar
+ * ({ modo }) responde 202 com { carga_id }; a tela lê GET /api/v1/importacao/cargas/{carga_id}
+ * até sair de "gravando". Rotas novas, a criar no backend. Tudo ou nada: se falhar, nada é
+ * gravado e `motivo` explica.
+ */
+export type ProgressoCarga = {
+  carga_id: string;
+  estado: "gravando" | "concluida" | "falhou";
+  gravadas: number;
+  total: number;
+  /** % pronto da API (ex.: "43"); o front não divide gravadas por total. */
+  percentual: Decimal;
+  resumo: ResumoCarga | null;
+  motivo: string | null;
 };
 
 /* ------------------------------------------------------------------------------------------
@@ -638,6 +814,69 @@ export type RegraCorte = {
   versao: number;
 };
 
+/** As 6 abas de Regras e letras. */
+export type AbaRegras =
+  "abc" | "pqr_saidas" | "pqr_entradas" | "xyz" | "comprabilidade" | "item_novo";
+
+/**
+ * Cortes do espaço como a tela mostra e edita: ABC em % do valor acumulado, PQR em
+ * transações por ano, item novo em dias. O backend converte para o formato de
+ * PUT /classification-settings do protótipo (abc_a/abc_b em fração). Decimal sempre string.
+ */
+export type CortesDoEspaco = {
+  abc_a_percentual: Decimal;
+  abc_b_percentual: Decimal;
+  pqr_saidas_q: Decimal;
+  pqr_saidas_p: Decimal;
+  pqr_entradas_q: Decimal;
+  pqr_entradas_p: Decimal;
+  item_novo_dias: number;
+};
+
+/** Faixa de uma letra na barra dos cortes: início e fim em fração da barra ("0" a "1"). */
+export type SegmentoBarra = { letra: string; inicio: Decimal; fim: Decimal };
+
+/** O que a API calcula para cada aba com os cortes SALVOS (o rascunho não muda isso). */
+export type PainelRegra = {
+  /** Exemplo do design com a classe já decidida pelo backend. */
+  exemplo: string;
+  /** Posições em cada letra hoje. null = a aba não mostra contagem. */
+  contagens: Record<string, number> | null;
+  /** Barra dos cortes. null = aba sem barra (XYZ, Comprabilidade, N). */
+  barra: SegmentoBarra[] | null;
+};
+
+/**
+ * Resposta de GET /api/v1/regras. Rota nova, a criar no backend (base no protótipo
+ * GET /api/v1/classification-settings + contagens e exemplos). Escritas:
+ * - PUT /api/v1/regras/cortes { cortes: CortesDoEspaco, versao } → RegrasLetras. Recalcula o
+ *   estoque todo. 422 com a mensagem da regra (ex.: "O corte de A precisa ser menor que o
+ *   de B…"); 409 se a versão mudou.
+ * - POST /api/v1/regras/cortes/restaurar { versao } → RegrasLetras (volta ao padrão).
+ */
+export type RegrasLetras = {
+  conclusao: ConclusaoRegras;
+  origem: OrigemRegra;
+  /** Versão dos cortes do espaço (0 = padrão Agro MRO). */
+  versao: number;
+  cortes: CortesDoEspaco;
+  padrao: CortesDoEspaco;
+  /** Posições que mudam de classe ao salvar (texto da confirmação). */
+  posicoes: number;
+  paineis: Record<AbaRegras, PainelRegra>;
+  versao_classificacoes: string;
+  versao_alertas: string;
+  /** Alertas ativos ("8 alertas ativos" em Para aprofundar). */
+  alertas_ativos: number;
+};
+
+/**
+ * Origem da meta de um caso. "v3" = referência V3 em uso (matriz padrão); "cliente" =
+ * editado no espaço; "v3_adotada" = V3 adotada explicitamente na matriz própria; null = NC
+ * (não declarado na matriz própria).
+ */
+export type OrigemCasoNivelServico = "v3" | "cliente" | "v3_adotada" | null;
+
 /** Caso da matriz de nível de serviço (75 casos). Protótipo: service_level_rules / approved_service_levels_v3.json. */
 export type CasoNivelServico = {
   /** Código do caso (ex.: "PAX"). */
@@ -649,17 +888,64 @@ export type CasoNivelServico = {
   service_level: Decimal | null;
   /** Fator z (Inversa Normal) calculado pelo backend. null quando NS = 0 ou NC. */
   fator_z: Decimal | null;
+  /** Faixa da cor: 0 = 0%, 1 = 50 a 79%, 2 = 80 a 94%, 3 = 95% ou mais (decidida pelo backend). */
   faixa: FaixaCelula;
-  origem: "v3" | "cliente" | null;
+  origem: OrigemCasoNivelServico;
+  /** Valor V3 do caso, para comparar. */
+  referencia_v3: Decimal;
+  /** A meta em uso é diferente da V3 (ponto dourado). Decidido pelo backend. */
+  diferente_da_v3: boolean;
+  /** Versão da configuração do caso no espaço; null = sem configuração própria. */
+  versao: number | null;
+  /** Largura da barra "O que muda no ES" para a meta atual, de "0" a "1". null = sem barra. */
+  fracao_barra_z: Decimal | null;
 };
 
-/** Matriz de nível de serviço. Protótipo: GET /api/v1/service-level-rules (+ /state). */
+/**
+ * Resposta de GET /api/v1/nivel-servico. Rota nova, a criar no backend (base no protótipo
+ * GET /api/v1/service-level-rules + /state). Escritas (exigem permissoes.editar_regras):
+ * - PUT /api/v1/nivel-servico/casos/{case} { meta_percentual: Decimal, versao } → esta
+ *   resposta. O 1º caso salvo com origem "v3" inicia a matriz própria (os outros 74 ficam NC).
+ *   Regra: 0 ou de 50 a menos de 100, até 2 casas (422 com a mensagem).
+ * - DELETE /api/v1/nivel-servico/casos/{case}?versao= → esta resposta (o caso fica NC).
+ * - POST /api/v1/nivel-servico/adocao-v3 { versao } → esta resposta (os 75 valores V3).
+ */
 export type MatrizNivelServico = {
   conclusao: ConclusaoNivelServico;
   origem: "v3" | "propria";
-  versao: string;
+  /** Versão da matriz do espaço (concorrência: 409 se mudou). */
+  versao: number;
+  /** Identificador da referência (ex.: "agro-mro-ns-sander-v3-2026-10-10"). */
+  referencia: string;
+  /** Casos declarados na matriz própria (0 quando a V3 está em uso). */
+  casos_declarados: number;
   /** Sempre 75 casos (P/Q/R/S/N × A/B/C/D/N × X/Y/Z). */
   casos: CasoNivelServico[];
+  /** Posições em cada linha PQR + ABC (chave "PA", "QB"...). Ausente = sem contagem. */
+  posicoes_por_linha: Record<string, number>;
+};
+
+/**
+ * Impacto de uma meta digitada, antes de salvar. GET /api/v1/nivel-servico/impacto?caso=&meta=
+ * (meta em %, ex.: "97.5"). Rota nova, a criar no backend: a Inversa Normal é do backend.
+ */
+export type ImpactoMeta = {
+  caso: string;
+  fator_z_atual: Decimal | null;
+  fator_z_novo: Decimal | null;
+  /** Variação aproximada do ES, em % com sinal (ex.: "12", "-8"). null = sem comparação. */
+  variacao_percentual: Decimal | null;
+  /** Largura das barras do impacto, de "0" a "1". */
+  fracao_barra_atual: Decimal | null;
+  fracao_barra_nova: Decimal | null;
+};
+
+/** Prévia da adoção da V3 ("Confira a adoção da matriz V3"). GET /api/v1/nivel-servico/adocao-v3. */
+export type PreviaAdocaoV3 = {
+  casos_a_incluir: number;
+  configuracoes_a_substituir: number;
+  valores_diferentes: number;
+  niveis_manuais_preservados: number;
 };
 
 /** Caso da TMER (75 casos PQR × ABC × X123). Protótipo: tmer_standard.py / GET /api/v1/tmer-rules. */

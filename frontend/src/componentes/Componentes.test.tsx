@@ -57,7 +57,7 @@ describe("CartaoKpi", () => {
       </MemoryRouter>,
     );
     expect(screen.getByRole("region", { name: "Dinheiro" })).toBeInTheDocument();
-    expect(screen.getByText("R$ 2,4 mi")).toHaveClass("text-numero-l");
+    expect(screen.getByText("R$ 2,4 mi")).toHaveClass("text-numero-kpi");
     expect(screen.getByRole("link", { name: "Ver composição →" })).toHaveAttribute(
       "href",
       "/app/materiais",

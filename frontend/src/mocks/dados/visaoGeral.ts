@@ -11,12 +11,13 @@ type LinhaGrade = Exclude<ClassePqr, "N">;
 type ColunaGrade = Exclude<ClasseAbc, "N">;
 
 /** Grade ABC × PQR do design (posições). Faixa = intensidade já decidida pelo "backend". */
+// Faixas pela intensidade do design (alfa do verde-700): 1 até 0,2 · 2 até 0,35 · 3 até 0,6 · 4 cheia.
 const GRADE: [LinhaGrade, [number, FaixaCelula][]][] = [
   [
     "P",
     [
-      [41, 4],
-      [22, 3],
+      [41, 2],
+      [22, 2],
       [9, 1],
       [2, 1],
     ],
@@ -24,7 +25,7 @@ const GRADE: [LinhaGrade, [number, FaixaCelula][]][] = [
   [
     "Q",
     [
-      [33, 3],
+      [33, 2],
       [58, 3],
       [61, 3],
       [14, 1],
@@ -33,10 +34,10 @@ const GRADE: [LinhaGrade, [number, FaixaCelula][]][] = [
   [
     "R",
     [
-      [16, 2],
+      [16, 1],
       [52, 3],
       [148, 4],
-      [41, 3],
+      [41, 2],
     ],
   ],
   [
@@ -45,7 +46,7 @@ const GRADE: [LinhaGrade, [number, FaixaCelula][]][] = [
       [8, 1],
       [30, 2],
       [173, 4],
-      [92, 4],
+      [92, 3],
     ],
   ],
 ];
@@ -134,29 +135,180 @@ export const VISAO_GERAL: VisaoGeral = {
   ],
   matriz_abc_pqr: { celulas, fora_da_grade: 12 },
   composicao: {
-    abc: [
-      { classe: "A", percentual_valor: d("71"), itens: 98, percentual_itens: d("12") },
-      { classe: "B", percentual_valor: d("21"), itens: 162, percentual_itens: d("20") },
-      { classe: "C", percentual_valor: d("7"), itens: 391, percentual_itens: d("48") },
-      { classe: "D", percentual_valor: d("1"), itens: 149, percentual_itens: d("18") },
-      { classe: "N", percentual_valor: null, itens: 12, percentual_itens: d("1") },
-    ],
-    pqr: [
-      { classe: "P", percentual_valor: null, itens: 74, percentual_itens: d("9") },
-      { classe: "Q", percentual_valor: null, itens: 166, percentual_itens: d("20") },
-      { classe: "R", percentual_valor: null, itens: 257, percentual_itens: d("32") },
-      { classe: "S", percentual_valor: null, itens: 303, percentual_itens: d("37") },
-      { classe: "N", percentual_valor: null, itens: 12, percentual_itens: d("1") },
-    ],
-    xyz: [
-      { classe: "X", percentual_valor: null, itens: 604, percentual_itens: d("74") },
-      { classe: "Y", percentual_valor: null, itens: 151, percentual_itens: d("19") },
-      { classe: "Z", percentual_valor: null, itens: 57, percentual_itens: d("7") },
-    ],
-    comprabilidade: [
-      { classe: "1", percentual_valor: null, itens: 388, percentual_itens: d("48") },
-      { classe: "2", percentual_valor: null, itens: 241, percentual_itens: d("30") },
-      { classe: "3", percentual_valor: null, itens: 183, percentual_itens: d("23") },
-    ],
+    abc: {
+      medida: "valor_consumido",
+      classes: [
+        {
+          classe: "A",
+          percentual: d("71"),
+          fracao_barra: d("0.71"),
+          itens: 98,
+          percentual_itens: d("12"),
+        },
+        {
+          classe: "B",
+          percentual: d("21"),
+          fracao_barra: d("0.21"),
+          itens: 162,
+          percentual_itens: d("20"),
+        },
+        {
+          classe: "C",
+          percentual: d("7"),
+          fracao_barra: d("0.07"),
+          itens: 391,
+          percentual_itens: d("48"),
+        },
+        {
+          classe: "D",
+          percentual: d("1"),
+          fracao_barra: d("0.015"),
+          itens: 149,
+          percentual_itens: d("18"),
+        },
+        { classe: "N", percentual: null, fracao_barra: null, itens: 12, percentual_itens: d("1") },
+      ],
+      destaque: { classe: "A", percentual_itens: d("12"), percentual_valor: d("71") },
+    },
+    pqr: {
+      medida: "posicoes",
+      classes: [
+        {
+          classe: "P",
+          percentual: d("9"),
+          fracao_barra: d("0.09"),
+          itens: 74,
+          percentual_itens: d("9"),
+        },
+        {
+          classe: "Q",
+          percentual: d("20"),
+          fracao_barra: d("0.2"),
+          itens: 166,
+          percentual_itens: d("20"),
+        },
+        {
+          classe: "R",
+          percentual: d("32"),
+          fracao_barra: d("0.32"),
+          itens: 257,
+          percentual_itens: d("32"),
+        },
+        {
+          classe: "S",
+          percentual: d("37"),
+          fracao_barra: d("0.37"),
+          itens: 303,
+          percentual_itens: d("37"),
+        },
+        {
+          classe: "N",
+          percentual: d("1"),
+          fracao_barra: d("0.015"),
+          itens: 12,
+          percentual_itens: d("1"),
+        },
+      ],
+      destaque: null,
+    },
+    xyz: {
+      medida: "posicoes",
+      classes: [
+        {
+          classe: "X",
+          percentual: d("74"),
+          fracao_barra: d("0.74"),
+          itens: 604,
+          percentual_itens: d("74"),
+        },
+        {
+          classe: "Y",
+          percentual: d("19"),
+          fracao_barra: d("0.19"),
+          itens: 151,
+          percentual_itens: d("19"),
+        },
+        {
+          classe: "Z",
+          percentual: d("7"),
+          fracao_barra: d("0.07"),
+          itens: 57,
+          percentual_itens: d("7"),
+        },
+      ],
+      destaque: null,
+    },
+    comprabilidade: {
+      medida: "posicoes",
+      classes: [
+        {
+          classe: "1",
+          percentual: d("48"),
+          fracao_barra: d("0.48"),
+          itens: 388,
+          percentual_itens: d("48"),
+        },
+        {
+          classe: "2",
+          percentual: d("30"),
+          fracao_barra: d("0.3"),
+          itens: 241,
+          percentual_itens: d("30"),
+        },
+        {
+          classe: "3",
+          percentual: d("23"),
+          fracao_barra: d("0.23"),
+          itens: 183,
+          percentual_itens: d("23"),
+        },
+      ],
+      destaque: null,
+    },
   },
+  memoria: {
+    periodo: { inicio: dia("2026-07-01"), fim: dia("2026-11-11") },
+    leitura_em: iso("2026-11-11T14:00:00Z"),
+    versao_calculo: "Motor V3",
+    regras: "Padrão Agro MRO (ABC 80% e 95%, PQR 3 e 12 saídas por ano, N em 180 dias)",
+  },
+};
+
+/**
+ * ?mock=vazio: espaço sem dados importados. Nada vira zero: os indicadores ficam
+ * indisponíveis com motivo e a conclusão não existe (null).
+ */
+const SEM_DADOS = { estado: "indisponivel", motivo: "Sem dados importados" } as const;
+
+export const VISAO_GERAL_VAZIA: VisaoGeral = {
+  contexto: { posicoes: 0, locais: 0, leitura_em: VISAO_GERAL.contexto.leitura_em, periodo: null },
+  conclusao: null,
+  implantacao: {
+    concluidas: 0,
+    total: 5,
+    etapas: VISAO_GERAL.implantacao.etapas.map((e) => ({ ...e, concluida: false })),
+  },
+  kpis: {
+    valor_estoque: { ...SEM_DADOS, valores: { valor: null, posicoes_com_preco: null } },
+    parado_180_dias: {
+      ...SEM_DADOS,
+      valores: { valor: null, itens: null, percentual_valor: null },
+    },
+    abaixo_pp: { ...SEM_DADOS, valores: { posicoes: null, classe_a: null } },
+    saldo_negativo: { ...SEM_DADOS, valores: { posicoes: null } },
+    movimento: { ...SEM_DADOS, valores: { entradas: null, saidas: null, periodo: null } },
+  },
+  prioridades: { total_fila: 0, itens: [] },
+  sinais: VISAO_GERAL.sinais.map((s) => ({ ...s, posicoes: null })),
+  matriz_abc_pqr: {
+    celulas: celulas.map((c) => ({ ...c, posicoes: 0, faixa: 0, destaque: false })),
+    fora_da_grade: 0,
+  },
+  composicao: {
+    abc: { medida: "valor_consumido", classes: [], destaque: null },
+    pqr: { medida: "posicoes", classes: [], destaque: null },
+    xyz: { medida: "posicoes", classes: [], destaque: null },
+    comprabilidade: { medida: "posicoes", classes: [], destaque: null },
+  },
+  memoria: { periodo: null, leitura_em: null, versao_calculo: "Motor V3", regras: null },
 };

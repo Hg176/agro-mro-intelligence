@@ -47,7 +47,7 @@ export function BarraSuperior({ busca }: { busca?: ReactNode }) {
       </button>
       <Link
         to="/app/conta"
-        aria-label={`Minha conta (${usuario.nome})`}
+        aria-label={`${usuario.iniciais} · Minha conta (${usuario.nome})`}
         className="grid size-11 place-items-center rounded-full bg-ouro-100 text-sm font-semibold text-ouro-700 no-underline"
       >
         {usuario.iniciais}

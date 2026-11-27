@@ -64,6 +64,11 @@ export function dataHora(valor: DataHoraIso | null): string {
   return valor === null ? TRACO : dataHoraCuiaba.format(new Date(valor));
 }
 
+/** ISO UTC → "04/11/2026 · 14:12" em Cuiabá (listas e históricos do design). */
+export function dataComHora(valor: DataHoraIso | null): string {
+  return valor === null ? TRACO : dataHora(valor).replace(", ", " · ");
+}
+
 /*
  * Números Decimal (string). Intl.NumberFormat aceita a string direto (sem virar number,
  * sem perder precisão): o front não converte para fazer conta.
@@ -80,6 +85,7 @@ const moedaCompactaFmt = comoTexto(
     maximumFractionDigits: 1,
     maximumSignificantDigits: 3,
     roundingPriority: "lessPrecision",
+    trailingZeroDisplay: "stripIfInteger",
   }),
 );
 const decimalFmt = comoTexto(new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 4 }));
@@ -137,6 +143,40 @@ export function codigoSemEspacos(texto: string): string {
 export function larguraDaFracao(fracao: Decimal | null): string | null {
   if (fracao === null || !/^(?:0(?:\.\d+)?|1(?:\.0+)?)$/.test(fracao)) return null;
   return `calc(${fracao} * 100%)`;
+}
+
+/**
+ * Largura CSS de uma barra a partir do percentual que a API manda ("0" a "100").
+ * Como larguraDaFracao: o navegador faz o calc(). Fora do formato → null (sem barra).
+ */
+export function larguraDoPercentual(percentual: Decimal | null): string | null {
+  if (percentual === null || !/^(?:\d{1,2}(?:\.\d+)?|100(?:\.0+)?)$/.test(percentual)) return null;
+  return `calc(${percentual} * 1%)`;
+}
+
+const tamanhoFmt = new Intl.NumberFormat("pt-BR", {
+  style: "unit",
+  unit: "megabyte",
+  unitDisplay: "short",
+  maximumFractionDigits: 1,
+});
+const tamanhoKbFmt = new Intl.NumberFormat("pt-BR", {
+  style: "unit",
+  unit: "kilobyte",
+  unitDisplay: "short",
+  maximumFractionDigits: 0,
+});
+
+/**
+ * Tamanho do arquivo enviado: 2202009 → "2,1 MB"; 48000 → "47 kB". É só a unidade de
+ * exibição de um dado técnico (bytes do upload), não um número do estoque.
+ */
+export function tamanhoDeArquivo(bytes: number): string {
+  const mb = bytes / (1024 * 1024);
+  return (mb >= 1 ? tamanhoFmt.format(mb) : tamanhoKbFmt.format(bytes / 1024)).replace(
+    /\u00a0/g,
+    " ",
+  );
 }
 
 const relativoAuto = new Intl.RelativeTimeFormat("pt-BR", { numeric: "auto" });

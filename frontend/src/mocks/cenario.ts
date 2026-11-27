@@ -31,6 +31,14 @@ export function sessaoExpirada(): boolean {
   return parametrosDaPagina().get("sessao") === "expirada";
 }
 
+/**
+ * ?carga=falha → a gravação da importação para no meio e nada é gravado (tudo ou nada).
+ * Só o Importar dados usa.
+ */
+export function cargaFalha(): boolean {
+  return parametrosDaPagina().get("carga") === "falha";
+}
+
 /** Latência simulada de 300 a 800 ms. Nos testes (MODE=test) é zero. */
 export async function latencia(): Promise<void> {
   if (import.meta.env.MODE === "test") return;

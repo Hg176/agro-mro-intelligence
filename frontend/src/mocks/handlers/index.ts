@@ -1,7 +1,12 @@
 import { http, HttpResponse } from "msw";
 
 import { handlersBusca } from "./busca";
+import { handlersCadastros } from "./cadastros";
+import { handlersImportacao } from "./importacao";
 import { handlersMateriais } from "./materiais";
+import { handlersNivelServico } from "./nivelServico";
+import { handlersPlanejamento } from "./planejamento";
+import { handlersRegras } from "./regras";
 import { handlersSessao } from "./sessao";
 import { handlersVisaoGeral } from "./visaoGeral";
 
@@ -18,5 +23,10 @@ export const handlers = [
   ...handlersBusca,
   ...handlersVisaoGeral,
   ...handlersMateriais,
+  ...handlersCadastros,
+  ...handlersImportacao,
+  ...handlersPlanejamento,
+  ...handlersRegras,
+  ...handlersNivelServico,
   semMock,
 ];

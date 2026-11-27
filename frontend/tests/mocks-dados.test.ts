@@ -105,9 +105,11 @@ describe("dados do mock × design", () => {
 
   it("os números do design fecham entre si (812 posições)", () => {
     expect(LOCAIS.reduce((s, l) => s + l.posicoes, 0)).toBe(812);
-    expect(VISAO_GERAL.composicao.abc.reduce((s, c) => s + c.itens, 0)).toBe(812);
+    for (const aba of Object.values(VISAO_GERAL.composicao)) {
+      expect(aba.classes.reduce((s, c) => s + (c.itens ?? 0), 0)).toBe(812);
+    }
     const naGrade = VISAO_GERAL.matriz_abc_pqr.celulas.reduce((s, c) => s + c.posicoes, 0);
     expect(naGrade + VISAO_GERAL.matriz_abc_pqr.fora_da_grade).toBe(812);
-    expect(VISAO_GERAL.composicao.abc.map((c) => c.itens)).toEqual([98, 162, 391, 149, 12]);
+    expect(VISAO_GERAL.composicao.abc.classes.map((c) => c.itens)).toEqual([98, 162, 391, 149, 12]);
   });
 });

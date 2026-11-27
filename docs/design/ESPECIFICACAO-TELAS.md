@@ -274,8 +274,8 @@ com "reduzir movimento" no sistema operacional.
 
 ## Pendências
 
-O protótipo está completo como desenho; 6 pontos dependem do backend e 6
-de decisão do Sander ou do Hugo.
+O protótipo está completo como desenho; 8 pontos dependem do backend, 1
+de design e 6 de decisão do Sander ou do Hugo (1 já decidida).
 
 **Backend que falta:**
 
@@ -295,14 +295,29 @@ de decisão do Sander ou do Hugo.
   Materiais.
 
 - [ ] Abas Movimentos e Pedidos em aberto da importação: ainda sem
-  conteúdo próprio.
+  conteúdo próprio. Enquanto isso, o "Ver movimentos" do KPI de
+  movimento da Visão geral mostra "Em breve", sem link.
+
+- [ ] Materiais: GET /api/v1/materiais e /materiais/excel precisam
+  aceitar `?sinal=` com os 7 códigos de "Sinais para agir" (contrato em
+  `frontend/src/api/tipos.ts`, `PaginaMateriais`).
+
+- [ ] Adicionar material: criar GET /api/v1/unidades e
+  GET /api/v1/grupos-padrao. Hoje as listas existem só no mock do front.
+
+**Design que falta:**
+
+- [ ] Visão geral, "Composição do estoque": as abas PQR, XYZ e
+  Comprabilidade não têm design. O front mostra "% das posições" e não
+  tem a frase de destaque que a aba ABC tem.
 
 **Decisões em aberto:**
 
 - [ ] Matriz TMER fica no produto? O manual pede confirmar com o Sander.
 
-- [ ] Botão "Ver os 5 itens A" da Visão geral: dourado (como no Figma)
-  ou verde (pela regra de cor)?
+- [x] Botão "Ver os 5 itens A" da Visão geral: dourado (como no Figma)
+  ou verde (pela regra de cor)? Decidido pelo Hugo: verde, e "Abrir meu
+  plano" fica secundário.
 
 - [ ] Planejamento: incluir as abas Em análise, Aplicados e Descartados
   do roteiro, passando de 7 opções?

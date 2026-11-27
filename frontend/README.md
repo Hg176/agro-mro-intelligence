@@ -76,6 +76,9 @@ A guarda pega o que dá para ver com segurança: converter um Decimal (que chega
 - `src/api/tipos.ts`: tipos de todas as respostas. Cada Decimal é `Decimal` (string), cada ausência é `T | null`, e cada tipo diz de onde vem (rota do protótipo ou "a criar no backend"). A frase de conclusão é `ConclusaoTela { tipo, valores }`, com uma união fechada de códigos por tela.
 - `src/api/<dominio>.ts`: uma função por chamada (`obterSessao`, `buscarPosicoes`, `obterVisaoGeral`, `listarMateriais`, `criarMaterial`...).
 - `src/api/hooks/`: hooks do TanStack Query. Leitura tenta de novo só em falha de rede ou tempo esgotado. Escrita nunca repete sozinha.
+- **Rotas a criar que só o mock responde:** além das telas, `GET /api/v1/unidades` e `GET /api/v1/grupos-padrao` (listas do "Adicionar material", em `src/mocks/handlers/cadastros.ts`). O contrato de cada uma está no tipo em `tipos.ts`.
+
+As telas são carregadas por rota (`lazy()` em `src/rotas/AppRotas.tsx`): cada uma vira um pedaço separado do build, e a casca aparece antes.
 
 ## Sessão, plano e permissões
 
@@ -102,6 +105,22 @@ Dois assuntos separados, que podem ser combinados:
 
 Exemplo: `/app/materiais?plano=somente_leitura&mock=vazio`. O `?mock=` só afeta a rota da tela, não o `/me` nem a busca.
 
+No Importar dados, `?carga=falha` faz a gravação parar no meio: a tela mostra que nada foi gravado (tudo ou nada) e deixa confirmar de novo.
+
+Exceção de propósito: em Materiais, `?mock=erro` é o estado **erro de métricas** do design (o catálogo responde, sem saldo, PP nem classe). A falha do catálogo inteiro (500) é coberta pelo teste da tela.
+
+### Filtros de Materiais na URL
+
+Materiais lê a busca e os filtros da URL. É por ela que a Visão geral, a busca global e os cartões abrem a lista já filtrada (`src/rotas/links.ts`, `linkMateriais()`).
+
+| Parâmetro    | Valores                                                                 | De onde vem o link                             |
+| ------------ | ----------------------------------------------------------------------- | ---------------------------------------------- |
+| `q`          | texto; código com ou sem espaços                                        | busca global, "Abrir" da tabela de prioridades |
+| `filtro`     | `abaixo_pp` · `saldo_negativo` · `parados` · `classe_a` · `sem_calculo` | chips, KPIs, sinais com filtro pronto          |
+| `abc`, `pqr` | `A`–`D`, `N` · `P`–`S`, `N`                                             | célula da matriz ABC × PQR, "Ver os 5 itens A" |
+| `sinal`      | código do sinal                                                         | sinais sem filtro pronto (ex.: `acima_maximo`) |
+| `pagina`     | 1, 2…                                                                   | paginação de 100                               |
+
 ### Ligar, desligar e trocar pela API real
 
 - `npm run dev` liga o mock (padrão).
@@ -110,6 +129,14 @@ Exemplo: `/app/materiais?plano=somente_leitura&mock=vazio`. O `?mock=` só afeta
   1. o backend implementa a rota com o formato de `src/api/tipos.ts`;
   2. o desenvolvedor testa com `VITE_API_REAL`;
   3. o handler sai de `src/mocks/handlers/`, que é o mock usado nos testes. Os testes da tela passam a montar a resposta com `servidorMock.use(...)`.
+
+### Quando o service worker do mock é encerrado
+
+O navegador encerra service workers ociosos (aba em segundo plano, "guias em suspensão" do Edge). O worker do MSW guarda as abas ativas só em memória: ao voltar, ele deixaria toda chamada passar direto para a rede. No dev isso virava proxy → `ECONNREFUSED 8000`, e só as consultas novas quebravam, porque as outras já estavam no cache. Três defesas, todas só no dev:
+
+- **Reativação** (`src/mocks/reativacao.ts`): antes de cada chamada `/api/`, a aba manda `MOCK_ACTIVATE` ao worker, o que o acorda e a registra de novo.
+- **`onUnhandledRequest`** (`aoChamarSemHandler`): chamada `/api/*` sem handler é erro no console do navegador; asset do Vite passa direto.
+- **Guarda no servidor do Vite** (`destinoNoServidorDev`): com o mock ligado, uma chamada `/api` que chegue ao Vite responde 503 com a explicação, em vez de ir para o proxy. As rotas de `VITE_API_REAL` seguem para o backend normalmente.
 
 ### O mock nunca vai para produção
 

@@ -12,7 +12,7 @@ type Props = {
 
 /**
  * Cabeçalho de página (VisaoGeral.dc.html): rótulo ouro-700 em caixa alta, título em
- * Plus Jakarta (text-titulo-m, como pedido no F1; o design usa 36/44px, ver pendências),
+ * Plus Jakarta 36/44 (text-titulo-pagina, medida do design),
  * linha de contexto tinta-500 e área de ações alinhada à base.
  */
 export function CabecalhoPagina({ rotulo, titulo, contexto, acoes }: Props) {
@@ -20,8 +20,10 @@ export function CabecalhoPagina({ rotulo, titulo, contexto, acoes }: Props) {
     <header className="flex flex-wrap items-end gap-x-6 gap-y-4">
       <div className="min-w-0 flex-[1_1_420px]">
         <p className="text-rotulo uppercase text-ouro-700">{rotulo}</p>
-        <h1 className="mt-2 font-display text-titulo-m text-tinta-900">{titulo}</h1>
-        {contexto && <p className="mt-1 text-corpo-m tabular-nums text-tinta-500">{contexto}</p>}
+        <h1 className="mt-2 font-display text-titulo-pagina text-tinta-900">{titulo}</h1>
+        {contexto && (
+          <div className="mt-1 text-corpo-m tabular-nums text-tinta-600">{contexto}</div>
+        )}
       </div>
       {acoes && <div className="flex flex-wrap gap-3">{acoes}</div>}
     </header>

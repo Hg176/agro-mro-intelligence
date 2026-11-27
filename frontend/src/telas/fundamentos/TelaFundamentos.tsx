@@ -73,6 +73,21 @@ const TEXTOS: { classe: string; nome: string; familia: string }[] = [
   { classe: "font-display text-display-l", nome: "display-l", familia: "Plus Jakarta Sans" },
   { classe: "font-display text-titulo-m", nome: "titulo-m", familia: "Plus Jakarta Sans" },
   { classe: "numero text-numero-l", nome: "numero-l", familia: "Plus Jakarta Sans" },
+  {
+    classe: "font-display text-titulo-pagina",
+    nome: "titulo-pagina (tela)",
+    familia: "Plus Jakarta Sans",
+  },
+  {
+    classe: "font-display text-titulo-secao",
+    nome: "titulo-secao (tela)",
+    familia: "Plus Jakarta Sans",
+  },
+  {
+    classe: "numero font-display text-numero-kpi",
+    nome: "numero-kpi (tela)",
+    familia: "Plus Jakarta Sans",
+  },
   { classe: "text-titulo-s", nome: "titulo-s", familia: "Inter" },
   { classe: "text-corpo-l", nome: "corpo-l", familia: "Inter" },
   { classe: "text-corpo-m", nome: "corpo-m", familia: "Inter" },
@@ -237,7 +252,7 @@ export default function TelaFundamentos() {
                 {t.nome} · {t.familia}
               </span>
               <span className={cn(t.classe, "text-tinta-900")}>
-                {t.nome === "numero-l" ? "R$ 2,4 mi" : "Inteligência para materiais"}
+                {t.nome.startsWith("numero") ? "R$ 2,4 mi" : "Inteligência para materiais"}
               </span>
             </div>
           ))}
@@ -613,11 +628,11 @@ export default function TelaFundamentos() {
           <GraficoBarras
             titulo="% do valor consumido por classe ABC"
             formatar={percentual}
-            pontos={VISAO_GERAL.composicao.abc
-              .filter((c) => c.percentual_valor !== null)
+            pontos={VISAO_GERAL.composicao.abc.classes
+              .filter((c) => c.percentual !== null)
               .map((c, i) => ({
                 rotulo: c.classe,
-                valor: c.percentual_valor,
+                valor: c.percentual,
                 cor: ((i % 5) + 1) as 1 | 2 | 3 | 4 | 5,
               }))}
           />

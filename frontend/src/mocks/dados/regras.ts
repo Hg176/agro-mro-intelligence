@@ -114,12 +114,17 @@ function inversaNormal(p: number): number {
   );
 }
 
-function faixaNivelServico(valor: number): FaixaCelula {
+/** Faixas da legenda do NivelServico.dc.html: 0% · 50 a 79% · 80 a 94% · 95% ou mais. */
+export function faixaNivelServico(valor: number): FaixaCelula {
   if (valor === 0) return 0;
-  if (valor < 0.75) return 1;
-  if (valor < 0.85) return 2;
-  if (valor < 0.95) return 3;
-  return 4;
+  if (valor < 0.8) return 1;
+  if (valor < 0.95) return 2;
+  return 3;
+}
+
+/** Fator z do mock (o real vem do backend), com 2 casas. null quando a meta é 0. */
+export function fatorZ(valor: number): string | null {
+  return valor > 0 && valor < 1 ? inversaNormal(valor).toFixed(2) : null;
 }
 
 function faixaTmer(dias: number): FaixaCelula {
@@ -145,6 +150,10 @@ export function casosV3(): CasoNivelServico[] {
           fator_z: valor > 0 ? d(inversaNormal(valor).toFixed(2)) : null,
           faixa: faixaNivelServico(valor),
           origem: "v3" as const,
+          referencia_v3: d(texto),
+          diferente_da_v3: false,
+          versao: null,
+          fracao_barra_z: valor > 0 ? d(Math.min(1, inversaNormal(valor) / 3).toFixed(4)) : null,
         };
       }),
     ),
