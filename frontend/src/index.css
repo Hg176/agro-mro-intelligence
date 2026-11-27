@@ -237,6 +237,20 @@
   --text-numero-l--line-height: 40px;
   --text-numero-l--font-weight: 700;
   --text-numero-l--letter-spacing: -0.02em;
+  /* Medidas de tela tiradas dos .dc.html (fora da escala do tokens.json, decisão do Hugo
+     em 26/11/2026): título da página 36/44, título de seção 24/32, número do KPI 28/34. */
+  --text-titulo-pagina: 36px;
+  --text-titulo-pagina--line-height: 44px;
+  --text-titulo-pagina--font-weight: 700;
+  --text-titulo-pagina--letter-spacing: -0.025em;
+  --text-titulo-secao: 24px;
+  --text-titulo-secao--line-height: 32px;
+  --text-titulo-secao--font-weight: 700;
+  --text-titulo-secao--letter-spacing: -0.015em;
+  --text-numero-kpi: 28px;
+  --text-numero-kpi--line-height: 34px;
+  --text-numero-kpi--font-weight: 700;
+  --text-numero-kpi--letter-spacing: 0;
   --text-titulo-s: 18px;
   --text-titulo-s--line-height: 26px;
   --text-titulo-s--font-weight: 600;
@@ -275,6 +289,8 @@
   --animate-pulso-lento: pulso-lento 2.4s ease-in-out infinite; /* só no selo Ruptura */
   --animate-tremida: tremida 0.36s ease-in-out 1; /* formulário incompleto */
   --animate-subir: subir 0.28s cubic-bezier(0.2, 0.7, 0.2, 1) both; /* barra de salvar */
+  --animate-aparecer: aparecer 0.4s ease-out both; /* números do resumo (no lugar da contagem) */
+  --animate-crescer: crescer 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both; /* barras que crescem */
 
   @keyframes entrada {
     from {
@@ -310,6 +326,16 @@
   @keyframes subir {
     from {
       transform: translateY(100%);
+    }
+  }
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+    }
+  }
+  @keyframes crescer {
+    from {
+      transform: scaleX(0);
     }
   }
   @keyframes brilho-skeleton {

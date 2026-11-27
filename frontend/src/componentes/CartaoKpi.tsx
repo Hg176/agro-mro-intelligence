@@ -1,5 +1,5 @@
 /**
- * KPI (VisaoGeral.dc.html): rótulo, número grande (numero-l), apoio e link "Ver … →".
+ * KPI (VisaoGeral.dc.html): rótulo, número 28/34 (text-numero-kpi, medida do design), apoio e link "Ver … →".
  * Agrupados por tema (lei da Proximidade): Dinheiro, Saúde do estoque, Movimento.
  * O número chega pronto (já formatado a partir da API); indisponível mostra o motivo.
  */
@@ -29,6 +29,9 @@ type Props = {
   tom?: TomKpi;
 };
 
+const CLASSE_LINK =
+  "mt-1 inline-flex min-h-11 items-center self-start text-sm leading-5 font-semibold text-verde-700 no-underline hover:text-verde-800";
+
 export function CartaoKpi({ rotulo, valor, motivo, apoio, link, tom = "neutro" }: Props) {
   return (
     <div className="flex flex-col rounded-xl border border-borda bg-branco px-[22px] py-5">
@@ -39,17 +42,20 @@ export function CartaoKpi({ rotulo, valor, motivo, apoio, link, tom = "neutro" }
           {motivo ?? "Sem cálculo"}
         </p>
       ) : (
-        <p className={cn("numero mt-1.5 text-numero-l", TOM[tom])}>{valor}</p>
+        <p className={cn("numero mt-1.5 font-display text-numero-kpi", TOM[tom])}>{valor}</p>
       )}
       {apoio && <p className="mt-1 text-corpo-s text-tinta-500">{apoio}</p>}
-      {link && (
-        <Link
-          to={link.para}
-          className="mt-2 inline-flex min-h-8 items-center self-start text-sm leading-5 font-semibold text-verde-700 no-underline hover:text-verde-800"
-        >
-          {link.texto}
-        </Link>
-      )}
+      {link &&
+        (link.para.startsWith("#") ? (
+          // Âncora na própria página (ex.: "#composicao"): o navegador rola até o bloco.
+          <a href={link.para} className={CLASSE_LINK}>
+            {link.texto}
+          </a>
+        ) : (
+          <Link to={link.para} className={CLASSE_LINK}>
+            {link.texto}
+          </Link>
+        ))}
     </div>
   );
 }

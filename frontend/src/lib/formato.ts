@@ -80,6 +80,7 @@ const moedaCompactaFmt = comoTexto(
     maximumFractionDigits: 1,
     maximumSignificantDigits: 3,
     roundingPriority: "lessPrecision",
+    trailingZeroDisplay: "stripIfInteger",
   }),
 );
 const decimalFmt = comoTexto(new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 4 }));

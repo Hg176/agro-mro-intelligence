@@ -50,7 +50,7 @@ describe("mock: GET /me e o plano", () => {
 describe("mock: estado da tela (?mock=)", () => {
   it("normal devolve a Visão geral do design", async () => {
     const v = await obterVisaoGeral();
-    expect(v.conclusao.tipo).toBe("parado_e_abaixo_pp");
+    expect(v.conclusao?.tipo).toBe("parado_e_abaixo_pp");
     expect(v.contexto.posicoes).toBe(812);
     expect(v.prioridades.itens).toHaveLength(6);
     expect(v.sinais).toHaveLength(7);

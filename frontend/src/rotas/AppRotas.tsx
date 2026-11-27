@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, type ComponentType } from "react";
 import { Navigate, Route, Routes } from "react-router";
 
 import { LayoutApp } from "@/layout/LayoutApp";
@@ -6,6 +6,12 @@ import { telasDoMenu } from "@/rotas/mapa";
 import { ComTitulo } from "@/rotas/TituloDaAba";
 import { RotaProtegida } from "@/sessao/RotaProtegida";
 import { EmBreve, EmConstrucao, NaoEncontrada, PublicaEmConstrucao } from "@/telas/provisorias";
+import TelaVisaoGeral from "@/telas/visao-geral/TelaVisaoGeral";
+
+/** Telas do menu já feitas (as outras mostram "Em construção" com o passo). */
+const TELAS: Record<string, ComponentType> = {
+  "/app/visao-geral": TelaVisaoGeral,
+};
 
 /** Passo do F1 em que cada tela com design entra (docs/design/README.md). */
 const PASSO: Record<string, string> = {
@@ -60,21 +66,26 @@ export function AppRotas() {
       <Route path="/app" element={<RotaProtegida />}>
         <Route element={<LayoutApp />}>
           <Route index element={<Navigate to="/app/visao-geral" replace />} />
-          {telasDoMenu().map((t) => (
-            <Route
-              key={t.caminho}
-              path={t.caminho}
-              element={
-                <ComTitulo titulo={t.titulo}>
-                  {t.emBreve ? (
-                    <EmBreve titulo={t.titulo} />
-                  ) : (
-                    <EmConstrucao titulo={t.titulo} passo={PASSO[t.caminho] ?? "F1"} />
-                  )}
-                </ComTitulo>
-              }
-            />
-          ))}
+          {telasDoMenu().map((t) => {
+            const Tela = TELAS[t.caminho];
+            return (
+              <Route
+                key={t.caminho}
+                path={t.caminho}
+                element={
+                  <ComTitulo titulo={t.titulo}>
+                    {Tela ? (
+                      <Tela />
+                    ) : t.emBreve ? (
+                      <EmBreve titulo={t.titulo} />
+                    ) : (
+                      <EmConstrucao titulo={t.titulo} passo={PASSO[t.caminho] ?? "F1"} />
+                    )}
+                  </ComTitulo>
+                }
+              />
+            );
+          })}
           <Route
             path="/app/plano"
             element={

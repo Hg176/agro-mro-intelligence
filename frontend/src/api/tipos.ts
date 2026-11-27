@@ -426,12 +426,30 @@ export type AbaComposicao = "abc" | "pqr" | "xyz" | "comprabilidade";
 
 /** Linha de composição de uma classificação. Protótipo: distributions (dashboardTypes.ts). */
 export type ComposicaoClasse = {
+  /** Letra da classe ("A", "P", "X", "1"...). */
   classe: string;
-  /** % do valor consumido (ex.: "71"). null = não se aplica a esta aba. */
-  percentual_valor: Decimal | null;
-  itens: number;
+  /** O que a barra mostra, já em porcentagem (ex.: "71"). null = sem valor (N, por exemplo). */
+  percentual: Decimal | null;
+  /** Largura da barra, fração de "0" a "1" pronta (o front não divide por 100). */
+  fracao_barra: Decimal | null;
+  itens: number | null;
   /** % dos itens (ex.: "12"). */
   percentual_itens: Decimal | null;
+};
+
+/**
+ * Uma aba da composição. medida diz o que a barra mede (o cabeçalho da coluna muda).
+ * destaque: a frase "12% dos itens (classe A) concentram 71% do valor consumido", com os
+ * números prontos; null = sem frase nesta aba.
+ */
+export type ComposicaoAba = {
+  medida: "valor_consumido" | "posicoes";
+  classes: ComposicaoClasse[];
+  destaque: {
+    classe: string;
+    percentual_itens: Decimal | null;
+    percentual_valor: Decimal | null;
+  } | null;
 };
 
 export type EtapaImplantacao = {
@@ -450,7 +468,8 @@ export type VisaoGeral = {
     leitura_em: DataHoraIso;
     periodo: Periodo | null;
   };
-  conclusao: ConclusaoVisaoGeral;
+  /** null = a API não tem conclusão para mostrar (ex.: sem dados importados). */
+  conclusao: ConclusaoVisaoGeral | null;
   implantacao: {
     concluidas: number;
     total: number;
@@ -474,7 +493,16 @@ export type VisaoGeral = {
   };
   sinais: Sinal[];
   matriz_abc_pqr: MatrizAbcPqr;
-  composicao: Record<AbaComposicao, ComposicaoClasse[]>;
+  composicao: Record<AbaComposicao, ComposicaoAba>;
+  /** "Memória desta leitura" (Para aprofundar): de onde vêm os números desta tela. */
+  memoria: {
+    periodo: Periodo | null;
+    leitura_em: DataHoraIso | null;
+    /** Ex.: "Motor V3". null = não informado. */
+    versao_calculo: string | null;
+    /** Ex.: "Padrão Agro MRO". null = não informado. */
+    regras: string | null;
+  };
 };
 
 /* ------------------------------------------------------------------------------------------
