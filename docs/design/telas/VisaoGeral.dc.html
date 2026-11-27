@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Visão geral</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+input::placeholder{color:#a3aca8}
+input:focus{outline:none;border-color:#1c684c !important;box-shadow:0 0 0 3px #e2efe9}
+a:focus-visible,button:focus-visible{outline:2px solid #1c684c;outline-offset:2px;box-shadow:0 0 0 5px #e2efe9}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 2300px; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px; background: var(--creme-100)">
+
+<!-- ================= MENU LATERAL ================= -->
+<nav aria-label="Menu do sistema" style="flex: 0 1 248px; min-width: 248px; background: var(--verde-900); color: var(--verde-100); padding: 28px 16px 24px; display: flex; flex-direction: column">
+  <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); padding: 0 8px">
+    <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1">
+      <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+      <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+    </span>
+  </a>
+
+  <p style="margin: 36px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">ANÁLISE</p>
+  <a href="VisaoGeral.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; background: var(--verde-700); color: var(--branco); font-weight: 600; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Visão geral</a>
+  <a href="#materiais" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>Materiais</a>
+  <a href="#planejamento" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>Planejamento</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">DADOS</p>
+  <a href="#importar" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Importar dados</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">REGRAS DO CÁLCULO</p>
+  <a href="#regras" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Regras e letras</a>
+  <a href="#tipos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>Tipos de movimento</a>
+  <a href="#nivel" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Nível de serviço</a>
+  <a href="#tmer" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V9"/><path d="M18 17v-6"/></svg>Matriz TMER</a>
+  <a href="#casos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Casos de controle</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">APRENDER E AJUDA</p>
+  <a href="#academia" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Academia</a>
+  <a href="#suporte" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte</a>
+
+  <div style="flex: 1; min-height: 40px"></div>
+  <div style="background: var(--verde-800); border: 1px solid rgba(142,179,164,0.3); border-radius: 14px; padding: 16px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">PLANO INTELLIGENCE</p>
+    <p style="margin: 8px 0 0; font-weight: 600; color: var(--branco); font-variant-numeric: tabular-nums">812 de 1.000 itens</p>
+    <div role="progressbar" aria-label="Itens usados do plano" aria-valuenow="812" aria-valuemin="0" aria-valuemax="1000" style="margin-top: 10px; height: 6px; border-radius: 3px; background: rgba(226,239,233,0.2)"><div style="width: 81.2%; height: 6px; border-radius: 3px; background: var(--ouro-500)"></div></div>
+    <p style="margin: 10px 0 0; font-size: 12px; line-height: 16px; color: var(--verde-100)">Renova em 03/12/2026</p>
+  </div>
+  <a href="Login.dc.html" style="margin-top: 12px; display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sair</a>
+</nav>
+
+<!-- ================= CONTEÚDO ================= -->
+<div style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+
+  <!-- Barra superior -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+    <div style="position: relative; z-index: 20; flex: 1 1 320px; max-width: 460px">
+      <dc-import name="BuscaGlobal" hint-size="100%,48px"></dc-import>
+    </div>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Todos os locais (3)</button>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer; font-variant-numeric: tabular-nums">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>01/07 a 11/11/2026</button>
+    <span style="flex: 1"></span>
+    <span style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 13px/18px var(--font-sans)"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--verde-700)"></span>Atualizado há 2 dias</span>
+    <button type="button" aria-label="Notificações" style="width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--borda); border-radius: 12px; background: var(--branco); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <a href="Conta.dc.html" aria-label="Minha conta (Hugo dos Santos)" style="width: 44px; height: 44px; border-radius: 50%; background: var(--ouro-100); color: var(--ouro-700); font: 600 14px/20px var(--font-sans); display: grid; place-items: center; text-decoration: none">HS</a>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px 24px">
+    <div style="flex: 1 1 420px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">PAINEL DE CONTROLE</p>
+      <h1 style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 44px; letter-spacing: -0.025em">Visão geral do estoque</h1>
+      <p style="margin: 4px 0 0; font: var(--text-corpo-m); color: var(--tinta-500); font-variant-numeric: tabular-nums">812 posições (material + local) em 3 locais · leitura de 11/11/2026</p>
+    </div>
+    <div style="display: flex; gap: 12px">
+      <a href="#baixar" style="min-height: 52px; display: inline-flex; align-items: center; padding: 0 24px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); text-decoration: none">Baixar Excel</a>
+      <a href="#plano" style="min-height: 52px; display: inline-flex; align-items: center; padding: 0 24px; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); text-decoration: none">Abrir meu plano</a>
+    </div>
+  </header>
+
+  <!-- Frase de conclusão -->
+  <section aria-label="Conclusão" style="background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px">
+    <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+    <p style="margin: 0; flex: 1 1 480px; font-size: 17px; line-height: 27px"><b style="color: var(--ouro-300); font-weight: 600">R$ 412 mil</b> (17% do estoque) estão em 214 itens sem saída há mais de 180 dias. E 23 posições estão abaixo do ponto de pedido, <b style="color: var(--ouro-300); font-weight: 600">5 delas classe A</b>: comece por elas.</p>
+    <a href="#itens-a" style="min-height: 52px; display: inline-flex; align-items: center; padding: 0 24px; border-radius: var(--raio-lg); background: var(--ouro-500); color: var(--verde-950); font: var(--text-botao); text-decoration: none">Ver os 5 itens A</a>
+  </section>
+
+  <!-- Faixa de implantação -->
+  <section aria-label="Implantação" style="background: var(--ouro-100); border-radius: 14px; padding: 14px 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px">
+    <span style="font-weight: 600; color: var(--ouro-700)">Implantação 4 de 5</span>
+    <ol style="list-style: none; margin: 0; padding: 0; flex: 1 1 520px; display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 14px; color: var(--tinta-600)">
+      <li style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; background: var(--verde-700); display: grid; place-items: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Dados mestres</li>
+      <li style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; background: var(--verde-700); display: grid; place-items: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Movimentos</li>
+      <li style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; background: var(--verde-700); display: grid; place-items: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Preços</li>
+      <li style="display: flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; background: var(--verde-700); display: grid; place-items: center"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Nível de serviço</li>
+      <li style="display: flex; align-items: center; gap: 6px; color: var(--tinta-900); font-weight: 600"><span aria-hidden="true" style="width: 18px; height: 18px; border-radius: 50%; border: 2px dashed var(--ouro-600)"></span>Pedidos em aberto <span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">(pendente)</span></li>
+    </ol>
+    <a href="#importar-pedidos" style="font: 600 14px/20px var(--font-sans); color: var(--verde-700); text-decoration: none; padding: 12px 0">Importar pedidos em aberto →</a>
+  </section>
+
+  <!-- KPIs agrupados por tema -->
+  <div style="display: flex; flex-wrap: wrap; gap: 20px">
+    <section aria-labelledby="g-din" style="flex: 2 1 420px; min-width: 0">
+      <h2 id="g-din" style="margin: 0 0 10px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">DINHEIRO</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+        <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 20px 22px">
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">VALOR EM ESTOQUE</p>
+          <p style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 34px; font-variant-numeric: tabular-nums">R$ 2,4 mi</p>
+          <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">812 posições com preço</p>
+          <a href="#composicao" style="margin-top: 8px; display: inline-flex; align-items: center; min-height: 32px; font: 600 14px/20px var(--font-sans); text-decoration: none">Ver composição →</a>
+        </div>
+        <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 20px 22px">
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">PARADO HÁ +180 DIAS</p>
+          <p style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 34px; color: var(--status-parado); font-variant-numeric: tabular-nums">R$ 412 mil</p>
+          <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">214 itens · 17% do valor</p>
+          <a href="#parados" style="margin-top: 8px; display: inline-flex; align-items: center; min-height: 32px; font: 600 14px/20px var(--font-sans); text-decoration: none">Ver itens →</a>
+        </div>
+      </div>
+    </section>
+    <section aria-labelledby="g-sau" style="flex: 2 1 420px; min-width: 0">
+      <h2 id="g-sau" style="margin: 0 0 10px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">SAÚDE DO ESTOQUE</h2>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px">
+        <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 20px 22px">
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">ABAIXO DO PONTO DE PEDIDO</p>
+          <p style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 34px; color: var(--status-alerta); font-variant-numeric: tabular-nums">23</p>
+          <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">5 são classe A</p>
+          <a href="#abaixo-pp" style="margin-top: 8px; display: inline-flex; align-items: center; min-height: 32px; font: 600 14px/20px var(--font-sans); text-decoration: none">Ver posições →</a>
+        </div>
+        <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 20px 22px">
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">SALDO NEGATIVO</p>
+          <p style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 34px; color: var(--status-ruptura); font-variant-numeric: tabular-nums">8</p>
+          <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Conferir lançamentos no ERP</p>
+          <a href="#negativo" style="margin-top: 8px; display: inline-flex; align-items: center; min-height: 32px; font: 600 14px/20px var(--font-sans); text-decoration: none">Conferir →</a>
+        </div>
+      </div>
+    </section>
+    <section aria-labelledby="g-mov" style="flex: 1 1 220px; min-width: 0">
+      <h2 id="g-mov" style="margin: 0 0 10px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">MOVIMENTO NO PERÍODO</h2>
+      <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 20px 22px">
+        <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">ENTRADAS · SAÍDAS</p>
+        <p style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 34px; font-variant-numeric: tabular-nums">156 · 520</p>
+        <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">01/07 a 11/11/2026</p>
+        <a href="#movimentos" style="margin-top: 8px; display: inline-flex; align-items: center; min-height: 32px; font: 600 14px/20px var(--font-sans); text-decoration: none">Ver movimentos →</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- Prioridades + Encaminhamentos -->
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: stretch">
+    <section aria-labelledby="t-prio" style="flex: 2 1 640px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+        <div>
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">PRIORIDADES</p>
+          <h2 id="t-prio" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">O que resolver primeiro</h2>
+        </div>
+        <a href="#fila" style="font: 600 14px/20px var(--font-sans); text-decoration: none; padding: 12px 0">Ver fila completa (31) →</a>
+      </div>
+      <div style="margin-top: 12px; overflow-x: auto">
+        <table style="width: 100%; min-width: 640px; border-collapse: collapse; font-variant-numeric: tabular-nums">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--borda); text-align: left">
+              <th scope="col" style="padding: 10px 8px 10px 0; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">CLASSE</th>
+              <th scope="col" style="padding: 10px 8px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">MATERIAL</th>
+              <th scope="col" style="padding: 10px 8px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">LOCAL</th>
+              <th scope="col" style="padding: 10px 8px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">SALDO × PONTO DE PEDIDO</th>
+              <th scope="col" style="padding: 10px 8px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">SITUAÇÃO</th>
+              <th scope="col" style="width: 48px"><span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Abrir</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--borda)">
+              <td style="padding: 14px 8px 14px 0"><span style="width: 28px; height: 28px; border-radius: 7px; background: var(--verde-100); color: var(--verde-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">A</span></td>
+              <td style="padding: 14px 8px"><div style="font-weight: 600">Rolamento 6205 2RS</div><div style="font: var(--text-corpo-s); color: var(--tinta-500)">0000 0012 3456</div></td>
+              <td style="padding: 14px 8px; color: var(--tinta-600)">Almox. central</td>
+              <td style="padding: 14px 8px"><div style="font: 600 13px/18px var(--font-sans)">0 de 22 un</div><div aria-hidden="true" style="margin-top: 6px; width: 150px; height: 4px; border-radius: 2px; background: var(--creme-100)"><div style="width: 3%; height: 4px; border-radius: 2px; background: var(--status-ruptura)"></div></div></td>
+              <td style="padding: 14px 8px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--status-ruptura-bg); color: var(--status-ruptura-texto); font: 600 12px/14px var(--font-sans)">● Ruptura</span></td>
+              <td><a href="#rolamento" aria-label="Abrir Rolamento 6205 2RS, Almox. central" style="width: 44px; height: 44px; display: grid; place-items: center; color: var(--tinta-500)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--borda)">
+              <td style="padding: 14px 8px 14px 0"><span style="width: 28px; height: 28px; border-radius: 7px; background: var(--verde-100); color: var(--verde-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">A</span></td>
+              <td style="padding: 14px 8px"><div style="font-weight: 600">Correia B-52</div><div style="font: var(--text-corpo-s); color: var(--tinta-500)">0000 0045 1180</div></td>
+              <td style="padding: 14px 8px; color: var(--tinta-600)">Oficina campo</td>
+              <td style="padding: 14px 8px"><div style="font: 600 13px/18px var(--font-sans)">3 de 9 un</div><div aria-hidden="true" style="margin-top: 6px; width: 150px; height: 4px; border-radius: 2px; background: var(--creme-100)"><div style="width: 33%; height: 4px; border-radius: 2px; background: var(--status-alerta)"></div></div></td>
+              <td style="padding: 14px 8px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--status-alerta-bg); color: var(--status-alerta-texto); font: 600 12px/14px var(--font-sans)">▲ Abaixo do PP</span></td>
+              <td><a href="#correia" aria-label="Abrir Correia B-52, Oficina campo" style="width: 44px; height: 44px; display: grid; place-items: center; color: var(--tinta-500)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--borda)">
+              <td style="padding: 14px 8px 14px 0"><span style="width: 28px; height: 28px; border-radius: 7px; background: var(--verde-100); color: var(--verde-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">A</span></td>
+              <td style="padding: 14px 8px"><div style="font-weight: 600">Bico pulverizador 110-02</div><div style="font: var(--text-corpo-s); color: var(--tinta-500)">0000 0031 7720</div></td>
+              <td style="padding: 14px 8px; color: var(--tinta-600)">Almox. central</td>
+              <td style="padding: 14px 8px"><div style="font: 600 13px/18px var(--font-sans)">6 de 20 un</div><div aria-hidden="true" style="margin-top: 6px; width: 150px; height: 4px; border-radius: 2px; background: var(--creme-100)"><div style="width: 30%; height: 4px; border-radius: 2px; background: var(--status-alerta)"></div></div></td>
+              <td style="padding: 14px 8px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--status-alerta-bg); color: var(--status-alerta-texto); font: 600 12px/14px var(--font-sans)">▲ Abaixo do PP</span></td>
+              <td><a href="#bico" aria-label="Abrir Bico pulverizador 110-02, Almox. central" style="width: 44px; height: 44px; display: grid; place-items: center; color: var(--tinta-500)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--borda)">
+              <td style="padding: 14px 8px 14px 0"><span style="width: 28px; height: 28px; border-radius: 7px; background: var(--ouro-100); color: var(--ouro-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">B</span></td>
+              <td style="padding: 14px 8px"><div style="font-weight: 600">Óleo hidráulico 68 (20 L)</div><div style="font: var(--text-corpo-s); color: var(--tinta-500)">0000 0009 4412</div></td>
+              <td style="padding: 14px 8px; color: var(--tinta-600)">Posto combustível</td>
+              <td style="padding: 14px 8px"><div style="font: 600 13px/18px var(--font-sans)">2 de 6 un</div><div aria-hidden="true" style="margin-top: 6px; width: 150px; height: 4px; border-radius: 2px; background: var(--creme-100)"><div style="width: 33%; height: 4px; border-radius: 2px; background: var(--status-alerta)"></div></div></td>
+              <td style="padding: 14px 8px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--status-alerta-bg); color: var(--status-alerta-texto); font: 600 12px/14px var(--font-sans)">▲ Abaixo do PP</span></td>
+              <td><a href="#oleo" aria-label="Abrir Óleo hidráulico 68, Posto combustível" style="width: 44px; height: 44px; display: grid; place-items: center; color: var(--tinta-500)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--borda)">
+              <td style="padding: 14px 8px 14px 0"><span style="width: 28px; height: 28px; border-radius: 7px; background: var(--verde-100); color: var(--verde-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">A</span></td>
+              <td style="padding: 14px 8px"><div style="font-weight: 600">Filtro de ar primário</div><div style="font: var(--text-corpo-s); color: var(--tinta-500)">0000 0066 0301</div></td>
+              <td style="padding: 14px 8px; color: var(--tinta-600)">Oficina campo</td>
+              <td style="padding: 14px 8px"><div style="font: 600 13px/18px var(--font-sans)">−2 un (negativo) · PP 8</div><div aria-hidden="true" style="margin-top: 6px; width: 150px; height: 4px; border-radius: 2px; background: var(--creme-100)"><div style="width: 3%; height: 4px; border-radius: 2px; background: var(--status-ruptura)"></div></div></td>
+              <td style="padding: 14px 8px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--status-ruptura-bg); color: var(--status-ruptura-texto); font: 600 12px/14px var(--font-sans)">● Ruptura</span></td>
+              <td><a href="#filtro" aria-label="Abrir Filtro de ar primário, Oficina campo" style="width: 44px; height: 44px; display: grid; place-items: center; color: var(--tinta-500)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></td>
+            </tr>
+            <tr>
+              <td style="padding: 14px 8px 14px 0"><span style="width: 28px; height: 28px; border-radius: 7px; background: var(--status-parado-bg); color: var(--status-parado); display: grid; place-items: center; font-weight: 600; font-size: 13px">C</span></td>
+              <td style="padding: 14px 8px"><div style="font-weight: 600">Mangueira 1/2" alta pressão</div><div style="font: var(--text-corpo-s); color: var(--tinta-500)">0000 0078 2093</div></td>
+              <td style="padding: 14px 8px; color: var(--tinta-600)">Almox. central</td>
+              <td style="padding: 14px 8px"><div style="font: 600 13px/18px var(--font-sans)">48 un · PP 4</div><div aria-hidden="true" style="margin-top: 6px; width: 150px; height: 4px; border-radius: 2px; background: var(--creme-100)"><div style="width: 100%; height: 4px; border-radius: 2px; background: var(--status-parado)"></div></div></td>
+              <td style="padding: 14px 8px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--status-parado-bg); color: var(--status-parado); font: 600 12px/14px var(--font-sans)">■ Parado +180d</span></td>
+              <td><a href="#mangueira" aria-label="Abrir Mangueira 1/2 polegada alta pressão, Almox. central" style="width: 44px; height: 44px; display: grid; place-items: center; color: var(--tinta-500)"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section aria-labelledby="t-enc" style="flex: 1 1 320px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">ENCAMINHAMENTOS</p>
+      <h2 id="t-enc" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">Sinais para agir</h2>
+      <ul style="list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; font-variant-numeric: tabular-nums">
+        <li><a href="#saldo-negativo" style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 4px; color: var(--tinta-900); text-decoration: none"><span aria-hidden="true" style="width: 16px; text-align: center; color: var(--status-ruptura); font-size: 12px">●</span><span style="flex: 1">Saldo negativo</span><b style="font-weight: 600">8</b><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></li>
+        <li><a href="#reposicao" style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 4px; color: var(--tinta-900); text-decoration: none"><span aria-hidden="true" style="width: 16px; text-align: center; color: var(--status-alerta); font-size: 12px">▲</span><span style="flex: 1">Reposição indicada</span><b style="font-weight: 600">23</b><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></li>
+        <li><a href="#acima-max" style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 4px; color: var(--tinta-900); text-decoration: none"><span aria-hidden="true" style="width: 16px; text-align: center; color: var(--status-alerta); font-size: 12px">▲</span><span style="flex: 1">Acima do estoque máximo</span><b style="font-weight: 600">41</b><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></li>
+        <li><a href="#sem-giro" style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 4px; color: var(--tinta-900); text-decoration: none"><span aria-hidden="true" style="width: 16px; text-align: center; color: var(--status-parado); font-size: 12px">■</span><span style="flex: 1">Item sem giro</span><b style="font-weight: 600">214</b><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></li>
+        <li><a href="#historico" style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 4px; color: var(--tinta-900); text-decoration: none"><span aria-hidden="true" style="width: 16px; text-align: center; color: var(--tinta-500); font-size: 12px">○</span><span style="flex: 1">Histórico insuficiente</span><b style="font-weight: 600">37</b><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></li>
+        <li><a href="#preco-ausente" style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 4px; color: var(--tinta-900); text-decoration: none"><span aria-hidden="true" style="width: 16px; text-align: center; color: var(--tinta-500); font-size: 12px">○</span><span style="flex: 1">Preço ausente</span><b style="font-weight: 600">12</b><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></li>
+        <li><a href="#definido" style="display: flex; align-items: center; gap: 12px; min-height: 52px; padding: 0 4px; color: var(--tinta-900); text-decoration: none"><span aria-hidden="true" style="width: 16px; text-align: center; color: var(--tinta-500); font-size: 12px">○</span><span style="flex: 1">Parâmetro definido por você</span><b style="font-weight: 600">6</b><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></a></li>
+      </ul>
+      <p style="margin: 12px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Cada sinal abre a lista de posições já filtrada.</p>
+    </section>
+  </div>
+
+  <!-- Matriz + Composição -->
+  <div style="display: flex; flex-wrap: wrap; gap: 20px">
+    <section aria-labelledby="t-mat" style="flex: 1 1 460px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">CONSUMO × FREQUÊNCIA</p>
+      <h2 id="t-mat" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">Onde se cruzam valor e uso</h2>
+      <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Quantidade de posições. A = mais valor consumido; P = sai com mais frequência. Clique numa célula para ver os itens.</p>
+      <div role="table" aria-label="Posições por classe ABC (colunas) e PQR (linhas)" style="margin-top: 20px; display: grid; grid-template-columns: 32px repeat(4, minmax(0, 1fr)); gap: 6px; font-variant-numeric: tabular-nums">
+        <span></span>
+        <span style="justify-self: center; width: 28px; height: 28px; border-radius: 7px; background: var(--verde-100); color: var(--verde-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">A</span>
+        <span style="justify-self: center; width: 28px; height: 28px; border-radius: 7px; background: var(--ouro-100); color: var(--ouro-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">B</span>
+        <span style="justify-self: center; width: 28px; height: 28px; border-radius: 7px; background: var(--status-parado-bg); color: var(--status-parado); display: grid; place-items: center; font-weight: 600; font-size: 13px">C</span>
+        <span style="justify-self: center; width: 28px; height: 28px; border-radius: 7px; background: #eceeed; color: var(--tinta-600); display: grid; place-items: center; font-weight: 600; font-size: 13px">D</span>
+
+        <span style="align-self: center; width: 28px; height: 28px; border-radius: 7px; background: var(--creme-100); color: var(--tinta-600); display: grid; place-items: center; font-weight: 600; font-size: 13px">P</span>
+        <a href="#AP" aria-label="AP: 41 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.31); border: 2px solid var(--ouro-500); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">41</a>
+        <a href="#BP" aria-label="BP: 22 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.21); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">22</a>
+        <a href="#CP" aria-label="CP: 9 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.15); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">9</a>
+        <a href="#DP" aria-label="DP: 2 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.11); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">2</a>
+
+        <span style="align-self: center; width: 28px; height: 28px; border-radius: 7px; background: var(--creme-100); color: var(--tinta-600); display: grid; place-items: center; font-weight: 600; font-size: 13px">Q</span>
+        <a href="#AQ" aria-label="AQ: 33 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.27); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">33</a>
+        <a href="#BQ" aria-label="BQ: 58 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.40); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">58</a>
+        <a href="#CQ" aria-label="CQ: 61 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.42); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">61</a>
+        <a href="#DQ" aria-label="DQ: 14 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.17); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">14</a>
+
+        <span style="align-self: center; width: 28px; height: 28px; border-radius: 7px; background: var(--creme-100); color: var(--tinta-600); display: grid; place-items: center; font-weight: 600; font-size: 13px">R</span>
+        <a href="#AR" aria-label="AR: 16 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.18); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">16</a>
+        <a href="#BR" aria-label="BR: 52 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.37); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">52</a>
+        <a href="#CR" aria-label="CR: 148 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.87); display: grid; place-items: center; color: var(--branco); font-weight: 600; text-decoration: none">148</a>
+        <a href="#DR" aria-label="DR: 41 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.31); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">41</a>
+
+        <span style="align-self: center; width: 28px; height: 28px; border-radius: 7px; background: var(--creme-100); color: var(--tinta-600); display: grid; place-items: center; font-weight: 600; font-size: 13px">S</span>
+        <a href="#AS" aria-label="AS: 8 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.14); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">8</a>
+        <a href="#BS" aria-label="BS: 30 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.26); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">30</a>
+        <a href="#CS" aria-label="CS: 173 posições" style="height: 48px; border-radius: var(--raio-sm); background: var(--verde-700); display: grid; place-items: center; color: var(--branco); font-weight: 600; text-decoration: none">173</a>
+        <a href="#DS" aria-label="DS: 92 posições" style="height: 48px; border-radius: var(--raio-sm); background: rgba(28,104,76,0.58); display: grid; place-items: center; color: var(--tinta-900); font-weight: 600; text-decoration: none">92</a>
+      </div>
+      <p style="margin: 16px 0 0; display: flex; align-items: center; gap: 8px; font: var(--text-corpo-s); color: var(--tinta-600)"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; border: 2px solid var(--ouro-500)"></span>AP: 41 itens mais caros e mais usados. Cuidar primeiro.</p>
+      <p style="margin: 8px 0 0; font-size: 12px; color: var(--tinta-500)">12 posições sem classe (N) ficam fora da grade.</p>
+    </section>
+
+    <section id="composicao" aria-labelledby="t-comp" style="flex: 1 1 520px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">COMPOSIÇÃO DAS CLASSES</p>
+      <h2 id="t-comp" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">Poucos itens, muito valor</h2>
+      <div role="tablist" aria-label="Classificação" style="margin-top: 16px; display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; background: var(--creme-100); border-radius: 12px">
+        <button type="button" role="tab" aria-selected="true" style="min-height: 44px; padding: 0 16px; border: 0; border-radius: 9px; background: var(--branco); font: 600 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">ABC consumo</button>
+        <button type="button" role="tab" aria-selected="false" style="min-height: 44px; padding: 0 16px; border: 0; border-radius: 9px; background: transparent; font: 500 14px/20px var(--font-sans); color: var(--tinta-600); cursor: pointer">PQR saídas</button>
+        <button type="button" role="tab" aria-selected="false" style="min-height: 44px; padding: 0 16px; border: 0; border-radius: 9px; background: transparent; font: 500 14px/20px var(--font-sans); color: var(--tinta-600); cursor: pointer">XYZ criticidade</button>
+        <button type="button" role="tab" aria-selected="false" style="min-height: 44px; padding: 0 16px; border: 0; border-radius: 9px; background: transparent; font: 500 14px/20px var(--font-sans); color: var(--tinta-600); cursor: pointer">Comprabilidade</button>
+      </div>
+      <div role="tabpanel" style="margin-top: 20px; font-variant-numeric: tabular-nums">
+        <div style="display: grid; grid-template-columns: 28px minmax(0, 1fr) 84px; gap: 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)"><span></span><span>% DO VALOR CONSUMIDO</span><span style="text-align: right">ITENS</span></div>
+        <div style="margin-top: 12px; display: grid; grid-template-columns: 28px minmax(0, 1fr) 84px; gap: 14px 12px; align-items: center">
+          <span style="width: 28px; height: 28px; border-radius: 7px; background: var(--verde-100); color: var(--verde-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">A</span>
+          <div style="height: 28px; border-radius: 7px; background: var(--creme-100); display: flex; align-items: center"><div style="width: 71%; height: 28px; border-radius: 7px; background: var(--verde-700); color: var(--branco); font: 600 12px/28px var(--font-sans); padding-left: 10px">71%</div></div>
+          <span style="text-align: right; font-size: 14px; color: var(--tinta-600)">98 · 12%</span>
+
+          <span style="width: 28px; height: 28px; border-radius: 7px; background: var(--ouro-100); color: var(--ouro-700); display: grid; place-items: center; font-weight: 600; font-size: 13px">B</span>
+          <div style="height: 28px; border-radius: 7px; background: var(--creme-100); display: flex; align-items: center; gap: 8px"><div style="width: 21%; height: 28px; border-radius: 7px; background: var(--verde-500)"></div><span style="font: 600 12px/28px var(--font-sans); color: var(--tinta-900)">21%</span></div>
+          <span style="text-align: right; font-size: 14px; color: var(--tinta-600)">162 · 20%</span>
+
+          <span style="width: 28px; height: 28px; border-radius: 7px; background: var(--status-parado-bg); color: var(--status-parado); display: grid; place-items: center; font-weight: 600; font-size: 13px">C</span>
+          <div style="height: 28px; border-radius: 7px; background: var(--creme-100); display: flex; align-items: center; gap: 8px"><div style="width: 7%; height: 28px; border-radius: 7px; background: var(--verde-300)"></div><span style="font: 600 12px/28px var(--font-sans); color: var(--tinta-900)">7%</span></div>
+          <span style="text-align: right; font-size: 14px; color: var(--tinta-600)">391 · 48%</span>
+
+          <span style="width: 28px; height: 28px; border-radius: 7px; background: #eceeed; color: var(--tinta-600); display: grid; place-items: center; font-weight: 600; font-size: 13px">D</span>
+          <div style="height: 28px; border-radius: 7px; background: var(--creme-100); display: flex; align-items: center; gap: 8px"><div style="width: 1.5%; height: 28px; border-radius: 7px; background: var(--verde-300)"></div><span style="font: 600 12px/28px var(--font-sans); color: var(--tinta-900)">1%</span></div>
+          <span style="text-align: right; font-size: 14px; color: var(--tinta-600)">149 · 18%</span>
+        </div>
+        <p style="margin: 20px 0 0; background: var(--verde-50); border-radius: 12px; padding: 14px 16px; font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><b style="font-weight: 600">12% dos itens (classe A)</b> concentram 71% do valor consumido. É onde um ajuste de parâmetro rende mais.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- Para aprofundar (seções recolhidas) -->
+  <section aria-labelledby="t-apr">
+    <h2 id="t-apr" style="margin: 0 0 10px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">PARA APROFUNDAR</h2>
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <button type="button" aria-expanded="false" style="width: 100%; min-height: 76px; display: flex; align-items: center; gap: 16px; padding: 18px 24px; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); text-align: left; cursor: pointer; font-family: var(--font-sans)">
+        <span style="flex: 1"><span style="display: block; font: var(--text-titulo-s); font-size: 16px; color: var(--tinta-900)">Explorar pela árvore de decisão</span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">PQR → XYZ → Comprabilidade → ABC, filtrando um grupo por vez</span></span>
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4b6257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <button type="button" aria-expanded="false" style="width: 100%; min-height: 76px; display: flex; align-items: center; gap: 16px; padding: 18px 24px; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); text-align: left; cursor: pointer; font-family: var(--font-sans)">
+        <span style="flex: 1"><span style="display: block; font: var(--text-titulo-s); font-size: 16px; color: var(--tinta-900)">Conferir origem e conciliação dos saldos</span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">De onde veio cada número e o que não fechou com o ERP</span></span>
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4b6257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <button type="button" aria-expanded="false" style="width: 100%; min-height: 76px; display: flex; align-items: center; gap: 16px; padding: 18px 24px; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); text-align: left; cursor: pointer; font-family: var(--font-sans)">
+        <span style="flex: 1"><span style="display: block; font: var(--text-titulo-s); font-size: 16px; color: var(--tinta-900)">Memória desta leitura</span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">Período, regras e versão do cálculo usados nesta Visão geral</span></span>
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4b6257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+    </div>
+  </section>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Regras e letras</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+input:focus{outline:none;border-color:#1c684c !important;box-shadow:0 0 0 3px #e2efe9}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid #1c684c;outline-offset:2px;box-shadow:0 0 0 5px #e2efe9}
+button:disabled{opacity:.45;cursor:not-allowed !important}
+summary{list-style:none;cursor:pointer}summary::-webkit-details-marker{display:none}
+details[open] .mro-chev{transform:rotate(180deg)}
+.mro-chev{transition:transform .2s ease}
+/* ---- Animações (desligam com "reduzir movimento") ---- */
+@keyframes mro-subir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes mro-entrar{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+@keyframes mro-pop{0%{transform:scale(.6);opacity:0}70%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
+@keyframes mro-pisca{0%{background-color:#f8edda}100%{background-color:transparent}}
+.mro-painel{animation:mro-entrar .32s cubic-bezier(.2,.7,.2,1) both}
+.mro-surge{animation:mro-subir .28s ease both}
+.mro-letra{animation:mro-pop .35s ease both}
+.mro-mudou{animation:mro-pisca 1.2s ease-out both}
+.mro-seg{transition:width .45s cubic-bezier(.2,.7,.2,1),left .45s cubic-bezier(.2,.7,.2,1)}
+.mro-aba{transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.mro-aba:hover{border-color:#8eb3a4 !important}
+.mro-btn{transition:transform .1s ease}
+.mro-btn:active{transform:scale(.98)}
+details > div{animation:mro-subir .25s ease both}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1900px; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px; background: var(--creme-100)">
+
+<nav aria-label="Menu do sistema" style="flex: 0 1 248px; min-width: 248px; background: var(--verde-900); color: var(--verde-100); padding: 28px 16px 24px; display: flex; flex-direction: column">
+  <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); padding: 0 8px">
+    <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1">
+      <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+      <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+    </span>
+  </a>
+
+  <p style="margin: 36px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">ANÁLISE</p>
+  <a href="VisaoGeral.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Visão geral</a>
+  <a href="Materiais.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>Materiais</a>
+  <a href="Planejamento.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>Planejamento</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">DADOS</p>
+  <a href="ImportarDados.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Importar dados</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">REGRAS DO CÁLCULO</p>
+  <a href="RegrasLetras.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; background: var(--verde-700); color: var(--branco); font-weight: 600; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Regras e letras</a>
+  <a href="TiposMovimento.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>Tipos de movimento</a>
+  <a href="#nivel" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Nível de serviço</a>
+  <a href="#tmer" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V9"/><path d="M18 17v-6"/></svg>Matriz TMER</a>
+  <a href="#casos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Casos de controle</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">APRENDER E AJUDA</p>
+  <a href="#academia" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Academia</a>
+  <a href="#suporte" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte</a>
+
+  <div style="flex: 1; min-height: 40px"></div>
+  <div style="background: var(--verde-800); border: 1px solid rgba(142,179,164,0.3); border-radius: 14px; padding: 16px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">PLANO INTELLIGENCE</p>
+    <p style="margin: 8px 0 0; font-weight: 600; color: var(--branco); font-variant-numeric: tabular-nums">812 de 1.000 itens</p>
+    <div role="progressbar" aria-label="Itens usados do plano" aria-valuenow="812" aria-valuemin="0" aria-valuemax="1000" style="margin-top: 10px; height: 6px; border-radius: 3px; background: rgba(226,239,233,0.2)"><div style="width: 81.2%; height: 6px; border-radius: 3px; background: var(--ouro-500)"></div></div>
+    <p style="margin: 10px 0 0; font-size: 12px; line-height: 16px; color: var(--verde-100)">Renova em 03/12/2026</p>
+  </div>
+  <a href="Login.dc.html" style="margin-top: 12px; display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sair</a>
+</nav>
+
+<div style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+
+  <!-- Barra superior -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+    <div style="position: relative; z-index: 20; flex: 1 1 320px; max-width: 460px">
+      <dc-import name="BuscaGlobal" hint-size="100%,48px"></dc-import>
+    </div>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Todos os locais (3)</button>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer; font-variant-numeric: tabular-nums">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>01/07 a 11/11/2026</button>
+    <span style="flex: 1"></span>
+    <span style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 13px/18px var(--font-sans)"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--verde-700)"></span>Atualizado há 2 dias</span>
+    <button type="button" aria-label="Notificações" style="width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--borda); border-radius: 12px; background: var(--branco); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <a href="Conta.dc.html" aria-label="Minha conta (Hugo dos Santos)" style="width: 44px; height: 44px; border-radius: 50%; background: var(--ouro-100); color: var(--ouro-700); font: 600 14px/20px var(--font-sans); display: grid; place-items: center; text-decoration: none">HS</a>
+  </div>
+
+  <header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px">
+    <div style="flex: 1 1 520px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">METODOLOGIA</p>
+      <h1 style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 44px; letter-spacing: -0.025em">Regras e letras</h1>
+      <p style="margin: 4px 0 0; max-width: 720px; font: var(--text-corpo-m); color: var(--tinta-500)">O que cada letra quer dizer e onde fica o corte. Consulte o padrão Agro MRO e, se precisar, ajuste os cortes ABC, PQR e o prazo de item novo do seu espaço.</p>
+    </div>
+    <span style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: var(--raio-pill); background: var(--branco); border: 1px solid var(--borda); font: 500 13px/18px var(--font-sans); color: var(--tinta-600)"><span aria-hidden="true" style="{{origemPonto}}"></span>{{origemTexto}}</span>
+  </header>
+
+  <!-- Frase de conclusão -->
+  <section aria-label="Conclusão" style="background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 22px 28px; display: flex; align-items: center; gap: 20px">
+    <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+    <p style="margin: 0; font-size: 17px; line-height: 27px">Seu espaço usa {{fraseOrigem}}: <b style="color: var(--ouro-300); font-weight: 600">A até {{cA}}%</b> do valor consumido, <b style="color: var(--ouro-300); font-weight: 600">P a partir de {{cP}} saídas por ano</b> e item novo (N) por {{cN}} dias. XYZ e Comprabilidade vêm do que você informa no cadastro.</p>
+  </section>
+
+  <sc-if value="{{temAviso}}" hint-placeholder-val="{{false}}">
+    <p role="status" class="mro-surge" style="margin: 0; display: flex; gap: 10px; align-items: flex-start; padding: 12px 16px; border-radius: 12px; background: var(--verde-50); font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><span aria-hidden="true" style="color: var(--verde-700); font-weight: 600">✓</span>{{aviso}}</p>
+  </sc-if>
+
+  <!-- Abas: uma classificação por vez -->
+  <div role="tablist" aria-label="Classificações" style="display: flex; flex-wrap: wrap; gap: 8px">
+    <sc-for list="{{abas}}" as="a" hint-placeholder-count="6">
+      <button type="button" role="tab" class="mro-aba" aria-selected="{{a.ativa}}" onClick="{{a.escolher}}" style="{{a.estilo}}"><span style="{{a.letrasStyle}}">{{a.letras}}</span>{{a.rotulo}}</button>
+    </sc-for>
+  </div>
+
+  <!-- Painel da classificação (duas cópias alternadas para reanimar a entrada) -->
+  <sc-for list="{{paineisA}}" as="P" hint-placeholder-count="1">
+    <sc-if value="{{P.visivel}}" hint-placeholder-val="{{true}}">
+      <section role="tabpanel" class="mro-painel" aria-label="{{P.nome}}" style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px; display: flex; flex-wrap: wrap; gap: 28px 40px">
+
+        <!-- Coluna esquerda: o que é + letras -->
+        <div style="flex: 3 1 460px; min-width: 0">
+          <span style="{{P.statusStyle}}">{{P.status}}</span>
+          <h2 style="margin: 12px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em">{{P.nome}}</h2>
+          <p style="margin: 6px 0 0; font: var(--text-corpo-l); font-size: 17px; line-height: 27px">{{P.frase}}</p>
+          <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)"><b style="font-weight: 600; color: var(--tinta-600)">Padrão Agro MRO:</b> {{P.regra}}</p>
+
+          <sc-if value="{{P.temBarra}}" hint-placeholder-val="{{true}}">
+            <div style="margin-top: 20px">
+              <div aria-hidden="true" style="position: relative; height: 36px; border-radius: 10px; background: var(--creme-100); overflow: hidden">
+                <sc-for list="{{P.segmentos}}" as="g" hint-placeholder-count="3">
+                  <div class="mro-seg" style="{{g.estilo}}"><span style="{{g.rotuloStyle}}">{{g.rotulo}}</span></div>
+                </sc-for>
+              </div>
+              <div aria-hidden="true" style="margin-top: 6px; display: flex; justify-content: space-between; font: 500 12px/16px var(--font-sans); color: var(--tinta-500); font-variant-numeric: tabular-nums"><span>{{P.escalaIni}}</span><span>{{P.escalaFim}}</span></div>
+            </div>
+          </sc-if>
+
+          <dl style="margin: 20px 0 0; display: flex; flex-direction: column; gap: 8px">
+            <sc-for list="{{P.letras}}" as="l" hint-placeholder-count="5">
+              <div class="{{l.classe}}" style="display: flex; align-items: center; gap: 14px; padding: 8px 10px; border-radius: 10px">
+                <dt style="{{l.seloStyle}}">{{l.letra}}</dt>
+                <dd style="margin: 0; flex: 1; font: var(--text-corpo-m)">{{l.texto}}</dd>
+                <sc-if value="{{l.temNum}}" hint-placeholder-val="{{false}}"><span style="font: 600 14px/20px var(--font-sans); color: var(--tinta-600); font-variant-numeric: tabular-nums; white-space: nowrap">{{l.num}}</span></sc-if>
+              </div>
+            </sc-for>
+          </dl>
+          <sc-if value="{{P.temNumeros}}" hint-placeholder-val="{{false}}">
+            <p style="margin: 8px 0 0 10px; font-size: 12px; line-height: 16px; color: var(--tinta-500)">{{P.numerosNota}}</p>
+          </sc-if>
+        </div>
+
+        <!-- Coluna direita: exemplo + cortes -->
+        <div style="flex: 2 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+          <div style="background: var(--ouro-100); border-radius: 14px; padding: 16px 18px">
+            <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">EXEMPLO</p>
+            <p style="margin: 6px 0 0; font: var(--text-corpo-m); color: var(--tinta-900)">{{P.exemplo}}</p>
+          </div>
+
+          <sc-if value="{{P.editavel}}" hint-placeholder-val="{{true}}">
+            <form action="#" onSubmit="{{P.pedirSalvar}}" style="border: 1px solid var(--borda); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+              <div>
+                <h3 style="margin: 0; font: var(--text-titulo-s); font-size: 16px">{{P.cortesTitulo}}</h3>
+                <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">{{P.cortesNota}}</p>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px">
+                <sc-for list="{{P.campos}}" as="c" hint-placeholder-count="2">
+                  <div style="display: flex; flex-direction: column; gap: 6px">
+                    <label for="{{c.id}}" style="font: 600 13px/18px var(--font-sans)">{{c.rotulo}}</label>
+                    <div style="position: relative">
+                      <input id="{{c.id}}" type="number" inputmode="decimal" min="{{c.min}}" max="{{c.max}}" step="{{c.passo}}" value="{{c.valor}}" onChange="{{c.mudar}}" aria-invalid="{{c.erro}}" style="{{c.estilo}}">
+                      <span aria-hidden="true" style="position: absolute; right: 14px; top: 14px; font: 500 14px/20px var(--font-sans); color: var(--tinta-500)">{{c.sufixo}}</span>
+                    </div>
+                    <span style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">Padrão: {{c.padrao}}{{c.sufixo}}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <sc-if value="{{P.temErro}}" hint-placeholder-val="{{false}}">
+                <p role="alert" class="mro-surge" style="margin: 0; font: var(--text-corpo-s); color: var(--status-ruptura-texto)">{{P.erro}}</p>
+              </sc-if>
+
+              <sc-if value="{{P.semConfirmacao}}" hint-placeholder-val="{{true}}">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+                  <button type="submit" class="mro-btn" disabled="{{P.naoMudou}}" style="min-height: 52px; padding: 0 22px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">{{P.salvarRotulo}}</button>
+                  <sc-if value="{{P.mudou}}" hint-placeholder-val="{{false}}">
+                    <button type="button" onClick="{{P.descartar}}" style="min-height: 44px; padding: 0 12px; border: 0; background: none; color: var(--tinta-600); font: 600 14px/20px var(--font-sans); text-decoration: underline; cursor: pointer">Desfazer</button>
+                  </sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{P.confirmando}}" hint-placeholder-val="{{false}}">
+                <div role="alertdialog" aria-label="Confirmar novos cortes" class="mro-surge" style="border-radius: 12px; background: var(--status-alerta-bg); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+                  <p style="margin: 0; font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><b style="font-weight: 600">Isso recalcula o estoque todo.</b> As 812 posições ganham a classe nova e os parâmetros que dependem dela mudam. Casos de planejamento já validados ficam marcados para revisão.</p>
+                  <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                    <button type="button" onClick="{{P.cancelar}}" style="min-height: 44px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); font-size: 14px; cursor: pointer">Voltar</button>
+                    <button type="button" class="mro-btn" onClick="{{P.confirmar}}" style="min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); font-size: 14px; cursor: pointer">Salvar e recalcular</button>
+                  </div>
+                </div>
+              </sc-if>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{P.informada}}" hint-placeholder-val="{{false}}">
+            <div style="border: 1px solid var(--borda); border-radius: 14px; padding: 18px">
+              <h3 style="margin: 0; font: var(--text-titulo-s); font-size: 16px">Onde você informa</h3>
+              <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">{{P.ondeInforma}}</p>
+              <a href="Materiais.dc.html" style="margin-top: 8px; min-height: 44px; display: inline-flex; align-items: center; font: 600 14px/20px var(--font-sans); text-decoration: none">Abrir Materiais →</a>
+            </div>
+          </sc-if>
+        </div>
+      </section>
+    </sc-if>
+  </sc-for>
+  <sc-for list="{{paineisB}}" as="P" hint-placeholder-count="1">
+    <sc-if value="{{P.visivel}}" hint-placeholder-val="{{true}}">
+      <section role="tabpanel" class="mro-painel" aria-label="{{P.nome}}" style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px; display: flex; flex-wrap: wrap; gap: 28px 40px">
+
+        <!-- Coluna esquerda: o que é + letras -->
+        <div style="flex: 3 1 460px; min-width: 0">
+          <span style="{{P.statusStyle}}">{{P.status}}</span>
+          <h2 style="margin: 12px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em">{{P.nome}}</h2>
+          <p style="margin: 6px 0 0; font: var(--text-corpo-l); font-size: 17px; line-height: 27px">{{P.frase}}</p>
+          <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)"><b style="font-weight: 600; color: var(--tinta-600)">Padrão Agro MRO:</b> {{P.regra}}</p>
+
+          <sc-if value="{{P.temBarra}}" hint-placeholder-val="{{true}}">
+            <div style="margin-top: 20px">
+              <div aria-hidden="true" style="position: relative; height: 36px; border-radius: 10px; background: var(--creme-100); overflow: hidden">
+                <sc-for list="{{P.segmentos}}" as="g" hint-placeholder-count="3">
+                  <div class="mro-seg" style="{{g.estilo}}"><span style="{{g.rotuloStyle}}">{{g.rotulo}}</span></div>
+                </sc-for>
+              </div>
+              <div aria-hidden="true" style="margin-top: 6px; display: flex; justify-content: space-between; font: 500 12px/16px var(--font-sans); color: var(--tinta-500); font-variant-numeric: tabular-nums"><span>{{P.escalaIni}}</span><span>{{P.escalaFim}}</span></div>
+            </div>
+          </sc-if>
+
+          <dl style="margin: 20px 0 0; display: flex; flex-direction: column; gap: 8px">
+            <sc-for list="{{P.letras}}" as="l" hint-placeholder-count="5">
+              <div class="{{l.classe}}" style="display: flex; align-items: center; gap: 14px; padding: 8px 10px; border-radius: 10px">
+                <dt style="{{l.seloStyle}}">{{l.letra}}</dt>
+                <dd style="margin: 0; flex: 1; font: var(--text-corpo-m)">{{l.texto}}</dd>
+                <sc-if value="{{l.temNum}}" hint-placeholder-val="{{false}}"><span style="font: 600 14px/20px var(--font-sans); color: var(--tinta-600); font-variant-numeric: tabular-nums; white-space: nowrap">{{l.num}}</span></sc-if>
+              </div>
+            </sc-for>
+          </dl>
+          <sc-if value="{{P.temNumeros}}" hint-placeholder-val="{{false}}">
+            <p style="margin: 8px 0 0 10px; font-size: 12px; line-height: 16px; color: var(--tinta-500)">{{P.numerosNota}}</p>
+          </sc-if>
+        </div>
+
+        <!-- Coluna direita: exemplo + cortes -->
+        <div style="flex: 2 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 16px">
+          <div style="background: var(--ouro-100); border-radius: 14px; padding: 16px 18px">
+            <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">EXEMPLO</p>
+            <p style="margin: 6px 0 0; font: var(--text-corpo-m); color: var(--tinta-900)">{{P.exemplo}}</p>
+          </div>
+
+          <sc-if value="{{P.editavel}}" hint-placeholder-val="{{true}}">
+            <form action="#" onSubmit="{{P.pedirSalvar}}" style="border: 1px solid var(--borda); border-radius: 14px; padding: 18px; display: flex; flex-direction: column; gap: 14px">
+              <div>
+                <h3 style="margin: 0; font: var(--text-titulo-s); font-size: 16px">{{P.cortesTitulo}}</h3>
+                <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">{{P.cortesNota}}</p>
+              </div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px">
+                <sc-for list="{{P.campos}}" as="c" hint-placeholder-count="2">
+                  <div style="display: flex; flex-direction: column; gap: 6px">
+                    <label for="{{c.id}}" style="font: 600 13px/18px var(--font-sans)">{{c.rotulo}}</label>
+                    <div style="position: relative">
+                      <input id="{{c.id}}" type="number" inputmode="decimal" min="{{c.min}}" max="{{c.max}}" step="{{c.passo}}" value="{{c.valor}}" onChange="{{c.mudar}}" aria-invalid="{{c.erro}}" style="{{c.estilo}}">
+                      <span aria-hidden="true" style="position: absolute; right: 14px; top: 14px; font: 500 14px/20px var(--font-sans); color: var(--tinta-500)">{{c.sufixo}}</span>
+                    </div>
+                    <span style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">Padrão: {{c.padrao}}{{c.sufixo}}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <sc-if value="{{P.temErro}}" hint-placeholder-val="{{false}}">
+                <p role="alert" class="mro-surge" style="margin: 0; font: var(--text-corpo-s); color: var(--status-ruptura-texto)">{{P.erro}}</p>
+              </sc-if>
+
+              <sc-if value="{{P.semConfirmacao}}" hint-placeholder-val="{{true}}">
+                <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+                  <button type="submit" class="mro-btn" disabled="{{P.naoMudou}}" style="min-height: 52px; padding: 0 22px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">{{P.salvarRotulo}}</button>
+                  <sc-if value="{{P.mudou}}" hint-placeholder-val="{{false}}">
+                    <button type="button" onClick="{{P.descartar}}" style="min-height: 44px; padding: 0 12px; border: 0; background: none; color: var(--tinta-600); font: 600 14px/20px var(--font-sans); text-decoration: underline; cursor: pointer">Desfazer</button>
+                  </sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{P.confirmando}}" hint-placeholder-val="{{false}}">
+                <div role="alertdialog" aria-label="Confirmar novos cortes" class="mro-surge" style="border-radius: 12px; background: var(--status-alerta-bg); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px">
+                  <p style="margin: 0; font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><b style="font-weight: 600">Isso recalcula o estoque todo.</b> As 812 posições ganham a classe nova e os parâmetros que dependem dela mudam. Casos de planejamento já validados ficam marcados para revisão.</p>
+                  <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                    <button type="button" onClick="{{P.cancelar}}" style="min-height: 44px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); font-size: 14px; cursor: pointer">Voltar</button>
+                    <button type="button" class="mro-btn" onClick="{{P.confirmar}}" style="min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); font-size: 14px; cursor: pointer">Salvar e recalcular</button>
+                  </div>
+                </div>
+              </sc-if>
+            </form>
+          </sc-if>
+
+          <sc-if value="{{P.informada}}" hint-placeholder-val="{{false}}">
+            <div style="border: 1px solid var(--borda); border-radius: 14px; padding: 18px">
+              <h3 style="margin: 0; font: var(--text-titulo-s); font-size: 16px">Onde você informa</h3>
+              <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">{{P.ondeInforma}}</p>
+              <a href="Materiais.dc.html" style="margin-top: 8px; min-height: 44px; display: inline-flex; align-items: center; font: 600 14px/20px var(--font-sans); text-decoration: none">Abrir Materiais →</a>
+            </div>
+          </sc-if>
+        </div>
+      </section>
+    </sc-if>
+  </sc-for>
+
+  <sc-if value="{{doCliente}}" hint-placeholder-val="{{false}}">
+    <div class="mro-surge" style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; padding: 14px 18px; border: 1px dashed var(--borda); border-radius: 14px">
+      <p style="margin: 0; flex: 1 1 360px; font: var(--text-corpo-s); color: var(--tinta-600)">Seus cortes estão diferentes do padrão. Restaurar volta todos ao padrão Agro MRO e recalcula o estoque.</p>
+      <sc-if value="{{restaurarPedido}}" hint-placeholder-val="{{false}}">
+        <button type="button" onClick="{{cancelarRestaurar}}" style="min-height: 44px; padding: 0 14px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); font-size: 14px; cursor: pointer">Manter os meus</button>
+      </sc-if>
+      <button type="button" onClick="{{restaurar}}" style="min-height: 44px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--status-ruptura-texto); font: var(--text-botao); font-size: 14px; cursor: pointer">{{restaurarRotulo}}</button>
+    </div>
+  </sc-if>
+
+  <!-- Para aprofundar (recolhido) -->
+  <section aria-labelledby="t-apr" style="display: flex; flex-direction: column; gap: 12px">
+    <h2 id="t-apr" style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">PARA APROFUNDAR</h2>
+
+    <details style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl)">
+      <summary style="min-height: 76px; display: flex; align-items: center; gap: 16px; padding: 18px 24px">
+        <span style="flex: 1"><span style="display: block; font: var(--text-titulo-s); font-size: 16px">Regra dos lotes</span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">Como ES, PP e EM são arredondados pelo múltiplo de embalagem</span></span>
+        <svg class="mro-chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4b6257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div style="padding: 0 24px 22px; display: flex; flex-wrap: wrap; gap: 16px 32px">
+        <p style="margin: 0; flex: 2 1 420px; font: var(--text-corpo-m); color: var(--tinta-600)">Se você informar um múltiplo de embalagem na posição, o estoque de segurança, o ponto de pedido e o máximo calculados sobem até o próximo múltiplo. Sem múltiplo, vale a natureza da quantidade (inteira ou fracionável). O valor bruto fica guardado. Valor manual, inclusive zero, fica exatamente como você digitou. Máximo manual abaixo do ponto de pedido gera conflito e não é corrigido sozinho.</p>
+        <div style="flex: 1 1 260px; background: var(--creme-100); border-radius: 12px; padding: 14px 16px; font: var(--text-corpo-s); color: var(--tinta-900)"><b style="font-weight: 600">Exemplo:</b> múltiplo 6 e cálculo de 13 un → o sistema mostra <b style="font-weight: 600">18 un</b>. É arredondamento de embalagem, não um lote de compra recomendado.</div>
+      </div>
+    </details>
+
+    <details style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl)">
+      <summary style="min-height: 76px; display: flex; align-items: center; gap: 16px; padding: 18px 24px">
+        <span style="flex: 1"><span style="display: block; font: var(--text-titulo-s); font-size: 16px">Métodos e cenários do motor</span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">Quais contas o sistema compara antes de sugerir ES, PP e EM</span></span>
+        <svg class="mro-chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4b6257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div style="padding: 0 24px 22px; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px">
+        <article style="background: var(--creme-100); border-radius: 12px; padding: 14px 16px"><h3 style="margin: 0; font: 600 15px/20px var(--font-sans)">Estoque de segurança</h3><p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">Compara Inversa Normal, TMEA, Raiz tradicional, Fator tradicional, quantil empírico e o valor que você declarou.</p></article>
+        <article style="background: var(--creme-100); border-radius: 12px; padding: 14px 16px"><h3 style="margin: 0; font: 600 15px/20px var(--font-sans)">Ponto de pedido</h3><p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">Compara demanda média no prazo + segurança, quantil empírico e o valor declarado.</p></article>
+        <article style="background: var(--creme-100); border-radius: 12px; padding: 14px 16px"><h3 style="margin: 0; font: 600 15px/20px var(--font-sans)">Estoque máximo</h3><p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">EM-01 tradicional, EM-02 Agro MRO e EM-03 empírico podem ser escolhidos; EM-04 a EM-07 servem de comparação.</p></article>
+        <article style="background: var(--creme-100); border-radius: 12px; padding: 14px 16px"><h3 style="margin: 0; font: 600 15px/20px var(--font-sans)">Cenários</h3><p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">Motor Agro MRO, Conservador (média), Maior proteção (maior calculável) e Com risco (menor positivo). Valores manuais prevalecem.</p></article>
+      </div>
+    </details>
+
+    <details style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl)">
+      <summary style="min-height: 76px; display: flex; align-items: center; gap: 16px; padding: 18px 24px">
+        <span style="flex: 1"><span style="display: flex; align-items: center; gap: 10px; font: var(--text-titulo-s); font-size: 16px">Regras em estudo <span style="padding: 2px 10px; border-radius: var(--raio-pill); background: var(--ouro-100); color: var(--ouro-700); font: 600 12px/18px var(--font-sans)">Em homologação</span></span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">Gatilhos GR1–GR7 e a matriz TMER ainda não mudam o cálculo</span></span>
+        <svg class="mro-chev" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4b6257" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </summary>
+      <div style="padding: 0 24px 22px; display: flex; flex-direction: column; gap: 10px; font: var(--text-corpo-m); color: var(--tinta-600)">
+        <p style="margin: 0"><b style="font-weight: 600; color: var(--tinta-900)">GR1 a GR7:</b> no SIO, são caminhos históricos para escolher quando agir na reposição. As telas já mostram o ponto de pedido e os candidatos de cálculo, mas os sete caminhos ainda não viraram decisão automática do Agro MRO.</p>
+        <p style="margin: 0"><b style="font-weight: 600; color: var(--tinta-900)">Matriz TMER:</b> a tabela de dias pode ser consultada e editada, mas ainda não altera o cálculo até a numeração dela ser conciliada com a Comprabilidade do cadastro.</p>
+      </div>
+    </details>
+
+    <a href="#casos" style="display: flex; align-items: center; gap: 16px; min-height: 76px; padding: 18px 24px; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); text-decoration: none; color: inherit">
+      <span style="flex: 1"><span style="display: block; font: var(--text-titulo-s); font-size: 16px">8 alertas ativos</span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">Saldo negativo, reposição indicada, acima do limite, histórico insuficiente, preço ausente, cobertura elevada, sem giro e parâmetro definido por você</span></span>
+      <span style="font: 600 14px/20px var(--font-sans); color: var(--verde-700); white-space: nowrap">Casos de controle →</span>
+    </a>
+  </section>
+
+  <p style="margin: 0; font-size: 12px; line-height: 16px; color: var(--tinta-500)">Classificações v3-1.0.1 · alertas cpf-1.1.0 · {{rodapeCortes}}</p>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var padrao = { a: 80, b: 95, q: 3, p: 12, eq: 3, ep: 12, n: 180 };
+    this.padrao = padrao;
+    this.state = { aba: 'abc', flip: false, cortes: Object.assign({}, padrao), rascunho: Object.assign({}, padrao), versao: 0, confirmando: false, restaurarPedido: false, aviso: '', mudouLetras: false };
+  }
+  renderVals() {
+    var self = this, s = this.state, c = s.cortes, r = s.rascunho, pad = this.padrao;
+    var fmt = function (n) { return String(n).replace('.', ','); };
+    var doCliente = Object.keys(pad).some(function (k) { return c[k] !== pad[k]; });
+    var nTxt = function (n) { return 'Menos de ' + n + ' dias, sem consumo válido comprovado até o fim do período'; };
+    var selo = function (fundo, cor, borda) { return 'flex: none; width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; font: 600 14px/1 var(--font-sans); background: ' + fundo + '; color: ' + cor + (borda ? '; border: 1px solid #e3e2dc' : ''); };
+    var neutro = selo('#f5f4ee', '#4b6257');
+
+    var defs = {
+      abc: {
+        nome: 'ABC por consumo', abaLetras: 'ABC', status: 'calc',
+        frase: 'Quanto dinheiro cada item consome. Poucos itens costumam responder pela maior parte do valor: esses são os A.',
+        regra: 'média diária de saídas × custo; participação acumulada com cortes de 80% e 95%. Os mesmos cortes valem para a ABC do valor de estoque.',
+        exemplo: 'O Rolamento 6205 2RS sai bastante e custa caro. Ordenando todos os itens pelo valor consumido, ele cai dentro dos primeiros ' + r.a + '% do valor acumulado: classe A.',
+        letras: [['A', 'Até ' + fmt(r.a) + '% do valor acumulado', selo('#e2efe9', '#1c684c'), '98 posições'], ['B', 'Acima de ' + fmt(r.a) + '% até ' + fmt(r.b) + '%', selo('#f8edda', '#8a6420'), '162'], ['C', 'Acima de ' + fmt(r.b) + '%', selo('#eee8e5', '#76584c'), '391'], ['D', 'Valor de consumo zero; custo ausente deixa a turma como NC', selo('#eceeed', '#4b6257'), '149'], ['N', nTxt(r.n), selo('#ffffff', '#4b6257', true), '12']],
+        barra: { ini: '0%', fim: '100% do valor', seg: [['A', 0, r.a, '#1c684c', '#ffffff'], ['B', r.a, r.b, '#d9a441', '#0b2a20'], ['C', r.b, 100, '#76584c', '#ffffff']], max: 100 },
+        campos: [['a', 'Classe A até', '%', 0.01, 99.98, 0.01], ['b', 'Classe B até', '%', 0.02, 99.99, 0.01]],
+        cortesTitulo: 'Cortes do seu espaço', cortesNota: 'Também usados na ABC do valor de estoque.',
+        validar: function (x) { return x.a > 0 && x.b < 100 && x.a < x.b ? '' : 'O corte de A precisa ser menor que o de B, e os dois entre 0% e 100%.'; }
+      },
+      pqrS: {
+        nome: 'PQR de saídas', abaLetras: 'PQR', status: 'calc',
+        frase: 'Com que frequência o item sai do almoxarifado, contando as transações de saída por ano.',
+        regra: 'número de transações de saída anualizado pela janela dos dados mestres; cortes de 3 e 12 por ano.',
+        exemplo: 'A Correia B-52 teve 7 saídas em 7 meses, o que dá 12 por ano. Como ' + fmt(r.p) + ' é o corte de P, ela é ' + (12 >= r.p ? 'P (popular).' : (12 >= r.q ? 'Q (quase popular).' : 'R (rara).')),
+        letras: [['P', 'Popular: pelo menos ' + fmt(r.p) + ' saídas por ano', neutro, '74'], ['Q', 'Quase popular: de ' + fmt(r.q) + ' a menos de ' + fmt(r.p) + ' por ano', neutro, '166'], ['R', 'Rara: mais de zero e menos de ' + fmt(r.q) + ' por ano', neutro, '257'], ['S', 'Sem saídas registradas', neutro, '303'], ['N', nTxt(r.n), selo('#ffffff', '#4b6257', true), '12']],
+        barra: { ini: '0', fim: '24+ saídas/ano', seg: [['R', 0, r.q, '#e2efe9', '#1c684c'], ['Q', r.q, r.p, '#8eb3a4', '#0b2a20'], ['P', r.p, 24, '#1c684c', '#ffffff']], max: 24 },
+        campos: [['q', 'Q a partir de', '/ano', 0.01, 999, 0.01], ['p', 'P a partir de', '/ano', 0.02, 999, 0.01]],
+        cortesTitulo: 'Cortes anuais do seu espaço', cortesNota: 'Contagem de transações de saída por ano.',
+        validar: function (x) { return x.q > 0 && x.q < x.p ? '' : 'O corte de Q precisa ser maior que zero e menor que o de P.'; }
+      },
+      pqrE: {
+        nome: 'PQR de entradas', abaLetras: 'pqr', status: 'calc',
+        frase: 'O mesmo raciocínio, olhando as entradas. As letras minúsculas separam a oferta (entradas) da demanda (saídas).',
+        regra: 'mesmos cortes aplicados às transações de entrada.',
+        exemplo: 'O Óleo hidráulico 68 recebeu 2 entradas em 8 meses, cerca de 3 por ano: classe ' + (3 >= r.ep ? 'p.' : (3 >= r.eq ? 'q.' : 'r.')),
+        letras: [['p', 'Pelo menos ' + fmt(r.ep) + ' entradas por ano', neutro], ['q', 'De ' + fmt(r.eq) + ' a menos de ' + fmt(r.ep) + ' por ano', neutro], ['r', 'Mais de zero e menos de ' + fmt(r.eq) + ' por ano', neutro], ['s', 'Sem entradas registradas', neutro], ['n', nTxt(r.n), selo('#ffffff', '#4b6257', true)]],
+        barra: { ini: '0', fim: '24+ entradas/ano', seg: [['r', 0, r.eq, '#e2efe9', '#1c684c'], ['q', r.eq, r.ep, '#8eb3a4', '#0b2a20'], ['p', r.ep, 24, '#1c684c', '#ffffff']], max: 24 },
+        campos: [['eq', 'q a partir de', '/ano', 0.01, 999, 0.01], ['ep', 'p a partir de', '/ano', 0.02, 999, 0.01]],
+        cortesTitulo: 'Cortes anuais do seu espaço', cortesNota: 'Contagem de transações de entrada por ano.',
+        validar: function (x) { return x.eq > 0 && x.eq < x.ep ? '' : 'O corte de q precisa ser maior que zero e menor que o de p.'; }
+      },
+      xyz: {
+        nome: 'XYZ declarado', abaLetras: 'XYZ', status: 'cliente',
+        frase: 'O quanto a falta do item para a operação. Só você sabe isso; o sistema não adivinha.',
+        regra: 'criticidade declarada pelo cliente. Sem declaração, fica ND (não declarado); quando o cálculo precisa de um valor, usa X como padrão e mostra que a origem é o padrão.',
+        exemplo: 'Sem o Bico pulverizador, a pulverização para no meio da safra. Você declara Z (vital).',
+        letras: [['X', 'Baixa criticidade', neutro], ['Y', 'Criticidade intermediária', neutro], ['Z', 'Vital para a operação', neutro]],
+        ondeInforma: 'No cadastro de cada material, no campo "Criticidade (XYZ)", ou na coluna de criticidade dos dados mestres.'
+      },
+      comp: {
+        nome: 'Comprabilidade 1/2/3', abaLetras: '123', status: 'cliente',
+        frase: 'O quanto é fácil comprar o item de novo. Quanto mais difícil, mais proteção o estoque precisa.',
+        regra: 'definição adotada pelo Agro MRO (difere da ordem do manual SIO; importações não são invertidas). Sem declaração, fica ND; quando o cálculo precisa de um valor, usa 3 e mostra que a origem é o padrão.',
+        exemplo: 'A Faca da plataforma de corte só vem do fabricante da colhedora e demora a chegar: Comprabilidade 3.',
+        letras: [['1', 'Encontrado em muitos fornecedores', neutro], ['2', 'Número reduzido de fornecedores', neutro], ['3', 'Exclusividade ou prazo longo de fornecimento', neutro]],
+        ondeInforma: 'No cadastro de cada material, no campo "Comprabilidade", ou na coluna correspondente dos dados mestres.'
+      },
+      n: {
+        nome: 'Classe N · item novo', abaLetras: 'N', status: 'calc',
+        frase: 'Item recém-cadastrado ainda não tem história para ser classificado. Ele fica N até provar consumo ou completar o prazo.',
+        regra: 'um único prazo vale para ABC de consumo, PQR de saídas e PQR de entradas. Uma saída válida, inclusive anterior ao período, libera o N. Entradas e saídas futuras não liberam.',
+        exemplo: 'A Junta homocinética foi cadastrada há 37 dias e ainda não teve saída. Fica N até ' + r.n + ' dias ou até a primeira saída válida.',
+        letras: [['N', nTxt(r.n), selo('#ffffff', '#4b6257', true), '12 posições hoje']],
+        campos: [['n', 'Dias desde o cadastro', 'dias', 1, 3650, 1]],
+        cortesTitulo: 'Prazo de item novo', cortesNota: 'Prazo maior mantém o item como N por mais tempo.',
+        validar: function (x) { return x.n >= 1 && x.n <= 3650 && Math.round(x.n) === x.n ? '' : 'Use um número inteiro de dias, de 1 a 3.650.'; }
+      }
+    };
+    var ordem = ['abc', 'pqrS', 'pqrE', 'xyz', 'comp', 'n'];
+    var abas = ordem.map(function (k) {
+      var d = defs[k], on = s.aba === k;
+      return {
+        rotulo: d.nome.replace(' · item novo', ''), letras: d.abaLetras, ativa: on,
+        escolher: function () { if (!on) self.setState({ aba: k, flip: !s.flip, rascunho: Object.assign({}, c), confirmando: false, mudouLetras: false }); },
+        estilo: 'min-height: 48px; display: inline-flex; align-items: center; gap: 10px; padding: 0 16px 0 8px; border-radius: 12px; cursor: pointer; font: 600 14px/20px var(--font-sans); ' + (on ? 'background: #113d2f; color: #ffffff; border: 1px solid #113d2f;' : 'background: #ffffff; color: #20322c; border: 1px solid #e3e2dc;'),
+        letrasStyle: 'min-width: 36px; padding: 3px 6px; border-radius: 7px; text-align: center; font: 700 12px/16px var(--font-display); letter-spacing: 0.04em; ' + (on ? 'background: #f0c56e; color: #0b2a20;' : 'background: #f5f4ee; color: #4b6257;')
+      };
+    });
+
+    var d = defs[s.aba];
+    var campos = (d.campos || []);
+    var mudou = campos.some(function (f) { return r[f[0]] !== c[f[0]]; });
+    var erro = d.validar ? d.validar(r) : '';
+    var letras = d.letras.map(function (l, i) {
+      return { letra: l[0], texto: l[1], seloStyle: l[2], temNum: !!l[3], num: l[3] || '', classe: (s.mudouLetras && mudou ? 'mro-mudou ' : '') + 'mro-letra' };
+    });
+    var seg = d.barra ? d.barra.seg.map(function (g) {
+      var max = d.barra.max, ini = Math.max(0, Math.min(g[1], max)), fim = Math.max(ini, Math.min(g[2], max));
+      var w = (fim - ini) / max * 100;
+      return {
+        rotulo: w > 6 ? g[0] : '',
+        estilo: 'position: absolute; top: 0; bottom: 0; left: ' + (ini / max * 100) + '%; width: ' + w + '%; background: ' + g[3] + '; display: grid; place-items: center',
+        rotuloStyle: 'font: 700 13px/1 var(--font-display); color: ' + g[4]
+      };
+    }) : [];
+    var painel = {
+      visivel: true, nome: d.nome,
+      status: d.status === 'calc' ? 'Calculada pelo Agro MRO' : 'Informada por você',
+      statusStyle: 'display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 999px; font: 600 12px/16px var(--font-sans); ' + (d.status === 'calc' ? 'background: #e2efe9; color: #1c684c;' : 'background: #f8edda; color: #8a6420;'),
+      frase: d.frase, regra: d.regra, exemplo: d.exemplo,
+      temBarra: !!d.barra, segmentos: seg, escalaIni: d.barra ? d.barra.ini : '', escalaFim: d.barra ? d.barra.fim : '',
+      letras: letras,
+      temNumeros: s.aba === 'abc' || s.aba === 'pqrS', numerosNota: mudou ? 'Contagens atuais. Elas mudam depois de salvar os novos cortes.' : 'Quantas posições estão em cada letra hoje.',
+      editavel: !!d.campos, informada: !d.campos, ondeInforma: d.ondeInforma || '',
+      cortesTitulo: d.cortesTitulo || '', cortesNota: d.cortesNota || '',
+      campos: campos.map(function (f) {
+        var bad = !!erro && mudou;
+        return {
+          id: 'c-' + f[0], rotulo: f[1], sufixo: f[2], min: f[3], max: f[4], passo: f[5], valor: r[f[0]], padrao: fmt(pad[f[0]]) + ' ', erro: bad,
+          estilo: 'width: 100%; height: 52px; padding: 14px 56px 14px 16px; border-radius: 10px; font: 600 16px/24px var(--font-sans); font-variant-numeric: tabular-nums; border: ' + (bad ? '2px solid #bd4646' : (r[f[0]] !== c[f[0]] ? '2px solid #d9a441' : '1px solid #e3e2dc')),
+          mudar: function (e) { var v = parseFloat(String(e.target.value).replace(',', '.')); var nr = Object.assign({}, r); nr[f[0]] = isNaN(v) ? 0 : v; self.setState({ rascunho: nr, confirmando: false, mudouLetras: true, aviso: '' }); }
+        };
+      }),
+      temErro: !!erro && mudou, erro: erro,
+      mudou: mudou, naoMudou: !mudou || !!erro,
+      salvarRotulo: s.aba === 'n' ? 'Salvar prazo da classe N' : 'Salvar cortes',
+      semConfirmacao: !s.confirmando, confirmando: s.confirmando,
+      pedirSalvar: function (e) { if (e && e.preventDefault) e.preventDefault(); if (mudou && !erro) self.setState({ confirmando: true }); },
+      cancelar: function () { self.setState({ confirmando: false }); },
+      descartar: function () { self.setState({ rascunho: Object.assign({}, c), confirmando: false, mudouLetras: false }); },
+      confirmar: function () {
+        var v = s.versao + 1;
+        self.setState({ cortes: Object.assign({}, r), versao: v, confirmando: false, mudouLetras: false, aviso: 'Cortes salvos para o seu espaço · versão ' + v + '. As classificações passam a usar essa regra.' });
+      }
+    };
+
+    return {
+      abas: abas,
+      paineisA: s.flip ? [] : [painel], paineisB: s.flip ? [painel] : [],
+      cA: fmt(c.a), cP: fmt(c.p), cN: c.n,
+      fraseOrigem: doCliente ? 'cortes próprios' : 'o padrão Agro MRO',
+      origemTexto: doCliente ? 'Cortes do seu espaço · versão ' + s.versao : 'Cortes padrão Agro MRO',
+      origemPonto: 'width: 8px; height: 8px; border-radius: 50%; background: ' + (doCliente ? '#d9a441' : '#1c684c'),
+      rodapeCortes: doCliente ? 'cortes do cliente v' + s.versao : 'cortes padrão Agro MRO',
+      temAviso: !!s.aviso, aviso: s.aviso,
+      doCliente: doCliente, restaurarPedido: s.restaurarPedido,
+      restaurarRotulo: s.restaurarPedido ? 'Sim, restaurar e recalcular' : 'Restaurar todas as regras Agro MRO',
+      cancelarRestaurar: function () { self.setState({ restaurarPedido: false }); },
+      restaurar: function () {
+        if (!s.restaurarPedido) { self.setState({ restaurarPedido: true }); return; }
+        self.setState({ cortes: Object.assign({}, pad), rascunho: Object.assign({}, pad), restaurarPedido: false, confirmando: false, flip: !s.flip, aviso: 'Cortes Agro MRO restaurados no seu espaço.' });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

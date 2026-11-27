@@ -1,0 +1,39 @@
+{
+  "v": 3,
+  "attachments": {},
+  "createdOnFiles": {
+    "at": "2026-11-18T15:55:07.575Z",
+    "v": 1
+  },
+  "title": "Agro MRO Intelligence: telas aprovadas",
+  "launch": {"view": "canvas"},
+  "pages": [],
+  "boards": {
+    "Main.dc.html": {"x": 0, "y": 0, "w": 1440, "h": 6400, "title": "1 · Landing comercial", "expand": "fill", "is_interactive": true},
+    "Login.dc.html": {"x": 1520, "y": 0, "w": 1440, "h": 900, "title": "2a · Login", "expand": "fill"},
+    "LoginErro.dc.html": {"x": 1520, "y": 1020, "w": 1440, "h": 900, "title": "2b · Login com erro", "expand": "fill"},
+    "VisaoGeral.dc.html": {"x": 3040, "y": 0, "w": 1440, "h": 2300, "title": "3 · Visão geral", "expand": "fill"},
+    "ImportarDados.dc.html": {"x": 4560, "y": 0, "w": 1440, "h": 1800, "title": "4 · Importar dados mestres", "expand": "fill", "is_interactive": true},
+    "Planos.dc.html": {"x": 6080, "y": 0, "w": 1440, "h": 1700, "title": "5a · Plano · demonstração (assinar)", "expand": "fill", "is_interactive": true},
+    "PlanosAtivo.dc.html": {"x": 7600, "y": 0, "w": 1440, "h": 1700, "title": "5b · Plano · Intelligence ativo", "expand": "fill", "is_interactive": true},
+    "PlanosLeitura.dc.html": {"x": 9120, "y": 0, "w": 1440, "h": 1700, "title": "5c · Plano · somente leitura (fatura vencida)", "expand": "fill", "is_interactive": true},
+    "Materiais.dc.html": {"x": 10640, "y": 0, "w": 1440, "h": 1900, "title": "6a · Materiais (catálogo)", "expand": "fill", "is_interactive": true},
+    "MateriaisCarregando.dc.html": {"x": 12160, "y": 0, "w": 1440, "h": 1400, "title": "6b · Materiais · carregando", "expand": "fill", "is_interactive": true},
+    "MateriaisVazio.dc.html": {"x": 13680, "y": 0, "w": 1440, "h": 900, "title": "6c · Materiais · catálogo vazio", "expand": "fill", "is_interactive": true},
+    "Planejamento.dc.html": {"x": 15200, "y": 0, "w": 1440, "h": 2400, "title": "7a · Planejamento (meu plano de estoque)", "expand": "fill", "is_interactive": true},
+    "PlanejamentoVazio.dc.html": {"x": 16720, "y": 0, "w": 1440, "h": 1200, "title": "7b · Planejamento · nenhum caso ainda", "expand": "fill", "is_interactive": true},
+    "TiposMovimento.dc.html": {"x": 18240, "y": 0, "w": 1440, "h": 1800, "title": "8 · Tipos de movimento", "expand": "fill", "is_interactive": true},
+    "RegrasLetras.dc.html": {"x": 19760, "y": 0, "w": 1440, "h": 1900, "title": "9 · Regras e letras", "expand": "fill", "is_interactive": true},
+    "NivelServico.dc.html": {"x": 21280, "y": 0, "w": 1440, "h": 1700, "title": "10 · Nível de serviço", "expand": "fill", "is_interactive": true},
+    "MatrizTmer.dc.html": {"x": 22800, "y": 0, "w": 1440, "h": 1600, "title": "11 · Matriz TMER", "expand": "fill", "is_interactive": true},
+    "Conta.dc.html": {"x": 24320, "y": 0, "w": 1440, "h": 2300, "title": "12 · Minha conta (perfil)", "expand": "fill", "is_interactive": true},
+    "BuscaGlobal.dc.html": {"x": 3040, "y": 2420, "w": 460, "h": 60, "title": "Componente · busca global (barra superior)", "is_interactive": true}
+  },
+  "order": ["Main.dc.html", "Login.dc.html", "LoginErro.dc.html", "VisaoGeral.dc.html", "ImportarDados.dc.html", "Planos.dc.html", "PlanosAtivo.dc.html", "PlanosLeitura.dc.html", "Materiais.dc.html", "MateriaisCarregando.dc.html", "MateriaisVazio.dc.html", "Planejamento.dc.html", "PlanejamentoVazio.dc.html", "TiposMovimento.dc.html", "RegrasLetras.dc.html", "NivelServico.dc.html", "MatrizTmer.dc.html", "Conta.dc.html", "BuscaGlobal.dc.html"],
+  "notes": {
+    "titulo": {"x": 0, "y": -300, "text": "Agro MRO Intelligence · telas aprovadas (referência)", "kind": "title1", "maxW": 4480}
+  },
+  "designSystems": [
+    {"title": "Agro MRO Intelligence", "namespace": "agromro", "artifact": "https://claude.ai/code/artifact/b37daeec-39f9-411f-a588-46b60df1949e", "version": "1795017012-081f", "copiedAt": "2026-11-18T16:04:24Z"}
+  ]
+}

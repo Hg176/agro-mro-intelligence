@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Materiais</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+input::placeholder{color:#a3aca8}
+input:focus,select:focus{outline:none;border-color:#1c684c !important;box-shadow:0 0 0 3px #e2efe9}
+a:focus-visible,button:focus-visible{outline:2px solid #1c684c;outline-offset:2px;box-shadow:0 0 0 5px #e2efe9}
+button:disabled{opacity:.45;cursor:not-allowed !important}
+/* ---- Animações (todas respeitam "reduzir movimento") ---- */
+@keyframes mro-subir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes mro-brilho{from{background-position:-320px 0}to{background-position:320px 0}}
+@keyframes mro-fundo{from{opacity:0}to{opacity:1}}
+@keyframes mro-modal{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes mro-pulso{0%{box-shadow:0 0 0 0 rgba(189,70,70,.45)}70%{box-shadow:0 0 0 6px rgba(189,70,70,0)}100%{box-shadow:0 0 0 0 rgba(189,70,70,0)}}
+@keyframes mro-pop{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+.mro-card{animation:mro-subir .45s cubic-bezier(.2,.7,.2,1) both;transition:transform .18s ease,border-color .18s ease}
+.mro-card:hover{transform:translateY(-3px);border-color:#8eb3a4 !important}
+.mro-card:hover .mro-arte svg{transform:scale(1.08)}
+.mro-arte svg{transition:transform .25s ease}
+.mro-chip{transition:background-color .15s ease,border-color .15s ease,color .15s ease}
+.mro-chip:hover{border-color:#8eb3a4 !important}
+.mro-check{animation:mro-pop .22s ease both}
+.mro-esqueleto{background:#eeede7 linear-gradient(90deg,#eeede7 0,#f8f7f3 40%,#eeede7 80%) no-repeat;background-size:640px 100%;animation:mro-brilho 1.2s linear infinite;border-radius:8px}
+.mro-fundo{animation:mro-fundo .2s ease both}
+.mro-janela{animation:mro-modal .28s cubic-bezier(.2,.7,.2,1) both}
+.mro-pulso{animation:mro-pulso 1.8s ease-out infinite}
+.mro-surge{animation:mro-subir .3s ease both}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="position: relative; display: flex; flex-wrap: wrap; min-height: 1900px; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px; background: var(--creme-100)">
+
+<nav aria-label="Menu do sistema" style="flex: 0 1 248px; min-width: 248px; background: var(--verde-900); color: var(--verde-100); padding: 28px 16px 24px; display: flex; flex-direction: column">
+  <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); padding: 0 8px">
+    <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1">
+      <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+      <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+    </span>
+  </a>
+
+  <p style="margin: 36px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">ANÁLISE</p>
+  <a href="VisaoGeral.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Visão geral</a>
+  <a href="Materiais.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; background: var(--verde-700); color: var(--branco); font-weight: 600; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>Materiais</a>
+  <a href="#planejamento" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>Planejamento</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">DADOS</p>
+  <a href="ImportarDados.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Importar dados</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">REGRAS DO CÁLCULO</p>
+  <a href="#regras" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Regras e letras</a>
+  <a href="#tipos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>Tipos de movimento</a>
+  <a href="#nivel" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Nível de serviço</a>
+  <a href="#tmer" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V9"/><path d="M18 17v-6"/></svg>Matriz TMER</a>
+  <a href="#casos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Casos de controle</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">APRENDER E AJUDA</p>
+  <a href="#academia" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Academia</a>
+  <a href="#suporte" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte</a>
+
+  <div style="flex: 1; min-height: 40px"></div>
+  <div style="background: var(--verde-800); border: 1px solid rgba(142,179,164,0.3); border-radius: 14px; padding: 16px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">PLANO INTELLIGENCE</p>
+    <p style="margin: 8px 0 0; font-weight: 600; color: var(--branco); font-variant-numeric: tabular-nums">812 de 1.000 itens</p>
+    <div role="progressbar" aria-label="Itens usados do plano" aria-valuenow="812" aria-valuemin="0" aria-valuemax="1000" style="margin-top: 10px; height: 6px; border-radius: 3px; background: rgba(226,239,233,0.2)"><div style="width: 81.2%; height: 6px; border-radius: 3px; background: var(--ouro-500)"></div></div>
+    <p style="margin: 10px 0 0; font-size: 12px; line-height: 16px; color: var(--verde-100)">Renova em 03/12/2026</p>
+  </div>
+  <a href="Login.dc.html" style="margin-top: 12px; display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sair</a>
+</nav>
+
+<div style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+
+  <!-- Barra superior -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+    <div style="position: relative; z-index: 20; flex: 1 1 320px; max-width: 460px">
+      <dc-import name="BuscaGlobal" hint-size="100%,48px"></dc-import>
+    </div>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Todos os locais (3)</button>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer; font-variant-numeric: tabular-nums">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>01/07 a 11/11/2026</button>
+    <span style="flex: 1"></span>
+    <span style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 13px/18px var(--font-sans)"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--verde-700)"></span>Atualizado há 2 dias</span>
+    <button type="button" aria-label="Notificações" style="width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--borda); border-radius: 12px; background: var(--branco); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <a href="Conta.dc.html" aria-label="Minha conta (Hugo dos Santos)" style="width: 44px; height: 44px; border-radius: 50%; background: var(--ouro-100); color: var(--ouro-700); font: 600 14px/20px var(--font-sans); display: grid; place-items: center; text-decoration: none">HS</a>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px 24px">
+    <div style="flex: 1 1 420px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">CATÁLOGO PARTICULAR</p>
+      <h1 style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 44px; letter-spacing: -0.025em">Materiais</h1>
+      <p style="margin: 4px 0 0; font: var(--text-corpo-m); color: var(--tinta-500)">Cadastre, consulte e acompanhe cada posição (material + local) do seu estoque.</p>
+    </div>
+    <div style="display: flex; gap: 12px">
+      <sc-if value="{{temCatalogo}}" hint-placeholder-val="{{true}}">
+        <button type="button" style="min-height: 52px; display: inline-flex; align-items: center; gap: 8px; padding: 0 22px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Baixar Excel ({{totalTexto}})</button>
+      </sc-if>
+      <button type="button" onClick="{{abrirModal}}" style="{{novoStyle}}">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>Novo material</button>
+    </div>
+  </header>
+
+  <!-- Frase de conclusão -->
+  <section aria-label="Conclusão" style="background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 22px 28px; display: flex; align-items: center; gap: 20px">
+    <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+    <sc-if value="{{temCatalogo}}" hint-placeholder-val="{{true}}">
+      <p style="margin: 0; font-size: 17px; line-height: 27px"><b style="color: var(--ouro-300); font-weight: 600">812 posições</b> em 3 locais. <b style="color: var(--ouro-300); font-weight: 600">23 pedem reposição</b> e 214 estão sem giro há mais de 180 dias. Use os filtros prontos abaixo para chegar nelas.</p>
+    </sc-if>
+    <sc-if value="{{catalogoVazio}}" hint-placeholder-val="{{false}}">
+      <p style="margin: 0; font-size: 17px; line-height: 27px">Seu catálogo ainda está vazio. <b style="color: var(--ouro-300); font-weight: 600">Importe os dados mestres</b> para ver saldo, classe e situação de cada posição.</p>
+    </sc-if>
+  </section>
+
+  <sc-if value="{{temCatalogo}}" hint-placeholder-val="{{true}}">
+    <div style="display: flex; flex-direction: column; gap: 16px">
+      <!-- Busca -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px">
+        <div style="position: relative; flex: 1 1 360px; max-width: 560px">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 16px; top: 17px"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" aria-label="Buscar posições" value="{{busca}}" onChange="{{digitar}}" placeholder="Buscar por código, local ou descrição" style="width: 100%; height: 52px; padding: 12px 16px 12px 44px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: var(--text-corpo-m); color: var(--tinta-900)">
+        </div>
+        <span role="status" style="font: 500 14px/20px var(--font-sans); color: var(--tinta-600); font-variant-numeric: tabular-nums">{{contagem}}</span>
+      </div>
+
+      <!-- Filtros prontos -->
+      <div role="group" aria-label="Filtros prontos" style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px">
+        <sc-for list="{{chips}}" as="c" hint-placeholder-count="5">
+          <button type="button" class="mro-chip" aria-pressed="{{c.ativo}}" onClick="{{c.alternar}}" style="{{c.estilo}}">
+            <sc-if value="{{c.ativo}}" hint-placeholder-val="{{false}}"><svg class="mro-check" aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></sc-if>
+            <span aria-hidden="true" style="{{c.iconeStyle}}">{{c.icone}}</span>{{c.rotulo}}<span style="{{c.numStyle}}">{{c.num}}</span>
+          </button>
+        </sc-for>
+        <sc-if value="{{temFiltro}}" hint-placeholder-val="{{false}}">
+          <button type="button" class="mro-surge" onClick="{{limpar}}" style="min-height: 44px; padding: 0 10px; border: 0; background: none; color: var(--verde-700); font: 600 14px/20px var(--font-sans); text-decoration: underline; cursor: pointer">Limpar filtros</button>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- Erro de métricas -->
+  <sc-if value="{{comErro}}" hint-placeholder-val="{{false}}">
+    <div role="alert" class="mro-surge" style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; background: var(--status-alerta-bg); border-radius: 14px; padding: 14px 20px">
+      <span aria-hidden="true" style="color: var(--status-alerta); font-size: 14px">▲</span>
+      <p style="margin: 0; flex: 1 1 420px; font: var(--text-corpo-m); color: var(--tinta-900)"><b style="font-weight: 600">Métricas indisponíveis agora.</b> O catálogo continua consultável; saldo e classe voltam assim que o cálculo responder.</p>
+      <button type="button" style="min-height: 44px; padding: 0 18px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Tentar de novo</button>
+    </div>
+  </sc-if>
+
+  <!-- Carregando (skeleton) -->
+  <sc-if value="{{carregando}}" hint-placeholder-val="{{false}}">
+    <p role="status" style="margin: 0; font: var(--text-corpo-s); color: var(--tinta-500)">Consultando métricas aprovadas…</p>
+    <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px">
+      <sc-for list="{{esqueletos}}" as="k" hint-placeholder-count="8">
+        <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); overflow: hidden">
+          <div class="mro-esqueleto" style="height: 128px; border-radius: 0"></div>
+          <div style="padding: 18px 20px; display: flex; flex-direction: column; gap: 10px">
+            <div class="mro-esqueleto" style="height: 10px; width: 45%"></div>
+            <div class="mro-esqueleto" style="height: 16px; width: 85%"></div>
+            <div class="mro-esqueleto" style="height: 12px; width: 55%"></div>
+            <div class="mro-esqueleto" style="height: 30px; width: 40%; margin-top: 6px"></div>
+            <div class="mro-esqueleto" style="height: 12px; width: 100%; margin-top: 6px"></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- Catálogo vazio -->
+  <sc-if value="{{catalogoVazio}}" hint-placeholder-val="{{false}}">
+    <section class="mro-surge" aria-labelledby="t-vazio" style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 56px 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px">
+      <span style="width: 72px; height: 72px; border-radius: 18px; background: var(--verde-50); display: grid; place-items: center">
+        <svg aria-hidden="true" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>
+      </span>
+      <h2 id="t-vazio" style="margin: 8px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em">Nenhum material ainda</h2>
+      <p style="margin: 0; max-width: 480px; font: var(--text-corpo-m); color: var(--tinta-500)">Importe seus dados mestres do ERP de uma vez, ou cadastre o primeiro material à mão para testar.</p>
+      <a href="ImportarDados.dc.html" style="margin-top: 8px; min-height: 56px; display: inline-flex; align-items: center; padding: 0 28px; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); text-decoration: none">Importar dados mestres</a>
+    </section>
+  </sc-if>
+
+  <!-- Sem resultado -->
+  <sc-if value="{{semResultado}}" hint-placeholder-val="{{false}}">
+    <section class="mro-surge" style="background: var(--branco); border: 1px dashed var(--verde-300); border-radius: var(--raio-xl); padding: 40px 32px; text-align: center">
+      <h2 style="margin: 0; font: var(--text-titulo-s)">Nenhuma posição encontrada</h2>
+      <p style="margin: 6px auto 0; max-width: 520px; font: var(--text-corpo-m); color: var(--tinta-500)">Nada bate com a busca e os filtros atuais. Confira o código (com ou sem espaços, tanto faz) ou tire um filtro.</p>
+      <button type="button" onClick="{{limparTudo}}" style="margin-top: 16px; min-height: 48px; padding: 0 20px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Limpar busca e filtros</button>
+    </section>
+  </sc-if>
+
+  <!-- Cartões -->
+  <sc-if value="{{mostraCartoes}}" hint-placeholder-val="{{true}}">
+    <ul aria-label="Posições" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px">
+      <sc-for list="{{itens}}" as="m" hint-placeholder-count="12">
+        <li style="display: flex">
+          <a href="#ficha" class="mro-card" aria-label="{{m.aria}}" style="{{m.cardStyle}}">
+            <div class="mro-arte" style="position: relative; height: 128px; background: var(--creme-100); display: grid; place-items: center; border-bottom: 1px solid var(--borda)">
+              <svg aria-hidden="true" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8eb3a4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>
+              <span style="position: absolute; left: 12px; top: 12px; {{m.classeStyle}}">{{m.abc}}</span>
+              <sc-if value="{{m.temSelo}}" hint-placeholder-val="{{true}}">
+                <span style="position: absolute; right: 12px; top: 12px; {{m.seloStyle}}"><span class="{{m.pulsoClasse}}" aria-hidden="true" style="{{m.seloIconeStyle}}">{{m.seloIcone}}</span>{{m.selo}}</span>
+              </sc-if>
+            </div>
+            <div style="padding: 16px 20px 18px; display: flex; flex-direction: column; gap: 2px; flex: 1">
+              <p style="margin: 0; font: 600 11px/14px var(--font-sans); letter-spacing: 0.08em; color: var(--tinta-500); text-transform: uppercase">{{m.grupo}}</p>
+              <h3 style="margin: 4px 0 0; font: 600 16px/22px var(--font-sans); color: var(--tinta-900)">{{m.desc}}</h3>
+              <p style="margin: 0; font: 500 13px/20px var(--font-sans); color: var(--tinta-500); font-variant-numeric: tabular-nums; letter-spacing: 0.02em">{{m.code}}</p>
+              <div style="margin-top: 12px; display: flex; align-items: flex-end; justify-content: space-between; gap: 8px">
+                <div>
+                  <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">SALDO OFICIAL</p>
+                  <p style="margin: 2px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 32px; font-variant-numeric: tabular-nums; {{m.saldoCor}}">{{m.saldo}} <span style="font: 500 13px/20px var(--font-sans); color: var(--tinta-500)">{{m.unit}}</span></p>
+                </div>
+                <p style="margin: 0 0 4px; font: 500 13px/18px var(--font-sans); color: var(--tinta-600); text-align: right; font-variant-numeric: tabular-nums">{{m.pp}}</p>
+              </div>
+              <div aria-hidden="true" style="margin-top: 8px; height: 4px; border-radius: 2px; background: var(--creme-100)"><div style="{{m.barraStyle}}"></div></div>
+              <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--borda); display: flex; align-items: center; gap: 8px; font: 500 13px/18px var(--font-sans); color: var(--tinta-600)">
+                <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                <span style="flex: 1">{{m.local}}</span>
+                <span aria-hidden="true" style="{{m.critDot}}"></span><span>{{m.crit}}</span>
+              </div>
+            </div>
+          </a>
+        </li>
+      </sc-for>
+    </ul>
+
+    <nav aria-label="Paginação" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-top: 4px">
+      <button type="button" disabled="{{true}}" style="min-height: 48px; padding: 0 18px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">← Página anterior</button>
+      <span style="font: var(--text-corpo-s); color: var(--tinta-600); font-variant-numeric: tabular-nums">{{paginacao}}</span>
+      <button type="button" disabled="{{ultimaPagina}}" style="min-height: 48px; padding: 0 18px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Próxima página →</button>
+    </nav>
+  </sc-if>
+</div>
+</div>
+
+<!-- ================= MODAL: ADICIONAR MATERIAL ================= -->
+<sc-if value="{{modalAberto}}" hint-placeholder-val="{{false}}">
+  <div class="mro-fundo" style="position: absolute; inset: 0; background: rgba(11,42,32,0.55); display: flex; justify-content: center; align-items: flex-start; padding: 120px 24px 40px; z-index: 10">
+    <form role="dialog" aria-modal="true" aria-labelledby="t-modal" class="mro-janela" action="#" style="width: 100%; max-width: 720px; background: var(--branco); border-radius: var(--raio-xl); padding: 28px 32px 32px; box-shadow: var(--sombra-previa)">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 16px">
+        <div>
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">NOVO CADASTRO</p>
+          <h2 id="t-modal" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em">Adicionar material</h2>
+        </div>
+        <button type="button" onClick="{{fecharModal}}" aria-label="Fechar" style="width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 10px; background: var(--creme-100); color: var(--tinta-600); cursor: pointer">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+
+      <div style="margin-top: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 16px">
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-cod" style="font: 600 13px/18px var(--font-sans)">Código</label>
+          <input id="f-cod" required placeholder="Ex.: 000123" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+        </div>
+        <div style="position: relative; display: flex; flex-direction: column; gap: 8px">
+          <label for="f-un" style="font: 600 13px/18px var(--font-sans)">Unidade de medida</label>
+          <input id="f-un" role="combobox" aria-expanded="{{unidadeAberta}}" aria-controls="lista-un" autocomplete="off" value="{{unidadeBusca}}" onChange="{{buscarUnidade}}" onFocus="{{abrirUnidade}}" placeholder="Pesquise por nome, sigla ou categoria" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+          <sc-if value="{{unidadeAberta}}" hint-placeholder-val="{{false}}">
+            <ul id="lista-un" role="listbox" class="mro-surge" style="position: absolute; left: 0; right: 0; top: 86px; z-index: 2; list-style: none; margin: 0; padding: 6px; background: var(--branco); border: 1px solid var(--borda); border-radius: 12px; max-height: 240px; overflow: auto; box-shadow: 0 12px 28px -12px rgba(11,42,32,0.35)">
+              <sc-for list="{{unidades}}" as="u" hint-placeholder-count="5">
+                <li role="option" aria-selected="false">
+                  <button type="button" onClick="{{u.escolher}}" style="width: 100%; min-height: 44px; display: grid; grid-template-columns: 1fr auto; gap: 0 12px; align-items: center; padding: 6px 10px; border: 0; border-radius: 8px; background: none; text-align: left; cursor: pointer; font-family: var(--font-sans)">
+                    <span style="font: 600 14px/18px var(--font-sans); color: var(--tinta-900)">{{u.nome}}</span>
+                    <span style="font: 600 13px/18px var(--font-sans); color: var(--verde-700)">{{u.sigla}}</span>
+                    <span style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">{{u.cat}}</span>
+                  </button>
+                </li>
+              </sc-for>
+              <sc-if value="{{semUnidade}}" hint-placeholder-val="{{false}}"><li style="padding: 10px; font: var(--text-corpo-s); color: var(--tinta-500)">Nenhuma unidade encontrada.</li></sc-if>
+            </ul>
+          </sc-if>
+        </div>
+        <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 8px">
+          <label for="f-desc" style="font: 600 13px/18px var(--font-sans)">Descrição</label>
+          <input id="f-desc" required placeholder="Descrição clara do material" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-g1" style="font: 600 13px/18px var(--font-sans)">Grupo de mercadoria 1</label>
+          <input id="f-g1" list="g1-opcoes" placeholder="Padrão Agro MRO ou grupo próprio" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+          <datalist id="g1-opcoes"><option value="Rolamentos">Padrão Agro MRO</option><option value="Filtros">Padrão Agro MRO</option><option value="Lubrificantes">Padrão Agro MRO</option><option value="Transmissão">Padrão Agro MRO</option></datalist>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-g2" style="font: 600 13px/18px var(--font-sans)">Grupo de mercadoria 2</label>
+          <input id="f-g2" placeholder="Subgrupo associado" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+        </div>
+        <p style="grid-column: span 2; margin: -6px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Escolha um grupo do padrão Agro MRO ou digite um próprio. Grupos próprios ficam privados no seu espaço.</p>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-loc" style="font: 600 13px/18px var(--font-sans)">Local</label>
+          <input id="f-loc" defaultValue="GERAL" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-crit" style="font: 600 13px/18px var(--font-sans)">Criticidade (XYZ)</label>
+          <select id="f-crit" style="height: 52px; padding: 0 14px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: var(--text-corpo-m); color: var(--tinta-900)"><option>Não crítico</option><option>Crítico</option><option>Estratégico</option></select>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-abc" style="font: 600 13px/18px var(--font-sans)">Curva ABC do cliente</label>
+          <select id="f-abc" style="height: 52px; padding: 0 14px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: var(--text-corpo-m); color: var(--tinta-900)"><option>Não informada</option><option>A · representa 80% do valor</option><option>B · representa 15% do valor</option><option>C · representa 5% do valor</option></select>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="f-comp" style="font: 600 13px/18px var(--font-sans)">Comprabilidade</label>
+          <select id="f-comp" style="height: 52px; padding: 0 14px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: var(--text-corpo-m); color: var(--tinta-900)"><option>Não informada</option><option>1 · encontrado em muitos fornecedores</option><option>2 · número reduzido de fornecedores</option><option>3 · exclusividade ou longo prazo</option></select>
+        </div>
+        <p style="grid-column: span 2; margin: -6px 0 0; padding: 12px 14px; border-radius: 10px; background: var(--verde-50); font: var(--text-corpo-s); color: var(--tinta-600)">Curva ABC, criticidade e comprabilidade são informadas por você e entram na matriz de nível de serviço.</p>
+      </div>
+
+      <div style="margin-top: 24px; display: flex; justify-content: flex-end; gap: 12px">
+        <button type="button" onClick="{{fecharModal}}" style="min-height: 52px; padding: 0 22px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Cancelar</button>
+        <button type="submit" onClick="{{salvar}}" style="min-height: 52px; padding: 0 26px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">Salvar material</button>
+      </div>
+    </form>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"estado":{"editor":"enum","options":["normal","carregando","erro","vazio"],"default":"normal","section":"Estado"},"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { busca: '', filtro: null, modal: false, unAberta: false, unBusca: 'Unidade (UN)' };
+  }
+  renderVals() {
+    var self = this, s = this.state;
+    var estado = this.props.estado ?? 'normal';
+    var vazio = estado === 'vazio', carregando = estado === 'carregando', erro = estado === 'erro';
+
+    var base = [
+      { code: '0000 0012 3456', desc: 'Rolamento 6205 2RS', g: 'Rolamentos · Esferas', local: 'Almox. central', unit: 'UN', saldo: 0, pp: 22, st: 'ruptura', abc: 'A', crit: 'critical' },
+      { code: '0000 0045 1180', desc: 'Correia B-52', g: 'Transmissão · Correias', local: 'Oficina campo', unit: 'UN', saldo: 3, pp: 9, st: 'abaixo', abc: 'A', crit: 'critical' },
+      { code: '0000 0031 7720', desc: 'Bico pulverizador 110-02', g: 'Pulverização · Bicos', local: 'Almox. central', unit: 'UN', saldo: 6, pp: 20, st: 'abaixo', abc: 'A', crit: 'strategic' },
+      { code: '0000 0009 4412', desc: 'Óleo hidráulico 68 (20 L)', g: 'Lubrificantes · Óleos', local: 'Posto combustível', unit: 'BD', saldo: 2, pp: 6, st: 'abaixo', abc: 'B', crit: 'noncritical' },
+      { code: '0000 0066 0301', desc: 'Filtro de ar primário', g: 'Filtros · Ar', local: 'Oficina campo', unit: 'UN', saldo: -2, pp: 8, st: 'ruptura', abc: 'A', crit: 'critical' },
+      { code: '0000 0078 2093', desc: 'Mangueira 1/2" alta pressão', g: 'Hidráulica · Mangueiras', local: 'Almox. central', unit: 'M', saldo: 48, pp: 4, st: 'parado', abc: 'C', crit: 'noncritical' },
+      { code: '0000 0021 0045', desc: 'Graxa de lítio EP2 (1 kg)', g: 'Lubrificantes · Graxas', local: 'Posto combustível', unit: 'UN', saldo: 34, pp: 12, st: 'saudavel', abc: 'B', crit: 'noncritical' },
+      { code: '0000 0102 5521', desc: 'Parafuso sextavado M12 × 40', g: 'Fixação · Parafusos', local: 'Almox. central', unit: 'UN', saldo: 260, pp: 80, st: 'saudavel', abc: 'C', crit: 'noncritical' },
+      { code: '0000 0055 7802', desc: 'Faca da plataforma de corte', g: 'Colheita · Plataforma', local: 'Oficina campo', unit: 'UN', saldo: 14, pp: 10, st: 'saudavel', abc: 'B', crit: 'strategic' },
+      { code: '0000 0066 0410', desc: 'Filtro separador de combustível', g: 'Filtros · Combustível', local: 'Posto combustível', unit: 'UN', saldo: 9, pp: 6, st: 'saudavel', abc: 'A', crit: 'critical' },
+      { code: '0000 0088 1290', desc: 'Junta homocinética', g: '', local: 'Almox. central', unit: 'UN', saldo: 2, pp: null, st: 'nc', abc: null, crit: 'noncritical' },
+      { code: '0000 0012 3810', desc: 'Rolamento 6305 ZZ', g: 'Rolamentos · Esferas', local: 'Almox. central', unit: 'UN', saldo: 11, pp: 6, st: 'saudavel', abc: 'B', crit: 'noncritical' }
+    ];
+
+    var chipDefs = [
+      { id: 'abaixo', rotulo: 'Abaixo do PP', icone: '▲', cor: '#c9771f', num: 23, f: function (m) { return m.st === 'abaixo' || m.st === 'ruptura'; } },
+      { id: 'negativo', rotulo: 'Saldo negativo', icone: '●', cor: '#bd4646', num: 8, f: function (m) { return m.saldo < 0; } },
+      { id: 'parado', rotulo: 'Parados +180d', icone: '■', cor: '#76584c', num: 214, f: function (m) { return m.st === 'parado'; } },
+      { id: 'classeA', rotulo: 'Classe A', icone: 'A', cor: '#1c684c', num: 98, f: function (m) { return m.abc === 'A'; } },
+      { id: 'nc', rotulo: 'Sem cálculo', icone: '○', cor: '#66746e', num: 37, f: function (m) { return m.st === 'nc'; } }
+    ];
+    var ativo = chipDefs.filter(function (c) { return c.id === s.filtro; })[0];
+
+    var norm = function (t) { return String(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, ''); };
+    var q = norm(s.busca);
+    var lista = base.filter(function (m) {
+      if (ativo && !ativo.f(m)) return false;
+      if (!q) return true;
+      return norm(m.code + m.desc + m.local).indexOf(q) >= 0;
+    });
+
+    var chips = chipDefs.map(function (c) {
+      var on = s.filtro === c.id;
+      return {
+        rotulo: c.rotulo, icone: c.icone, num: c.num.toLocaleString('pt-BR'), ativo: on,
+        alternar: function () { self.setState({ filtro: on ? null : c.id }); },
+        estilo: 'min-height: 44px; display: inline-flex; align-items: center; gap: 8px; padding: 0 14px; border-radius: 999px; cursor: pointer; font: 600 14px/20px var(--font-sans); ' + (on ? 'background: #1c684c; color: #ffffff; border: 1px solid #1c684c;' : 'background: #ffffff; color: #20322c; border: 1px solid #e3e2dc;'),
+        iconeStyle: 'font-size: 11px; color: ' + (on ? '#f0c56e' : c.cor),
+        numStyle: 'font: 600 12px/16px var(--font-sans); padding: 2px 8px; border-radius: 999px; font-variant-numeric: tabular-nums; ' + (on ? 'background: rgba(255,255,255,0.18); color: #ffffff;' : 'background: #f5f4ee; color: #4b6257;')
+      };
+    });
+
+    var selos = {
+      ruptura: { t: 'Ruptura', i: '●', st: 'background: #f9e6e4; color: #a83a3a;', bar: '#bd4646' },
+      abaixo: { t: 'Abaixo do PP', i: '▲', st: 'background: #fbeedc; color: #94560f;', bar: '#c9771f' },
+      parado: { t: 'Parado +180d', i: '■', st: 'background: #eee8e5; color: #76584c;', bar: '#76584c' },
+      saudavel: { t: 'Saudável', i: '✓', st: 'background: #e2efe9; color: #1c684c;', bar: '#1c684c' },
+      nc: { t: 'Sem cálculo', i: '○', st: 'background: #f5f4ee; color: #4b6257;', bar: '#a3aca8' }
+    };
+    var classes = {
+      A: 'background: #e2efe9; color: #1c684c;', B: 'background: #f8edda; color: #8a6420;',
+      C: 'background: #eee8e5; color: #76584c;', NC: 'background: #ffffff; color: #4b6257; border: 1px solid #e3e2dc;'
+    };
+    var crits = {
+      critical: { t: 'Crítico', c: '#c9771f' }, strategic: { t: 'Estratégico', c: '#bd4646' }, noncritical: { t: 'Não crítico', c: '#a3aca8' }
+    };
+    var fmt = function (n) { return n.toLocaleString('pt-BR'); };
+
+    var itens = lista.map(function (m, i) {
+      var sl = selos[m.st], abc = erro ? 'NC' : (m.abc || 'NC'), cr = crits[m.crit];
+      var pct = (m.pp && m.saldo > 0) ? Math.min(100, Math.round(m.saldo / (m.pp * 2) * 100)) : (m.saldo > 0 ? 50 : 3);
+      return {
+        code: m.code, desc: m.desc, grupo: m.g || 'Sem grupo', local: m.local, unit: erro ? '' : m.unit,
+        aria: m.desc + ', ' + m.local + ', abrir ficha',
+        cardStyle: 'animation-delay: ' + (i * 45) + 'ms; flex: 1; display: flex; flex-direction: column; background: #ffffff; border: 1px solid #e3e2dc; border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit',
+        abc: abc,
+        classeStyle: 'width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; font: 600 13px/1 var(--font-sans); ' + classes[abc],
+        temSelo: !erro,
+        selo: sl.t, seloIcone: sl.i,
+        pulsoClasse: m.st === 'ruptura' ? 'mro-pulso' : '',
+        seloIconeStyle: 'font-size: 10px; line-height: 1; border-radius: 50%;',
+        seloStyle: 'display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: 999px; font: 600 12px/14px var(--font-sans); ' + sl.st,
+        saldo: erro ? 'Indisponível' : (m.saldo < 0 ? '−' + fmt(-m.saldo) : fmt(m.saldo)),
+        saldoCor: erro ? 'font-size: 18px; color: #66746e;' : (m.saldo < 0 ? 'color: #bd4646;' : ''),
+        pp: erro ? '' : (m.pp == null ? 'PP: NC' : 'PP ' + fmt(m.pp) + ' ' + m.unit.toLowerCase()),
+        barraStyle: erro ? 'display: none' : 'height: 4px; border-radius: 2px; transition: width .6s ease; width: ' + pct + '%; background: ' + sl.bar,
+        crit: cr.t,
+        critDot: 'width: 8px; height: 8px; border-radius: 50%; background: ' + cr.c
+      };
+    });
+
+    var total = ativo ? ativo.num : 812;
+    var filtrando = !!(ativo || q);
+    var unidadesBase = [
+      { nome: 'Unidade', sigla: 'UN', cat: 'Contagem' }, { nome: 'Par', sigla: 'PR', cat: 'Contagem' },
+      { nome: 'Jogo', sigla: 'JG', cat: 'Conjunto' }, { nome: 'Metro', sigla: 'M', cat: 'Comprimento' },
+      { nome: 'Quilograma', sigla: 'KG', cat: 'Massa' }, { nome: 'Litro', sigla: 'L', cat: 'Volume' },
+      { nome: 'Balde', sigla: 'BD', cat: 'Embalagem' }, { nome: 'Caixa', sigla: 'CX', cat: 'Embalagem' }
+    ];
+    var uq = norm(s.unBusca.replace(/\([^)]*\)/g, ''));
+    var unidades = unidadesBase.filter(function (u) { return norm(u.nome + u.sigla + u.cat).indexOf(uq) >= 0; }).map(function (u) {
+      return { nome: u.nome, sigla: u.sigla, cat: u.cat, escolher: function () { self.setState({ unBusca: u.nome + ' (' + u.sigla + ')', unAberta: false }); } };
+    });
+
+    return {
+      temCatalogo: !vazio, catalogoVazio: vazio, carregando: carregando, comErro: erro,
+      mostraCartoes: !vazio && !carregando && itens.length > 0,
+      semResultado: !vazio && !carregando && itens.length === 0,
+      novoStyle: 'min-height: 52px; display: inline-flex; align-items: center; gap: 8px; padding: 0 22px; border-radius: 12px; font: var(--text-botao); cursor: pointer; ' + (vazio ? 'background: #ffffff; color: #174e3e; border: 1px solid #e3e2dc;' : 'background: #1c684c; color: #ffffff; border: 0;'),
+      totalTexto: fmt(total) + ' posições',
+      contagem: filtrando ? (q ? itens.length + ' de ' + fmt(total) + ' posições' : fmt(total) + ' posições no filtro') : '812 posições · página 1 de 9',
+      paginacao: filtrando ? 'Mostrando ' + itens.length + ' posições' : 'Página 1 de 9 · 100 posições por página',
+      ultimaPagina: filtrando,
+      esqueletos: [1, 2, 3, 4, 5, 6, 7, 8],
+      busca: s.busca,
+      digitar: function (e) { self.setState({ busca: e.target.value }); },
+      chips: chips, temFiltro: filtrando, itens: itens,
+      limpar: function () { self.setState({ filtro: null }); },
+      limparTudo: function () { self.setState({ filtro: null, busca: '' }); },
+      modalAberto: s.modal,
+      abrirModal: function () { self.setState({ modal: true }); },
+      fecharModal: function () { self.setState({ modal: false, unAberta: false }); },
+      salvar: function (e) { if (e && e.preventDefault) e.preventDefault(); self.setState({ modal: false, unAberta: false }); },
+      unidadeAberta: s.unAberta, unidadeBusca: s.unBusca, unidades: unidades, semUnidade: unidades.length === 0,
+      abrirUnidade: function () { self.setState({ unAberta: true }); },
+      buscarUnidade: function (e) { self.setState({ unBusca: e.target.value, unAberta: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

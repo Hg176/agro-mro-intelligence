@@ -32,6 +32,12 @@ tools/db_parity/tests/out/*
 !tools/db_parity/tests/out/.gitkeep
 reports/
 
+# --- Front-end (frontend/) ---------------------------------------------
+frontend/node_modules/
+frontend/dist/
+frontend/coverage/
+*.tsbuildinfo
+
 # --- Editores e sistema ---------------------------------------------------
 .vscode/
 .idea/

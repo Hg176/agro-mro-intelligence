@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Matriz TMER</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+input:focus{outline:none;border-color:#1c684c !important;box-shadow:0 0 0 3px #e2efe9}
+a:focus-visible,button:focus-visible{outline:2px solid #1c684c;outline-offset:2px;box-shadow:0 0 0 5px #e2efe9}
+button:disabled{opacity:.45;cursor:not-allowed !important}
+/* ---- Animações (desligam com "reduzir movimento") ---- */
+@keyframes mro-subir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes mro-celula{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+@keyframes mro-entrar{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
+@keyframes mro-onda{0%{box-shadow:0 0 0 0 rgba(28,104,76,0)}30%{box-shadow:0 0 0 4px rgba(28,104,76,.45)}100%{box-shadow:0 0 0 0 rgba(28,104,76,0)}}
+@keyframes mro-tique{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.6)}}
+.mro-celula{animation:mro-celula .35s cubic-bezier(.2,.7,.2,1) both;transition:background-color .35s ease,color .35s ease,transform .15s ease}
+.mro-celula:hover{transform:translateY(-2px)}
+.mro-onda{animation:mro-celula .35s cubic-bezier(.2,.7,.2,1) both,mro-onda 1.1s ease-out both}
+.mro-editor{animation:mro-entrar .3s cubic-bezier(.2,.7,.2,1) both}
+.mro-surge{animation:mro-subir .28s ease both}
+.mro-aba{transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.mro-aba:hover{border-color:#8eb3a4 !important}
+.mro-tique{transform-origin:bottom center;transition:left .45s cubic-bezier(.2,.7,.2,1),opacity .3s ease}
+.mro-btn{transition:transform .1s ease}
+.mro-btn:active{transform:scale(.98)}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1600px; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px; background: var(--creme-100)">
+
+<nav aria-label="Menu do sistema" style="flex: 0 1 248px; min-width: 248px; background: var(--verde-900); color: var(--verde-100); padding: 28px 16px 24px; display: flex; flex-direction: column">
+  <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); padding: 0 8px">
+    <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1">
+      <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+      <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+    </span>
+  </a>
+
+  <p style="margin: 36px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">ANÁLISE</p>
+  <a href="VisaoGeral.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Visão geral</a>
+  <a href="Materiais.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>Materiais</a>
+  <a href="Planejamento.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>Planejamento</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">DADOS</p>
+  <a href="ImportarDados.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Importar dados</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">REGRAS DO CÁLCULO</p>
+  <a href="RegrasLetras.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Regras e letras</a>
+  <a href="TiposMovimento.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>Tipos de movimento</a>
+  <a href="NivelServico.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Nível de serviço</a>
+  <a href="MatrizTmer.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; background: var(--verde-700); color: var(--branco); font-weight: 600; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V9"/><path d="M18 17v-6"/></svg>Matriz TMER</a>
+  <a href="#casos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Casos de controle</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">APRENDER E AJUDA</p>
+  <a href="#academia" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Academia</a>
+  <a href="#suporte" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte</a>
+
+  <div style="flex: 1; min-height: 40px"></div>
+  <div style="background: var(--verde-800); border: 1px solid rgba(142,179,164,0.3); border-radius: 14px; padding: 16px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">PLANO INTELLIGENCE</p>
+    <p style="margin: 8px 0 0; font-weight: 600; color: var(--branco); font-variant-numeric: tabular-nums">812 de 1.000 itens</p>
+    <div role="progressbar" aria-label="Itens usados do plano" aria-valuenow="812" aria-valuemin="0" aria-valuemax="1000" style="margin-top: 10px; height: 6px; border-radius: 3px; background: rgba(226,239,233,0.2)"><div style="width: 81.2%; height: 6px; border-radius: 3px; background: var(--ouro-500)"></div></div>
+    <p style="margin: 10px 0 0; font-size: 12px; line-height: 16px; color: var(--verde-100)">Renova em 03/12/2026</p>
+  </div>
+  <a href="Login.dc.html" style="margin-top: 12px; display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sair</a>
+</nav>
+
+<div style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+
+  <!-- Barra superior -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+    <div style="position: relative; z-index: 20; flex: 1 1 320px; max-width: 460px">
+      <dc-import name="BuscaGlobal" hint-size="100%,48px"></dc-import>
+    </div>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Todos os locais (3)</button>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer; font-variant-numeric: tabular-nums">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>01/07 a 11/11/2026</button>
+    <span style="flex: 1"></span>
+    <span style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 13px/18px var(--font-sans)"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--verde-700)"></span>Atualizado há 2 dias</span>
+    <button type="button" aria-label="Notificações" style="width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--borda); border-radius: 12px; background: var(--branco); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <a href="Conta.dc.html" aria-label="Minha conta (Hugo dos Santos)" style="width: 44px; height: 44px; border-radius: 50%; background: var(--ouro-100); color: var(--ouro-700); font: 600 14px/20px var(--font-sans); display: grid; place-items: center; text-decoration: none">HS</a>
+  </div>
+
+  <header style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px">
+    <div style="flex: 1 1 520px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">REGRAS DO SEU ESPAÇO</p>
+      <h1 style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 44px; letter-spacing: -0.025em">Matriz TMER</h1>
+      <p style="margin: 4px 0 0; max-width: 720px; font: var(--text-corpo-m); color: var(--tinta-500)">Dias de referência entre reposições para os 75 cruzamentos PQR, ABC e X123. Já vem com a proposta Agro MRO; edite só o caso que precisar.</p>
+    </div>
+    <span style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: var(--raio-pill); background: var(--ouro-100); font: 600 13px/18px var(--font-sans); color: var(--ouro-700)"><span aria-hidden="true">◐</span>Em homologação · não altera o cálculo</span>
+  </header>
+
+  <!-- Frase de conclusão -->
+  <section aria-label="Conclusão" style="background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 22px 28px; display: flex; align-items: center; gap: 20px">
+    <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+    <p style="margin: 0; font-size: 17px; line-height: 27px">A proposta Agro MRO vai de <b style="color: var(--ouro-300); font-weight: 600">3 dias</b> (itens P e A com X123 = 3) a <b style="color: var(--ouro-300); font-weight: 600">360 dias</b> (itens R de menor valor com X123 = 1). {{fraseEditados}} Por enquanto é só referência: <b style="color: var(--ouro-300); font-weight: 600">o cálculo de estoque não usa esta matriz</b>.</p>
+  </section>
+
+  <p role="note" style="margin: 0; display: flex; gap: 12px; align-items: flex-start; padding: 14px 18px; border-radius: 14px; background: var(--branco); border: 1px solid var(--borda); font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-600)"><span aria-hidden="true" style="color: var(--ouro-600); font-weight: 700">i</span>X123 mantém a numeração exata da tabela recebida. A relação dela com a Comprabilidade do cadastro ainda precisa ser homologada; por isso, editar a TMER não muda ES, PP nem EM nesta etapa. A edição é privada e fica registrada.</p>
+
+  <sc-if value="{{temAviso}}" hint-placeholder-val="{{false}}">
+    <p role="status" class="mro-surge" style="margin: 0; display: flex; gap: 10px; align-items: flex-start; padding: 12px 16px; border-radius: 12px; background: var(--verde-50); font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><span aria-hidden="true" style="color: var(--verde-700); font-weight: 600">✓</span>{{aviso}}</p>
+  </sc-if>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+
+    <!-- Matriz -->
+    <section aria-labelledby="t-mat" style="flex: 3 1 560px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px">
+        <div>
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">DIAS POR CASO</p>
+          <h2 id="t-mat" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">Escolha a frequência de saída</h2>
+        </div>
+        <sc-if value="{{temEditados}}" hint-placeholder-val="{{false}}">
+          <div class="mro-surge" style="display: flex; gap: 8px; align-items: center">
+            <sc-if value="{{restaurarPedido}}" hint-placeholder-val="{{false}}"><button type="button" onClick="{{cancelarRestaurar}}" style="min-height: 44px; padding: 0 14px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); font-size: 14px; cursor: pointer">Manter</button></sc-if>
+            <button type="button" onClick="{{restaurarTodos}}" style="min-height: 44px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--status-ruptura-texto); font: var(--text-botao); font-size: 14px; cursor: pointer">{{restaurarRotulo}}</button>
+          </div>
+        </sc-if>
+      </div>
+
+      <div role="tablist" aria-label="Frequência de saída (PQR)" style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px">
+        <sc-for list="{{abas}}" as="a" hint-placeholder-count="5">
+          <button type="button" role="tab" class="mro-aba" aria-selected="{{a.ativa}}" onClick="{{a.escolher}}" style="{{a.estilo}}"><span style="{{a.letraStyle}}">{{a.letra}}</span>{{a.texto}}<sc-if value="{{a.temEd}}" hint-placeholder-val="{{false}}"><span aria-label="com edição" style="width: 7px; height: 7px; border-radius: 50%; background: #d9a441"></span></sc-if></button>
+        </sc-for>
+      </div>
+
+      <sc-for list="{{gradeA}}" as="G" hint-placeholder-count="1">
+        <div role="grid" aria-label="{{G.aria}}" style="margin-top: 20px; display: grid; grid-template-columns: minmax(150px, 1.3fr) repeat(3, minmax(0, 1fr)); gap: 8px; font-variant-numeric: tabular-nums">
+          <span></span>
+          <sc-for list="{{G.colunas}}" as="x" hint-placeholder-count="3">
+            <span role="columnheader" style="text-align: center; padding-bottom: 4px"><span style="display: block; font-size: 11px; line-height: 14px; letter-spacing: 0.08em; color: var(--tinta-500)">X123</span><b style="display: block; font: 700 18px/22px var(--font-display)">{{x.n}}</b></span>
+          </sc-for>
+          <sc-for list="{{G.linhas}}" as="l" hint-placeholder-count="5">
+            <div role="rowheader" style="display: flex; align-items: center; gap: 10px">
+              <span style="{{l.seloStyle}}">{{l.letra}}</span>
+              <span style="font: 500 13px/18px var(--font-sans)">{{l.texto}}</span>
+            </div>
+            <sc-for list="{{l.celulas}}" as="c" hint-placeholder-count="3">
+              <button type="button" role="gridcell" class="{{c.classe}}" aria-selected="{{c.sel}}" aria-label="{{c.aria}}" onClick="{{c.escolher}}" style="{{c.estilo}}">
+                <span style="font: 700 20px/24px var(--font-display)">{{c.valor}}</span>
+                <span style="font: 500 11px/14px var(--font-sans); opacity: .85">{{c.unidade}}</span>
+                <sc-if value="{{c.temEd}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; border-radius: 50%; background: #1c684c; box-shadow: 0 0 0 2px #ffffff"></span></sc-if>
+              </button>
+            </sc-for>
+          </sc-for>
+        </div>
+      </sc-for>
+      <sc-for list="{{gradeB}}" as="G" hint-placeholder-count="0">
+        <div role="grid" aria-label="{{G.aria}}" style="margin-top: 20px; display: grid; grid-template-columns: minmax(150px, 1.3fr) repeat(3, minmax(0, 1fr)); gap: 8px; font-variant-numeric: tabular-nums">
+          <span></span>
+          <sc-for list="{{G.colunas}}" as="x" hint-placeholder-count="3">
+            <span role="columnheader" style="text-align: center; padding-bottom: 4px"><span style="display: block; font-size: 11px; line-height: 14px; letter-spacing: 0.08em; color: var(--tinta-500)">X123</span><b style="display: block; font: 700 18px/22px var(--font-display)">{{x.n}}</b></span>
+          </sc-for>
+          <sc-for list="{{G.linhas}}" as="l" hint-placeholder-count="5">
+            <div role="rowheader" style="display: flex; align-items: center; gap: 10px">
+              <span style="{{l.seloStyle}}">{{l.letra}}</span>
+              <span style="font: 500 13px/18px var(--font-sans)">{{l.texto}}</span>
+            </div>
+            <sc-for list="{{l.celulas}}" as="c" hint-placeholder-count="3">
+              <button type="button" role="gridcell" class="{{c.classe}}" aria-selected="{{c.sel}}" aria-label="{{c.aria}}" onClick="{{c.escolher}}" style="{{c.estilo}}">
+                <span style="font: 700 20px/24px var(--font-display)">{{c.valor}}</span>
+                <span style="font: 500 11px/14px var(--font-sans); opacity: .85">{{c.unidade}}</span>
+                <sc-if value="{{c.temEd}}" hint-placeholder-val="{{false}}"><span aria-hidden="true" style="position: absolute; top: 6px; right: 6px; width: 8px; height: 8px; border-radius: 50%; background: #1c684c; box-shadow: 0 0 0 2px #ffffff"></span></sc-if>
+              </button>
+            </sc-for>
+          </sc-for>
+        </div>
+      </sc-for>
+
+      <div aria-label="Legenda" style="margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px 18px; font: 500 12px/16px var(--font-sans); color: var(--tinta-600)">
+        <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #f5f4ee; border: 1px solid #e3e2dc"></span>0 · sem reposição planejada</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #f8edda"></span>até 14 dias</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #f0c56e"></span>15 a 59</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #d9a441"></span>60 a 179</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 14px; height: 14px; border-radius: 4px; background: #8a6420"></span>180 dias ou mais</span>
+        <span style="display: inline-flex; align-items: center; gap: 6px"><span aria-hidden="true" style="width: 8px; height: 8px; border-radius: 50%; background: #1c684c"></span>editado por você</span>
+      </div>
+    </section>
+
+    <sc-for list="{{editorA}}" as="E" hint-placeholder-count="1">
+      <aside class="mro-editor" aria-labelledby="t-caso" style="flex: 2 1 340px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px; display: flex; flex-direction: column; gap: 16px">
+        <div>
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">CASO SELECIONADO</p>
+          <h2 id="t-caso" style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 32px; line-height: 38px; letter-spacing: 0.04em">{{E.caso}}</h2>
+          <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">{{E.descricao}}</p>
+          <p style="margin: 8px 0 0; font: var(--text-corpo-m)">Registra um intervalo de referência entre reposições para este cruzamento.</p>
+        </div>
+        <dl style="margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-variant-numeric: tabular-nums">
+          <div style="background: var(--creme-100); border-radius: 12px; padding: 12px 14px"><dt style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">PROPOSTA AGRO MRO</dt><dd style="margin: 4px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 30px">{{E.proposta}}</dd></div>
+          <div style="background: var(--creme-100); border-radius: 12px; padding: 12px 14px"><dt style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">ORIGEM</dt><dd style="margin: 6px 0 0; font: 600 14px/20px var(--font-sans)">{{E.origem}}</dd></div>
+        </dl>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="dias" style="font: 600 13px/18px var(--font-sans)">Dias do seu espaço</label>
+          <div style="position: relative">
+            <input id="dias" type="text" inputmode="decimal" value="{{E.rascunho}}" onChange="{{E.digitar}}" aria-invalid="{{E.temErro}}" aria-describedby="dias-ajuda" style="{{E.inputStyle}}">
+            <span aria-hidden="true" style="position: absolute; right: 16px; top: 15px; font: 600 15px/24px var(--font-sans); color: var(--tinta-500)">dias</span>
+          </div>
+          <span id="dias-ajuda" style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">De 0 a 365 dias. Aceita fração, com vírgula ou ponto.</span>
+          <sc-if value="{{E.temErro}}" hint-placeholder-val="{{false}}"><span role="alert" class="mro-surge" style="font: var(--text-corpo-s); color: var(--status-ruptura-texto)">Informe um intervalo entre 0 e 365 dias.</span></sc-if>
+        </div>
+        <div style="border-radius: 12px; border: 1px solid var(--borda); padding: 14px 16px">
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">NO ANO</p>
+          <div aria-hidden="true" style="margin-top: 14px; position: relative; height: 10px; border-radius: 5px; background: linear-gradient(90deg, #f8edda 0%, #f0c56e 30%, #d9a441 60%, #8a6420 100%)">
+            <span class="mro-tique" style="{{E.marcoProposta}}"></span>
+            <span class="mro-tique" style="{{E.marcoNovo}}"></span>
+          </div>
+          <div aria-hidden="true" style="margin-top: 6px; display: flex; justify-content: space-between; font: 500 11px/14px var(--font-sans); color: var(--tinta-500)"><span>0</span><span>▏ proposta</span><span>365 dias</span></div>
+          <p style="margin: 10px 0 0; font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900); font-variant-numeric: tabular-nums">{{E.leitura}}</p>
+          <sc-if value="{{E.temComparacao}}" hint-placeholder-val="{{false}}"><p class="mro-surge" style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">{{E.comparacao}}</p></sc-if>
+          <p style="margin: 6px 0 0; font-size: 12px; line-height: 16px; color: var(--tinta-500)">Não muda ES, PP nem EM até a escala X123 ser homologada.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px">
+          <button type="button" class="mro-btn" onClick="{{E.salvar}}" disabled="{{E.naoPodeSalvar}}" style="min-height: 52px; padding: 0 24px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">Salvar {{E.caso}}</button>
+          <sc-if value="{{E.podeRestaurar}}" hint-placeholder-val="{{false}}">
+            <button type="button" onClick="{{E.restaurar}}" style="min-height: 44px; padding: 0 8px; border: 0; background: none; color: var(--status-ruptura-texto); font: 600 14px/20px var(--font-sans); cursor: pointer">Restaurar proposta</button>
+          </sc-if>
+        </div>
+      </aside>
+    </sc-for>
+    <sc-for list="{{editorB}}" as="E" hint-placeholder-count="0">
+      <aside class="mro-editor" aria-labelledby="t-caso" style="flex: 2 1 340px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px; display: flex; flex-direction: column; gap: 16px">
+        <div>
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">CASO SELECIONADO</p>
+          <h2 id="t-caso" style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 800; font-size: 32px; line-height: 38px; letter-spacing: 0.04em">{{E.caso}}</h2>
+          <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">{{E.descricao}}</p>
+          <p style="margin: 8px 0 0; font: var(--text-corpo-m)">Registra um intervalo de referência entre reposições para este cruzamento.</p>
+        </div>
+        <dl style="margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-variant-numeric: tabular-nums">
+          <div style="background: var(--creme-100); border-radius: 12px; padding: 12px 14px"><dt style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">PROPOSTA AGRO MRO</dt><dd style="margin: 4px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 30px">{{E.proposta}}</dd></div>
+          <div style="background: var(--creme-100); border-radius: 12px; padding: 12px 14px"><dt style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">ORIGEM</dt><dd style="margin: 6px 0 0; font: 600 14px/20px var(--font-sans)">{{E.origem}}</dd></div>
+        </dl>
+        <div style="display: flex; flex-direction: column; gap: 8px">
+          <label for="dias" style="font: 600 13px/18px var(--font-sans)">Dias do seu espaço</label>
+          <div style="position: relative">
+            <input id="dias" type="text" inputmode="decimal" value="{{E.rascunho}}" onChange="{{E.digitar}}" aria-invalid="{{E.temErro}}" aria-describedby="dias-ajuda" style="{{E.inputStyle}}">
+            <span aria-hidden="true" style="position: absolute; right: 16px; top: 15px; font: 600 15px/24px var(--font-sans); color: var(--tinta-500)">dias</span>
+          </div>
+          <span id="dias-ajuda" style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">De 0 a 365 dias. Aceita fração, com vírgula ou ponto.</span>
+          <sc-if value="{{E.temErro}}" hint-placeholder-val="{{false}}"><span role="alert" class="mro-surge" style="font: var(--text-corpo-s); color: var(--status-ruptura-texto)">Informe um intervalo entre 0 e 365 dias.</span></sc-if>
+        </div>
+        <div style="border-radius: 12px; border: 1px solid var(--borda); padding: 14px 16px">
+          <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">NO ANO</p>
+          <div aria-hidden="true" style="margin-top: 14px; position: relative; height: 10px; border-radius: 5px; background: linear-gradient(90deg, #f8edda 0%, #f0c56e 30%, #d9a441 60%, #8a6420 100%)">
+            <span class="mro-tique" style="{{E.marcoProposta}}"></span>
+            <span class="mro-tique" style="{{E.marcoNovo}}"></span>
+          </div>
+          <div aria-hidden="true" style="margin-top: 6px; display: flex; justify-content: space-between; font: 500 11px/14px var(--font-sans); color: var(--tinta-500)"><span>0</span><span>▏ proposta</span><span>365 dias</span></div>
+          <p style="margin: 10px 0 0; font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900); font-variant-numeric: tabular-nums">{{E.leitura}}</p>
+          <sc-if value="{{E.temComparacao}}" hint-placeholder-val="{{false}}"><p class="mro-surge" style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">{{E.comparacao}}</p></sc-if>
+          <p style="margin: 6px 0 0; font-size: 12px; line-height: 16px; color: var(--tinta-500)">Não muda ES, PP nem EM até a escala X123 ser homologada.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px">
+          <button type="button" class="mro-btn" onClick="{{E.salvar}}" disabled="{{E.naoPodeSalvar}}" style="min-height: 52px; padding: 0 24px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">Salvar {{E.caso}}</button>
+          <sc-if value="{{E.podeRestaurar}}" hint-placeholder-val="{{false}}">
+            <button type="button" onClick="{{E.restaurar}}" style="min-height: 44px; padding: 0 8px; border: 0; background: none; color: var(--status-ruptura-texto); font: 600 14px/20px var(--font-sans); cursor: pointer">Restaurar proposta</button>
+          </sc-if>
+        </div>
+      </aside>
+    </sc-for>
+  </div>
+
+  <p style="margin: 0; font: var(--text-corpo-s); color: var(--tinta-500)">Não há criação de casos além dos 75. Restaurar um caso volta à proposta, que continua visível. Proposta agro-mro-tmer-proposal-2.0.0, informada em 04/10/2026.</p>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1600}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var T = {
+      P: { A: [12, 6, 3], B: [12, 12, 6], C: [48, 24, 12], D: [48, 24, 12], N: [12, 12, 6] },
+      Q: { A: [28, 14, 7], B: [56, 28, 14], C: [112, 56, 28], D: [112, 56, 28], N: [56, 28, 14] },
+      R: { A: [90, 45, 22], B: [180, 90, 45], C: [360, 180, 90], D: [360, 180, 90], N: [180, 90, 45] },
+      N: { A: [28, 14, 7], B: [56, 28, 14], C: [112, 56, 28], D: [112, 56, 28], N: [56, 28, 14] },
+      S: { A: [0, 0, 0], B: [0, 0, 0], C: [0, 0, 0], D: [0, 0, 0], N: [0, 0, 0] }
+    };
+    var ref = {};
+    Object.keys(T).forEach(function (p) { Object.keys(T[p]).forEach(function (a) { [1, 2, 3].forEach(function (n) { ref[p + a + n] = T[p][a][n - 1]; }); }); });
+    this.ref = ref;
+    this.state = { pqr: 'P', sel: 'PB2', flip: false, flipEd: false, valores: Object.assign({}, ref), ed: {}, rascunho: null, aviso: '', restaurarPedido: false, onda: false };
+  }
+  renderVals() {
+    var self = this, s = this.state, ref = this.ref;
+    var fmt = function (v) { return String(Math.round(v * 100) / 100).replace('.', ','); };
+    var pqrTxt = { P: 'saídas frequentes', Q: 'saídas intermediárias', R: 'saídas raras', N: 'item recente', S: 'sem saídas' };
+    var abcTxt = { A: 'alto valor de consumo', B: 'valor intermediário', C: 'menor valor', D: 'sem valor calculável', N: 'item recente' };
+    var abcSelo = { A: 'background: #e2efe9; color: #1c684c;', B: 'background: #f8edda; color: #8a6420;', C: 'background: #eee8e5; color: #76584c;', D: 'background: #eceeed; color: #4b6257;', N: 'background: #ffffff; color: #4b6257; border: 1px solid #e3e2dc;' };
+    var editadosPorPqr = function (p) { return Object.keys(s.ed).some(function (k) { return k[0] === p; }); };
+
+    var abas = ['P', 'Q', 'R', 'N', 'S'].map(function (p) {
+      var on = s.pqr === p;
+      return {
+        letra: p, texto: pqrTxt[p], ativa: on, temEd: editadosPorPqr(p),
+        escolher: function () { if (!on) self.setState({ pqr: p, sel: p + s.sel.slice(1), flip: !s.flip, flipEd: !s.flipEd, rascunho: null, onda: false }); },
+        estilo: 'min-height: 48px; display: inline-flex; align-items: center; gap: 10px; padding: 0 14px 0 6px; border-radius: 12px; cursor: pointer; font: 600 14px/20px var(--font-sans); ' + (on ? 'background: #113d2f; color: #ffffff; border: 1px solid #113d2f;' : 'background: #ffffff; color: #20322c; border: 1px solid #e3e2dc;'),
+        letraStyle: 'width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; font: 700 15px/1 var(--font-display); ' + (on ? 'background: #f0c56e; color: #0b2a20;' : 'background: #f5f4ee; color: #4b6257;')
+      };
+    });
+
+    var cor = function (v) {
+      if (v === 0) return 'background: #f5f4ee; color: #4b6257; border: 1px solid #e3e2dc;';
+      if (v < 15) return 'background: #f8edda; color: #0b2a20; border: 1px solid transparent;';
+      if (v < 60) return 'background: #f0c56e; color: #0b2a20; border: 1px solid transparent;';
+      if (v < 180) return 'background: #d9a441; color: #0b2a20; border: 1px solid transparent;';
+      return 'background: #8a6420; color: #ffffff; border: 1px solid transparent;';
+    };
+    var idx = 0;
+    var linhas = ['A', 'B', 'C', 'D', 'N'].map(function (a) {
+      return {
+        letra: a, texto: abcTxt[a],
+        seloStyle: 'flex: none; width: 28px; height: 28px; border-radius: 7px; display: grid; place-items: center; font: 600 13px/1 var(--font-sans); ' + abcSelo[a],
+        celulas: [1, 2, 3].map(function (n) {
+          var k = s.pqr + a + n, v = s.valores[k], sel = s.sel === k, ed = !!s.ed[k], i = idx++;
+          return {
+            valor: fmt(v), unidade: v === 1 ? 'dia' : 'dias', sel: sel,
+            aria: 'Caso ' + k + ': ' + fmt(v) + ' dias' + (ed ? ', editado por você' : ''),
+            classe: s.onda ? 'mro-onda' : 'mro-celula',
+            temEd: ed,
+            estilo: 'animation-delay: ' + (i * 28) + 'ms; position: relative; min-height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; border-radius: 10px; cursor: pointer; font-family: var(--font-sans); font-variant-numeric: tabular-nums; ' + cor(v) + (sel ? ' outline: 3px solid #1c684c; outline-offset: 2px;' : ''),
+            escolher: function () { if (!sel) self.setState({ sel: k, flipEd: !s.flipEd, rascunho: null }); }
+          };
+        })
+      };
+    });
+    var grade = {
+      aria: 'Dias de referência para ' + s.pqr + ' (' + pqrTxt[s.pqr] + '): linhas ABC, colunas X123',
+      colunas: [1, 2, 3].map(function (n) { return { n: n }; }),
+      linhas: linhas
+    };
+
+    // Editor
+    var k = s.sel, atual = s.valores[k], proposta = ref[k];
+    var rasc = s.rascunho == null ? fmt(atual) : s.rascunho;
+    var txt = rasc.trim(), num = Number(txt.replace(',', '.'));
+    var valido = txt !== '' && Number.isFinite(num) && num >= 0 && num <= 365;
+    var mudou = valido ? Math.abs(num - atual) > 0.00001 : txt !== fmt(atual);
+    var erro = txt !== fmt(atual) && !valido;
+    var dias = valido ? num : atual;
+    var porAno = function (d) { return d > 0 ? Math.round(365 / d) : 0; };
+    var leitura = dias === 0 ? 'Com 0 dia, não há reposição planejada para este cruzamento.' : 'A cada ' + fmt(dias) + ' dias ≈ ' + porAno(dias) + (porAno(dias) === 1 ? ' reposição' : ' reposições') + ' por ano.';
+    var comparacao = '';
+    if (mudou && valido) {
+      comparacao = num > atual ? 'Mais dias: maior cobertura planejada e mais capital parado.' : (num < atual ? 'Menos dias: cobertura menor e mais risco de falta.' : '');
+    }
+    var pos = function (d) { return Math.min(100, d / 365 * 100); };
+    var editor = {
+      caso: k,
+      descricao: pqrTxt[k[0]] + ' · ' + abcTxt[k[1]] + ' · X123 = ' + k[2],
+      proposta: fmt(proposta) + (proposta === 1 ? ' dia' : ' dias'),
+      origem: s.ed[k] ? 'Editado por você · v' + s.ed[k] : 'Agro MRO · v1',
+      rascunho: rasc, temErro: erro,
+      digitar: function (e) { self.setState({ rascunho: e.target.value, aviso: '' }); },
+      inputStyle: 'width: 100%; height: 56px; padding: 14px 70px 14px 16px; border-radius: 10px; font: 700 22px/28px var(--font-display); font-variant-numeric: tabular-nums; border: ' + (erro ? '2px solid #bd4646' : (mudou ? '2px solid #d9a441' : '1px solid #e3e2dc')),
+      leitura: leitura, temComparacao: !!comparacao, comparacao: comparacao,
+      marcoProposta: 'position: absolute; top: -4px; width: 2px; height: 18px; border-radius: 1px; background: #4b6257; left: calc(' + pos(proposta) + '% - 1px)',
+      marcoNovo: 'position: absolute; top: -6px; width: 14px; height: 14px; border-radius: 50%; border: 3px solid #ffffff; box-shadow: 0 0 0 1px #8a6420; background: #d9a441; left: calc(' + pos(dias) + '% - 7px)',
+      naoPodeSalvar: !mudou || !valido,
+      salvar: function () {
+        if (!mudou || !valido) return;
+        var v = Object.assign({}, s.valores); v[k] = num;
+        var ed = Object.assign({}, s.ed); ed[k] = (ed[k] || 1) + 1;
+        self.setState({ valores: v, ed: ed, rascunho: null, onda: false, aviso: 'Caso ' + k + ' salvo no seu espaço. O intervalo ainda não altera os cálculos.' });
+      },
+      podeRestaurar: !!s.ed[k],
+      restaurar: function () {
+        var v = Object.assign({}, s.valores); v[k] = proposta;
+        var ed = Object.assign({}, s.ed); delete ed[k];
+        self.setState({ valores: v, ed: ed, rascunho: null, aviso: 'Caso ' + k + ' voltou à proposta Agro MRO.' });
+      }
+    };
+
+    var nEd = Object.keys(s.ed).length;
+    return {
+      fraseEditados: nEd ? 'Você ajustou ' + nEd + (nEd === 1 ? ' caso.' : ' casos.') : 'Nenhum caso foi ajustado no seu espaço.',
+      temAviso: !!s.aviso, aviso: s.aviso,
+      abas: abas,
+      gradeA: s.flip ? [] : [grade], gradeB: s.flip ? [grade] : [],
+      editorA: s.flipEd ? [] : [editor], editorB: s.flipEd ? [editor] : [],
+      temEditados: nEd > 0, restaurarPedido: s.restaurarPedido,
+      restaurarRotulo: s.restaurarPedido ? 'Sim, voltar os ' + nEd + ' à proposta' : 'Voltar tudo à proposta',
+      cancelarRestaurar: function () { self.setState({ restaurarPedido: false }); },
+      restaurarTodos: function () {
+        if (!s.restaurarPedido) { self.setState({ restaurarPedido: true }); return; }
+        self.setState({ valores: Object.assign({}, ref), ed: {}, restaurarPedido: false, rascunho: null, onda: true, flip: !s.flip, aviso: 'Todos os casos voltaram à proposta Agro MRO.' });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -24,3 +24,8 @@ Dockerfile  text eol=lf
 *.jpg       binary
 *.pdf       binary
 *.dump      binary
+
+# Referência das telas aprovadas: cópia fiel de ../frontend-referencia.
+# Sem normalizar fim de linha (fica byte a byte como veio). Esta regra vem por
+# último para valer também sobre *.json acima.
+docs/design/**  -text

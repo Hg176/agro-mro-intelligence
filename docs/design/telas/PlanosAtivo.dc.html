@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Seu plano</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+input::placeholder{color:#a3aca8}
+input:focus{outline:none;border-color:#1c684c !important;box-shadow:0 0 0 3px #e2efe9}
+a:focus-visible,button:focus-visible{outline:2px solid #1c684c;outline-offset:2px;box-shadow:0 0 0 5px #e2efe9}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1700px; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px; background: var(--creme-100)">
+
+<nav aria-label="Menu do sistema" style="flex: 0 1 248px; min-width: 248px; background: var(--verde-900); color: var(--verde-100); padding: 28px 16px 24px; display: flex; flex-direction: column">
+  <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); padding: 0 8px">
+    <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1">
+      <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+      <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+    </span>
+  </a>
+
+  <p style="margin: 36px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">ANÁLISE</p>
+  <a href="VisaoGeral.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Visão geral</a>
+  <a href="#materiais" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>Materiais</a>
+  <a href="#planejamento" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>Planejamento</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">DADOS</p>
+  <a href="ImportarDados.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Importar dados</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">REGRAS DO CÁLCULO</p>
+  <a href="#regras" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Regras e letras</a>
+  <a href="#tipos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>Tipos de movimento</a>
+  <a href="#nivel" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Nível de serviço</a>
+  <a href="#tmer" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V9"/><path d="M18 17v-6"/></svg>Matriz TMER</a>
+  <a href="#casos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Casos de controle</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">APRENDER E AJUDA</p>
+  <a href="#academia" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Academia</a>
+  <a href="#suporte" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte</a>
+
+  <div style="flex: 1; min-height: 40px"></div>
+  <a href="PlanosAtivo.dc.html" aria-current="page" style="display: block; text-decoration: none; background: var(--verde-700); border: 2px solid var(--ouro-300); border-radius: 14px; padding: 15px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">{{cartaoTitulo}}</p>
+    <p style="margin: 8px 0 0; font-weight: 600; color: var(--branco); font-variant-numeric: tabular-nums">{{cartaoUso}}</p>
+    <div aria-hidden="true" style="margin-top: 10px; height: 6px; border-radius: 3px; background: rgba(226,239,233,0.2)"><div style="{{cartaoBarra}}"></div></div>
+    <p style="margin: 10px 0 0; font-size: 12px; line-height: 16px; color: var(--verde-100)">{{cartaoNota}}</p>
+  </a>
+  <a href="Login.dc.html" style="margin-top: 12px; display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sair</a>
+</nav>
+
+<div style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+
+  <!-- Barra superior -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+    <div style="position: relative; z-index: 20; flex: 1 1 320px; max-width: 460px">
+      <dc-import name="BuscaGlobal" hint-size="100%,48px"></dc-import>
+    </div>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Todos os locais (3)</button>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer; font-variant-numeric: tabular-nums">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>01/07 a 11/11/2026</button>
+    <span style="flex: 1"></span>
+    <span style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 13px/18px var(--font-sans)"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--verde-700)"></span>Atualizado há 2 dias</span>
+    <button type="button" aria-label="Notificações" style="width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--borda); border-radius: 12px; background: var(--branco); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <a href="Conta.dc.html" aria-label="Minha conta (Hugo dos Santos)" style="width: 44px; height: 44px; border-radius: 50%; background: var(--ouro-100); color: var(--ouro-700); font: 600 14px/20px var(--font-sans); display: grid; place-items: center; text-decoration: none">HS</a>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header>
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">CONTA</p>
+    <h1 style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 44px; letter-spacing: -0.025em">Seu plano</h1>
+    <p style="margin: 4px 0 0; font: var(--text-corpo-m); color: var(--tinta-500)">{{contexto}}</p>
+  </header>
+
+  <!-- Frase de conclusão (demonstração e ativo) -->
+  <sc-if value="{{mostraFrase}}" hint-placeholder-val="{{true}}">
+    <section aria-label="Conclusão" style="background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 22px 28px; display: flex; align-items: center; gap: 20px">
+      <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+      <sc-if value="{{ehDemo}}" hint-placeholder-val="{{true}}">
+        <p style="margin: 0; font-size: 17px; line-height: 27px">Você importou <b style="color: var(--ouro-300); font-weight: 600">812 posições</b>, mas a demonstração analisa só <b style="color: var(--ouro-300); font-weight: 600">10</b>. Com o Intelligence, as 812 entram na conta por <b style="color: var(--ouro-300); font-weight: 600">R$ 100/mês</b>.</p>
+      </sc-if>
+      <sc-if value="{{ehAtivo}}" hint-placeholder-val="{{false}}">
+        <p style="margin: 0; font-size: 17px; line-height: 27px">Plano Intelligence ativo, com <b style="color: var(--ouro-300); font-weight: 600">812 de 1.000 itens</b> em uso. A próxima cobrança é de <b style="color: var(--ouro-300); font-weight: 600">R$ 100 em 03/12/2026</b>, no Pix.</p>
+      </sc-if>
+    </section>
+  </sc-if>
+
+  <!-- Banner: somente leitura -->
+  <sc-if value="{{ehLeitura}}" hint-placeholder-val="{{false}}">
+    <section role="alert" aria-labelledby="t-leitura" style="background: var(--status-ruptura-bg); border: 1px solid var(--status-ruptura); border-radius: var(--raio-xl); padding: 24px 28px; display: flex; flex-wrap: wrap; gap: 16px 20px">
+      <span style="width: 44px; height: 44px; border-radius: 12px; background: var(--branco); display: grid; place-items: center; flex: none">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#bd4646" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </span>
+      <div style="flex: 1 1 520px; min-width: 0">
+        <h2 id="t-leitura" style="margin: 0; font: var(--text-titulo-s); color: var(--status-ruptura-texto)">Seu espaço está em somente leitura</h2>
+        <p style="margin: 4px 0 0; font: var(--text-corpo-m); color: var(--tinta-900)">A fatura de <b style="font-weight: 600">R$ 100,00</b> que venceu em <b style="font-weight: 600">03/12/2026</b> ainda não foi paga. Você continua vendo tudo, mas algumas ações ficam paradas até o pagamento.</p>
+        <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px">
+          <span style="display: flex; flex-wrap: wrap; align-items: center; gap: 8px"><b style="font-weight: 600; color: var(--status-ruptura-texto)">Parado:</b>
+            <span style="display: inline-flex; align-items: center; gap: 6px; background: var(--branco); border-radius: var(--raio-pill); padding: 3px 10px; color: var(--tinta-600)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Importar</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; background: var(--branco); border-radius: var(--raio-pill); padding: 3px 10px; color: var(--tinta-600)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Simular e validar</span>
+            <span style="display: inline-flex; align-items: center; gap: 6px; background: var(--branco); border-radius: var(--raio-pill); padding: 3px 10px; color: var(--tinta-600)"><svg aria-hidden="true" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Baixar Excel</span>
+          </span>
+          <span style="display: flex; align-items: center; gap: 8px"><b style="font-weight: 600; color: var(--verde-700)">Continua:</b><span style="color: var(--tinta-600)">painel, materiais, histórico e Academia</span></span>
+        </div>
+      </div>
+      <a href="#pagamento" style="align-self: center; min-height: 44px; display: inline-flex; align-items: center; font: 600 15px/20px var(--font-sans); text-decoration: none">Pagar e liberar ↓</a>
+    </section>
+  </sc-if>
+
+  <!-- ============ DEMONSTRAÇÃO: comparar planos ============ -->
+  <sc-if value="{{ehDemo}}" hint-placeholder-val="{{true}}">
+    <section aria-labelledby="t-comp">
+      <h2 id="t-comp" style="margin: 0 0 12px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">COMPARE OS PLANOS</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px">
+        <div style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+            <span style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">DEMONSTRAÇÃO</span>
+            <span style="background: var(--creme-100); color: var(--tinta-600); border-radius: var(--raio-pill); padding: 4px 10px; font: 600 12px/14px var(--font-sans)">Seu plano atual</span>
+          </div>
+          <div style="margin-top: 12px; display: flex; align-items: baseline; gap: 8px"><span style="font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 40px">Grátis</span><span style="font: var(--text-corpo-s); color: var(--tinta-500)">para sempre</span></div>
+          <div style="margin-top: 20px">
+            <div style="display: flex; justify-content: space-between; font-size: 14px; font-variant-numeric: tabular-nums"><span style="font-weight: 600">10 de 10 itens analisados</span><span style="color: var(--status-alerta-texto); font-weight: 600">▲ No limite</span></div>
+            <div role="progressbar" aria-label="Itens da demonstração em uso" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10" style="margin-top: 8px; height: 8px; border-radius: 4px; background: var(--creme-100)"><div style="width: 100%; height: 8px; border-radius: 4px; background: var(--status-alerta)"></div></div>
+            <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">802 posições importadas ficam fora da análise.</p>
+          </div>
+          <ul style="list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+            <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Até 10 itens (material + local)</li>
+            <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Classificação e parâmetros completos</li>
+            <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Academia: primeiras aulas</li>
+            <li style="display: flex; gap: 10px; align-items: center; color: var(--tinta-500)"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>Sem exportação para o ERP</li>
+          </ul>
+        </div>
+        <div style="background: var(--branco); border: 2px solid var(--verde-700); border-radius: var(--raio-xl); padding: 27px">
+          <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+            <span style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-700)">INTELLIGENCE</span>
+            <span style="background: var(--ouro-100); color: var(--ouro-700); border-radius: var(--raio-pill); padding: 4px 10px; font: var(--text-rotulo); letter-spacing: 0.1em">RECOMENDADO</span>
+          </div>
+          <div style="margin-top: 12px; display: flex; align-items: baseline; gap: 6px"><span style="font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 48px; letter-spacing: -0.02em; font-variant-numeric: tabular-nums">R$ 100</span><span style="color: var(--tinta-500)">/mês</span></div>
+          <p style="margin: 8px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">Menos do que um rolamento parado na prateleira.</p>
+          <ul style="list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px">
+            <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><b style="font-weight: 600">Até 1.000 itens</b>: suas 812 posições cabem</span></li>
+            <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Simulação, validação e histórico de decisões</li>
+            <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Excel pronto para SAP, TOTVS e Senior</li>
+            <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Academia completa</li>
+            <li style="display: flex; gap: 10px; align-items: center"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Suporte por e-mail em até 1 dia útil</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- ============ ATIVO: assinatura ============ -->
+  <sc-if value="{{ehAtivo}}" hint-placeholder-val="{{false}}">
+    <section aria-labelledby="t-ass" style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px; display: flex; flex-wrap: wrap; gap: 28px 48px">
+      <div style="flex: 1 1 340px; min-width: 0">
+        <div style="display: flex; align-items: center; gap: 12px">
+          <h2 id="t-ass" style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-700)">INTELLIGENCE</h2>
+          <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 12px/14px var(--font-sans)">✓ Ativo</span>
+        </div>
+        <div style="margin-top: 10px; display: flex; align-items: baseline; gap: 6px"><span style="font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 48px; letter-spacing: -0.02em">R$ 100</span><span style="color: var(--tinta-500)">/mês</span></div>
+        <div style="margin-top: 20px">
+          <div style="display: flex; justify-content: space-between; font-size: 14px; font-variant-numeric: tabular-nums"><span style="font-weight: 600">812 de 1.000 itens</span><span style="color: var(--tinta-500)">188 livres</span></div>
+          <div role="progressbar" aria-label="Itens do plano em uso" aria-valuenow="812" aria-valuemin="0" aria-valuemax="1000" style="margin-top: 8px; height: 8px; border-radius: 4px; background: var(--creme-100)"><div style="width: 81.2%; height: 8px; border-radius: 4px; background: var(--verde-700)"></div></div>
+        </div>
+      </div>
+      <dl style="flex: 1 1 340px; margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 14px 24px; align-content: start; font-variant-numeric: tabular-nums">
+        <dt style="font: var(--text-corpo-s); color: var(--tinta-500)">Próxima cobrança</dt><dd style="margin: 0; font-weight: 600">03/12/2026 · R$ 100,00</dd>
+        <dt style="font: var(--text-corpo-s); color: var(--tinta-500)">Forma de pagamento</dt><dd style="margin: 0; display: flex; flex-wrap: wrap; gap: 4px 12px"><span style="font-weight: 600">Pix</span><a href="#trocar" style="font: 600 14px/24px var(--font-sans); text-decoration: none">Trocar forma</a></dd>
+        <dt style="font: var(--text-corpo-s); color: var(--tinta-500)">Nota fiscal para</dt><dd style="margin: 0; font-weight: 600">CPF ***.456.789-**</dd>
+        <dt style="font: var(--text-corpo-s); color: var(--tinta-500)">Assinante desde</dt><dd style="margin: 0; font-weight: 600">03/09/2026</dd>
+      </dl>
+    </section>
+  </sc-if>
+
+  <!-- ============ PAGAMENTO (demonstração e somente leitura) ============ -->
+  <sc-if value="{{mostraPagamento}}" hint-placeholder-val="{{true}}">
+    <section id="pagamento" aria-labelledby="t-pag" style="display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start">
+      <div style="flex: 2 1 520px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px">
+        <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">PAGAMENTO</p>
+        <h2 id="t-pag" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">Como você prefere pagar?</h2>
+
+        <div role="tablist" aria-label="Forma de pagamento" style="margin-top: 20px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px">
+          <sc-for list="{{metodos}}" as="m" hint-placeholder-count="3">
+            <button type="button" role="tab" aria-selected="{{m.ativo}}" onClick="{{m.escolher}}" style="{{m.estilo}}">
+              <span style="font-weight: 600; font-size: 15px">{{m.nome}}</span>
+              <span style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">{{m.sub}}</span>
+            </button>
+          </sc-for>
+        </div>
+
+        <div role="tabpanel" style="margin-top: 24px">
+          <!-- Pix -->
+          <sc-if value="{{noPix}}" hint-placeholder-val="{{true}}">
+            <sc-if value="{{pixNaoGerado}}" hint-placeholder-val="{{true}}">
+              <ol style="margin: 0; padding: 0 0 0 20px; display: flex; flex-direction: column; gap: 8px; font: var(--text-corpo-m); color: var(--tinta-600)">
+                <li>Clique em <b style="font-weight: 600; color: var(--tinta-900)">Gerar Pix</b> ao lado.</li>
+                <li>Leia o QR code no app do seu banco ou copie o código.</li>
+                <li>O acesso libera assim que o Pix for confirmado.</li>
+              </ol>
+            </sc-if>
+            <sc-if value="{{pixGerado}}" hint-placeholder-val="{{false}}">
+              <div style="display: flex; flex-wrap: wrap; gap: 24px; align-items: center">
+                <div role="img" aria-label="QR code do Pix" style="width: 180px; height: 180px; border: 1px solid var(--borda); border-radius: 12px; background: var(--creme-100); display: grid; place-items: center; text-align: center; font: var(--text-corpo-s); color: var(--tinta-500); flex: none">[QR code Pix]</div>
+                <div style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 12px">
+                  <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: var(--raio-pill); background: var(--status-alerta-bg); color: var(--status-alerta-texto); font: 600 12px/14px var(--font-sans)"><span aria-hidden="true">◔</span> Aguardando pagamento</span>
+                  <p style="margin: 0; font: var(--text-corpo-m); color: var(--tinta-600)">Abra o app do banco, escolha Pix e leia o QR code. Esta tela atualiza sozinha quando o pagamento cair.</p>
+                  <button type="button" style="align-self: flex-start; min-height: 48px; padding: 0 20px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Copiar código Pix</button>
+                </div>
+              </div>
+            </sc-if>
+          </sc-if>
+          <!-- Boleto -->
+          <sc-if value="{{noBoleto}}" hint-placeholder-val="{{false}}">
+            <sc-if value="{{boletoNaoGerado}}" hint-placeholder-val="{{true}}">
+              <p style="margin: 0; font: var(--text-corpo-m); color: var(--tinta-600)">O boleto vence em 3 dias. O acesso libera quando ele compensar, o que leva até 3 dias úteis.</p>
+            </sc-if>
+            <sc-if value="{{boletoGerado}}" hint-placeholder-val="{{false}}">
+              <div style="display: flex; flex-direction: column; gap: 12px">
+                <span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 12px/14px var(--font-sans)">✓ Boleto gerado · vence em 26/11/2026</span>
+                <p style="margin: 0; padding: 12px 14px; border-radius: 10px; background: var(--creme-100); font: 500 14px/20px var(--font-sans); letter-spacing: 0.02em; font-variant-numeric: tabular-nums; color: var(--tinta-600)">[linha digitável do boleto]</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px">
+                  <button type="button" style="min-height: 48px; padding: 0 20px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Copiar linha digitável</button>
+                  <button type="button" style="min-height: 48px; padding: 0 20px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Baixar PDF</button>
+                </div>
+              </div>
+            </sc-if>
+          </sc-if>
+          <!-- Cartão -->
+          <sc-if value="{{noCartao}}" hint-placeholder-val="{{false}}">
+            <div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px">
+              <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 8px">
+                <label for="cc-num" style="font: 600 13px/18px var(--font-sans)">Número do cartão</label>
+                <input id="cc-num" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m); font-variant-numeric: tabular-nums">
+              </div>
+              <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 8px">
+                <label for="cc-val" style="font: 600 13px/18px var(--font-sans)">Validade</label>
+                <input id="cc-val" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/AA" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+              </div>
+              <div style="grid-column: span 2; display: flex; flex-direction: column; gap: 8px">
+                <label for="cc-cvv" style="font: 600 13px/18px var(--font-sans)">Código de segurança</label>
+                <input id="cc-cvv" inputmode="numeric" autocomplete="cc-csc" placeholder="3 dígitos no verso" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+              </div>
+              <div style="grid-column: span 4; display: flex; flex-direction: column; gap: 8px">
+                <label for="cc-nome" style="font: 600 13px/18px var(--font-sans)">Nome impresso no cartão</label>
+                <input id="cc-nome" autocomplete="cc-name" placeholder="Como está no cartão" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+              </div>
+            </div>
+            <p style="margin: 12px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">A cobrança se repete todo dia 3. Você troca o cartão ou cancela quando quiser.</p>
+          </sc-if>
+        </div>
+
+        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--borda); display: flex; flex-direction: column; gap: 8px; max-width: 420px">
+          <label for="doc" style="font: 600 13px/18px var(--font-sans)">CPF ou CNPJ para a nota fiscal</label>
+          <input id="doc" inputmode="numeric" placeholder="000.000.000-00" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m); font-variant-numeric: tabular-nums">
+          <span style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">Com ou sem pontos, tanto faz.</span>
+        </div>
+      </div>
+
+      <!-- Resumo -->
+      <aside aria-labelledby="t-res" style="flex: 1 1 320px; min-width: 0; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px">
+        <h2 id="t-res" style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">RESUMO</h2>
+        <dl style="margin: 16px 0 0; display: grid; grid-template-columns: 1fr auto; gap: 10px 16px; font-variant-numeric: tabular-nums">
+          <dt>{{resumoItem}}</dt><dd style="margin: 0; text-align: right">R$ 100,00</dd>
+          <dt style="font: var(--text-corpo-s); color: var(--tinta-500)">Até 1.000 itens · você tem 812</dt><dd></dd>
+          <dt style="padding-top: 12px; border-top: 1px solid var(--borda); font-weight: 600">Total hoje</dt><dd style="margin: 0; padding-top: 12px; border-top: 1px solid var(--borda); text-align: right; font-family: var(--font-display); font-weight: 700; font-size: 22px">R$ 100,00</dd>
+        </dl>
+        <sc-if value="{{naoPago}}" hint-placeholder-val="{{true}}">
+          <button type="button" onClick="{{pagar}}" style="margin-top: 24px; width: 100%; min-height: 56px; border: 0; border-radius: var(--raio-lg); background: var(--ouro-500); color: var(--verde-950); font: var(--text-botao); cursor: pointer">{{botaoPagar}}</button>
+        </sc-if>
+        <sc-if value="{{pago}}" hint-placeholder-val="{{false}}">
+          <div role="status" style="margin-top: 24px; border-radius: 12px; background: var(--verde-100); padding: 14px 16px; color: var(--verde-700); font-weight: 600">✓ Pagamento aprovado. Plano Intelligence ativo.</div>
+        </sc-if>
+        <p style="margin: 12px 0 0; font-size: 12px; line-height: 18px; color: var(--tinta-500); text-align: center">Cancele quando quiser, direto no sistema. Seus dados continuam disponíveis para leitura.</p>
+        <p style="margin: 16px 0 0; display: flex; justify-content: center; align-items: center; gap: 6px; font-size: 12px; color: var(--tinta-500)">
+          <svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Pagamento em conexão segura</p>
+      </aside>
+    </section>
+  </sc-if>
+
+  <!-- ============ FATURAS (ativo e somente leitura) ============ -->
+  <sc-if value="{{mostraFaturas}}" hint-placeholder-val="{{false}}">
+    <section aria-labelledby="t-fat" style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">HISTÓRICO</p>
+      <h2 id="t-fat" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">Faturas</h2>
+      <div style="margin-top: 12px; overflow-x: auto">
+        <table style="width: 100%; min-width: 640px; border-collapse: collapse; font-variant-numeric: tabular-nums">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--borda); text-align: left">
+              <th scope="col" style="padding: 10px 12px 10px 0; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">VENCIMENTO</th>
+              <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500); text-align: right">VALOR</th>
+              <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">FORMA</th>
+              <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">SITUAÇÃO</th>
+              <th scope="col" style="padding: 10px 0 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">NOTA FISCAL</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{faturas}}" as="f" hint-placeholder-count="3">
+              <tr style="border-bottom: 1px solid var(--borda)">
+                <td style="padding: 14px 12px 14px 0; font-weight: 600">{{f.data}}</td>
+                <td style="padding: 14px 12px; text-align: right">R$ 100,00</td>
+                <td style="padding: 14px 12px; color: var(--tinta-600)">{{f.forma}}</td>
+                <td style="padding: 14px 12px"><span style="{{f.seloStyle}}">{{f.selo}}</span></td>
+                <td style="padding: 6px 0 6px 12px">
+                  <sc-if value="{{f.temNota}}" hint-placeholder-val="{{true}}"><a href="#nota" aria-label="{{f.rotuloNota}}" style="min-height: 44px; display: inline-flex; align-items: center; font: 600 14px/20px var(--font-sans); text-decoration: none">Baixar</a></sc-if>
+                  <sc-if value="{{f.semNota}}" hint-placeholder-val="{{false}}"><span style="color: var(--tinta-500); font-size: 14px">Sai após o pagamento</span></sc-if>
+                </td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </sc-if>
+
+  <!-- Cancelar: longe das ações principais -->
+  <sc-if value="{{ehAtivo}}" hint-placeholder-val="{{false}}">
+    <section aria-labelledby="t-canc" style="border-top: 1px solid var(--borda); padding-top: 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px">
+      <div style="flex: 1 1 400px">
+        <h2 id="t-canc" style="margin: 0; font: var(--text-titulo-s); font-size: 16px">Cancelar assinatura</h2>
+        <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">O plano fica ativo até 03/12/2026. Depois disso, seus dados continuam disponíveis para leitura.</p>
+      </div>
+      <button type="button" style="min-height: 48px; padding: 0 20px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--status-ruptura-texto); font: var(--text-botao); cursor: pointer">Cancelar assinatura</button>
+    </section>
+  </sc-if>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"situacao":{"editor":"enum","options":["demonstracao","ativo","leitura"],"default":"ativo","section":"Estado"},"$preview":{"width":1440,"height":1700}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { metodo: 'pix', gerado: false, pago: false };
+  }
+  renderVals() {
+    var self = this, s = this.state;
+    var sit = this.props.situacao ?? 'ativo';
+    var demo = sit === 'demonstracao', ativo = sit === 'ativo', leitura = sit === 'leitura';
+
+    var metodos = [
+      { id: 'pix', nome: 'Pix', sub: 'Libera assim que cair' },
+      { id: 'boleto', nome: 'Boleto', sub: 'Até 3 dias úteis' },
+      { id: 'cartao', nome: 'Cartão de crédito', sub: 'Cobrança automática' }
+    ].map(function (m) {
+      var on = s.metodo === m.id;
+      return {
+        nome: m.nome, sub: m.sub, ativo: on,
+        escolher: function () { self.setState({ metodo: m.id, gerado: false, pago: false }); },
+        estilo: 'min-height: 72px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; padding: 12px 16px; border-radius: 12px; cursor: pointer; text-align: left; font-family: var(--font-sans); color: #20322c; background: ' + (on ? '#f0f6f2' : '#ffffff') + '; border: ' + (on ? '2px solid #1c684c' : '1px solid #e3e2dc')
+      };
+    });
+
+    var valor = leitura ? 'R$ 100,00' : 'R$ 100/mês';
+    var botao = s.metodo === 'pix' ? (s.gerado ? 'Gerar novo Pix' : 'Gerar Pix de R$ 100,00')
+      : s.metodo === 'boleto' ? (s.gerado ? 'Gerar novo boleto' : 'Gerar boleto de R$ 100,00')
+      : (leitura ? 'Pagar R$ 100,00 e liberar' : 'Assinar por R$ 100/mês');
+
+    var selo = {
+      paga: { t: '✓ Paga', st: 'background: #e2efe9; color: #1c684c;' },
+      vencida: { t: '● Vencida', st: 'background: #f9e6e4; color: #a83a3a;' }
+    };
+    var lista = leitura
+      ? [{ d: '03/12/2026', f: 'Pix', s: 'vencida' }, { d: '03/11/2026', f: 'Pix', s: 'paga' }, { d: '03/10/2026', f: 'Pix', s: 'paga' }, { d: '03/09/2026', f: 'Pix', s: 'paga' }]
+      : [{ d: '03/11/2026', f: 'Pix', s: 'paga' }, { d: '03/10/2026', f: 'Pix', s: 'paga' }, { d: '03/09/2026', f: 'Pix', s: 'paga' }];
+    var faturas = lista.map(function (x) {
+      var k = selo[x.s];
+      return {
+        data: x.d, forma: x.f, selo: k.t, temNota: x.s === 'paga', semNota: x.s !== 'paga',
+        rotuloNota: 'Baixar nota fiscal de ' + x.d,
+        seloStyle: 'display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 999px; font: 600 12px/14px var(--font-sans); ' + k.st
+      };
+    });
+
+    return {
+      ehDemo: demo, ehAtivo: ativo, ehLeitura: leitura,
+      mostraFrase: !leitura, mostraPagamento: demo || leitura, mostraFaturas: ativo || leitura,
+      contexto: demo ? 'Demonstração grátis · 10 itens analisados' : ativo ? 'Plano Intelligence · renova em 03/12/2026' : 'Plano Intelligence · fatura vencida em 03/12/2026',
+      metodos: metodos,
+      noPix: s.metodo === 'pix', noBoleto: s.metodo === 'boleto', noCartao: s.metodo === 'cartao',
+      pixGerado: s.gerado, pixNaoGerado: !s.gerado, boletoGerado: s.gerado, boletoNaoGerado: !s.gerado,
+      resumoItem: leitura ? 'Intelligence · fatura de 03/12/2026' : 'Intelligence · mensal',
+      botaoPagar: botao, pago: s.pago, naoPago: !s.pago, valor: valor,
+      faturas: faturas,
+      cartaoTitulo: demo ? 'DEMONSTRAÇÃO' : 'PLANO INTELLIGENCE',
+      cartaoUso: demo ? '10 de 10 itens' : '812 de 1.000 itens',
+      cartaoBarra: 'height: 6px; border-radius: 3px; background: ' + (leitura ? '#bd4646' : '#d9a441') + '; width: ' + (demo ? '100' : '81.2') + '%',
+      cartaoNota: demo ? 'Assine para liberar tudo' : leitura ? '● Somente leitura' : 'Renova em 03/12/2026',
+      pagar: function () {
+        if (s.metodo === 'cartao') self.setState({ pago: true });
+        else self.setState({ gerado: true });
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Minha conta</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+input::placeholder{color:#a3aca8}
+input:focus{outline:none;border-color:#1c684c !important;box-shadow:0 0 0 3px #e2efe9}
+a:focus-visible,button:focus-visible{outline:2px solid #1c684c;outline-offset:2px;box-shadow:0 0 0 5px #e2efe9}
+button:disabled{opacity:.45;cursor:not-allowed !important}
+/* ---- Animações (desligam com "reduzir movimento") ---- */
+@keyframes mro-subir{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+@keyframes mro-barra{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes mro-pop{0%{transform:scale(.5);opacity:0}70%{transform:scale(1.15)}100%{transform:scale(1);opacity:1}}
+@keyframes mro-girar{to{transform:rotate(360deg)}}
+@keyframes mro-abrir{from{opacity:0;max-height:0}to{opacity:1;max-height:400px}}
+.mro-cartao{animation:mro-subir .4s cubic-bezier(.2,.7,.2,1) both}
+.mro-barra-salvar{animation:mro-barra .32s cubic-bezier(.2,.7,.2,1) both}
+.mro-pop{animation:mro-pop .3s ease both}
+.mro-girar{animation:mro-girar .8s linear infinite}
+.mro-abrir{animation:mro-abrir .3s ease both;overflow:hidden}
+.mro-surge{animation:mro-subir .28s ease both}
+.mro-chave,.mro-chave span{transition:background-color .2s ease,transform .2s cubic-bezier(.2,.7,.2,1)}
+.mro-avatar{transition:background-color .2s ease}
+.mro-btn{transition:transform .1s ease}
+.mro-btn:active{transform:scale(.98)}
+.mro-ancora{transition:background-color .15s ease,border-color .15s ease}
+.mro-ancora:hover{border-color:#8eb3a4 !important;background-color:#f0f6f2 !important}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none !important;transition:none !important}}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 2300px; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px; background: var(--creme-100)">
+
+<nav aria-label="Menu do sistema" style="flex: 0 1 248px; min-width: 248px; background: var(--verde-900); color: var(--verde-100); padding: 28px 16px 24px; display: flex; flex-direction: column">
+  <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); padding: 0 8px">
+    <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1">
+      <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+      <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+    </span>
+  </a>
+
+  <p style="margin: 36px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">ANÁLISE</p>
+  <a href="VisaoGeral.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Visão geral</a>
+  <a href="Materiais.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>Materiais</a>
+  <a href="Planejamento.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>Planejamento</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">DADOS</p>
+  <a href="ImportarDados.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Importar dados</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">REGRAS DO CÁLCULO</p>
+  <a href="RegrasLetras.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Regras e letras</a>
+  <a href="TiposMovimento.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>Tipos de movimento</a>
+  <a href="NivelServico.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Nível de serviço</a>
+  <a href="MatrizTmer.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V9"/><path d="M18 17v-6"/></svg>Matriz TMER</a>
+  <a href="#casos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Casos de controle</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">APRENDER E AJUDA</p>
+  <a href="#academia" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Academia</a>
+  <a href="#suporte" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte</a>
+
+  <div style="flex: 1; min-height: 40px"></div>
+  <div style="background: var(--verde-800); border: 1px solid rgba(142,179,164,0.3); border-radius: 14px; padding: 16px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">PLANO INTELLIGENCE</p>
+    <p style="margin: 8px 0 0; font-weight: 600; color: var(--branco); font-variant-numeric: tabular-nums">812 de 1.000 itens</p>
+    <div role="progressbar" aria-label="Itens usados do plano" aria-valuenow="812" aria-valuemin="0" aria-valuemax="1000" style="margin-top: 10px; height: 6px; border-radius: 3px; background: rgba(226,239,233,0.2)"><div style="width: 81.2%; height: 6px; border-radius: 3px; background: var(--ouro-500)"></div></div>
+    <p style="margin: 10px 0 0; font-size: 12px; line-height: 16px; color: var(--verde-100)">Renova em 03/12/2026</p>
+  </div>
+  <a href="Login.dc.html" style="margin-top: 12px; display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sair</a>
+</nav>
+
+<div style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px">
+<div style="max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px">
+
+  <!-- Barra superior -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+    <div style="position: relative; z-index: 20; flex: 1 1 320px; max-width: 460px">
+      <dc-import name="BuscaGlobal" hint-size="100%,48px"></dc-import>
+    </div>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Todos os locais (3)</button>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer; font-variant-numeric: tabular-nums">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>01/07 a 11/11/2026</button>
+    <span style="flex: 1"></span>
+    <span style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 13px/18px var(--font-sans)"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--verde-700)"></span>Atualizado há 2 dias</span>
+    <button type="button" aria-label="Notificações" style="width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--borda); border-radius: 12px; background: var(--branco); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <a href="Conta.dc.html" aria-current="page" aria-label="Minha conta (Hugo dos Santos)" style="width: 44px; height: 44px; border-radius: 50%; background: var(--ouro-500); color: var(--verde-950); font: 700 14px/20px var(--font-sans); display: grid; place-items: center; text-decoration: none; box-shadow: 0 0 0 3px #ffffff, 0 0 0 5px #d9a441">HS</a>
+  </div>
+
+  <header>
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">CONTA</p>
+    <h1 style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 44px; letter-spacing: -0.025em">Minha conta</h1>
+    <p style="margin: 4px 0 0; font: var(--text-corpo-m); color: var(--tinta-500)">Seus dados de acesso, o nome do seu espaço e os avisos que você recebe.</p>
+  </header>
+
+  <!-- Cartão de identidade -->
+  <section class="mro-cartao" aria-label="Resumo da conta" style="background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 24px 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px">
+    <span class="mro-avatar" aria-hidden="true" style="width: 72px; height: 72px; border-radius: 50%; background: var(--ouro-500); color: var(--verde-950); display: grid; place-items: center; font: 800 26px/1 var(--font-display); letter-spacing: 0.02em">{{iniciais}}</span>
+    <div style="flex: 1 1 280px; min-width: 0">
+      <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 24px; line-height: 30px">{{nomeExibido}}</p>
+      <p style="margin: 2px 0 0; color: var(--verde-100)">{{emailExibido}} · {{espacoExibido}}</p>
+    </div>
+    <a href="PlanosAtivo.dc.html" style="display: inline-flex; flex-direction: column; gap: 2px; padding: 12px 16px; border-radius: 12px; background: rgba(255,255,255,0.06); border: 1px solid rgba(142,179,164,0.35); color: var(--branco); text-decoration: none">
+      <span style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">PLANO INTELLIGENCE</span>
+      <span style="font-weight: 600; font-variant-numeric: tabular-nums">812 de 1.000 itens · renova em 03/12/2026 →</span>
+    </a>
+  </section>
+
+  <!-- Atalhos -->
+  <nav aria-label="Seções da conta" style="display: flex; flex-wrap: wrap; gap: 8px">
+    <a href="#dados" class="mro-ancora" style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: var(--branco); border: 1px solid var(--borda); color: var(--tinta-900); font: 600 14px/20px var(--font-sans); text-decoration: none">Dados pessoais</a>
+    <a href="#espaco" class="mro-ancora" style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: var(--branco); border: 1px solid var(--borda); color: var(--tinta-900); font: 600 14px/20px var(--font-sans); text-decoration: none">Espaço</a>
+    <a href="#senha" class="mro-ancora" style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: var(--branco); border: 1px solid var(--borda); color: var(--tinta-900); font: 600 14px/20px var(--font-sans); text-decoration: none">Senha</a>
+    <a href="#avisos" class="mro-ancora" style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: var(--branco); border: 1px solid var(--borda); color: var(--tinta-900); font: 600 14px/20px var(--font-sans); text-decoration: none">Avisos por e-mail</a>
+    <a href="#privacidade" class="mro-ancora" style="min-height: 44px; display: inline-flex; align-items: center; padding: 0 14px; border-radius: 999px; background: var(--branco); border: 1px solid var(--borda); color: var(--tinta-900); font: 600 14px/20px var(--font-sans); text-decoration: none">Privacidade (LGPD)</a>
+  </nav>
+
+  <sc-if value="{{temAviso}}" hint-placeholder-val="{{false}}">
+    <p role="status" class="mro-surge" style="margin: 0; display: flex; gap: 10px; align-items: flex-start; padding: 12px 16px; border-radius: 12px; background: var(--verde-50); font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><span aria-hidden="true" class="mro-pop" style="color: var(--verde-700); font-weight: 600">✓</span>{{aviso}}</p>
+  </sc-if>
+
+  <!-- Dados pessoais -->
+  <section id="dados" class="mro-cartao" aria-labelledby="t-dados" style="animation-delay: 60ms; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px; display: flex; flex-direction: column; gap: 18px">
+    <div>
+      <h2 id="t-dados" style="margin: 0; font: var(--text-titulo-s)">Dados pessoais</h2>
+      <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Usados para entrar no sistema e na nota fiscal do plano.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px 16px">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <label for="f-nome" style="font: 600 13px/18px var(--font-sans)">Nome completo</label>
+        <input id="f-nome" autocomplete="name" value="{{nome}}" onChange="{{mudarNome}}" aria-invalid="{{erroNome}}" style="{{nomeStyle}}">
+        <sc-if value="{{erroNome}}" hint-placeholder-val="{{false}}"><span role="alert" class="mro-surge" style="font: var(--text-corpo-s); color: var(--status-ruptura-texto)">Escreva seu nome, com pelo menos 2 letras.</span></sc-if>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <label for="f-email" style="font: 600 13px/18px var(--font-sans)">E-mail de acesso</label>
+        <input id="f-email" type="email" autocomplete="email" value="{{email}}" onChange="{{mudarEmail}}" aria-invalid="{{erroEmail}}" aria-describedby="email-ajuda" style="{{emailStyle}}">
+        <sc-if value="{{erroEmail}}" hint-placeholder-val="{{false}}"><span role="alert" class="mro-surge" style="font: var(--text-corpo-s); color: var(--status-ruptura-texto)">Confira o e-mail: falta o @ ou o domínio (ex.: voce@empresa.com).</span></sc-if>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <span id="l-cpf" style="font: 600 13px/18px var(--font-sans)">CPF</span>
+        <p aria-labelledby="l-cpf" style="margin: 0; height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 0 16px; border-radius: var(--raio-md); background: var(--creme-100); font: var(--text-corpo-m); font-variant-numeric: tabular-nums; color: var(--tinta-600)">***.456.789-** <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></p>
+        <span style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">O CPF identifica a sua conta e o plano. Para corrigir, <a href="#suporte">fale com o suporte</a>.</span>
+      </div>
+    </div>
+    <sc-if value="{{emailMudou}}" hint-placeholder-val="{{false}}">
+      <div class="mro-abrir" style="border-radius: 12px; background: var(--ouro-100); padding: 16px 18px; display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: flex-end">
+        <p id="email-ajuda" style="margin: 0; flex: 1 1 320px; font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)"><b style="font-weight: 600">Trocar o e-mail pede confirmação.</b> Enviaremos um link para {{email}}. Até você clicar nele, continue entrando com {{emailOriginal}}.</p>
+        <div style="flex: 0 1 260px; display: flex; flex-direction: column; gap: 6px">
+          <label for="f-confirma" style="font: 600 13px/18px var(--font-sans)">Sua senha atual</label>
+          <input id="f-confirma" type="password" autocomplete="current-password" value="{{senhaEmail}}" onChange="{{mudarSenhaEmail}}" placeholder="Para confirmar que é você" style="height: 48px; padding: 12px 14px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: var(--text-corpo-m)">
+        </div>
+      </div>
+    </sc-if>
+  </section>
+
+  <!-- Espaço -->
+  <section id="espaco" class="mro-cartao" aria-labelledby="t-espaco" style="animation-delay: 120ms; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px; display: flex; flex-direction: column; gap: 18px">
+    <div>
+      <h2 id="t-espaco" style="margin: 0; font: var(--text-titulo-s)">Espaço</h2>
+      <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Seu espaço é privado: os materiais, regras e decisões ficam só nele.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px 16px">
+      <div style="display: flex; flex-direction: column; gap: 8px">
+        <label for="f-espaco" style="font: 600 13px/18px var(--font-sans)">Nome do espaço</label>
+        <input id="f-espaco" value="{{espaco}}" onChange="{{mudarEspaco}}" maxLength="120" aria-invalid="{{erroEspaco}}" style="{{espacoStyle}}">
+        <span style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">Aparece nos relatórios e nas planilhas exportadas.</span>
+      </div>
+      <dl style="margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-variant-numeric: tabular-nums">
+        <div style="background: var(--creme-100); border-radius: 12px; padding: 12px 14px"><dt style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">PLANO</dt><dd style="margin: 4px 0 0; font-weight: 600">Intelligence</dd></div>
+        <div style="background: var(--creme-100); border-radius: 12px; padding: 12px 14px"><dt style="font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">ITENS EM USO</dt><dd style="margin: 4px 0 0; font-weight: 600">812 de 1.000</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Senha -->
+  <section id="senha" class="mro-cartao" aria-labelledby="t-senha" style="animation-delay: 180ms; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px">
+      <div>
+        <h2 id="t-senha" style="margin: 0; font: var(--text-titulo-s)">Senha</h2>
+        <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">{{senhaResumo}}</p>
+      </div>
+      <sc-if value="{{senhaFechada}}" hint-placeholder-val="{{true}}">
+        <button type="button" onClick="{{abrirSenha}}" style="min-height: 48px; padding: 0 20px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Alterar senha</button>
+      </sc-if>
+    </div>
+    <sc-if value="{{senhaAberta}}" hint-placeholder-val="{{false}}">
+      <form action="#" onSubmit="{{trocarSenha}}" class="mro-abrir" style="margin-top: 18px; display: flex; flex-direction: column; gap: 16px">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px">
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <label for="s-atual" style="font: 600 13px/18px var(--font-sans)">Senha atual</label>
+            <input id="s-atual" type="{{tipoSenha}}" autocomplete="current-password" value="{{sAtual}}" onChange="{{mudarAtual}}" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <label for="s-nova" style="font: 600 13px/18px var(--font-sans)">Nova senha</label>
+            <input id="s-nova" type="{{tipoSenha}}" autocomplete="new-password" value="{{sNova}}" onChange="{{mudarNova}}" aria-describedby="regras-senha" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 8px">
+            <label for="s-conf" style="font: 600 13px/18px var(--font-sans)">Repita a nova senha</label>
+            <input id="s-conf" type="{{tipoSenha}}" autocomplete="new-password" value="{{sConf}}" onChange="{{mudarConf}}" style="height: 52px; padding: 14px 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); font: var(--text-corpo-m)">
+          </div>
+        </div>
+        <ul id="regras-senha" aria-label="Regras da nova senha" style="list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; font: 500 14px/20px var(--font-sans)">
+          <sc-for list="{{regras}}" as="r" hint-placeholder-count="3">
+            <li style="{{r.estilo}}"><span class="{{r.classe}}" aria-hidden="true" style="{{r.iconeStyle}}">{{r.icone}}</span>{{r.texto}}<span style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">{{r.estado}}</span></li>
+          </sc-for>
+        </ul>
+        <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px">
+          <button type="submit" class="mro-btn" disabled="{{senhaInvalida}}" style="min-height: 48px; padding: 0 20px; border: 1px solid var(--verde-700); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-700); font: var(--text-botao); cursor: pointer">Salvar nova senha</button>
+          <button type="button" onClick="{{alternarVer}}" style="min-height: 44px; padding: 0 12px; border: 0; background: none; color: var(--tinta-600); font: 600 14px/20px var(--font-sans); cursor: pointer">{{rotuloVer}}</button>
+          <span style="flex: 1"></span>
+          <button type="button" onClick="{{fecharSenha}}" style="min-height: 44px; padding: 0 12px; border: 0; background: none; color: var(--tinta-600); font: 600 14px/20px var(--font-sans); text-decoration: underline; cursor: pointer">Cancelar</button>
+        </div>
+      </form>
+    </sc-if>
+  </section>
+
+  <!-- Avisos -->
+  <section id="avisos" class="mro-cartao" aria-labelledby="t-avisos" style="animation-delay: 240ms; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px">
+    <h2 id="t-avisos" style="margin: 0; font: var(--text-titulo-s)">Avisos por e-mail</h2>
+    <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Escolha o que vale um e-mail. O resto continua no sino do sistema.</p>
+    <ul style="list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column">
+      <sc-for list="{{avisos}}" as="v" hint-placeholder-count="4">
+        <li style="display: flex; align-items: center; gap: 16px; padding: 14px 0; border-top: 1px solid var(--borda)">
+          <span style="flex: 1"><span id="{{v.id}}" style="display: block; font-weight: 600">{{v.titulo}}</span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">{{v.desc}}</span></span>
+          <button type="button" role="switch" aria-checked="{{v.ligado}}" aria-labelledby="{{v.id}}" onClick="{{v.alternar}}" class="mro-chave" style="{{v.chaveStyle}}"><span style="{{v.bolaStyle}}"></span></button>
+        </li>
+      </sc-for>
+    </ul>
+  </section>
+
+  <!-- Privacidade -->
+  <section id="privacidade" class="mro-cartao" aria-labelledby="t-priv" style="animation-delay: 300ms; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 28px; display: flex; flex-direction: column; gap: 16px">
+    <div>
+      <h2 id="t-priv" style="margin: 0; font: var(--text-titulo-s)">Privacidade (LGPD)</h2>
+      <p style="margin: 2px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Os dados são seus. Você pode levar uma cópia ou pedir para apagar tudo.</p>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 16px 18px; border-radius: 12px; background: var(--creme-100)">
+      <span style="flex: 1 1 320px"><b style="display: block; font-weight: 600">Baixar uma cópia dos meus dados</b><span style="font: var(--text-corpo-s); color: var(--tinta-600)">Cadastro, materiais, movimentos, regras e histórico de decisões, em planilhas.</span></span>
+      <button type="button" style="min-height: 48px; padding: 0 18px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Pedir cópia</button>
+    </div>
+
+    <div style="margin-top: 16px; padding-top: 20px; border-top: 1px dashed var(--borda)">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px">
+        <span style="flex: 1 1 320px"><b style="display: block; font-weight: 600; color: var(--status-ruptura-texto)">Excluir conta e espaço</b><span style="font: var(--text-corpo-s); color: var(--tinta-600)">Apaga o espaço e tudo dentro dele. Não dá para desfazer.</span></span>
+        <sc-if value="{{exclusaoFechada}}" hint-placeholder-val="{{true}}">
+          <button type="button" onClick="{{abrirExclusao}}" style="min-height: 48px; padding: 0 18px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--status-ruptura-texto); font: var(--text-botao); cursor: pointer">Excluir conta</button>
+        </sc-if>
+      </div>
+      <sc-if value="{{exclusaoAberta}}" hint-placeholder-val="{{false}}">
+        <div role="alertdialog" aria-label="Confirmar exclusão" class="mro-abrir" style="margin-top: 14px; border-radius: 12px; background: var(--status-ruptura-bg); padding: 16px 18px; display: flex; flex-direction: column; gap: 12px">
+          <p style="margin: 0; font: var(--text-corpo-s); font-size: 14px; color: var(--tinta-900)">Isso apaga as <b style="font-weight: 600">812 posições</b>, os movimentos, as regras e os casos de planejamento do espaço "{{espacoExibido}}". Para confirmar, escreva <b style="font-weight: 600">EXCLUIR</b>.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center">
+            <input aria-label="Escreva EXCLUIR para confirmar" value="{{textoExcluir}}" onChange="{{mudarExcluir}}" autocomplete="off" style="flex: 0 1 220px; height: 48px; padding: 12px 14px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 600 15px/20px var(--font-sans); letter-spacing: 0.06em">
+            <button type="button" onClick="{{fecharExclusao}}" style="min-height: 48px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Manter minha conta</button>
+            <button type="button" disabled="{{naoPodeExcluir}}" style="min-height: 48px; padding: 0 16px; border: 0; border-radius: var(--raio-lg); background: var(--status-ruptura-texto); color: var(--branco); font: var(--text-botao); cursor: pointer">Excluir definitivamente</button>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- Barra de salvar (aparece só com alterações) -->
+  <sc-if value="{{temAlteracao}}" hint-placeholder-val="{{false}}">
+    <div role="region" aria-label="Alterações não salvas" class="mro-barra-salvar" style="position: sticky; bottom: 16px; z-index: 5; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; padding: 14px 16px 14px 22px; border-radius: 16px; background: var(--verde-900); color: var(--branco); box-shadow: var(--sombra-previa)">
+      <span style="flex: 1 1 260px; font: 500 15px/22px var(--font-sans)"><b style="color: var(--ouro-300); font-weight: 600">{{nAlteracoes}}</b> sem salvar{{resumoAlteracoes}}</span>
+      <button type="button" onClick="{{descartar}}" style="min-height: 48px; padding: 0 16px; border: 1px solid rgba(226,239,233,0.35); border-radius: var(--raio-lg); background: transparent; color: var(--branco); font: var(--text-botao); cursor: pointer">Descartar</button>
+      <button type="button" class="mro-btn" onClick="{{salvar}}" disabled="{{naoPodeSalvar}}" style="min-height: 52px; display: inline-flex; align-items: center; gap: 10px; padding: 0 22px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">
+        <sc-if value="{{salvando}}" hint-placeholder-val="{{false}}"><span class="mro-girar" aria-hidden="true" style="width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.35); border-top-color: #ffffff"></span></sc-if>
+        {{rotuloSalvar}}
+      </button>
+    </div>
+  </sc-if>
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    var base = { nome: 'Hugo dos Santos', email: 'hugo@empresa.com', espaco: 'Espaço de Hugo dos Santos', avisos: { fatura: true, importacao: true, validar: true, resumo: false } };
+    this.state = { salvo: base, f: JSON.parse(JSON.stringify(base)), senhaEmail: '', salvando: false, aviso: '', senhaAberta: false, s: { atual: '', nova: '', conf: '' }, ver: false, senhaData: '03/09/2026', exclusao: false, excluir: '' };
+  }
+  componentWillUnmount() { clearTimeout(this.to); }
+  renderVals() {
+    var self = this, st = this.state, f = st.f, sv = st.salvo;
+    var set = function (patch) { self.setState({ f: Object.assign({}, f, patch), aviso: '' }); };
+    var nomeOk = f.nome.trim().length >= 2;
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.email.trim());
+    var espacoOk = f.espaco.trim().length >= 2;
+    var emailMudou = f.email.trim().toLowerCase() !== sv.email;
+    var mud = [];
+    if (f.nome.trim() !== sv.nome) mud.push('nome');
+    if (emailMudou) mud.push('e-mail');
+    if (f.espaco.trim() !== sv.espaco) mud.push('nome do espaço');
+    var avisosMud = Object.keys(f.avisos).filter(function (k) { return f.avisos[k] !== sv.avisos[k]; }).length;
+    if (avisosMud) mud.push(avisosMud === 1 ? '1 aviso' : avisosMud + ' avisos');
+    var campo = function (ok, mudou) { return 'height: 52px; padding: 14px 16px; border-radius: 10px; font: 400 15px/24px var(--font-sans); background: #ffffff; border: ' + (!ok ? '2px solid #bd4646' : (mudou ? '2px solid #d9a441' : '1px solid #e3e2dc')); };
+    var nomeAtual = (nomeOk ? f.nome : sv.nome).trim().split(/\s+/);
+    var iniciais = ((nomeAtual[0] || '')[0] || '') + (nomeAtual.length > 1 ? (nomeAtual[nomeAtual.length - 1][0] || '') : '');
+
+    var defs = [
+      ['fatura', 'Fatura e pagamento', 'Fatura nova, pagamento confirmado e aviso antes do vencimento.'],
+      ['importacao', 'Importação concluída', 'Resumo da carga e as linhas que ficaram de fora.'],
+      ['validar', 'Casos para validar', 'Quando um caso de planejamento fica pronto para a sua validação.'],
+      ['resumo', 'Resumo semanal do estoque', 'Toda segunda: posições abaixo do PP, rupturas e dinheiro parado.']
+    ];
+    var avisos = defs.map(function (d) {
+      var on = !!f.avisos[d[0]];
+      return {
+        id: 'av-' + d[0], titulo: d[1], desc: d[2], ligado: on,
+        alternar: function () { var a = Object.assign({}, f.avisos); a[d[0]] = !on; set({ avisos: a }); },
+        chaveStyle: 'flex: none; position: relative; width: 52px; height: 30px; border-radius: 999px; border: 0; padding: 0; cursor: pointer; background: ' + (on ? '#1c684c' : '#a3aca8'),
+        bolaStyle: 'position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: #ffffff; transform: translateX(' + (on ? '22px' : '0') + ')'
+      };
+    });
+
+    var s = st.s;
+    var r1 = s.nova.length >= 8, r2 = s.nova !== '' && s.nova !== s.atual, r3 = s.nova !== '' && s.nova === s.conf;
+    var regra = function (ok, txt, vazio) {
+      return {
+        texto: txt, estado: ok ? ' (atendida)' : ' (pendente)',
+        classe: ok ? 'mro-pop' : '', icone: ok ? '✓' : '○',
+        iconeStyle: 'display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 8px; border-radius: 50%; font-size: 12px; ' + (ok ? 'background: #1c684c; color: #ffffff;' : 'background: #f5f4ee; color: #66746e;'),
+        estilo: 'display: inline-flex; align-items: center; color: ' + (ok ? '#1c684c' : (vazio ? '#66746e' : '#4b6257'))
+      };
+    };
+    var regras = [regra(r1, 'Pelo menos 8 caracteres', !s.nova), regra(r2, 'Diferente da senha atual', !s.nova), regra(r3, 'As duas novas são iguais', !s.conf)];
+    var setS = function (k) { return function (e) { var n = Object.assign({}, s); n[k] = e.target.value; self.setState({ s: n }); }; };
+
+    var podeSalvar = mud.length > 0 && nomeOk && emailOk && espacoOk && (!emailMudou || st.senhaEmail.length > 0) && !st.salvando;
+
+    return {
+      iniciais: iniciais.toUpperCase(),
+      nomeExibido: nomeOk ? f.nome.trim() : sv.nome, emailExibido: sv.email, espacoExibido: espacoOk ? f.espaco.trim() : sv.espaco,
+      temAviso: !!st.aviso, aviso: st.aviso,
+      nome: f.nome, email: f.email, espaco: f.espaco, emailOriginal: sv.email,
+      mudarNome: function (e) { set({ nome: e.target.value }); },
+      mudarEmail: function (e) { set({ email: e.target.value }); },
+      mudarEspaco: function (e) { set({ espaco: e.target.value }); },
+      erroNome: !nomeOk, erroEmail: !emailOk, erroEspaco: !espacoOk,
+      nomeStyle: campo(nomeOk, f.nome.trim() !== sv.nome), emailStyle: campo(emailOk, emailMudou), espacoStyle: campo(espacoOk, f.espaco.trim() !== sv.espaco),
+      emailMudou: emailMudou && emailOk, senhaEmail: st.senhaEmail,
+      mudarSenhaEmail: function (e) { self.setState({ senhaEmail: e.target.value }); },
+      avisos: avisos,
+      senhaResumo: 'Alterada pela última vez em ' + st.senhaData + '.',
+      senhaFechada: !st.senhaAberta, senhaAberta: st.senhaAberta,
+      abrirSenha: function () { self.setState({ senhaAberta: true, aviso: '' }); },
+      fecharSenha: function () { self.setState({ senhaAberta: false, s: { atual: '', nova: '', conf: '' } }); },
+      tipoSenha: st.ver ? 'text' : 'password', rotuloVer: st.ver ? 'Esconder senhas' : 'Mostrar senhas',
+      alternarVer: function () { self.setState({ ver: !st.ver }); },
+      sAtual: s.atual, sNova: s.nova, sConf: s.conf,
+      mudarAtual: setS('atual'), mudarNova: setS('nova'), mudarConf: setS('conf'),
+      regras: regras, senhaInvalida: !(s.atual && r1 && r2 && r3),
+      trocarSenha: function (e) {
+        if (e && e.preventDefault) e.preventDefault();
+        if (!(s.atual && r1 && r2 && r3)) return;
+        self.setState({ senhaAberta: false, s: { atual: '', nova: '', conf: '' }, senhaData: '25/11/2026', aviso: 'Senha alterada. Use a nova no próximo acesso.' });
+      },
+      exclusaoFechada: !st.exclusao, exclusaoAberta: st.exclusao,
+      abrirExclusao: function () { self.setState({ exclusao: true, excluir: '' }); },
+      fecharExclusao: function () { self.setState({ exclusao: false, excluir: '' }); },
+      textoExcluir: st.excluir, mudarExcluir: function (e) { self.setState({ excluir: e.target.value }); },
+      naoPodeExcluir: st.excluir.trim() !== 'EXCLUIR',
+      temAlteracao: mud.length > 0 || st.salvando,
+      nAlteracoes: mud.length === 1 ? '1 alteração' : mud.length + ' alterações',
+      resumoAlteracoes: mud.length ? ': ' + mud.join(', ') + '.' : '.',
+      naoPodeSalvar: !podeSalvar, salvando: st.salvando,
+      rotuloSalvar: st.salvando ? 'Salvando…' : (emailMudou && !st.senhaEmail ? 'Informe a senha para salvar' : 'Salvar alterações'),
+      descartar: function () { self.setState({ f: JSON.parse(JSON.stringify(sv)), senhaEmail: '' }); },
+      salvar: function () {
+        if (!podeSalvar) return;
+        self.setState({ salvando: true });
+        self.to = setTimeout(function () {
+          var novo = { nome: f.nome.trim(), email: sv.email, espaco: f.espaco.trim(), avisos: Object.assign({}, f.avisos) };
+          var msg = 'Dados salvos.' + (emailMudou ? ' Enviamos o link de confirmação para ' + f.email.trim() + '; o e-mail de acesso muda depois do clique.' : '');
+          self.setState({ salvando: false, salvo: novo, f: JSON.parse(JSON.stringify(novo)), senhaEmail: '', aviso: msg });
+        }, 900);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

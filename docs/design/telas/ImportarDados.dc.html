@@ -1,0 +1,527 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Agro MRO Intelligence · Importar dados mestres</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/agromro/tokens.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+*{box-sizing:border-box}
+a{color:#1c684c}a:hover{color:#174e3e}
+input::placeholder{color:#a3aca8}
+input:focus,select:focus{outline:none;border-color:#1c684c !important;box-shadow:0 0 0 3px #e2efe9}
+a:focus-visible,button:focus-visible{outline:2px solid #1c684c;outline-offset:2px;box-shadow:0 0 0 5px #e2efe9}
+button:disabled{opacity:.45;cursor:not-allowed !important}
+</style>
+</helmet>
+<div style="display: flex; flex-wrap: wrap; min-height: 1800px; font-family: var(--font-sans); color: var(--tinta-900); font-size: 15px; line-height: 24px; background: var(--creme-100)">
+
+<nav aria-label="Menu do sistema" style="flex: 0 1 248px; min-width: 248px; background: var(--verde-900); color: var(--verde-100); padding: 28px 16px 24px; display: flex; flex-direction: column">
+  <a href="Main.dc.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--branco); padding: 0 8px">
+    <span style="width: 40px; height: 40px; border-radius: 11px; background: var(--ouro-500); display: grid; place-items: center">
+      <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0b2a20" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+    </span>
+    <span style="display: flex; flex-direction: column; line-height: 1">
+      <span style="font-weight: 600; font-size: 17px">Agro MRO</span>
+      <span style="font-size: 9px; letter-spacing: 0.24em; color: var(--ouro-300); margin-top: 4px; font-weight: 600">INTELLIGENCE</span>
+    </span>
+  </a>
+
+  <p style="margin: 36px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">ANÁLISE</p>
+  <a href="VisaoGeral.dc.html" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>Visão geral</a>
+  <a href="#materiais" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96 12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>Materiais</a>
+  <a href="#planejamento" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg>Planejamento</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">DADOS</p>
+  <a href="ImportarDados.dc.html" aria-current="page" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; background: var(--verde-700); color: var(--branco); font-weight: 600; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Importar dados</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">REGRAS DO CÁLCULO</p>
+  <a href="#regras" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>Regras e letras</a>
+  <a href="#tipos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 16-4 4-4-4"/><path d="M17 20V4"/><path d="m3 8 4-4 4 4"/><path d="M7 4v16"/></svg>Tipos de movimento</a>
+  <a href="#nivel" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>Nível de serviço</a>
+  <a href="#tmer" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M8 17v-4"/><path d="M13 17V9"/><path d="M18 17v-6"/></svg>Matriz TMER</a>
+  <a href="#casos" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Casos de controle</a>
+
+  <p style="margin: 24px 8px 8px; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--verde-300)">APRENDER E AJUDA</p>
+  <a href="#academia" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Academia</a>
+  <a href="#suporte" style="display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Suporte</a>
+
+  <div style="flex: 1; min-height: 40px"></div>
+  <div style="background: var(--verde-800); border: 1px solid rgba(142,179,164,0.3); border-radius: 14px; padding: 16px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-300)">PLANO INTELLIGENCE</p>
+    <p style="margin: 8px 0 0; font-weight: 600; color: var(--branco); font-variant-numeric: tabular-nums">812 de 1.000 itens</p>
+    <div role="progressbar" aria-label="Itens usados do plano" aria-valuenow="812" aria-valuemin="0" aria-valuemax="1000" style="margin-top: 10px; height: 6px; border-radius: 3px; background: rgba(226,239,233,0.2)"><div style="width: 81.2%; height: 6px; border-radius: 3px; background: var(--ouro-500)"></div></div>
+    <p style="margin: 10px 0 0; font-size: 12px; line-height: 16px; color: var(--verde-100)">Renova em 03/12/2026</p>
+  </div>
+  <a href="Login.dc.html" style="margin-top: 12px; display: flex; align-items: center; gap: 12px; height: 44px; padding: 0 12px; border-radius: 10px; color: var(--verde-100); font-weight: 500; text-decoration: none">
+    <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/></svg>Sair</a>
+</nav>
+
+<!-- ================= CONTEÚDO ================= -->
+<div style="flex: 999 1 560px; min-width: 0; padding: 32px 40px 56px">
+<div style="max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 28px">
+
+  <!-- Barra superior -->
+  <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+    <div style="position: relative; z-index: 20; flex: 1 1 320px; max-width: 460px">
+      <dc-import name="BuscaGlobal" hint-size="100%,48px"></dc-import>
+    </div>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Todos os locais (3)</button>
+    <button type="button" style="height: 48px; display: inline-flex; align-items: center; gap: 8px; padding: 0 16px; border: 1px solid var(--borda); border-radius: var(--raio-md); background: var(--branco); font: 500 14px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer; font-variant-numeric: tabular-nums">
+      <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg>01/07 a 11/11/2026</button>
+    <span style="flex: 1"></span>
+    <span style="display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 13px/18px var(--font-sans)"><span aria-hidden="true" style="width: 7px; height: 7px; border-radius: 50%; background: var(--verde-700)"></span>Atualizado há 2 dias</span>
+    <button type="button" aria-label="Notificações" style="width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid var(--borda); border-radius: 12px; background: var(--branco); color: var(--tinta-900); cursor: pointer">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>
+    </button>
+    <a href="Conta.dc.html" aria-label="Minha conta (Hugo dos Santos)" style="width: 44px; height: 44px; border-radius: 50%; background: var(--ouro-100); color: var(--ouro-700); font: 600 14px/20px var(--font-sans); display: grid; place-items: center; text-decoration: none">HS</a>
+  </div>
+
+  <!-- Cabeçalho -->
+  <header style="display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px 24px">
+    <div style="flex: 1 1 420px">
+      <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">DADOS</p>
+      <h1 style="margin: 8px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 44px; letter-spacing: -0.025em">Importar dados</h1>
+      <p style="margin: 4px 0 0; font: var(--text-corpo-m); color: var(--tinta-500)">Envie a planilha do jeito que o ERP exporta. Nada é gravado antes da sua confirmação.</p>
+    </div>
+    <a href="#modelo" style="min-height: 52px; display: inline-flex; align-items: center; gap: 8px; padding: 0 24px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); text-decoration: none">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>Baixar planilha modelo</a>
+  </header>
+
+  <!-- Frase de conclusão -->
+  <section aria-label="Conclusão" style="background: var(--verde-900); color: var(--branco); border-radius: var(--raio-xl); padding: 22px 28px; display: flex; align-items: center; gap: 20px">
+    <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#f0c56e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
+    <p style="margin: 0; font-size: 17px; line-height: 27px">Comece pelos <b style="color: var(--ouro-300); font-weight: 600">dados mestres</b>: eles dizem quais materiais existem em cada local. Sem eles, movimentos e pedidos não têm onde se encaixar. Leva <b style="color: var(--ouro-300); font-weight: 600">cerca de 2 minutos</b>.</p>
+  </section>
+
+  <!-- Cartão da importação -->
+  <section aria-labelledby="t-carga" style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl)">
+    <h2 id="t-carga" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Tipo de carga</h2>
+    <!-- Abas: tipo de carga -->
+    <div role="tablist" aria-label="Tipo de carga" style="display: flex; flex-wrap: wrap; gap: 4px; padding: 0 16px; border-bottom: 1px solid var(--borda)">
+      <button type="button" role="tab" aria-selected="true" style="min-height: 60px; display: inline-flex; align-items: center; gap: 10px; padding: 0 16px; background: none; border: 0; border-bottom: 3px solid var(--verde-700); margin-bottom: -1px; font: 600 15px/20px var(--font-sans); color: var(--tinta-900); cursor: pointer">
+        <span style="width: 24px; height: 24px; border-radius: 50%; background: var(--verde-700); color: var(--branco); display: grid; place-items: center; font-size: 12px">1</span>Dados mestres
+        <span style="background: var(--ouro-100); color: var(--ouro-700); border-radius: var(--raio-pill); padding: 2px 8px; font: 600 11px/16px var(--font-sans)">Comece por aqui</span>
+      </button>
+      <button type="button" role="tab" aria-selected="false" style="min-height: 60px; display: inline-flex; align-items: center; gap: 10px; padding: 0 16px; background: none; border: 0; border-bottom: 3px solid transparent; font: 500 15px/20px var(--font-sans); color: var(--tinta-600); cursor: pointer">
+        <span style="width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--borda); display: grid; place-items: center; font-size: 12px">2</span>Movimentos
+      </button>
+      <button type="button" role="tab" aria-selected="false" style="min-height: 60px; display: inline-flex; align-items: center; gap: 10px; padding: 0 16px; background: none; border: 0; border-bottom: 3px solid transparent; font: 500 15px/20px var(--font-sans); color: var(--tinta-600); cursor: pointer">
+        <span style="width: 24px; height: 24px; border-radius: 50%; border: 1.5px solid var(--borda); display: grid; place-items: center; font-size: 12px">3</span>Pedidos em aberto
+      </button>
+    </div>
+
+    <div style="padding: 28px 32px 32px">
+      <!-- Stepper: passos ligados por linha -->
+      <ol aria-label="Etapas da importação" style="list-style: none; margin: 0; padding: 0; display: flex; align-items: center">
+        <sc-for list="{{passos}}" as="p" hint-placeholder-count="4">
+          <li style="{{p.liStyle}}" aria-current="{{p.ariaCurrent}}">
+            <span style="display: flex; align-items: center; gap: 10px; flex: none">
+              <span style="{{p.circleStyle}}">
+                <sc-if value="{{p.feito}}" hint-placeholder-val="{{false}}">
+                  <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </sc-if>
+                <sc-if value="{{p.mostraNumero}}" hint-placeholder-val="{{true}}">{{p.n}}</sc-if>
+              </span>
+              <span style="{{p.labelStyle}}">{{p.label}}</span>
+            </span>
+            <sc-if value="{{p.temLinha}}" hint-placeholder-val="{{true}}">
+              <span aria-hidden="true" style="{{p.lineStyle}}"></span>
+            </sc-if>
+          </li>
+        </sc-for>
+      </ol>
+
+      <!-- ============ PASSO 1: ARQUIVO ============ -->
+      <sc-if value="{{noPasso1}}" hint-placeholder-val="{{true}}">
+        <div style="margin-top: 32px; display: flex; flex-wrap: wrap; gap: 28px">
+          <div style="flex: 2 1 520px; min-width: 0; display: flex; flex-direction: column; gap: 24px">
+            <fieldset style="margin: 0; padding: 0; border: 0">
+              <legend style="padding: 0; font: 600 13px/18px var(--font-sans)">De qual ERP vem a planilha?</legend>
+              <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px">
+                <sc-for list="{{erps}}" as="e" hint-placeholder-count="4">
+                  <button type="button" aria-pressed="{{e.ativo}}" onClick="{{e.escolher}}" style="{{e.estilo}}">
+                    <span style="font-weight: 600; font-size: 15px">{{e.nome}}</span>
+                    <span style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">{{e.sub}}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </fieldset>
+
+            <sc-if value="{{semArquivo}}" hint-placeholder-val="{{true}}">
+              <button type="button" onClick="{{escolherArquivo}}" style="width: 100%; min-height: 240px; border: 2px dashed var(--verde-300); border-radius: var(--raio-xl); background: var(--verde-50); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 32px; cursor: pointer; font-family: var(--font-sans); color: var(--tinta-900)">
+                <span style="width: 56px; height: 56px; border-radius: 14px; background: var(--branco); border: 1px solid var(--borda); display: grid; place-items: center">
+                  <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></svg>
+                </span>
+                <span style="font: var(--text-titulo-s)">Arraste a planilha de dados mestres aqui</span>
+                <span style="font: var(--text-corpo-s); color: var(--tinta-500)">ou <span style="color: var(--verde-700); font-weight: 600; text-decoration: underline">escolha o arquivo no computador</span></span>
+                <span style="margin-top: 6px; font-size: 12px; color: var(--tinta-500)">.xlsx, .xls ou .csv · até 15 MB · vírgula ou ponto, tanto faz</span>
+              </button>
+            </sc-if>
+            <sc-if value="{{temArquivo}}" hint-placeholder-val="{{false}}">
+              <div style="border: 1px solid var(--verde-700); border-radius: var(--raio-xl); background: var(--verde-50); padding: 20px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+                <span style="width: 48px; height: 48px; border-radius: 12px; background: var(--branco); border: 1px solid var(--borda); display: grid; place-items: center">
+                  <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+                </span>
+                <span style="flex: 1; min-width: 200px">
+                  <span style="display: block; font-weight: 600">materiais_sap_nov.xlsx</span>
+                  <span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500); font-variant-numeric: tabular-nums">2,1 MB · 818 linhas · 1 aba (MARA_MARD)</span>
+                </span>
+                <span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 12px/14px var(--font-sans)">✓ Arquivo lido</span>
+                <button type="button" onClick="{{trocarArquivo}}" style="min-height: 44px; padding: 0 14px; background: none; border: 0; color: var(--tinta-600); font: 600 14px/20px var(--font-sans); text-decoration: underline; cursor: pointer">Trocar arquivo</button>
+              </div>
+            </sc-if>
+
+            <div style="display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px">
+              <button type="button" onClick="{{irPasso2}}" disabled="{{semArquivo}}" style="min-height: 56px; padding: 0 28px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">Continuar para as colunas</button>
+            </div>
+          </div>
+
+          <aside aria-labelledby="t-colunas" style="flex: 1 1 300px; min-width: 0; background: var(--creme-100); border-radius: var(--raio-xl); padding: 24px">
+            <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">O QUE A PLANILHA PRECISA TER</p>
+            <h3 id="t-colunas" style="margin: 8px 0 0; font: var(--text-titulo-s)">Uma linha por material em cada local</h3>
+            <ul style="list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 20px">
+              <li style="display: flex; gap: 10px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"/></svg>Código do material</li>
+              <li style="display: flex; gap: 10px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"/></svg>Descrição</li>
+              <li style="display: flex; gap: 10px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"/></svg>Local (centro e depósito)</li>
+              <li style="display: flex; gap: 10px"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none; margin-top: 2px"><path d="M20 6 9 17l-5-5"/></svg>Preço unitário</li>
+              <li style="display: flex; gap: 10px; color: var(--tinta-500)"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#66746e" stroke-width="2" stroke-linecap="round" style="flex: none; margin-top: 2px"><path d="M5 12h14"/></svg>Opcional: grupo de material e criticidade</li>
+            </ul>
+            <p style="margin: 16px 0 0; font: var(--text-corpo-s); color: var(--tinta-600)">Não precisa renomear nada. A gente reconhece as colunas do SAP, TOTVS e Senior e você confere no próximo passo.</p>
+          </aside>
+        </div>
+      </sc-if>
+
+      <!-- ============ PASSO 2: COLUNAS ============ -->
+      <sc-if value="{{noPasso2}}" hint-placeholder-val="{{false}}">
+        <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 20px">
+          <div style="display: flex; align-items: center; gap: 12px; background: var(--verde-50); border-radius: 12px; padding: 14px 18px; font: var(--text-corpo-s); font-size: 14px">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex: none"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+            <span><b style="font-weight: 600">Lembramos do seu último mapeamento</b> (SAP, carga de 04/11/2026). 5 de 6 campos já estão ligados; confira os que pedem atenção.</span>
+          </div>
+          <div style="overflow-x: auto">
+            <table style="width: 100%; min-width: 760px; border-collapse: collapse">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--borda); text-align: left">
+                  <th scope="col" style="padding: 10px 12px 10px 0; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">CAMPO DO SISTEMA</th>
+                  <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">COLUNA NO SEU ARQUIVO</th>
+                  <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">EXEMPLO DA 1ª LINHA</th>
+                  <th scope="col" style="padding: 10px 0 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">CONFIANÇA</th>
+                </tr>
+              </thead>
+              <tbody>
+                <sc-for list="{{mapa}}" as="m" hint-placeholder-count="6">
+                  <tr style="border-bottom: 1px solid var(--borda)">
+                    <td style="padding: 14px 12px 14px 0"><div style="font-weight: 600">{{m.campo}}</div><div style="font-size: 12px; line-height: 16px; color: var(--tinta-500)">{{m.req}}</div></td>
+                    <td style="padding: 14px 12px">
+                      <select aria-label="{{m.rotulo}}" style="{{m.selectStyle}}">
+                        <option>{{m.coluna}}</option>
+                        <option>Não usar</option>
+                      </select>
+                    </td>
+                    <td style="padding: 14px 12px; color: var(--tinta-600); font-variant-numeric: tabular-nums">{{m.exemplo}}</td>
+                    <td style="padding: 14px 0 14px 12px"><span style="{{m.seloStyle}}">{{m.selo}}</span></td>
+                  </tr>
+                </sc-for>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+            <button type="button" onClick="{{irPasso1}}" style="min-height: 52px; padding: 0 22px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Voltar</button>
+            <span style="flex: 1"></span>
+            <label style="display: flex; align-items: center; gap: 10px; min-height: 44px; font-size: 14px; color: var(--tinta-600); cursor: pointer"><input type="checkbox" checked style="width: 20px; height: 20px; accent-color: #1c684c; margin: 0">Lembrar este mapeamento</label>
+            <button type="button" onClick="{{irPasso3}}" style="min-height: 56px; padding: 0 28px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">Ver prévia</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ PASSO 3: PRÉVIA ============ -->
+      <sc-if value="{{noPasso3}}" hint-placeholder-val="{{false}}">
+        <div style="margin-top: 32px; display: flex; flex-direction: column; gap: 24px">
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; font-variant-numeric: tabular-nums">
+            <div style="border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 18px 20px">
+              <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">LINHAS LIDAS</p>
+              <p style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 34px">818</p>
+            </div>
+            <div style="border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 18px 20px">
+              <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--tinta-500)">PRONTAS PARA ENTRAR</p>
+              <p style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 34px; color: var(--verde-700)">812</p>
+            </div>
+            <div style="border: 1px solid var(--status-ruptura); border-radius: var(--raio-xl); padding: 18px 20px; background: var(--status-ruptura-bg)">
+              <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--status-ruptura-texto)">COM ERRO</p>
+              <p style="margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 28px; line-height: 34px; color: var(--status-ruptura)">6</p>
+            </div>
+          </div>
+
+          <div>
+            <h3 style="margin: 0; font: var(--text-titulo-s)">6 linhas pedem correção</h3>
+            <p style="margin: 4px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Corrija aqui mesmo ou deixe como está: linhas com erro não entram, e o resto é importado normalmente.</p>
+            <div style="margin-top: 12px; overflow-x: auto">
+              <table style="width: 100%; min-width: 760px; border-collapse: collapse">
+                <thead>
+                  <tr style="border-bottom: 1px solid var(--borda); text-align: left">
+                    <th scope="col" style="padding: 10px 12px 10px 0; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500); width: 80px">LINHA</th>
+                    <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500); width: 170px">COLUNA</th>
+                    <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500); width: 220px">VALOR (EDITÁVEL)</th>
+                    <th scope="col" style="padding: 10px 0 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">O QUE FAZER</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <sc-for list="{{erros}}" as="x" hint-placeholder-count="6">
+                    <tr style="border-bottom: 1px solid var(--borda)">
+                      <td style="padding: 10px 12px 10px 0; font-weight: 600; font-variant-numeric: tabular-nums">{{x.linha}}</td>
+                      <td style="padding: 10px 12px; color: var(--tinta-600)">{{x.coluna}}</td>
+                      <td style="padding: 10px 12px"><input type="text" aria-label="{{x.rotulo}}" defaultValue="{{x.valor}}" placeholder="(vazio)" style="width: 100%; height: 44px; padding: 10px 12px; border: 2px solid var(--status-ruptura); border-radius: var(--raio-md); background: var(--branco); font: var(--text-corpo-m); color: var(--tinta-900)"></td>
+                      <td style="padding: 10px 0 10px 12px; font: var(--text-corpo-s); color: var(--status-ruptura-texto)">{{x.motivo}}</td>
+                    </tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <fieldset style="margin: 0; padding: 0; border: 0">
+            <legend style="padding: 0; font: 600 13px/18px var(--font-sans)">O que fazer com o que já está no sistema?</legend>
+            <div style="margin-top: 10px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px">
+              <sc-for list="{{modos}}" as="o" hint-placeholder-count="2">
+                <label style="{{o.estilo}}">
+                  <input type="radio" name="modo" checked="{{o.ativo}}" onChange="{{o.escolher}}" style="width: 20px; height: 20px; accent-color: #1c684c; margin: 2px 0 0; flex: none">
+                  <span><span style="display: block; font-weight: 600">{{o.titulo}}</span><span style="display: block; font: var(--text-corpo-s); color: var(--tinta-500)">{{o.desc}}</span></span>
+                </label>
+              </sc-for>
+            </div>
+          </fieldset>
+
+          <sc-if value="{{processando}}" hint-placeholder-val="{{false}}">
+            <div role="status" aria-live="polite" style="border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 20px 24px; background: var(--creme-100)">
+              <div style="display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums">
+                <span style="font-weight: 600">Gravando {{prog}} de 812 posições…</span>
+                <span style="color: var(--tinta-500)">{{pct}}%</span>
+              </div>
+              <div style="margin-top: 10px; height: 8px; border-radius: 4px; background: var(--borda)"><div style="{{barraStyle}}"></div></div>
+              <p style="margin: 10px 0 0; font: var(--text-corpo-s); color: var(--tinta-500)">Pode continuar usando o sistema. Se algo falhar, nada é gravado.</p>
+            </div>
+          </sc-if>
+
+          <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+            <button type="button" onClick="{{irPasso2}}" disabled="{{processando}}" style="min-height: 52px; padding: 0 22px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); cursor: pointer">Voltar</button>
+            <span style="flex: 1; min-width: 200px; text-align: right; font: var(--text-corpo-s); color: var(--tinta-500)">Tudo ou nada: se algo falhar, nada é gravado.</span>
+            <button type="button" onClick="{{confirmar}}" disabled="{{processando}}" style="min-height: 56px; padding: 0 28px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">Confirmar importação de 812 linhas</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ============ PASSO 4: CONCLUÍDO (pico-fim) ============ -->
+      <sc-if value="{{noPasso4}}" hint-placeholder-val="{{false}}">
+        <div style="margin-top: 32px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 16px 0 8px">
+          <span style="width: 64px; height: 64px; border-radius: 50%; background: var(--verde-100); display: grid; place-items: center">
+            <svg aria-hidden="true" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1c684c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </span>
+          <p style="margin: 8px 0 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">DADOS MESTRES IMPORTADOS</p>
+          <h3 style="margin: 0; font-family: var(--font-display); font-weight: 800; font-size: 44px; line-height: 52px; letter-spacing: -0.03em; font-variant-numeric: tabular-nums">812 posições em 3 locais</h3>
+          <div style="margin-top: 12px; width: 100%; max-width: 760px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; font-variant-numeric: tabular-nums; text-align: left">
+            <div style="background: var(--creme-100); border-radius: 14px; padding: 16px 18px"><div style="font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 32px">R$ 2,4 mi</div><div style="font: var(--text-corpo-s); color: var(--tinta-500)">em estoque, com preço</div></div>
+            <div style="background: var(--creme-100); border-radius: 14px; padding: 16px 18px"><div style="font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 32px">3 locais</div><div style="font: var(--text-corpo-s); color: var(--tinta-500)">Almox. central, Oficina campo, Posto combustível</div></div>
+            <div style="background: var(--status-alerta-bg); border-radius: 14px; padding: 16px 18px"><div style="font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 32px; color: var(--status-alerta)">12 sem preço</div><div style="font: var(--text-corpo-s); color: var(--status-alerta-texto)">ficam como NC até você informar</div></div>
+          </div>
+          <p style="margin: 12px 0 0; max-width: 560px; font: var(--text-corpo-m); color: var(--tinta-600)">Próximo passo: importe os <b style="font-weight: 600">movimentos</b> para descobrir quanto desse valor está parado e o que está abaixo do ponto de pedido.</p>
+          <div style="margin-top: 8px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px">
+            <a href="VisaoGeral.dc.html" style="min-height: 52px; display: inline-flex; align-items: center; padding: 0 24px; border: 1px solid var(--borda); border-radius: var(--raio-lg); background: var(--branco); color: var(--verde-800); font: var(--text-botao); text-decoration: none">Ver minha Visão geral</a>
+            <button type="button" onClick="{{recomecar}}" style="min-height: 56px; padding: 0 28px; border: 0; border-radius: var(--raio-lg); background: var(--verde-700); color: var(--branco); font: var(--text-botao); cursor: pointer">Importar movimentos</button>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <!-- Histórico das cargas -->
+  <section aria-labelledby="t-hist" style="background: var(--branco); border: 1px solid var(--borda); border-radius: var(--raio-xl); padding: 24px">
+    <p style="margin: 0; font: var(--text-rotulo); letter-spacing: 0.1em; color: var(--ouro-700)">HISTÓRICO</p>
+    <h2 id="t-hist" style="margin: 6px 0 0; font: var(--text-titulo-m); letter-spacing: -0.015em; font-size: 24px">Cargas anteriores</h2>
+    <div style="margin-top: 12px; overflow-x: auto">
+      <table style="width: 100%; min-width: 760px; border-collapse: collapse; font-variant-numeric: tabular-nums">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--borda); text-align: left">
+            <th scope="col" style="padding: 10px 12px 10px 0; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">DATA</th>
+            <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">TIPO</th>
+            <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">ARQUIVO</th>
+            <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500); text-align: right">LINHAS</th>
+            <th scope="col" style="padding: 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">RESULTADO</th>
+            <th scope="col" style="padding: 10px 0 10px 12px; font: 600 10px/14px var(--font-sans); letter-spacing: 0.1em; color: var(--tinta-500)">POR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom: 1px solid var(--borda)">
+            <td style="padding: 14px 12px 14px 0">04/11/2026 · 14:12</td>
+            <td style="padding: 14px 12px">Movimentos</td>
+            <td style="padding: 14px 12px; color: var(--tinta-600)">movimentos_sap_jul-out.xlsx</td>
+            <td style="padding: 14px 12px; text-align: right">4.312</td>
+            <td style="padding: 14px 12px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 12px/14px var(--font-sans)">✓ Concluída</span></td>
+            <td style="padding: 14px 0 14px 12px; color: var(--tinta-600)">Hugo S.</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--borda)">
+            <td style="padding: 14px 12px 14px 0">04/11/2026 · 13:58</td>
+            <td style="padding: 14px 12px">Dados mestres</td>
+            <td style="padding: 14px 12px; color: var(--tinta-600)">materiais_sap_out.xlsx</td>
+            <td style="padding: 14px 12px; text-align: right">806</td>
+            <td style="padding: 14px 12px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--verde-100); color: var(--verde-700); font: 600 12px/14px var(--font-sans)">✓ Concluída</span></td>
+            <td style="padding: 14px 0 14px 12px; color: var(--tinta-600)">Hugo S.</td>
+          </tr>
+          <tr>
+            <td style="padding: 14px 12px 14px 0">04/11/2026 · 13:41</td>
+            <td style="padding: 14px 12px">Dados mestres</td>
+            <td style="padding: 14px 12px; color: var(--tinta-600)">materiais_sap_out.xlsx</td>
+            <td style="padding: 14px 12px; text-align: right">806</td>
+            <td style="padding: 14px 12px"><span style="display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px 5px 10px; border-radius: var(--raio-pill); background: var(--status-ruptura-bg); color: var(--status-ruptura-texto); font: 600 12px/14px var(--font-sans)">● Cancelada · nada gravado</span></td>
+            <td style="padding: 14px 0 14px 12px; color: var(--tinta-600)">Hugo S.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"passoInicial":{"editor":"enum","options":["1","2","3","4"],"default":"1","section":"Estado"},"$preview":{"width":1440,"height":1800}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { passo: null, erp: 'SAP', arquivo: false, modo: 'acrescentar', processando: false, prog: 0 };
+  }
+  componentWillUnmount() { if (this.t) clearInterval(this.t); }
+  componentDidUpdate(prev) {
+    if (prev.passoInicial !== this.props.passoInicial) this.setState({ passo: null, processando: false });
+  }
+  renderVals() {
+    var self = this;
+    var s = this.state;
+    var passo = s.passo || parseInt(this.props.passoInicial || '1', 10);
+    var arquivo = s.arquivo || passo > 1;
+    var ir = function (n) { return function () { self.setState({ passo: n }); }; };
+
+    var nomes = ['Arquivo', 'Colunas', 'Prévia', 'Concluído'];
+    var passos = nomes.map(function (label, i) {
+      var n = i + 1, feito = n < passo || passo === 4, atual = n === passo && passo !== 4;
+      var circ = 'width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: 600 14px/20px var(--font-sans); ';
+      if (feito) circ += 'background: #1c684c; color: #ffffff;';
+      else if (atual) circ += 'background: #e2efe9; color: #1c684c; border: 2px solid #1c684c;';
+      else circ += 'background: #ffffff; color: #66746e; border: 1.5px solid #e3e2dc;';
+      return {
+        n: n, label: label, feito: feito, mostraNumero: !feito, temLinha: n < 4,
+        ariaCurrent: atual ? 'step' : 'false',
+        liStyle: 'display: flex; align-items: center; gap: 12px; ' + (n < 4 ? 'flex: 1 1 0; min-width: 0;' : 'flex: none;'),
+        circleStyle: circ,
+        labelStyle: 'font: ' + (atual || feito ? '600' : '500') + ' 14px/20px var(--font-sans); color: ' + (atual || feito ? '#20322c' : '#66746e') + '; white-space: nowrap',
+        lineStyle: 'flex: 1; height: 2px; min-width: 24px; margin-right: 12px; border-radius: 1px; background: ' + (n < passo || passo === 4 ? '#1c684c' : '#e3e2dc')
+      };
+    });
+
+    var erps = [
+      { nome: 'SAP', sub: 'ECC e S/4HANA' },
+      { nome: 'TOTVS', sub: 'Protheus, Datasul, RM' },
+      { nome: 'Senior', sub: 'Gestão Empresarial' },
+      { nome: 'Outro', sub: 'Excel ou CSV' }
+    ].map(function (e) {
+      var ativo = s.erp === e.nome;
+      return {
+        nome: e.nome, sub: e.sub, ativo: ativo,
+        escolher: function () { self.setState({ erp: e.nome }); },
+        estilo: 'min-height: 72px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 2px; padding: 12px 16px; border-radius: 12px; cursor: pointer; text-align: left; font-family: var(--font-sans); color: #20322c; background: ' + (ativo ? '#f0f6f2' : '#ffffff') + '; border: ' + (ativo ? '2px solid #1c684c' : '1px solid #e3e2dc')
+      };
+    });
+
+    var conf = {
+      alta: { t: '✓ Alta', st: 'background: #e2efe9; color: #1c684c;' },
+      media: { t: '▲ Confira', st: 'background: #fbeedc; color: #94560f;' },
+      nenhuma: { t: '— Sem coluna', st: 'background: #f5f4ee; color: #4b6257;' }
+    };
+    var mapa = [
+      { campo: 'Código do material', req: 'Obrigatório', coluna: 'MATNR', exemplo: '0000 0012 3456', c: 'alta' },
+      { campo: 'Descrição', req: 'Obrigatório', coluna: 'MAKTX', exemplo: 'Rolamento 6205 2RS', c: 'alta' },
+      { campo: 'Local', req: 'Obrigatório · centro + depósito', coluna: 'WERKS + LGORT', exemplo: '1000 / 0001 → Almox. central', c: 'alta' },
+      { campo: 'Preço unitário', req: 'Obrigatório', coluna: 'VERPR', exemplo: 'R$ 48,90', c: 'alta' },
+      { campo: 'Grupo de material', req: 'Opcional', coluna: 'MATKL', exemplo: 'ROLAM', c: 'media' },
+      { campo: 'Criticidade', req: 'Opcional', coluna: 'Nenhuma coluna encontrada', exemplo: 'NC', c: 'nenhuma' }
+    ].map(function (m) {
+      var k = conf[m.c];
+      return {
+        campo: m.campo, req: m.req, coluna: m.coluna, exemplo: m.exemplo,
+        rotulo: 'Coluna para ' + m.campo,
+        selo: k.t,
+        seloStyle: 'display: inline-flex; align-items: center; padding: 5px 12px; border-radius: 999px; font: 600 12px/14px var(--font-sans); white-space: nowrap; ' + k.st,
+        selectStyle: 'width: 100%; max-width: 260px; height: 44px; padding: 0 12px; border-radius: 10px; background: #ffffff; font: 400 15px/20px var(--font-sans); color: #20322c; border: ' + (m.c === 'media' ? '2px solid #c9771f' : '1px solid #e3e2dc')
+      };
+    });
+
+    var erros = [
+      { linha: '37', coluna: 'Preço unitário', valor: '12,50,00', motivo: 'Número com duas vírgulas. Use 12,50 ou 1250,00.' },
+      { linha: '214', coluna: 'Código do material', valor: '', motivo: 'Código vazio. Toda posição precisa de um código.' },
+      { linha: '215', coluna: 'Local', valor: 'ALM-99', motivo: 'Local que não existe. Use um dos 3 locais ou cadastre o novo.' },
+      { linha: '402', coluna: 'Código do material', valor: '0000 0045 1180', motivo: 'Repetido no mesmo local (já está na linha 118). Apague um dos dois.' },
+      { linha: '633', coluna: 'Preço unitário', valor: '-45,00', motivo: 'Preço negativo. Confira o valor no ERP.' },
+      { linha: '790', coluna: 'Local', valor: '', motivo: 'Local vazio. Informe onde o material fica.' }
+    ].map(function (x) { x.rotulo = 'Linha ' + x.linha + ', ' + x.coluna; return x; });
+
+    var modos = [
+      { id: 'acrescentar', titulo: 'Acrescentar e atualizar', desc: 'Novas posições entram; as que já existem recebem os dados do arquivo. Nada é apagado.' },
+      { id: 'substituir', titulo: 'Substituir tudo', desc: 'As 806 posições atuais saem e ficam só as do arquivo. Simulações ligadas a posições removidas são arquivadas.' }
+    ].map(function (o) {
+      var ativo = s.modo === o.id;
+      return {
+        titulo: o.titulo, desc: o.desc, ativo: ativo,
+        escolher: function () { self.setState({ modo: o.id }); },
+        estilo: 'display: flex; gap: 12px; padding: 16px 18px; border-radius: 12px; cursor: pointer; background: ' + (ativo ? '#f0f6f2' : '#ffffff') + '; border: ' + (ativo ? '2px solid #1c684c' : '1px solid #e3e2dc')
+      };
+    });
+
+    var pct = Math.round(s.prog / 812 * 100);
+    return {
+      passos: passos, erps: erps, mapa: mapa, erros: erros, modos: modos,
+      noPasso1: passo === 1, noPasso2: passo === 2, noPasso3: passo === 3, noPasso4: passo === 4,
+      temArquivo: arquivo, semArquivo: !arquivo,
+      processando: s.processando, prog: s.prog.toLocaleString('pt-BR'), pct: pct,
+      barraStyle: 'height: 8px; border-radius: 4px; background: #1c684c; transition: width .25s; width: ' + pct + '%',
+      escolherArquivo: function () { self.setState({ arquivo: true }); },
+      trocarArquivo: function () { self.setState({ arquivo: false, passo: 1 }); },
+      irPasso1: ir(1), irPasso2: ir(2), irPasso3: ir(3),
+      recomecar: function () { self.setState({ passo: 1, arquivo: false, prog: 0 }); },
+      confirmar: function () {
+        if (self.t) clearInterval(self.t);
+        self.setState({ processando: true, prog: 0 });
+        self.t = setInterval(function () {
+          var p = self.state.prog + 58;
+          if (p >= 812) {
+            clearInterval(self.t); self.t = null;
+            self.setState({ prog: 812, processando: false, passo: 4 });
+          } else {
+            self.setState({ prog: p });
+          }
+        }, 220);
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
