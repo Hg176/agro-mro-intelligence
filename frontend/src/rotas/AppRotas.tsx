@@ -19,6 +19,7 @@ const TELAS: Record<string, ComponentType> = {
   "/app/importar": lazy(() => import("@/telas/importar/TelaImportar")),
   "/app/planejamento": lazy(() => import("@/telas/planejamento/TelaPlanejamento")),
   "/app/regras": lazy(() => import("@/telas/regras/TelaRegras")),
+  "/app/nivel-servico": lazy(() => import("@/telas/nivel-servico/TelaNivelServico")),
 };
 
 /** Enquanto o código da tela chega: o mesmo skeleton de cabeçalho das telas. */

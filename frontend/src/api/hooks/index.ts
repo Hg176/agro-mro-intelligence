@@ -5,10 +5,11 @@ import { listarGruposPadrao, listarUnidades } from "@/api/cadastros";
 import { obterColunas, obterPainelImportacao, obterProgresso } from "@/api/importacao";
 import { chaves } from "@/api/chaves";
 import { criarMaterial, listarMateriais, type ParametrosMateriais } from "@/api/materiais";
+import { obterImpacto, obterNivelServico, obterPreviaAdocao } from "@/api/nivelServico";
 import { obterPlanejamento } from "@/api/planejamento";
 import { obterRegras } from "@/api/regras";
 import { obterSessao } from "@/api/sessao";
-import type { FiltroPlanejamento, NovoMaterial } from "@/api/tipos";
+import type { Decimal, FiltroPlanejamento, NovoMaterial } from "@/api/tipos";
 import { obterVisaoGeral } from "@/api/visaoGeral";
 
 /** GET /me. Usado pelo ProvedorSessao (F1-4); as telas leem a sessão por useSessao(). */
@@ -123,4 +124,32 @@ export function usePlanejamento(filtro: FiltroPlanejamento) {
 /** Regras e letras: cortes do espaço, padrão e o que a API calcula com eles. */
 export function useRegras() {
   return useQuery({ queryKey: chaves.regras, queryFn: ({ signal }) => obterRegras(signal) });
+}
+
+/** Nível de serviço: os 75 casos e a origem da matriz. */
+export function useNivelServico() {
+  return useQuery({
+    queryKey: chaves.nivelServico,
+    queryFn: ({ signal }) => obterNivelServico(signal),
+  });
+}
+
+/** Impacto da meta digitada (só quando o formato está certo). Leitura: nada é gravado. */
+export function useImpactoMeta(caso: string, meta: Decimal | null) {
+  return useQuery({
+    queryKey: chaves.impactoMeta(caso, meta ?? ""),
+    queryFn: ({ signal }) => obterImpacto(caso, meta as Decimal, signal),
+    enabled: meta !== null,
+    staleTime: 60_000,
+  });
+}
+
+/** Prévia da adoção da V3: só busca quando o bloco "Confira a adoção" abre. */
+export function usePreviaAdocaoV3(aberta: boolean) {
+  return useQuery({
+    queryKey: chaves.adocaoV3,
+    queryFn: ({ signal }) => obterPreviaAdocao(signal),
+    enabled: aberta,
+    staleTime: 0,
+  });
 }

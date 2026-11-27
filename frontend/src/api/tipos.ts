@@ -870,6 +870,13 @@ export type RegrasLetras = {
   alertas_ativos: number;
 };
 
+/**
+ * Origem da meta de um caso. "v3" = referência V3 em uso (matriz padrão); "cliente" =
+ * editado no espaço; "v3_adotada" = V3 adotada explicitamente na matriz própria; null = NC
+ * (não declarado na matriz própria).
+ */
+export type OrigemCasoNivelServico = "v3" | "cliente" | "v3_adotada" | null;
+
 /** Caso da matriz de nível de serviço (75 casos). Protótipo: service_level_rules / approved_service_levels_v3.json. */
 export type CasoNivelServico = {
   /** Código do caso (ex.: "PAX"). */
@@ -881,17 +888,64 @@ export type CasoNivelServico = {
   service_level: Decimal | null;
   /** Fator z (Inversa Normal) calculado pelo backend. null quando NS = 0 ou NC. */
   fator_z: Decimal | null;
+  /** Faixa da cor: 0 = 0%, 1 = 50 a 79%, 2 = 80 a 94%, 3 = 95% ou mais (decidida pelo backend). */
   faixa: FaixaCelula;
-  origem: "v3" | "cliente" | null;
+  origem: OrigemCasoNivelServico;
+  /** Valor V3 do caso, para comparar. */
+  referencia_v3: Decimal;
+  /** A meta em uso é diferente da V3 (ponto dourado). Decidido pelo backend. */
+  diferente_da_v3: boolean;
+  /** Versão da configuração do caso no espaço; null = sem configuração própria. */
+  versao: number | null;
+  /** Largura da barra "O que muda no ES" para a meta atual, de "0" a "1". null = sem barra. */
+  fracao_barra_z: Decimal | null;
 };
 
-/** Matriz de nível de serviço. Protótipo: GET /api/v1/service-level-rules (+ /state). */
+/**
+ * Resposta de GET /api/v1/nivel-servico. Rota nova, a criar no backend (base no protótipo
+ * GET /api/v1/service-level-rules + /state). Escritas (exigem permissoes.editar_regras):
+ * - PUT /api/v1/nivel-servico/casos/{case} { meta_percentual: Decimal, versao } → esta
+ *   resposta. O 1º caso salvo com origem "v3" inicia a matriz própria (os outros 74 ficam NC).
+ *   Regra: 0 ou de 50 a menos de 100, até 2 casas (422 com a mensagem).
+ * - DELETE /api/v1/nivel-servico/casos/{case}?versao= → esta resposta (o caso fica NC).
+ * - POST /api/v1/nivel-servico/adocao-v3 { versao } → esta resposta (os 75 valores V3).
+ */
 export type MatrizNivelServico = {
   conclusao: ConclusaoNivelServico;
   origem: "v3" | "propria";
-  versao: string;
+  /** Versão da matriz do espaço (concorrência: 409 se mudou). */
+  versao: number;
+  /** Identificador da referência (ex.: "agro-mro-ns-sander-v3-2026-10-10"). */
+  referencia: string;
+  /** Casos declarados na matriz própria (0 quando a V3 está em uso). */
+  casos_declarados: number;
   /** Sempre 75 casos (P/Q/R/S/N × A/B/C/D/N × X/Y/Z). */
   casos: CasoNivelServico[];
+  /** Posições em cada linha PQR + ABC (chave "PA", "QB"...). Ausente = sem contagem. */
+  posicoes_por_linha: Record<string, number>;
+};
+
+/**
+ * Impacto de uma meta digitada, antes de salvar. GET /api/v1/nivel-servico/impacto?caso=&meta=
+ * (meta em %, ex.: "97.5"). Rota nova, a criar no backend: a Inversa Normal é do backend.
+ */
+export type ImpactoMeta = {
+  caso: string;
+  fator_z_atual: Decimal | null;
+  fator_z_novo: Decimal | null;
+  /** Variação aproximada do ES, em % com sinal (ex.: "12", "-8"). null = sem comparação. */
+  variacao_percentual: Decimal | null;
+  /** Largura das barras do impacto, de "0" a "1". */
+  fracao_barra_atual: Decimal | null;
+  fracao_barra_nova: Decimal | null;
+};
+
+/** Prévia da adoção da V3 ("Confira a adoção da matriz V3"). GET /api/v1/nivel-servico/adocao-v3. */
+export type PreviaAdocaoV3 = {
+  casos_a_incluir: number;
+  configuracoes_a_substituir: number;
+  valores_diferentes: number;
+  niveis_manuais_preservados: number;
 };
 
 /** Caso da TMER (75 casos PQR × ABC × X123). Protótipo: tmer_standard.py / GET /api/v1/tmer-rules. */

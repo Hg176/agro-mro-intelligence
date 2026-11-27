@@ -4,6 +4,7 @@ import { handlersBusca } from "./busca";
 import { handlersCadastros } from "./cadastros";
 import { handlersImportacao } from "./importacao";
 import { handlersMateriais } from "./materiais";
+import { handlersNivelServico } from "./nivelServico";
 import { handlersPlanejamento } from "./planejamento";
 import { handlersRegras } from "./regras";
 import { handlersSessao } from "./sessao";
@@ -26,5 +27,6 @@ export const handlers = [
   ...handlersImportacao,
   ...handlersPlanejamento,
   ...handlersRegras,
+  ...handlersNivelServico,
   semMock,
 ];
