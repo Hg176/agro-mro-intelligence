@@ -51,7 +51,7 @@ function Item({ nome, valor }: { nome: string; valor: string | null }) {
 export function ParaAprofundar({ memoria }: { memoria: VisaoGeral["memoria"] }) {
   return (
     <section aria-labelledby="t-apr">
-      <h2 id="t-apr" className="mb-2.5 text-rotulo uppercase text-tinta-500">
+      <h2 id="t-apr" className="mb-2.5 text-rotulo uppercase text-tinta-600">
         Para aprofundar
       </h2>
       <div className="flex flex-col gap-3">

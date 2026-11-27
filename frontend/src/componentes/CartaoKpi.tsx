@@ -75,7 +75,7 @@ export function GrupoKpi({
   const id = `grupo-kpi-${titulo.toLowerCase().replace(/\W+/g, "-")}`;
   return (
     <section aria-labelledby={id} className={cn("min-w-0", className)}>
-      <h2 id={id} className="mb-2.5 text-rotulo uppercase text-tinta-500">
+      <h2 id={id} className="mb-2.5 text-rotulo uppercase text-tinta-600">
         {titulo}
       </h2>
       <div className={cn("grid gap-esp-16", colunas === 2 ? "grid-cols-2" : "grid-cols-1")}>

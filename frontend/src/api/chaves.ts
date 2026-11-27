@@ -5,6 +5,7 @@ export const chaves = {
   sessao: ["sessao"] as const,
   busca: (q: string) => ["busca", q] as const,
   visaoGeral: ["visao-geral"] as const,
-  materiais: (p: ParametrosMateriais) => ["materiais", p.q, p.filtro, p.pagina] as const,
+  materiais: (p: ParametrosMateriais) =>
+    ["materiais", p.q, p.filtro, p.abc, p.pqr, p.sinal, p.pagina] as const,
   todosMateriais: ["materiais"] as const,
 };

@@ -6,11 +6,13 @@ import { telasDoMenu } from "@/rotas/mapa";
 import { ComTitulo } from "@/rotas/TituloDaAba";
 import { RotaProtegida } from "@/sessao/RotaProtegida";
 import { EmBreve, EmConstrucao, NaoEncontrada, PublicaEmConstrucao } from "@/telas/provisorias";
+import TelaMateriais from "@/telas/materiais/TelaMateriais";
 import TelaVisaoGeral from "@/telas/visao-geral/TelaVisaoGeral";
 
 /** Telas do menu já feitas (as outras mostram "Em construção" com o passo). */
 const TELAS: Record<string, ComponentType> = {
   "/app/visao-geral": TelaVisaoGeral,
+  "/app/materiais": TelaMateriais,
 };
 
 /** Passo do F1 em que cada tela com design entra (docs/design/README.md). */

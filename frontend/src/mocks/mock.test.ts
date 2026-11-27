@@ -65,7 +65,14 @@ describe("mock: estado da tela (?mock=)", () => {
 
   it("?mock=vazio devolve catálogo vazio em Materiais", async () => {
     naPagina("?mock=vazio");
-    const m = await listarMateriais({ q: "", filtro: null, pagina: 1 });
+    const m = await listarMateriais({
+      q: "",
+      filtro: null,
+      abc: null,
+      pqr: null,
+      sinal: null,
+      pagina: 1,
+    });
     expect(m.conclusao.tipo).toBe("catalogo_vazio");
     expect(m.itens).toEqual([]);
   });
@@ -73,7 +80,10 @@ describe("mock: estado da tela (?mock=)", () => {
   it("?mock=carregando não responde (a requisição fica pendente)", async () => {
     naPagina("?mock=carregando");
     const controle = new AbortController();
-    const pendente = listarMateriais({ q: "", filtro: null, pagina: 1 }, controle.signal);
+    const pendente = listarMateriais(
+      { q: "", filtro: null, abc: null, pqr: null, sinal: null, pagina: 1 },
+      controle.signal,
+    );
     const resultado = await Promise.race([
       pendente.then(() => "respondeu"),
       new Promise((r) => setTimeout(() => r("pendente"), 100)),
@@ -87,7 +97,7 @@ describe("mock: estado da tela (?mock=)", () => {
     naPagina("?plano=somente_leitura&mock=vazio");
     const [s, m] = await Promise.all([
       obterSessao(),
-      listarMateriais({ q: "", filtro: null, pagina: 1 }),
+      listarMateriais({ q: "", filtro: null, abc: null, pqr: null, sinal: null, pagina: 1 }),
     ]);
     expect(s.plano.estado).toBe("somente_leitura");
     expect(m.conclusao.tipo).toBe("catalogo_vazio");
@@ -96,19 +106,47 @@ describe("mock: estado da tela (?mock=)", () => {
 
 describe("mock: Materiais", () => {
   it("filtra por código com ou sem espaços", async () => {
-    const comEspaco = await listarMateriais({ q: "0000 0012 3456", filtro: null, pagina: 1 });
-    const semEspaco = await listarMateriais({ q: "000000123456", filtro: null, pagina: 1 });
+    const comEspaco = await listarMateriais({
+      q: "0000 0012 3456",
+      filtro: null,
+      abc: null,
+      pqr: null,
+      sinal: null,
+      pagina: 1,
+    });
+    const semEspaco = await listarMateriais({
+      q: "000000123456",
+      filtro: null,
+      abc: null,
+      pqr: null,
+      sinal: null,
+      pagina: 1,
+    });
     expect(comEspaco.itens.map((p) => p.code)).toEqual(["000000123456"]);
     expect(semEspaco.itens.map((p) => p.code)).toEqual(["000000123456"]);
   });
 
   it("aplica filtro pronto", async () => {
-    const m = await listarMateriais({ q: "", filtro: "saldo_negativo", pagina: 1 });
+    const m = await listarMateriais({
+      q: "",
+      filtro: "saldo_negativo",
+      abc: null,
+      pqr: null,
+      sinal: null,
+      pagina: 1,
+    });
     expect(m.itens.map((p) => p.short_description)).toEqual(["Filtro de ar primário"]);
   });
 
   it("Decimal chega como string e ausente chega como null", async () => {
-    const m = await listarMateriais({ q: "junta", filtro: null, pagina: 1 });
+    const m = await listarMateriais({
+      q: "junta",
+      filtro: null,
+      abc: null,
+      pqr: null,
+      sinal: null,
+      pagina: 1,
+    });
     const junta = m.itens[0];
     expect(junta?.stock_quantity).toBe("2");
     expect(junta?.reorder_point).toBeNull();

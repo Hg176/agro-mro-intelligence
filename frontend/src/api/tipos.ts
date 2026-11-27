@@ -348,6 +348,11 @@ export type Posicao = {
   motivo_situacao: string | null;
   /** ABC de consumo efetiva; null = NC (sem classe calculável). */
   abc: ClasseAbc | null;
+  /**
+   * ABC de estoque (cartão de Materiais). Não ativada (CONTEXTO, D-P4-04): o backend manda
+   * null até o Sander decidir, e a tela mostra "—". Rota nova, a criar no backend.
+   */
+  abc_estoque: ClasseAbc | null;
 };
 
 /** Filtros prontos de Materiais (chips com contagem). Contagem vem da API. */
@@ -367,7 +372,10 @@ export type PaginaMateriais = {
   conclusao: ConclusaoMateriais;
   filtros: ContagemFiltro<FiltroMateriais>[];
   itens: Posicao[];
+  /** Posições que batem com a busca e os filtros. */
   total: number;
+  /** Posições do catálogo inteiro, sem filtro ("23 de 812 posições"). */
+  total_catalogo: number;
   pagina: number;
   /** Total de páginas (o front não divide total por limite). */
   paginas: number;

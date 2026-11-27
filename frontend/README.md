@@ -102,6 +102,20 @@ Dois assuntos separados, que podem ser combinados:
 
 Exemplo: `/app/materiais?plano=somente_leitura&mock=vazio`. O `?mock=` só afeta a rota da tela, não o `/me` nem a busca.
 
+Exceção de propósito: em Materiais, `?mock=erro` é o estado **erro de métricas** do design (o catálogo responde, sem saldo, PP nem classe). A falha do catálogo inteiro (500) é coberta pelo teste da tela.
+
+### Filtros de Materiais na URL
+
+Materiais lê a busca e os filtros da URL. É por ela que a Visão geral, a busca global e os cartões abrem a lista já filtrada (`src/rotas/links.ts`, `linkMateriais()`).
+
+| Parâmetro    | Valores                                                                 | De onde vem o link                             |
+| ------------ | ----------------------------------------------------------------------- | ---------------------------------------------- |
+| `q`          | texto; código com ou sem espaços                                        | busca global, "Abrir" da tabela de prioridades |
+| `filtro`     | `abaixo_pp` · `saldo_negativo` · `parados` · `classe_a` · `sem_calculo` | chips, KPIs, sinais com filtro pronto          |
+| `abc`, `pqr` | `A`–`D`, `N` · `P`–`S`, `N`                                             | célula da matriz ABC × PQR, "Ver os 5 itens A" |
+| `sinal`      | código do sinal                                                         | sinais sem filtro pronto (ex.: `acima_maximo`) |
+| `pagina`     | 1, 2…                                                                   | paginação de 100                               |
+
 ### Ligar, desligar e trocar pela API real
 
 - `npm run dev` liga o mock (padrão).

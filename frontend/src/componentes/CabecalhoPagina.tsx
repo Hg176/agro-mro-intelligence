@@ -22,7 +22,7 @@ export function CabecalhoPagina({ rotulo, titulo, contexto, acoes }: Props) {
         <p className="text-rotulo uppercase text-ouro-700">{rotulo}</p>
         <h1 className="mt-2 font-display text-titulo-pagina text-tinta-900">{titulo}</h1>
         {contexto && (
-          <div className="mt-1 text-corpo-m tabular-nums text-tinta-500">{contexto}</div>
+          <div className="mt-1 text-corpo-m tabular-nums text-tinta-600">{contexto}</div>
         )}
       </div>
       {acoes && <div className="flex flex-wrap gap-3">{acoes}</div>}
