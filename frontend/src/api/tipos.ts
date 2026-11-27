@@ -554,7 +554,7 @@ export type VisaoGeral = {
 export type EstadoCaso =
   "todo" | "analysis" | "testing" | "ready" | "validated" | "exported" | "applied" | "discarded";
 
-/** Filtros da fila (7). */
+/** Filtros da fila (7). A API aplica o filtro (GET /api/v1/planejamento?filtro=). */
 export type FiltroPlanejamento =
   "active" | "todo" | "testing" | "ready" | "validated" | "exported" | "all";
 
@@ -591,6 +591,11 @@ export type CasoPlanejamento = {
   export_batch_id: string | null;
   applied_at: DataHoraIso | null;
   external_reference: string | null;
+  /**
+   * Validado, atual e ainda não exportado: entra no próximo Excel de mudanças. Decidido pelo
+   * backend (o front não cruza status com stale).
+   */
+  entra_no_proximo_excel: boolean;
 };
 
 /** Posição sugerida para iniciar análise ("Itens para iniciar análise"). */
@@ -605,11 +610,20 @@ export type ItemParaIniciar = {
 };
 
 /**
- * Resposta de GET /api/v1/planejamento. Base no protótipo GET /api/v1/planning
+ * Resposta de GET /api/v1/planejamento?filtro=. Base no protótipo GET /api/v1/planning
  * ({ items, summary }); conclusao, filtros, percentuais como Decimal e sugestões são novos.
+ *
+ * Escritas da tela (rotas novas, a criar no backend):
+ * - POST /api/v1/planejamento/casos { material_id } → CasoPlanejamento ("Iniciar análise");
+ * - POST /api/v1/planejamento/casos/{id}/aplicacao { referencia_externa: string | null } →
+ *   CasoPlanejamento ("Confirmar aplicação no ERP": declaração do cliente; não muda o ERP);
+ * - POST /api/v1/planejamento/excel-de-mudancas → arquivo .xlsx (Content-Disposition) e emite
+ *   o lote: os casos exportáveis passam a "Exportado". Exportar NÃO confirma aplicação.
  */
 export type Planejamento = {
   conclusao: ConclusaoPlanejamento;
+  /** Filtro aplicado em `casos`. */
+  filtro: FiltroPlanejamento;
   resumo: {
     iniciados: number;
     validados: number;
@@ -621,6 +635,7 @@ export type Planejamento = {
     percentual_aplicacao: Decimal | null;
   };
   filtros: ContagemFiltro<FiltroPlanejamento>[];
+  /** Casos do filtro, na ordem da fila (decidida pelo backend). */
   casos: CasoPlanejamento[];
   /** Quantos casos validados e atuais entram no próximo Excel de mudanças. */
   exportaveis: number;

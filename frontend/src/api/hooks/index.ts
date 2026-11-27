@@ -5,8 +5,9 @@ import { listarGruposPadrao, listarUnidades } from "@/api/cadastros";
 import { obterColunas, obterPainelImportacao, obterProgresso } from "@/api/importacao";
 import { chaves } from "@/api/chaves";
 import { criarMaterial, listarMateriais, type ParametrosMateriais } from "@/api/materiais";
+import { obterPlanejamento } from "@/api/planejamento";
 import { obterSessao } from "@/api/sessao";
-import type { NovoMaterial } from "@/api/tipos";
+import type { FiltroPlanejamento, NovoMaterial } from "@/api/tipos";
 import { obterVisaoGeral } from "@/api/visaoGeral";
 
 /** GET /me. Usado pelo ProvedorSessao (F1-4); as telas leem a sessão por useSessao(). */
@@ -106,5 +107,14 @@ export function useProgressoCarga(cargaId: string | null) {
       consulta.state.data?.estado === "gravando" || consulta.state.data === undefined
         ? INTERVALO_PROGRESSO_MS
         : false,
+  });
+}
+
+/** Planejamento: a API aplica o filtro; ao trocar, o anterior fica na tela até chegar o novo. */
+export function usePlanejamento(filtro: FiltroPlanejamento) {
+  return useQuery({
+    queryKey: chaves.planejamento(filtro),
+    queryFn: ({ signal }) => obterPlanejamento(filtro, signal),
+    placeholderData: keepPreviousData,
   });
 }
