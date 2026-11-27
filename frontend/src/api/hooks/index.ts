@@ -2,6 +2,7 @@ import { keepPreviousData, useMutation, useQuery, useQueryClient } from "@tansta
 
 import { buscarPosicoes } from "@/api/busca";
 import { listarGruposPadrao, listarUnidades } from "@/api/cadastros";
+import { obterColunas, obterPainelImportacao, obterProgresso } from "@/api/importacao";
 import { chaves } from "@/api/chaves";
 import { criarMaterial, listarMateriais, type ParametrosMateriais } from "@/api/materiais";
 import { obterSessao } from "@/api/sessao";
@@ -68,5 +69,42 @@ export function useCriarMaterial() {
   return useMutation({
     mutationFn: (material: NovoMaterial) => criarMaterial(material),
     onSuccess: () => cliente.invalidateQueries({ queryKey: chaves.todosMateriais }),
+  });
+}
+
+/** Importar dados: conclusão, abas e histórico. */
+export function usePainelImportacao() {
+  return useQuery({
+    queryKey: chaves.importacao,
+    queryFn: ({ signal }) => obterPainelImportacao(signal),
+  });
+}
+
+/** Colunas reconhecidas do arquivo enviado (o mapeamento lembrado vem daqui). */
+export function useColunasDoArquivo(arquivoId: string | null) {
+  return useQuery({
+    queryKey: chaves.colunasDoArquivo(arquivoId ?? ""),
+    queryFn: ({ signal }) => obterColunas(arquivoId ?? "", signal),
+    enabled: arquivoId !== null,
+    staleTime: Infinity,
+  });
+}
+
+/** Intervalo entre leituras do progresso da gravação. */
+export const INTERVALO_PROGRESSO_MS = 400;
+
+/**
+ * Progresso real da gravação: lê de novo enquanto o backend disser "gravando". Leitura
+ * (GET), então pode repetir; a escrita (confirmar) nunca repete.
+ */
+export function useProgressoCarga(cargaId: string | null) {
+  return useQuery({
+    queryKey: chaves.progressoCarga(cargaId ?? ""),
+    queryFn: ({ signal }) => obterProgresso(cargaId ?? "", signal),
+    enabled: cargaId !== null,
+    refetchInterval: (consulta) =>
+      consulta.state.data?.estado === "gravando" || consulta.state.data === undefined
+        ? INTERVALO_PROGRESSO_MS
+        : false,
   });
 }

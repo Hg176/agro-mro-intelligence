@@ -16,6 +16,7 @@ import { EmBreve, EmConstrucao, NaoEncontrada, PublicaEmConstrucao } from "@/tel
 const TELAS: Record<string, ComponentType> = {
   "/app/visao-geral": lazy(() => import("@/telas/visao-geral/TelaVisaoGeral")),
   "/app/materiais": lazy(() => import("@/telas/materiais/TelaMateriais")),
+  "/app/importar": lazy(() => import("@/telas/importar/TelaImportar")),
 };
 
 /** Enquanto o código da tela chega: o mesmo skeleton de cabeçalho das telas. */

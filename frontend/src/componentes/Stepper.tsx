@@ -1,6 +1,7 @@
 /**
  * Passos ligados por linha (lei da Conectividade uniforme): Importar dados e Landing.
- * O passo atual tem aria-current="step".
+ * O passo atual tem aria-current="step". `atual` = passos.length marca todos como concluídos
+ * (ex.: "Concluído" do Importar). Cores do ImportarDados.dc.html.
  */
 import { Check } from "lucide-react";
 
@@ -30,8 +31,8 @@ export function Stepper({ passos, atual, rotulo = "Passos" }: Props) {
                 className={cn(
                   "grid size-8 shrink-0 place-items-center rounded-full text-sm font-semibold",
                   concluido && "bg-verde-700 text-branco",
-                  corrente && "bg-verde-900 text-ouro-300",
-                  !concluido && !corrente && "border-2 border-borda bg-branco text-tinta-500",
+                  corrente && "border-2 border-verde-700 bg-verde-100 text-verde-700",
+                  !concluido && !corrente && "border-[1.5px] border-borda bg-branco text-tinta-500",
                 )}
               >
                 {concluido ? <Check aria-hidden="true" className="size-4" /> : i + 1}
@@ -39,7 +40,9 @@ export function Stepper({ passos, atual, rotulo = "Passos" }: Props) {
               <span
                 className={cn(
                   "text-sm leading-5 whitespace-nowrap",
-                  corrente ? "font-semibold text-tinta-900" : "font-medium text-tinta-600",
+                  corrente || concluido
+                    ? "font-semibold text-tinta-900"
+                    : "font-medium text-tinta-500",
                 )}
               >
                 {passo}

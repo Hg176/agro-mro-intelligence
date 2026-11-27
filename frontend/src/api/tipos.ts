@@ -634,13 +634,16 @@ export type Planejamento = {
 /** Dataset da carga. Protótipo: TableImportIn.import_type. */
 export type DatasetImportacao = "master_data" | "movements" | "pipeline";
 
-/** Acrescentar ou substituir. Protótipo: movement_import_mode. */
+/** ERP de onde vem a planilha (escolha do passo Arquivo). Protótipo: movement_system. */
+export type ErpOrigem = "sap" | "totvs" | "senior" | "outro";
+
+/** Acrescentar e atualizar × substituir tudo. Protótipo: movement_import_mode. */
 export type ModoImportacao = "append" | "replace";
 
 /** Situação do recibo. Protótipo: trace_import_receipts.status. */
 export type StatusCarga = "completed" | "blocked" | "failed";
 
-/** Carga do histórico. Protótipo: GET /api/v1/lineage/receipts. */
+/** Carga do histórico ("Cargas anteriores"). Protótipo: GET /api/v1/lineage/receipts. */
 export type CargaImportacao = {
   id: string;
   dataset: DatasetImportacao;
@@ -648,36 +651,129 @@ export type CargaImportacao = {
   modo: ModoImportacao;
   status: StatusCarga;
   linhas: number;
-  posicoes: number | null;
-  locais: number | null;
   recebida_em: DataHoraIso;
+  /** Nome curto de quem enviou (ex.: "Hugo S."). */
+  por: string;
 };
 
-/** Coluna da planilha ligada a um campo do sistema (mapeamento lembrado vem da API). */
-export type MapeamentoColuna = {
+/** Uma aba de carga ("Dados mestres", "Movimentos", "Pedidos em aberto"). */
+export type AbaImportacao = {
+  dataset: DatasetImportacao;
+  /** false = "Em breve" (o backend ainda não recebe esta carga pela tela nova). */
+  disponivel: boolean;
+};
+
+/**
+ * Resposta de GET /api/v1/importacao. Rota nova, a criar no backend (junta o histórico de
+ * GET /api/v1/lineage/receipts com o que a tela precisa para começar).
+ */
+export type PainelImportacao = {
+  conclusao: ConclusaoImportacao | null;
+  abas: AbaImportacao[];
+  /** Posições que já estão no sistema (texto do "Substituir tudo"). null = nenhuma. */
+  posicoes_atuais: number | null;
+  historico: CargaImportacao[];
+};
+
+/**
+ * Resposta de POST /api/v1/importacao/arquivos (multipart: arquivo, dataset, erp). Rota nova,
+ * a criar no backend; base no protótipo POST /api/v1/imports/file. O backend lê a planilha
+ * e guarda o arquivo (source_file_id); o front não lê o conteúdo.
+ */
+export type ArquivoRecebido = {
+  arquivo_id: string;
+  nome: string;
+  tamanho_bytes: number;
+  linhas: number;
+  /** Abas da planilha que entram (ex.: ["MARA_MARD"]). Vazio em .csv. */
+  abas: string[];
+};
+
+/** Confiança do reconhecimento automático de uma coluna. */
+export type ConfiancaColuna = "alta" | "media" | "nenhuma";
+
+/** Um campo do sistema e a coluna do arquivo ligada a ele (passo Colunas). */
+export type CampoMapeado = {
+  /** Identificador do campo (ex.: "code", "location", "unit_price"). */
   campo: string;
-  coluna_planilha: string | null;
+  nome: string;
   obrigatorio: boolean;
-  lembrado: boolean;
+  /** Complemento do "Obrigatório" (ex.: "centro + depósito"). */
+  detalhe: string | null;
+  /** Coluna escolhida. null = "Não usar" / nenhuma coluna encontrada. */
+  coluna: string | null;
+  /** Exemplo da 1ª linha, já como o sistema vai entender (texto pronto da API). */
+  exemplo: string | null;
+  confianca: ConfiancaColuna;
 };
 
-/** Erro de uma linha na prévia (editável linha a linha). */
+/**
+ * Resposta de GET /api/v1/importacao/arquivos/{arquivo_id}/colunas. Rota nova, a criar no
+ * backend. O mapeamento lembrado vem daqui (o front não guarda nada).
+ */
+export type ColunasDoArquivo = {
+  /** Último mapeamento lembrado; null = primeira carga desse ERP. */
+  lembrado: { erp: ErpOrigem; carga_em: DataHoraIso } | null;
+  campos_ligados: number;
+  total_campos: number;
+  campos: CampoMapeado[];
+  /** Colunas encontradas no arquivo, para as listas de escolha. */
+  colunas_do_arquivo: string[];
+};
+
+/** Linha com erro na prévia. Corrigir um valor manda PUT …/correcoes e volta a prévia nova. */
 export type ErroLinhaImportacao = {
   linha: number;
   campo: string;
+  /** Nome da coluna como aparece na tela (ex.: "Preço unitário"). */
+  coluna: string;
+  /** Valor como está no arquivo (ou como foi corrigido). null = vazio. */
   valor: string | null;
+  /** O que fazer (texto pronto da API). */
   motivo: string;
+  /** true = a correção enviada foi aceita pelo backend. */
+  corrigido: boolean;
 };
 
-/** Prévia (confirm=false). Protótipo: POST /api/v1/imports/file e /imports/table. */
+/**
+ * Prévia (nada gravado). Resposta de POST /api/v1/importacao/arquivos/{arquivo_id}/previa
+ * ({ mapeamento: {campo: coluna | null}, lembrar }) e de PUT …/correcoes
+ * ({ linha, campo, valor }). Rotas novas, a criar no backend; base no protótipo
+ * imports/table com confirm=false.
+ */
 export type PreviaImportacao = {
-  arquivo_id: string;
-  linhas: number;
-  linhas_validas: number;
+  linhas_lidas: number;
+  prontas: number;
+  com_erro: number;
   erros: ErroLinhaImportacao[];
-  mapeamento: MapeamentoColuna[];
-  posicoes: number | null;
-  locais: number | null;
+};
+
+/** Resumo grande do fim ("812 posições em 3 locais"). Valores prontos da API. */
+export type ResumoCarga = {
+  posicoes: number;
+  locais: number;
+  nomes_locais: string[];
+  /** Valor em estoque das posições com preço. null = sem preço nenhum. */
+  valor_estoque: Decimal | null;
+  /** Posições sem preço (ficam NC até o cliente informar). */
+  sem_preco: number;
+};
+
+/**
+ * Progresso real da gravação. POST /api/v1/importacao/arquivos/{arquivo_id}/confirmar
+ * ({ modo }) responde 202 com { carga_id }; a tela lê GET /api/v1/importacao/cargas/{carga_id}
+ * até sair de "gravando". Rotas novas, a criar no backend. Tudo ou nada: se falhar, nada é
+ * gravado e `motivo` explica.
+ */
+export type ProgressoCarga = {
+  carga_id: string;
+  estado: "gravando" | "concluida" | "falhou";
+  gravadas: number;
+  total: number;
+  /** % pronto da API (ex.: "43"); o front não divide gravadas por total. */
+  percentual: Decimal;
+  resumo: ResumoCarga | null;
+  motivo: string | null;
 };
 
 /* ------------------------------------------------------------------------------------------

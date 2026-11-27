@@ -105,6 +105,8 @@ Dois assuntos separados, que podem ser combinados:
 
 Exemplo: `/app/materiais?plano=somente_leitura&mock=vazio`. O `?mock=` só afeta a rota da tela, não o `/me` nem a busca.
 
+No Importar dados, `?carga=falha` faz a gravação parar no meio: a tela mostra que nada foi gravado (tudo ou nada) e deixa confirmar de novo.
+
 Exceção de propósito: em Materiais, `?mock=erro` é o estado **erro de métricas** do design (o catálogo responde, sem saldo, PP nem classe). A falha do catálogo inteiro (500) é coberta pelo teste da tela.
 
 ### Filtros de Materiais na URL
