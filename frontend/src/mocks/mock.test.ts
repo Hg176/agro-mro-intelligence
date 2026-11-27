@@ -7,6 +7,7 @@ import { buscarPosicoes } from "@/api/busca";
 import { listarMateriais } from "@/api/materiais";
 import { obterSessao } from "@/api/sessao";
 import { obterVisaoGeral } from "@/api/visaoGeral";
+import { servidorMock } from "@/mocks/servidor";
 
 const naPagina = (busca: string) => history.replaceState(null, "", `/app/visao-geral${busca}`);
 
@@ -105,6 +106,45 @@ describe("mock: estado da tela (?mock=)", () => {
 });
 
 describe("mock: Materiais", () => {
+  it("?filtro=abaixo_pp&abc=A&pagina=1 (link 'Ver os 5 itens A') é respondido pelo handler, sem ir para a rede", async () => {
+    const vistas: string[] = [];
+    const semHandler: string[] = [];
+    const ouvir = ({ request }: { request: Request }) => vistas.push(request.url);
+    const naoCasou = ({ request }: { request: Request }) => semHandler.push(request.url);
+    servidorMock.events.on("request:start", ouvir);
+    servidorMock.events.on("request:unhandled", naoCasou);
+    try {
+      const m = await listarMateriais({
+        q: "",
+        filtro: "abaixo_pp",
+        abc: "A",
+        pqr: null,
+        sinal: null,
+        pagina: 1,
+      });
+      const url = new URL(vistas[0] ?? "http://x");
+      expect(url.pathname).toBe("/api/v1/materiais");
+      expect(Object.fromEntries(url.searchParams)).toEqual({
+        filtro: "abaixo_pp",
+        abc: "A",
+        pagina: "1",
+      });
+      expect(semHandler).toEqual([]);
+      expect(m.conclusao.tipo).toBe("catalogo_com_posicoes");
+      expect(m.itens.length).toBeGreaterThan(0);
+      expect(m.itens.every((p) => p.abc === "A")).toBe(true);
+      expect(m.itens.every((p) => p.situacao === "abaixo_pp" || p.situacao === "ruptura")).toBe(
+        true,
+      );
+      expect(m.total).toBe(m.itens.length);
+      expect(m.pagina).toBe(1);
+      expect(m.paginas).toBe(1);
+    } finally {
+      servidorMock.events.removeListener("request:start", ouvir);
+      servidorMock.events.removeListener("request:unhandled", naoCasou);
+    }
+  });
+
   it("filtra por código com ou sem espaços", async () => {
     const comEspaco = await listarMateriais({
       q: "0000 0012 3456",

@@ -125,6 +125,14 @@ Materiais lê a busca e os filtros da URL. É por ela que a Visão geral, a busc
   2. o desenvolvedor testa com `VITE_API_REAL`;
   3. o handler sai de `src/mocks/handlers/`, que é o mock usado nos testes. Os testes da tela passam a montar a resposta com `servidorMock.use(...)`.
 
+### Quando o service worker do mock é encerrado
+
+O navegador encerra service workers ociosos (aba em segundo plano, "guias em suspensão" do Edge). O worker do MSW guarda as abas ativas só em memória: ao voltar, ele deixaria toda chamada passar direto para a rede. No dev isso virava proxy → `ECONNREFUSED 8000`, e só as consultas novas quebravam, porque as outras já estavam no cache. Três defesas, todas só no dev:
+
+- **Reativação** (`src/mocks/reativacao.ts`): antes de cada chamada `/api/`, a aba manda `MOCK_ACTIVATE` ao worker, o que o acorda e a registra de novo.
+- **`onUnhandledRequest`** (`aoChamarSemHandler`): chamada `/api/*` sem handler é erro no console do navegador; asset do Vite passa direto.
+- **Guarda no servidor do Vite** (`destinoNoServidorDev`): com o mock ligado, uma chamada `/api` que chegue ao Vite responde 503 com a explicação, em vez de ir para o proxy. As rotas de `VITE_API_REAL` seguem para o backend normalmente.
+
 ### O mock nunca vai para produção
 
 - O mock só é importado por `import()` dinâmico dentro de `if (import.meta.env.DEV && ...)` em `src/main.tsx`. No build, `DEV` é `false` e o código some.
